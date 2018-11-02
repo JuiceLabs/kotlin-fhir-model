@@ -74,7 +74,7 @@ class FhirStructureDefinitionElementDefinition(val element: FhirStructureDefinit
 
             val valueSet = element.profile.fhirSpec.valuesetWithUri(uri)
             if (valueSet == null) {
-                LOG.error("There is no ValueSet for required binding \"${uri}\" on ${propName} in ${element.profile.name()}")
+                LOG.info("There is no ValueSet for required binding \"${uri}\" on ${propName} in ${element.profile.name()}")
             } else {
                 element.valueSet = valueSet
                 element.enum = valueSet.enum()

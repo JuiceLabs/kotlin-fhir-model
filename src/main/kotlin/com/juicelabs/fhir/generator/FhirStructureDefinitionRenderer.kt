@@ -151,5 +151,5 @@ fun ClassName.isNullable(nullable: Boolean): ClassName {
     return if (nullable)
         asNullable()
     else
-        asNonNullable()
+        asNonNull()
 }
