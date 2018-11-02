@@ -8,7 +8,7 @@ class Settings {
          */
         const val baseUrl = "http://hl7.org/fhir/"
 
-        const val downloadFiles = true
+        val downloadFiles = (System.getenv("downloadFiles") ?: "false").equals("true", true)
 
         const val downloadDir = "./download"
         const val destinationBaseDir = "."
@@ -30,7 +30,7 @@ class Settings {
 
         val classMap = mapOf<String, String>(
                 "Any" to "Resource",
-                "Practitioner.role" to "PractRole",  // to avoid Practinioner.role and PractitionerRole generating the same class
+                "Practitioner.role" to "PractRole",  // to avoid Practitioner.role and PractitionerRole generating the same class
 
                 "bool" to "Boolean",
                 "integer" to "Int",

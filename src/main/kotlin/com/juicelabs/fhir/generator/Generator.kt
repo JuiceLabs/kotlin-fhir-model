@@ -121,7 +121,7 @@ fun createDir(dirPath: String) {
 
 
 fun File.readTextAndClose(): String? {
-    reader().use { reader ->
-        return reader.readText()
+    return reader().use { reader ->
+        reader.readText()
     }
 }
