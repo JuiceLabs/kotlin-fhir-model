@@ -2,9 +2,13 @@ package com.juicelabs.fhir.generator
 
 class Settings {
     companion object {
+        /**
+         * http://hl7.org/fhir is the latest release. To generate other versions go to
+         * http://hl7.org/fhir/directory.html and select which version to use.
+         */
         const val baseUrl = "http://hl7.org/fhir/"
 
-        const val downloadFiles = false
+        const val downloadFiles = true
 
         const val downloadDir = "./download"
         const val destinationBaseDir = "."
