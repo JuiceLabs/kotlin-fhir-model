@@ -6,12 +6,10 @@ import java.time.LocalDateTime
 
 class FhirVersionInfo(val spec: FhirSpec, val directory: String) {
 
-    val now: LocalDateTime
-    val version: String
+    val now: LocalDateTime = LocalDateTime.now()
+    val version: String = File("${Settings.downloadDir}/version.info")
+            .readText(Charsets.UTF_8)
+            .split("\r\n")[2]
+            .substringAfterLast("=")
 
-    init {
-        now = LocalDateTime.now()
-
-        version = File("${Settings.downloadDir}/version.info").readText(Charsets.UTF_8).split("\r\n").get(2).substringAfterLast("=")
-    }
 }
