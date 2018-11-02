@@ -33,11 +33,8 @@ class TestClassRenderer(val spec: FhirSpec) {
     private fun buildClassList(file: File) {
         val parser = JsonParser()
         var jsonObject = JsonObject()
-        try {
-            jsonObject = parser.parse(readFile(file)).getAsJsonObject()
-        } catch (e: Exception) {
-            print("")
-        }
+            jsonObject = parser.parse(file.readTextAndClose()).getAsJsonObject()
+//            jsonObject = parser.parse(readFile(file)).getAsJsonObject()
         val res = if (jsonObject.has("resourceType")) jsonObject["resourceType"].asString else null
         if (res.isNullOrBlank()) {
             return
@@ -62,7 +59,6 @@ class TestClassRenderer(val spec: FhirSpec) {
 
         createParaentClass()
 
-//        val testClass = ClassName("org.junit.jupiter.api", "Test")
         val parentClass = ClassName("com.juicelabs.fhir.model", "DataTests")
 
         c.forEach { fhirClass, dataList ->
@@ -110,7 +106,7 @@ class TestClassRenderer(val spec: FhirSpec) {
 
         // create read and parse code
         val fspec = FunSpec.builder("${exampleFilename.substringBefore(".")} Test")
-                .addStatement("val json = readFile(\"${exampleFilename}\")")
+                .addStatement("val json = %T(\"${Settings.samplesDir}/${exampleFilename}\").readTextAndClose()", ClassName("java.io", "File"))
                 .addStatement("val obj = mapper.fromJson(json, %T::class.java)", className)
                 .addAnnotation(testClass)
 
@@ -144,15 +140,19 @@ class TestClassRenderer(val spec: FhirSpec) {
                 .build()
         )
 
-        classBuilder.addFunction(FunSpec.builder("readFile")
-                .returns(String::class)
-                .addParameter("fileName", String::class)
-                .addStatement("%T(\"${Settings.samplesDir}/\" + fileName).reader().use { reader ->", ClassName("java.io", "File"))
-                .addStatement("return reader.readText()")
-                .addStatement("}")
-                .build()
-        )
         out.addType(classBuilder.build())
+
+        out.addFunction(FunSpec.builder("readTextAndClose")
+                .receiver(File::class)
+                .returns(String::class)
+                .addCode("""
+                    reader().use { reader ->
+                       return reader.readText()
+                       }
+
+                """.trimIndent())
+                .build())
+
         out.build().writeTo(File(Settings.destinationTestDir))
     }
 
@@ -172,13 +172,6 @@ class TestClassRenderer(val spec: FhirSpec) {
             mapper = builder.create()
 
             """.trimIndent(), fd, fdSerializer, fd, fdDeserializer))
-    }
-
-
-    private fun readFile(f: File): String {
-        f.reader().use { reader ->
-            return reader.readText()
-        }
     }
 
 }

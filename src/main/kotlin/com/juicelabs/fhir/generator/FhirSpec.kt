@@ -37,7 +37,7 @@ class FhirSpec(val directory: String, val packageName: String) {
         val parser = JsonParser()
         val resources: MutableList<JsonElement> = ArrayList()
 
-        val json = parser.parse(readFile(f)).getAsJsonObject()
+        val json = parser.parse(File(f).readTextAndClose()).getAsJsonObject()
 
         if (!json.has("resourceType")) {
             InvalidPropertiesFormatException("No resourceType in " + f)
@@ -229,10 +229,4 @@ class FhirSpec(val directory: String, val packageName: String) {
         return p
     }
 
-
-    private fun readFile(f: String): String {
-        File("${Settings.downloadDir}/${f}").reader().use { reader ->
-            return reader.readText()
-        }
-    }
 }

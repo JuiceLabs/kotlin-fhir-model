@@ -4,7 +4,7 @@ class Settings {
     companion object {
         const val baseUrl = "http://hl7.org/fhir/"
 
-        const val downloadFiles = true
+        const val downloadFiles = false
 
         const val downloadDir = "./download"
         const val destinationBaseDir = "."
@@ -50,10 +50,7 @@ class Settings {
                 "base64Binary" to "String"
         )
 
-        // todo KotlinPoet should pick these up automatically but isn't
         val imports = mapOf(
-                "LocalDateTime" to Pair("java.time", "LocalDateTime"),
-                "LocalDate" to Pair("java.time", "LocalDate"),
                 "FhirDate" to Pair("com.juicelabs.fhir.default", "FhirDate")
         )
 

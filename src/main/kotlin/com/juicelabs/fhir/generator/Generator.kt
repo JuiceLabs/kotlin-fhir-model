@@ -18,6 +18,7 @@ fun main(args: Array<String>) {
     }
     deleteFiles(Settings.destinationSrcDir + "/model")
     deleteFiles(Settings.destinationTestDir + "/model")
+    deleteFiles(Settings.samplesDir)
     val fhirSpec = FhirSpec(Settings.destinationSrcDir, "com.juicelabs.fhir.model")
     fhirSpec.prepare()
     FhirRenderer(fhirSpec).build()
@@ -75,36 +76,29 @@ fun downloadFromUrl(url: URL, localFilename: String) {
     }
 }
 
-fun unzip(_zipFile: String, _targetLocation: String) {
+fun unzip(zipFile: String, targetLocation: String) {
 
     // create target location folder if not exist
-    createDir(_targetLocation)
+    createDir(targetLocation)
 
-    try {
-        val fin = FileInputStream(_zipFile)
-        val zin = ZipInputStream(fin)
-        var ze = zin.nextEntry
-        while (ze != null) {
-            println("Extracting ${ze.name}")
+    val fin = FileInputStream(zipFile)
+    val zin = ZipInputStream(fin)
+    var ze = zin.nextEntry
+    while (ze != null) {
+        println("Extracting ${ze.name}")
 
-            if (ze.isDirectory) {
-                createDir(ze.name)
-            } else {
-                val fout = FileOutputStream(_targetLocation + ze.name)
-//                zin. { input ->
-                fout.use { output ->
-                    zin.copyTo(output)
-                }
-                //      zin.close()
+        if (ze.isDirectory) {
+            createDir(ze.name)
+        } else {
+            val fout = FileOutputStream(targetLocation + ze.name)
+            fout.use { output ->
+                zin.copyTo(output)
             }
-            ze = zin.nextEntry
         }
-        zin.close()
-        File(_zipFile).delete()
-    } catch (e: Exception) {
-        println(e)
+        ze = zin.nextEntry
     }
-
+    zin.close()
+    File(zipFile).delete()
 }
 
 
@@ -122,6 +116,12 @@ fun createDir(dirPath: String) {
         } catch (ioExceptionObj: IOException) {
             println("Problem Occured While Creating The Directory Structure= " + ioExceptionObj.message)
         }
+    }
+}
 
+
+fun File.readTextAndClose(): String? {
+    reader().use { reader ->
+        return reader.readText()
     }
 }
