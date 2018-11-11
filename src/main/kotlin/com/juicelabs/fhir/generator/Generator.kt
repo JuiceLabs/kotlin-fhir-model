@@ -52,7 +52,7 @@ fun deleteFiles(directory: String) {
     try {
         var i = 0
         Files.newDirectoryStream(Paths.get(directory)).use { directoryStream ->
-            for (path in directoryStream) {
+            directoryStream.forEach { path ->
                 path.toFile().delete()
                 i++
             }
@@ -66,13 +66,8 @@ fun deleteFiles(directory: String) {
 
 fun downloadFromUrl(url: URL, localFilename: String) {
     println("Downloading: $url")
-    val urlConn = url.openConnection()
-
-    val inputStream = urlConn.getInputStream()
-    val fos = FileOutputStream(localFilename)
-
-    inputStream.use {
-        fos.use { output ->
+    url.openConnection().getInputStream().use { inputStream ->
+        FileOutputStream(localFilename).use { output ->
             inputStream.copyTo(output)
         }
     }
@@ -110,13 +105,13 @@ fun createDir(dirPath: String) {
     val dirPathObj = Paths.get(dirPath)
     val dirExists = Files.exists(dirPathObj)
     if (dirExists) {
-        println(" Directory Already Exists !")
+        println(" Directory already exists !")
     } else {
         try {
             Files.createDirectories(dirPathObj)
             println(" Success")
         } catch (ioExceptionObj: IOException) {
-            println("Problem Occured While Creating The Directory Structure= " + ioExceptionObj.message)
+            println("Problem occurred while creating the directory structure= " + ioExceptionObj.message)
         }
     }
 }
