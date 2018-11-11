@@ -1,7 +1,6 @@
 package com.juicelabs.fhir.generator
 
 import com.google.gson.JsonArray
-import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 
 class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
@@ -11,7 +10,7 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
     var mainElement: FhirStructureDefinitionElement? = null
     val classes = mutableListOf<FhirClass>()
     var didWrapUp: Boolean = false
-    val url: JsonElement?
+    val url: String
     val isManual = false
     lateinit var targetName: String
 
@@ -22,9 +21,9 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
 
 
     init {
-        assert(profile.get("resourceType").equals("StructureDefinition"))
+        assert(profile.getStringOrEmpty("resourceType") == "StructureDefinition")
 
-        url = profile.get("url")
+        url = profile["url"].asString
 
         structure.parseFrom(profile)
     }
@@ -39,7 +38,7 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
             i++
             val element = FhirStructureDefinitionElement(this, e as JsonObject, (mainElement == null))
             elements.add(element)
-            val path = element.path!!
+            val path = element.path
             mapped.put(path, element)
 
             // establish hierarchy (may move to extra loop in case elements are no longer in order)
@@ -47,10 +46,7 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
                 mainElement = element
             }
 
-            val parent = mapped[element.parentName]
-            if (parent != null) {
-                parent.addChild(element)
-            }
+            mapped[element.parentName]?.addChild(element)
 
             elements.forEach {
                 it.resolveDependencies()
@@ -71,7 +67,7 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
             val (snapClass, kids) = mainElement!!.createClass() // todo stench
 
             if (snapClass == null) {
-                throw Exception("The main element for \"${url}\" did not create a class")
+                throw Exception("The main element for \"$url\" did not create a class")
             } else {
                 foundClass(snapClass)
 
@@ -85,7 +81,7 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
     }
 
 
-    fun foundClass(klass: FhirClass) {
+    private fun foundClass(klass: FhirClass) {
         classes.add(klass)
     }
 
@@ -93,7 +89,7 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
     fun elementWithId(ident: String): FhirStructureDefinitionElement? {
 
         elements.forEach { e ->
-            if (e.definition.id.equals(ident)) {
+            if (e.definition.id == ident) {
                 return e
             }
         }

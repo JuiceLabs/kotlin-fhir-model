@@ -1,38 +1,35 @@
 package com.juicelabs.fhir.generator
 
-import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
-class FhirCodeSystem(spec: FhirSpec, resource: JsonObject) {
+/**
+ * Holds on to CodeSystems bundled with the spec.
+ */
+class FhirCodeSystem(val spec: FhirSpec, val definition: Map<String, *>) {
 
-    val LOG by logger()
+    val log by logger()
 
-    val spec: FhirSpec
-    val definition: JsonObject
-    val url: String?
+    val url: String? = if (definition.containsKey("url")) definition["url"] as String else ""
     val name: String
-    val concepts: JsonArray?
+    val concepts: ArrayList<*>
     var generateEnum: Boolean
     val codes = mutableListOf<JsonObject>()
 
 
     init {
-        this.spec = spec
-        definition = resource
-        url = if (resource.has("url")) resource["url"].asString else ""
-        name = if (Settings.enumNameMap.containsKey(url)) Settings.enumNameMap[url]!! else spec.safeEnumName(resource.get("name").asString)
-        concepts = definition.getAsJsonArray("concept")
-        if (!resource.has("experimental")) {
-            generateEnum = "complete".equals(resource["content"])
+        name = if (Settings.enumNameMap.containsKey(url)) Settings.enumNameMap[url]!! else spec.safeEnumName(definition["name"] as String)
+        concepts = definition["concept"] as ArrayList<*>
+        if (!definition.containsKey("experimental")) {
+            generateEnum = "complete" == definition["content"]
             if (generateEnum) {
                 if (concepts.count() > 200) {
                     generateEnum = false
-                    LOG.info("Will not generate enum for CodeSystem \"${url}\" because it has > 200 (${concepts.size()}) concepts")
+                    log.info("Will not generate enum for CodeSystem \"$url\" because it has > 200 (${concepts.size}) concepts")
                 } else {
                     codes.addAll(parsedCodes(concepts))
                 }
             } else {
-                LOG.debug("Will not generate enum for CodeSystem \"${url}\" whose content is ${definition["content"]}")
+                log.debug("Will not generate enum for CodeSystem \"$url\" whose content is ${definition["content"]}")
             }
         } else {
             generateEnum = false
@@ -40,11 +37,11 @@ class FhirCodeSystem(spec: FhirSpec, resource: JsonObject) {
     }
 
 
-    fun parsedCodes(codes: JsonArray, prefix: String? = null): MutableList<JsonObject> {
+    fun parsedCodes(codes: ArrayList<*>, prefix: String? = null): MutableList<JsonObject> {
         val found = mutableListOf<JsonObject>()
         codes.forEach { c ->
-            val cd = (c as JsonObject)["code"] // todo yeah, python sutff
-            found.add(c)
+        //    val cd = c.
+        //    found.add(c)
 
             // todo nested concepts
         }

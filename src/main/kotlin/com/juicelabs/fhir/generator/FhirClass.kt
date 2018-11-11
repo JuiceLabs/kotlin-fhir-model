@@ -1,28 +1,23 @@
 package com.juicelabs.fhir.generator
 
-import com.google.gson.JsonElement
-
+/**
+ * An element/resource that should become its own class.
+ */
 class FhirClass(element: FhirStructureDefinitionElement) {
+    val log by logger()
 
-    val path: String?
-    val name: String
+    val path: String = element.path
+    val name: String = element.nameIfClass()
     var module: String? = null
-    val resourceType: String?
-    val superclassName: String?
+    val resourceType: String? = element.nameOfResource()
+    val superclassName: String? = element.getSuperclassName()
     var superClass: FhirClass? = null
-    val short: JsonElement?
-    val formal: JsonElement?
-    val properties = mutableListOf<FhirClassProperty>()
+    val short: String = element.definition.short
+    val formal: String = element.definition.formal
 
+    private val comp = Comparator<FhirClassProperty> { s1, s2 -> s1.name.compareTo(s2.name) }
 
-    init {
-        path = element.path
-        name = element.nameIfClass()
-        resourceType = element.nameOfResource()
-        superclassName = element.getSuperclassName()
-        short = element.definition.short
-        formal = element.definition.formal
-    }
+    val properties = sortedSetOf(comp)
 
 
     companion object {
@@ -34,7 +29,7 @@ class FhirClass(element: FhirStructureDefinitionElement) {
                 return Pair(known[className]!!, false)
             }
             val klass = FhirClass(element)
-            known.put(className, klass)
+            known[className] = klass
             return Pair(klass, true)
         }
 
@@ -45,19 +40,32 @@ class FhirClass(element: FhirStructureDefinitionElement) {
 
 
     fun addProperty(prop: FhirClassProperty) {
-        // todo checks
+
+        // do we already have a property with this name?
+        // if we do and it's a specific reference, make it a reference to a generic resource
+        properties.forEach { existing ->
+            if (existing.name == prop.name) {
+                if (existing.referenceToNames.isEmpty()) {
+                    log.warn("Already have property ${prop.name} on $name, which is only allowed for references")
+                } else {
+                    existing.referenceToNames.addAll(prop.referenceToNames)
+                }
+            }
+        }
+
+        // todo needed still?
         if (properties.contains(prop)) {
             return
         }
+
         properties.add(prop)
 
-        // todo sort?
-
-//        if prop.nonoptional and prop.one_of_many is not None:
-//        if prop.one_of_many in self.expanded_nonoptionals:
-//        self.expanded_nonoptionals[prop.one_of_many].append(prop)
+        // todo
+//        if prop.nonoptional and prop.oneOfMany is not None:
+//        if prop.oneOfMany in self.expanded_nonoptionals:
+//        self.expanded_nonoptionals[prop.oneOfMany].append(prop)
 //        else:
-//        self.expanded_nonoptionals[prop.one_of_many] = [prop]
+//        self.expanded_nonoptionals[prop.oneOfMany] = [prop]
     }
 
     fun shouldWrite(): Boolean {
@@ -87,14 +95,14 @@ class FhirClass(element: FhirStructureDefinitionElement) {
     }
 
     override fun hashCode(): Int {
-        var result = path?.hashCode() ?: 0
+        var result = path.hashCode()
         result = 31 * result + name.hashCode()
         result = 31 * result + (module?.hashCode() ?: 0)
         result = 31 * result + (resourceType?.hashCode() ?: 0)
         result = 31 * result + (superclassName?.hashCode() ?: 0)
         result = 31 * result + (superClass?.hashCode() ?: 0)
-        result = 31 * result + (short?.hashCode() ?: 0)
-        result = 31 * result + (formal?.hashCode() ?: 0)
+        result = 31 * result + (short.hashCode())
+        result = 31 * result + (formal.hashCode())
         result = 31 * result + properties.hashCode()
         return result
     }

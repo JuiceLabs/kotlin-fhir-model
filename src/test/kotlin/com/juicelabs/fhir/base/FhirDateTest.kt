@@ -1,4 +1,4 @@
-package com.juicelabs.fhir.default
+package com.juicelabs.fhir.base
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.params.ParameterizedTest

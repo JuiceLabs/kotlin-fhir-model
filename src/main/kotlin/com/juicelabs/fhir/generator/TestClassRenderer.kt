@@ -32,8 +32,7 @@ class TestClassRenderer(val spec: FhirSpec) {
 
     private fun buildClassList(file: File) {
         val parser = JsonParser()
-        var jsonObject = JsonObject()
-            jsonObject = parser.parse(file.readTextAndClose()).getAsJsonObject()
+        val jsonObject =  parser.parse(file.readTextAndClose()).asJsonObject
 //            jsonObject = parser.parse(readFile(file)).getAsJsonObject()
         val res = if (jsonObject.has("resourceType")) jsonObject["resourceType"].asString else null
         if (res.isNullOrBlank()) {
@@ -106,7 +105,7 @@ class TestClassRenderer(val spec: FhirSpec) {
 
         // create read and parse code
         val fspec = FunSpec.builder("${exampleFilename.substringBefore(".")} Test")
-                .addStatement("val json = %T(\"${Settings.samplesDir}/${exampleFilename}\").readTextAndClose()", ClassName("java.io", "File"))
+                .addStatement("val json = %T(\"${Settings.samplesDir}/$exampleFilename\").readTextAndClose()", ClassName("java.io", "File"))
                 .addStatement("val obj = mapper.fromJson(json, %T::class.java)", className)
                 .addAnnotation(testClass)
 
@@ -116,9 +115,9 @@ class TestClassRenderer(val spec: FhirSpec) {
         values.forEach { k, (v, t) ->
             if (t == "String") {
                 val s = (if (v.length < 30) v else v.substring(0, 29) + "\"")
-                fspec.addStatement("%T(stringMatch(${s}, obj.${k}))", assertTrueCN)
+                fspec.addStatement("%T(stringMatch($s, obj.$k))", assertTrueCN)
             } else {
-                fspec.addStatement("%T(${v}, if (obj.${k} != null) obj.${k} else false, \"Field: ${k}\")", assertEq)
+                fspec.addStatement("%T($v, if (obj.$k != null) obj.$k else false, \"Field: $k\")", assertEq)
             }
         }
         classBuilder.addFunction(fspec.build())
@@ -161,9 +160,9 @@ class TestClassRenderer(val spec: FhirSpec) {
         classBuilder.addProperty("mapper", Gson::class.java)
         classBuilder.addProperty("builder", GsonBuilder::class.java)
 
-        val fd = ClassName("com.juicelabs.fhir.default", "FhirDate")
-        val fdSerializer = ClassName("com.juicelabs.fhir.default", "FhirDateSerializer")
-        val fdDeserializer = ClassName("com.juicelabs.fhir.default", "FhirDateDeSerializer")
+        val fd = ClassName("com.juicelabs.fhir.base", "FhirDate")
+        val fdSerializer = ClassName("com.juicelabs.fhir.base", "FhirDateSerializer")
+        val fdDeserializer = ClassName("com.juicelabs.fhir.base", "FhirDateDeSerializer")
         classBuilder.addInitializerBlock(CodeBlock.of(
                 """
             builder = GsonBuilder()

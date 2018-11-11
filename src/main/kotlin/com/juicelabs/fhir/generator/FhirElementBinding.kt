@@ -7,20 +7,11 @@ import com.google.gson.JsonObject
  */
 class FhirElementBinding(dict: JsonObject) {
 
-    val strength: String?
-    val description: String?
-    val uri: String?
-    val canonical: String?
-    val isRequired: Boolean
-
-
-    init {
-        strength = dict.get("strength").asString
-        description = if (dict.has("description")) dict["description"].asString else null
-        uri = if (dict.has("valueSetUri")) dict["valueSetUri"].asString else null
-        canonical = if (dict.has("valueSetCanonical")) dict["valueSetCanonical"].asString else null
-        isRequired = "required".equals(strength)
-    }
+    val strength: String? = dict.get("strength").asString
+    val description: String? = if (dict.has("description")) dict["description"].asString else null
+    val uri: String? = if (dict.has("valueSetUri")) dict["valueSetUri"].asString else null
+    val canonical: String? = if (dict.has("valueSetCanonical")) dict["valueSetCanonical"].asString else null
+    val isRequired = "required" == strength
 
 //    private val code: String?
 //

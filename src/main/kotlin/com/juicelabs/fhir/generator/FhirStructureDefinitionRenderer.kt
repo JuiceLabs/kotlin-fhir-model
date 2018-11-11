@@ -13,8 +13,7 @@ import java.time.LocalDateTime.now
 
 class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
 
-    val LOG by logger()
-
+    val log by logger()
 
     fun render() {
 
@@ -23,7 +22,7 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
         spec.writeableProfile().forEach { profile ->
             val classes = profile.writeableClasses()
             val imports = profile.neededExternalClasses()
-            val data = hashMapOf<String, Any>(
+            val data = hashMapOf(
                     "profile" to profile,
                     "info" to spec.info,
                     "imports" to imports,
@@ -39,8 +38,8 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
             classes.filter { c -> !Settings.natives.contains(c.name) }.forEach { c ->
                 val classBody = buildClass(c)
                 out.addType(classBody)
-                if (true || c.name == "Immunization")
-                    LOG.debug("Building class {}", c.name)
+                if (c.name == "Immunization")
+                    log.debug("Building class {}", c.name)
             }
 
             val dir = spec.info.directory
@@ -75,7 +74,7 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
 
         val primaryCtor = FunSpec.constructorBuilder()
 
-        classBuilder.addKdoc("%L\n\n%L\n", cls.short!!.asString, cls.formal!!.asString)
+        classBuilder.addKdoc("%L\n\n%L\n", cls.short, cls.formal)
         cls.properties.forEach { prop ->
             renderProperty(prop, prop.typeName, prop.origName, classBuilder)
         }
@@ -123,7 +122,7 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
                 if (Settings.defaultValues.contains(mappedTypeName)) {
                     propBuilder.initializer(Settings.defaultValues[mappedTypeName]!!)
                 } else {
-                    propBuilder.initializer("${mappedTypeName}()")
+                    propBuilder.initializer("$mappedTypeName()")
                 }
             }
 

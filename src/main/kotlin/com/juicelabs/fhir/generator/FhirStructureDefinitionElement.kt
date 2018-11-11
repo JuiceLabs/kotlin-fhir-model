@@ -3,8 +3,9 @@ package com.juicelabs.fhir.generator
 import com.google.gson.JsonObject
 
 class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, element: JsonObject, val isMainProfileElement: Boolean = false) {
+    val log by logger()
 
-    var path: String?
+    var path: String
     val parentName: String
     var parent: FhirStructureDefinitionElement? = null
     val propertyName: String
@@ -26,7 +27,7 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
     init {
         val p = element.get("path").asString
         path = p
-        val parts = if (p != null) p.split(".") else listOf(path!!)
+        val parts = p?.split(".") ?: listOf(path)
 
         parentName = if (p.contains(".")) p.substringBeforeLast(".") else ""
         propertyName = parts.last()
@@ -45,7 +46,7 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
         else
             0
 
-        isSummary = if (element.has("isSummary")) element["isSummary"].asBoolean else false
+        isSummary = element.getBooleanOrFalse("isSummary")
     }
 
 
@@ -77,14 +78,13 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
      */
     fun createClass(module: String? = null): Pair<FhirClass?, MutableList<FhirClass>> {
         assert(dependenciesResolved)
-        if (!representsClass) return Pair(null, mutableListOf<FhirClass>())
+        if (!representsClass) return Pair(null, mutableListOf())
 
-//        var className = nameIfClass()
         val subs = mutableListOf<FhirClass>()
 
         val (klass, didCreate) = FhirClass.forElement(this)
         if (didCreate) {
-//            logger.debug('Created class "{}"'.format(cls.name))
+            log.debug("Created class '${klass.name}'")
             var mod = module
             if (module == null && isMainProfileElement) {
                 mod = profile.fhirSpec.asModuleName(klass.name)
@@ -131,16 +131,14 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
             return emptyList()
         }
 
-        // TODO: handle slicing information (not sure why these properties were
-        // omitted previously)
+        // TODO: handle slicing information (not sure why these properties were omitted previously)
         //if self.definition.slicing:
         //    logger.debug('Omitting property "{}" for slicing'.format(self.definition.prop_name))
         //    return None
 
         // this must be a property
         if (parent == null) {
-//            Exception("Element reports as property but has no parent: {}", path) todo
-            Exception("Element reports as property but has no parent: {}")
+            throw  Exception("Element reports as property but has no parent: $path")
         }
 
         // create a list of FHIRClassProperty instances (usually with only 1 item)
@@ -148,7 +146,7 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
             val props = mutableListOf<FhirClassProperty>()
             definition.types.forEach { typeObj ->
                 // an inline class
-                if ("BackboneElement".equals(typeObj.code) || "Element".equals(typeObj.code)) {
+                if ("BackboneElement" == typeObj.code || "Element".equals(typeObj.code)) {
                     // data types don't use "BackboneElement"
                     props.add(FhirClassProperty(this, typeObj, nameIfClass()))
                     // TODO: look at http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name ?
@@ -170,7 +168,7 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
         if (!isMainProfileElement) {
             return nameIfClass()
         }
-        return if (definition.name != null) definition.name.asString else path
+        return definition.name
     }
 
 
@@ -183,13 +181,13 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
         if (superclassName == null) {
             val types = definition.types
             if (types.size > 1) {
-                throw Exception("Have more than one type to determine superclass in '${path}': '${types}'")
+                throw Exception("Have more than one type to determine superclass in '$path': '$types'")
             }
             var typeCode: String? = null
             if (isMainProfileElement && profile.structure.subClassOf != null) {
                 typeCode = profile.structure.subClassOf
             } else if (types.size > 0) {
-                typeCode = types.get(0).code
+                typeCode = types[0].code
             } else if (profile.structure.kind != null) {
                 typeCode = profile.structure.kind
             }

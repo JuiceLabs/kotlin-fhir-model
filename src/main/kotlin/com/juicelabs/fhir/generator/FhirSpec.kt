@@ -1,5 +1,6 @@
 package com.juicelabs.fhir.generator
 
+import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -7,12 +8,14 @@ import java.io.File
 import java.util.*
 
 class FhirSpec(val directory: String, val packageName: String) {
-    val LOG by logger()
+    val log by logger()
+
+    val gson = Gson()
 
     val valueSets: MutableMap<String, FhirValueSet> = HashMap()
     val codeSystems: MutableMap<String, FhirCodeSystem> = HashMap()
     val profiles: MutableMap<String, FhirStructureDefinition> = HashMap()
-    val info: FhirVersionInfo
+    val info: FhirVersionInfo = FhirVersionInfo(this, directory)
     val skipBecauseUnsupported = arrayOf(
             "SimpleQuantity"
     )
@@ -20,7 +23,6 @@ class FhirSpec(val directory: String, val packageName: String) {
 
     init {
         // assert directory exists
-        info = FhirVersionInfo(this, directory)
     }
 
 
@@ -35,15 +37,15 @@ class FhirSpec(val directory: String, val packageName: String) {
 
     private fun readBundleResources(f: String): List<JsonElement> {
         val parser = JsonParser()
-        val resources: MutableList<JsonElement> = ArrayList()
+        val resources: MutableList<JsonElement> = mutableListOf()
 
-        val json = parser.parse(File("${Settings.downloadDir}/${f}").readTextAndClose()).getAsJsonObject()
+        val json = parser.parse(File("${Settings.downloadDir}/$f").readTextAndClose()).asJsonObject
 
         if (!json.has("resourceType")) {
-            InvalidPropertiesFormatException("No resourceType in " + f)
+            InvalidPropertiesFormatException("No resourceType in $f")
         }
 
-        if (!json.get("resourceType").asString.equals("Bundle")) {
+        if (json.get("resourceType").asString != "Bundle") {
             InvalidPropertiesFormatException("Resource type is not Bundle")
         }
 
@@ -63,17 +65,17 @@ class FhirSpec(val directory: String, val packageName: String) {
     private fun readValueSets() {
         val resources = readBundleResources("valuesets.json")
         resources.forEach { res ->
-            val resource = res as JsonObject
-            val resourceType = resource.get("resourceType").asString
-            val url = resource.get("url").asString
+            val resource = gson.fromJson(res, Map::class.java)
+            val resourceType = resource["resourceType"] as String
+            val url = resource["url"] as String
 
             if (resourceType.contains("ValueSet")) {
-                valueSets.put(url, FhirValueSet(this, resource))
+                valueSets.put(url, FhirValueSet(this, resource as Map<String, FhirValueSet>))
             } else if (resourceType.contains("CodeSystem")) {
-                if (resource.has("content") && resource.has("concept")) {
-                    codeSystems.put(url, FhirCodeSystem(this, resource))
+                if (resource.containsKey("content") && resource.containsKey("concept")) {
+                    codeSystems.put(url, FhirCodeSystem(this, resource as Map<String, FhirCodeSystem>))
                 } else {
-                    LOG.warn("CodeSystem with no concepts: " + url)
+                    log.warn("CodeSystem with no concepts: " + url)
                 }
             }
         }
@@ -91,11 +93,11 @@ class FhirSpec(val directory: String, val packageName: String) {
 
 
     private fun readProfiles() {
-        val resources: MutableList<JsonElement> = ArrayList()
+        val resources: MutableList<JsonElement> = mutableListOf()
 
         arrayOf("profiles-types.json", "profiles-resources.json").forEach { f ->
             readBundleResources(f).forEach { res ->
-                if (res.asJsonObject.get("resourceType").asString.equals("StructureDefinition")) {
+                if (res.asJsonObject.get("resourceType").asString == "StructureDefinition") {
                     resources.add(res)
                 }
             }
@@ -128,7 +130,7 @@ class FhirSpec(val directory: String, val packageName: String) {
             return false
         }
 
-        profiles.put(profile.name()!!.toLowerCase(), profile)
+        profiles[profile.name()!!.toLowerCase()] = profile
         return true
     }
 
@@ -137,18 +139,18 @@ class FhirSpec(val directory: String, val packageName: String) {
      * Creates in-memory representations for all our manually defined
      * profiles.
      */
-    fun handleManualProfiles() {
+    private fun handleManualProfiles() {
         // todo impo
 
     }
 
 
     /**
-     * hould be called after all profiles have been parsed and allows
+     * Should be called after all profiles have been parsed and allows
      * to perform additional actions, like looking up class implementations
      * from different profiles.
      */
-    fun wrapUp() {
+    private fun wrapUp() {
         profiles.forEach { key, profile ->
             profile.wrapUp()
         }
@@ -221,7 +223,7 @@ class FhirSpec(val directory: String, val packageName: String) {
 
     fun writeableProfile(): List<FhirStructureDefinition> {
         val p = mutableListOf<FhirStructureDefinition>()
-        profiles.forEach { u, profile ->
+        profiles.forEach { _, profile ->
             if (!profile.isManual) {
                 p.add(profile)
             }

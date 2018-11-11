@@ -1,6 +1,5 @@
-// Generated from FHIR com.juicelabs.fhir.generator.FhirStructureDefinition@6002a7a9 on 2018-11-01T09:59:26.632
-//  2018, JuiceLab, LLC
-package com.juicelabs.fhir.default
+
+package com.juicelabs.fhir.base
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
@@ -70,7 +69,7 @@ class FhirDate(private val input: String) {
                 ?: parse(yearMonthFormats, YearMonth::parse)
                 ?: parse(dateTimeFormats, ZonedDateTime::parse)
                 ?: parse(timeFormats, LocalTime::parse)
-        if (dateValue == null) throw Exception("Unable to parse input value: ${input}")
+        if (dateValue == null) throw Exception("Unable to parse input value: $input")
     }
 
     override fun toString(): String {

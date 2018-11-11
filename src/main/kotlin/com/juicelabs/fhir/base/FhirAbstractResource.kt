@@ -1,4 +1,4 @@
-package com.juicelabs.fhir.default
+package com.juicelabs.fhir.base
 
 open class FhirAbstractResource {
     var resourceType: String? = null

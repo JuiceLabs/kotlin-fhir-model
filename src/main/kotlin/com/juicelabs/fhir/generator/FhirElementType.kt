@@ -5,11 +5,10 @@ import com.google.gson.JsonObject
 
 class FhirElementType(dict: JsonObject? = null) {
 
-    val code: String?
+    val code: String? = if (dict != null && dict.has("code")) dict["code"].asString.capitalize() else null
     val profile: JsonElement?
 
     init {
-        code = if (dict != null && dict.has("code")) dict["code"].asString.capitalize() else null
 
         if (code != null) {
             // todo check for valid code

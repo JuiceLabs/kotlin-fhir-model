@@ -1,5 +1,6 @@
 package com.juicelabs.fhir.generator
 
+import com.google.gson.JsonObject
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -16,9 +17,9 @@ fun main(args: Array<String>) {
         deleteFiles(Settings.downloadDir)
         downloadSpec(baseUrl)
     }
+    copyExamples()
     deleteFiles(Settings.destinationSrcDir + "/model")
     deleteFiles(Settings.destinationTestDir + "/model")
-    deleteFiles(Settings.samplesDir)
     val fhirSpec = FhirSpec(Settings.destinationSrcDir, "com.juicelabs.fhir.model")
     fhirSpec.prepare()
     FhirRenderer(fhirSpec).build()
@@ -29,7 +30,6 @@ fun downloadSpec(url: URL) {
     downloadFromUrl(URL(url, "version.info"), "${Settings.downloadDir}/version.info")
     downloadFromUrl(URL(url, "examples-json.zip"), "${Settings.downloadDir}/examples-json.zip")
     unzip("${Settings.downloadDir}/examples-json.zip", "${Settings.downloadDir}/")
-    copyExamples()
 }
 
 fun copyExamples() {
@@ -45,7 +45,7 @@ fun copyExamples() {
                 println("Copying example file: ${file.name}")
                 i++
             }
-    println("Copied ${i} example files")
+    println("Copied $i example files")
 }
 
 fun deleteFiles(directory: String) {
@@ -57,13 +57,15 @@ fun deleteFiles(directory: String) {
                 i++
             }
         }
-        println("Deleted ${i} files")
+        println("Deleted $i files")
     } catch (ex: IOException) {
+        println("Error deleting files in $directory")
     }
 }
 
+
 fun downloadFromUrl(url: URL, localFilename: String) {
-    println("Downloading: ${url}")
+    println("Downloading: $url")
     val urlConn = url.openConnection()
 
     val inputStream = urlConn.getInputStream()
@@ -103,7 +105,7 @@ fun unzip(zipFile: String, targetLocation: String) {
 
 
 fun createDir(dirPath: String) {
-    print("Creating directory [${dirPath}] ")
+    print("Creating directory [$dirPath] ")
     // Check If Directory Already Exists Or Not?
     val dirPathObj = Paths.get(dirPath)
     val dirExists = Files.exists(dirPathObj)
@@ -124,4 +126,28 @@ fun File.readTextAndClose(): String? {
     return reader().use { reader ->
         reader.readText()
     }
+}
+
+fun JsonObject.getStringOrNull(key: String): String? {
+    val v = this.get(key)
+    if (v == null || !v.isJsonPrimitive) {
+        return null
+    }
+    return v.asString
+}
+
+fun JsonObject.getStringOrEmpty(key: String): String {
+    val v = this.get(key)
+    if (v == null || !v.isJsonPrimitive) {
+        return ""
+    }
+    return v.asString
+}
+
+fun JsonObject.getBooleanOrFalse(key: String): Boolean {
+    val v = this.get(key)
+    if (v == null || !v.isJsonPrimitive) {
+        return false
+    }
+    return v.asBoolean
 }

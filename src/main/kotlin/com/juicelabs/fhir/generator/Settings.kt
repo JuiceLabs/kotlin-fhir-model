@@ -11,12 +11,12 @@ class Settings {
         val downloadFiles = (System.getenv("downloadFiles") ?: "false").equals("true", true)
 
         const val downloadDir = "./download"
-        const val destinationBaseDir = "."
+        private const val destinationBaseDir = "."
         const val destinationSrcDir = "$destinationBaseDir/src/main/kotlin"
         const val destinationTestDir = "$destinationBaseDir/src/test/kotlin"
         const val samplesDir = "$destinationBaseDir/src/test/resources/model/sample_data"
 
-        val reservedMap = mapOf<String, String>(
+        val reservedMap = mapOf(
                 "for" to "for_fhir",
                 "from" to "from_fhir",
                 "class" to "class_fhir",
@@ -28,7 +28,7 @@ class Settings {
                 "package" to "package_fhir"
         )
 
-        val classMap = mapOf<String, String>(
+        val classMap = mapOf(
                 "Any" to "Resource",
                 "Practitioner.role" to "PractRole",  // to avoid Practitioner.role and PractitionerRole generating the same class
 
@@ -55,16 +55,16 @@ class Settings {
         )
 
         val imports = mapOf(
-                "FhirDate" to Pair("com.juicelabs.fhir.default", "FhirDate")
+                "FhirDate" to Pair("com.juicelabs.fhir.base", "FhirDate")
         )
 
-        val enumNameMap = mapOf<String, String>(
+        val enumNameMap = mapOf(
                 "httpto//hl7.org/fhir/contracttermsubtypecodes" to "ContractTermSubtypeCodes",
                 "httpto//hl7.org/fhir/coverage-exception" to "CoverageExceptionCodes",
                 "httpto//hl7.org/fhir/resource-type-link" to "ResourceTypeLink"
         )
 
-        val jsonmap = mapOf<String, String>(
+        val jsonmap = mapOf(
                 "str" to "String",
                 "int" to "int",
                 "bool" to "bool",
@@ -72,13 +72,13 @@ class Settings {
                 "FhirDate" to "FhirDateTime"
         )
 
-        val jsonMapDefault = "dict"
+        const val jsonMapDefault = "dict"
 
         // Which class names are native to the language (or can be treated this way)
-        val natives = listOf<String>("Int", "Float", "Boolean", "String", "List",
+        val natives = listOf("Int", "Float", "Boolean", "String", "List",
                 "LocalDateTime", "FhirDate")
 
-        val defaultValues = mapOf<String, String>(
+        val defaultValues = mapOf(
                 "String" to """""""",
                 "Boolean" to "false",
                 "Int" to "0",
