@@ -211,24 +211,28 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
     }
 
 
+    private lateinit var currentClass: FhirClass
+
     // iterate over every example
     private fun createTestClasses() {
         // skip bundle until GSON and Kotlin bugs are resolved.
-        rawData.filter {it.key.name != "Bundle"}
+        rawData
+//                 .filter { it.key.name != "Bundle" }
 //                .filter { it.key.name == "PlanDefinition" }
                 .forEach { fhirClass, dataList ->
-            className = ClassName("com.juicelabs.fhir.model", fhirClass.name)
-            createClassFile(fhirClass)
-            dataList.forEach { (dataFilename, jsonObject) ->
-                filename = dataFilename
-                val values = testValues.getTestValues(jsonObject, fhirClass)
-                createTestFun()
-                addAsserts(values)
-                finishFunction()
-            }
-            out!!.addType(classBuilder.build())
-            out!!.build().writeTo(File(Settings.destinationTestDir))
-        }
+                    currentClass = fhirClass
+                    className = ClassName("com.juicelabs.fhir.model", fhirClass.name)
+                    createClassFile(fhirClass)
+                    dataList.forEach { (dataFilename, jsonObject) ->
+                        filename = dataFilename
+                        val values = testValues.getTestValues(jsonObject, fhirClass)
+                        createTestFun()
+                        addAsserts(values)
+                        finishFunction()
+                    }
+                    out!!.addType(classBuilder.build())
+                    out!!.build().writeTo(File(Settings.destinationTestDir))
+                }
     }
 
 
@@ -251,9 +255,23 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
                 .addAnnotation(testClass)
     }
 
+    private var bundleFileCount: Int = 0
+
     private fun createKotlinBugNewFun() {
         classBuilder.addFunction(fspec.build())
-        createTestFun()
+
+        if (currentClass.name == "Bundle") {
+            out!!.addType(classBuilder.build())
+            out!!.build().writeTo(File(Settings.destinationTestDir))
+
+            bundleFileCount++
+            out = FileSpec.builder(spec.packageName,  "${currentClass.name}${bundleFileCount}DataTest")
+
+            classBuilder = TypeSpec.classBuilder("${currentClass.name}${bundleFileCount}DataTest")
+            classBuilder.superclass(parentClass)
+        }
+
+            createTestFun()
     }
 
     private fun finishFunction() {

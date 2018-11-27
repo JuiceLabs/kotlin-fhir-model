@@ -134,7 +134,6 @@ class ClassDeserializerAdapter<T> internal constructor(private val typeName: Str
         val jsonObject = json.asJsonObject
         val typeElement = jsonObject.get(typeName)
         val method = typeElement.asString
-        println("\n------------------------------------   $method -------------------------------")
         val classType = Class.forName("com.juicelabs.fhir.model.$method") as Class<out T>
         return gson.fromJson(json, classType)
     }
