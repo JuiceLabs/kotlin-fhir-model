@@ -67,7 +67,6 @@ class FhirDate(private val input: String) {
     private var dateValue: Temporal? = null
 
     init {
-        println("Date: [$input]")
         parse(yearFormats, Year::parse)
                 ?: parse(dateFormats, LocalDate::parse)
                 ?: parse(yearMonthFormats, YearMonth::parse)
@@ -105,7 +104,7 @@ fun getFhirGson(): Gson {
             .registerTypeAdapter(Resource::class.java, ClassDeserializerAdapter<Resource>("resourceType"))
             .create()
 }
-
+h
 class FhirDateSerializer : JsonSerializer<FhirDate> {
     override fun serialize(p0: FhirDate?, p1: Type?, p2: JsonSerializationContext?): JsonElement {
         return JsonPrimitive(p0.toString())
