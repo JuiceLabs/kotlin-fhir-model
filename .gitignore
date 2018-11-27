@@ -7,6 +7,6 @@ hs_err_pid*
 download
 target
 
-src/main/kotlin/com/juicelabs/fhir/model
-src/test/kotlin/com/juicelabs/fhir/model
-src/test/resources/model/sample_data
+#src/main/kotlin/com/juicelabs/fhir/model
+#src/test/kotlin/com/juicelabs/fhir/model
+#src/test/resources/model/sample_data
