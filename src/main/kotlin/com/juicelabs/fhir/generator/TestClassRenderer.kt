@@ -42,11 +42,7 @@ class TestClassRenderer(val spec: FhirSpec) {
 
         if (className.isNotBlank()) {
             val fhirClass = FhirClass.withName(className)
-            if (fhirClass != null
-//                    && (file.name == "questionnaire-profile-example-ussg-fht.json"
-//                            || file.name == "questionnaire-example-gcs.json"
-//                            || file.name == "careplan-example-f003-pharynx.json")
-            ) { // todo TEST DEBUG
+            if (fhirClass != null) {
                 classes.add(Triple(fhirClass, file.name, jsonObject))
                 if (!c.containsKey(fhirClass)) {
                     c[fhirClass] = arrayListOf(Pair(file.name, jsonObject))
@@ -58,40 +54,6 @@ class TestClassRenderer(val spec: FhirSpec) {
     }
 
 
-//    private fun createTestCases() {
-//
-//        createParaentClass()
-//
-//        val parentClass = ClassName("com.juicelabs.fhir.model", "DataTests")
-//
-//        c.forEach { fhirClass, dataList ->
-//            if (fhirClass.name != "Bundle") {
-////                    || fhirClass.name == "Questionnaire"
-////                    || fhirClass.name == "CarePlan") { // todo TEST DEBUGntry
-//                val out = FileSpec.builder(spec.packageName, fhirClass.name + "Test")
-//
-//                dataList.forEach { (exampleFilename, jsonObject) ->
-//                    val testValues = getTestValues(jsonObject, fhirClass)
-//                    val ab = CreateTestMethod(testValues, fhirClass, exampleFilename, parentClass)
-//                    out.addType(ab.buildMethod())
-////                    out.addType(createTestClass(fhirClass, exampleFilename, jsonObject, parentClass))
-//                }
-//                out.build().writeTo(File(Settings.destinationTestDir))
-//            }
-//
-//
-//            private fun registerGsonTypeAdaptors(classBuilder: TypeSpec.Builder) {
-//                classBuilder.addProperty("mapper", Gson::class.java)
-//                classBuilder.addInitializerBlock(CodeBlock.of(
-//                        """
-//            mapper = com.juicelabs.fhir.base.getFhirGson()
-//
-//            """.trimIndent()))
-//            }
-//
-//        }
-//    }
-//}
 }
 
 open class TestValue(val origTypeName: String, var propName: String?, val value: String?, val isList: Boolean, val nullable: Boolean = false) {
