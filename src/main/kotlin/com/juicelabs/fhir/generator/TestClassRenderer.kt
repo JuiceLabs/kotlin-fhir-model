@@ -63,6 +63,7 @@ open class TestValue(val origTypeName: String, var propName: String?, val value:
     var fieldName = Settings.reservedMap.getOrDefault(propName, propName)
     var castVal = ""
     var typeName = Settings.classMap.getOrDefault(origTypeName.toLowerCase(), origTypeName)
+    var plainValue = false
 }
 
 
@@ -107,7 +108,7 @@ class TestValues {
                     index++
                 }
             } else {
-                print(1)
+                throw Exception("Error getting value for $key in ${testClass.name}")
             }
         }
 
@@ -118,12 +119,14 @@ class TestValues {
         val arrayEntry = TestValue("Array", "[$index]", null, true)
         addArrayCast(entry, arrayEntry)
         if (Settings.primitives.contains(found.typeName)) {
-            println("----------000---------")
-            //                            arrayEntry.children.add(addPrimitive(found.typeName, entry.toString()))
+            // handle arrays of primitive values "foo" : [ "bar", "rab" ]
+            val tv = TestValue(found.origTypeName, found.propName, entry.asString, false)
+            tv.plainValue = true
+            arrayEntry.children.add(tv)
         } else {
             arrayEntry.children.addAll(getTestValues(entry.asJsonObject, rootClass!!))
-            found.children.add(arrayEntry)
         }
+        found.children.add(arrayEntry)
     }
 
     private fun addArrayCast(entry: JsonElement, arrayEntry: TestValue) {
@@ -211,7 +214,9 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
     // iterate over every example
     private fun createTestClasses() {
         // skip bundle until GSON and Kotlin bugs are resolved.
-        rawData.filter {it.key.name != "Bundle"}.forEach { fhirClass, dataList ->
+        rawData.filter {it.key.name != "Bundle"}
+//                .filter { it.key.name == "PlanDefinition" }
+                .forEach { fhirClass, dataList ->
             className = ClassName("com.juicelabs.fhir.model", fhirClass.name)
             createClassFile(fhirClass)
             dataList.forEach { (dataFilename, jsonObject) ->
@@ -261,7 +266,7 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
 
         testValues.forEach { testValue ->
 
-            val propPath = buildCallPath(path, testValue)
+            val propPath = if (testValue.plainValue) path!! else buildCallPath(path, testValue)
             addAsserts(testValue.children, propPath)
             if (testValue.value != null) {
                 addAssertStatement(testValue, testValue.value, propPath)
