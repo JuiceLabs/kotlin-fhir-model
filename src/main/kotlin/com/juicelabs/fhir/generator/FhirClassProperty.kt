@@ -7,7 +7,7 @@ class FhirClassProperty(element: FhirStructureDefinitionElement, type: FhirEleme
 
     val spec: FhirSpec = element.profile.fhirSpec
     var path: String = element.path
-    val typeName: String = typeName ?: type.code ?: ""
+    val typeName: String = typeName ?: type.code ?: "" // Settings.classMap.getOrDefault( type.code?.toLowerCase(), type.code) ?: ""
     var name: String = element.definition.propName ?: ""
     val oneOfMany: String?
     val min: Int
@@ -63,6 +63,10 @@ class FhirClassProperty(element: FhirStructureDefinitionElement, type: FhirEleme
 
     fun isList(): Boolean {
         return (((min == 0 || min == 1) && (max == -1 || max > 1)) || (min > 1))
+    }
+
+    fun isNullable(): Boolean {
+        return min == 0 && !isList()
     }
 
     // todo redo when other todos are done

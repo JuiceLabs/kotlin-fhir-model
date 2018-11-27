@@ -135,8 +135,8 @@ class FhirStructureDefinition(val fhirSpec: FhirSpec, val profile: JsonObject) {
 
         classes.forEach { cls ->
 
-            cls.properties.forEach { prop ->
-                val typeName = Settings.classMap[prop.typeName.decapitalize()] ?: prop.typeName
+            cls.properties.forEach { (propName, prop) ->
+                val typeName = Settings.classMap[prop.typeName.toLowerCase()] ?: prop.typeName
                 if (Settings.imports.containsKey(typeName)) {
                     needed.add(Settings.imports[typeName]!!)
 

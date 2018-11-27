@@ -22,7 +22,7 @@ class FhirDateTest() {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["2011-12-03T10:15:30", "2011-03-04T08:30:00+11:00"])
+    @ValueSource(strings = ["2011-12-03T10:15:30", "2011-03-04T08:30:00+11:00", "2015-08-16T06:40:17Z"])
     //       2011-12-03T10:15:30+01:00'
     fun `valid date time tests`(d: String) {
         val fd = FhirDate(d)

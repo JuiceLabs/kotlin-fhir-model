@@ -10,15 +10,20 @@ class FhirClass(element: FhirStructureDefinitionElement) {
     val name: String = element.nameIfClass()
     var module: String? = null
     val resourceType: String? = element.nameOfResource()
-    val superclassName: String? = element.getSuperclassName()
+    val superclassName: String? = if (name == "Resource") "FhirAbstractResource" else element.getSuperclassName()
     var superClass: FhirClass? = null
     val short: String = element.definition.short
     val formal: String = element.definition.formal
 
-    private val comp = Comparator<FhirClassProperty> { s1, s2 -> s1.name.compareTo(s2.name) }
+//    private val comp = Comparator<FhirClassProperty> { s1, s2 -> s1.name.compareTo(s2.name) }
+//
+//    val properties = sortedSetOf(comp)
 
-    val properties = sortedSetOf(comp)
+    val properties: MutableMap<String, FhirClassProperty> = mutableMapOf()
 
+    init {
+        print(1)
+    }
 
     companion object {
         val known = mutableMapOf<String, FhirClass>()
@@ -36,29 +41,45 @@ class FhirClass(element: FhirStructureDefinitionElement) {
         fun withName(className: String?): FhirClass? {
             return known[className]
         }
-    }
 
+
+        fun findProperty(parent: FhirClass, paths: List<String>, key: String): FhirClassProperty? {
+            var cls: FhirClass? = parent
+            for (path in paths) {
+                if (path.isNullOrBlank()) {
+                    break
+                }
+                // todo rethink this
+                if (cls!!.properties.containsKey(path)) {
+                    cls = withName(cls.properties[path]!!.typeName)
+                    if (cls == null) {
+                        return null
+                    }
+                    break
+                }
+            }
+
+            return cls!!.properties[key]
+        }
+    }
 
     fun addProperty(prop: FhirClassProperty) {
 
         // do we already have a property with this name?
         // if we do and it's a specific reference, make it a reference to a generic resource
-        properties.forEach { existing ->
-            if (existing.name == prop.name) {
-                if (existing.referenceToNames.isEmpty()) {
-                    log.warn("Already have property ${prop.name} on $name, which is only allowed for references")
-                } else {
-                    existing.referenceToNames.addAll(prop.referenceToNames)
-                }
+        if (properties.containsKey(prop.name)) {
+            if (properties[prop.name]!!.referenceToNames.isEmpty()) {
+                log.warn("Already have property ${prop.name} on $name, which is only allowed for references")
+            } else {
+                properties[prop.name]!!.referenceToNames.addAll(prop.referenceToNames)
             }
         }
-
         // todo needed still?
-        if (properties.contains(prop)) {
+        if (properties.contains(prop.name)) {
             return
         }
 
-        properties.add(prop)
+        properties[prop.name] = prop
 
         // todo
 //        if prop.nonoptional and prop.oneOfMany is not None:
@@ -67,6 +88,7 @@ class FhirClass(element: FhirStructureDefinitionElement) {
 //        else:
 //        self.expanded_nonoptionals[prop.oneOfMany] = [prop]
     }
+
 
     fun shouldWrite(): Boolean {
         if (superClass != null) {

@@ -1,5 +1,6 @@
 package com.juicelabs.fhir.generator
 
+import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
@@ -75,7 +76,7 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
         val primaryCtor = FunSpec.constructorBuilder()
 
         classBuilder.addKdoc("%L\n\n%L\n", cls.short, cls.formal)
-        cls.properties.forEach { prop ->
+        cls.properties.forEach { (propName, prop) ->
             renderProperty(prop, prop.typeName, prop.origName, classBuilder)
         }
         classBuilder.primaryConstructor(primaryCtor.build())
@@ -101,18 +102,26 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
 
 
     private fun renderProperty(prop: FhirClassProperty, typeName: String, origName: String, classBuilder: TypeSpec.Builder) {
-        val mappedTypeName = Settings.classMap[typeName.decapitalize()] ?: typeName
+        val mappedTypeName = Settings.classMap[typeName.toLowerCase()] ?: typeName
         val typeClassName = ClassName(spec.packageName, mappedTypeName)
 
         val propName = Settings.reservedMap[origName] ?: prop.origName // todo origName?
+
+
+
         if (prop.isList()) {
             val arrayList = ClassName("kotlin.collections", "List")
             val listOfProps = arrayList.parameterizedBy(typeClassName)
-            classBuilder.addProperty(PropertySpec.builder(propName, listOfProps)
+            val propertySpec = PropertySpec.builder(propName, listOfProps)
                     .initializer(CodeBlock.of("mutableListOf<%T>()", typeClassName))
-                    .build())
+
+            addSerializedNameAnnotation(propName, prop, propertySpec)
+
+            classBuilder.addProperty(propertySpec.build())
         } else {
             val propBuilder = PropertySpec.builder(propName, typeClassName.isNullable(prop.min == 0)).mutable(true)
+
+            addSerializedNameAnnotation(propName, prop, propBuilder)
 
             if (prop.min == 0) {
                 propBuilder.initializer("null")
@@ -129,6 +138,16 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
             classBuilder.addProperty(propBuilder
                     .addKdoc("%L\n", prop.shortDesc)
                     .build())
+        }
+    }
+
+    private fun addSerializedNameAnnotation(propName: String, prop: FhirClassProperty, propertySpec: PropertySpec.Builder) {
+        if (propName != prop.origName) {
+            val foo = ClassName("com.google.gson.annotations", "SerializedName")
+            propertySpec.addAnnotation(
+                    AnnotationSpec.builder(foo).addMember("\"${prop.origName}\"")
+                            .build()
+            )
         }
     }
 

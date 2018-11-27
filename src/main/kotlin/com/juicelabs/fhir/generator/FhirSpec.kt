@@ -7,6 +7,7 @@ import com.google.gson.JsonParser
 import java.io.File
 import java.util.*
 
+
 class FhirSpec(val directory: String, val packageName: String) {
     val log by logger()
 
@@ -23,6 +24,8 @@ class FhirSpec(val directory: String, val packageName: String) {
 
     init {
         // assert directory exists
+
+
     }
 
 
@@ -62,6 +65,7 @@ class FhirSpec(val directory: String, val packageName: String) {
     }
 
 
+    @Suppress("UNCHECKED_CAST")
     private fun readValueSets() {
         val resources = readBundleResources("valuesets.json")
         resources.forEach { res ->
@@ -151,7 +155,7 @@ class FhirSpec(val directory: String, val packageName: String) {
      * from different profiles.
      */
     private fun wrapUp() {
-        profiles.forEach { key, profile ->
+        profiles.forEach { _, profile ->
             profile.wrapUp()
         }
     }
@@ -168,13 +172,13 @@ class FhirSpec(val directory: String, val packageName: String) {
         }
         val pathName = if (parentName != null) parentName + "." + className else null
 
-        if (pathName != null && Settings.classMap.containsKey(pathName)) {
-            return Settings.classMap[pathName]
+        if (pathName != null && Settings.classMap.containsKey(pathName.toLowerCase())) {
+            return Settings.classMap[pathName.toLowerCase()]
         }
 
         // is our plain class mapped?
-        if (Settings.classMap.containsKey(className)) {
-            return Settings.classMap[className]
+        if (Settings.classMap.containsKey(className.toLowerCase())) {
+            return Settings.classMap[className.toLowerCase()]
         }
 
         // CamelCase

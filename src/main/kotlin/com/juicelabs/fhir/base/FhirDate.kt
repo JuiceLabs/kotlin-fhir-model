@@ -1,12 +1,15 @@
-
 package com.juicelabs.fhir.base
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
+import com.google.gson.JsonParseException
 import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
+import com.juicelabs.fhir.model.Resource
 import java.lang.reflect.Type
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -51,12 +54,12 @@ class FhirDate(private val input: String) {
         )
 
         private val dateTimeFormats = listOf(
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME,
+                DateTimeFormatter.ISO_INSTANT,
+                DateTimeFormatter.RFC_1123_DATE_TIME,
                 DateTimeFormatter.ISO_LOCAL_DATE_TIME
                         .withLocale(Locale.getDefault())
-                        .withZone(ZoneId.systemDefault()),
-                DateTimeFormatter.ISO_INSTANT,
-                DateTimeFormatter.ISO_OFFSET_DATE_TIME,
-                DateTimeFormatter.RFC_1123_DATE_TIME
+                        .withZone(ZoneId.systemDefault())
         )
     }
 
@@ -64,6 +67,7 @@ class FhirDate(private val input: String) {
     private var dateValue: Temporal? = null
 
     init {
+        println("Date: [$input]")
         parse(yearFormats, Year::parse)
                 ?: parse(dateFormats, LocalDate::parse)
                 ?: parse(yearMonthFormats, YearMonth::parse)
@@ -93,6 +97,15 @@ class FhirDate(private val input: String) {
     }
 }
 
+
+fun getFhirGson(): Gson {
+    return GsonBuilder()
+            .registerTypeAdapter(FhirDate::class.java, FhirDateSerializer())
+            .registerTypeAdapter(FhirDate::class.java, FhirDateDeSerializer())
+            .registerTypeAdapter(Resource::class.java, ClassDeserializerAdapter<Resource>("resourceType"))
+            .create()
+}
+
 class FhirDateSerializer : JsonSerializer<FhirDate> {
     override fun serialize(p0: FhirDate?, p1: Type?, p2: JsonSerializationContext?): JsonElement {
         return JsonPrimitive(p0.toString())
@@ -103,5 +116,26 @@ class FhirDateDeSerializer : JsonDeserializer<FhirDate> {
     override fun deserialize(p0: JsonElement?, p1: Type?, p2: JsonDeserializationContext?): FhirDate {
         return FhirDate(p0!!.asString)
     }
+}
 
+
+class ClassDeserializerAdapter<T> internal constructor(private val typeName: String) : JsonDeserializer<T> {
+    private val gson: Gson
+
+    init {
+        gson = GsonBuilder()
+                .registerTypeAdapter(FhirDate::class.java, FhirDateSerializer())
+                .registerTypeAdapter(FhirDate::class.java, FhirDateDeSerializer())
+                .create()
+    }
+
+    @Throws(JsonParseException::class)
+    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): T {
+        val jsonObject = json.asJsonObject
+        val typeElement = jsonObject.get(typeName)
+        val method = typeElement.asString
+        println("\n------------------------------------   $method -------------------------------")
+        val classType = Class.forName("com.juicelabs.fhir.model.$method") as Class<out T>
+        return gson.fromJson(json, classType)
+    }
 }

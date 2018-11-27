@@ -23,21 +23,20 @@ class Settings {
                 "import" to "import_fhir",
                 "global" to "global_fhir",
                 "assert" to "assert_fhir",
-                "except" to "except_fhir",
                 "when" to "when_fhir",
                 "package" to "package_fhir"
         )
 
-        val classMap = mapOf(
+        val  classMap = mapOf(
                 "Any" to "Resource",
                 "Practitioner.role" to "PractRole",  // to avoid Practitioner.role and PractitionerRole generating the same class
 
                 "bool" to "Boolean",
                 "integer" to "Int",
-                "positiveInt" to "Int",
-                "unsignedInt" to "Int",
+                "positiveint" to "Int",
+                "unsignedint" to "Int",
                 "date" to "FhirDate",
-                "dateTime" to "FhirDate",
+                "datetime" to "FhirDate",
                 "instant" to "FhirDate",
                 "time" to "FhirDate",
                 "decimal" to "Float",
@@ -51,7 +50,16 @@ class Settings {
                 "oid" to "String",
                 "uuid" to "String",
                 "xhtml" to "String",
-                "base64Binary" to "String"
+                "base64binary" to "String"
+        )
+
+
+        val primitives = listOf(
+                "String",
+                "Int",
+                "Boolean",
+                "Float",
+                "FhirDate"
         )
 
         val imports = mapOf(
@@ -66,9 +74,9 @@ class Settings {
 
         val jsonmap = mapOf(
                 "str" to "String",
-                "int" to "int",
-                "bool" to "bool",
-                "float" to "float",
+                "int" to "Int",
+                "bool" to "Boolean",
+                "float" to "Float",
                 "FhirDate" to "FhirDateTime"
         )
 
@@ -93,6 +101,41 @@ class Settings {
                         "resourceType" to Pair("String?", "null")
                 )
         )
+
+
     }
 }
 
+class CaseInsensitiveMutableMap<V>(private val map: MutableMap<String, V>) : MutableMap<String, V> by map {
+
+    override fun containsKey(key: String): Boolean {
+        return this.map.keys.any { it.equals(key, ignoreCase = true) }
+    }
+
+    override fun get(key: String): V? {
+        return this.map.filter { it.key.equals(key, ignoreCase = true) }.map { it.value }.firstOrNull()
+    }
+
+    override fun remove(key: String): V? {
+        return this.map.filter { it.key.equals(key, ignoreCase = true) }.map { it.key }.firstOrNull()?.let {
+            this.map.remove(it)
+        }
+    }
+
+    override fun put(key: String, value: V): V? {
+        val old = this.remove(key)
+        this.map.put(key, value)
+        return old
+    }
+
+    override fun putAll(from: Map<out String, V>) {
+        for ((key, value) in from) {
+            this.put(key, value)
+        }
+    }
+
+    override fun toString(): String {
+        return this.map.toString()
+    }
+
+}

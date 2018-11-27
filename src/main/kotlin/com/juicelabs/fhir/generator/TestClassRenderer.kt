@@ -1,7 +1,7 @@
 package com.juicelabs.fhir.generator
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.squareup.kotlinpoet.ClassName
@@ -15,8 +15,8 @@ import java.io.File
 
 
 class TestClassRenderer(val spec: FhirSpec) {
-    val c = mutableMapOf<FhirClass, MutableList<Pair<String, JsonObject>>>()
-    val classes = mutableListOf<Triple<FhirClass, String, JsonObject>>()
+    private val c = mutableMapOf<FhirClass, MutableList<Pair<String, JsonObject>>>()
+    private val classes = mutableListOf<Triple<FhirClass, String, JsonObject>>()
 
     init {
         File(Settings.samplesDir)
@@ -26,23 +26,27 @@ class TestClassRenderer(val spec: FhirSpec) {
                 .forEach {
                     buildClassList(it)
                 }
-        createTestCase()
+
+        CreateTestMethod(spec, c)
     }
 
 
     private fun buildClassList(file: File) {
         val parser = JsonParser()
-        val jsonObject =  parser.parse(file.readTextAndClose()).asJsonObject
-//            jsonObject = parser.parse(readFile(file)).getAsJsonObject()
+        val jsonObject = parser.parse(file.readTextAndClose()).asJsonObject
         val res = if (jsonObject.has("resourceType")) jsonObject["resourceType"].asString else null
         if (res.isNullOrBlank()) {
             return
         }
-        val className = Settings.classMap[res] ?: res ?: ""
+        val className = Settings.classMap[res?.toLowerCase()] ?: res ?: ""
 
         if (className.isNotBlank()) {
             val fhirClass = FhirClass.withName(className)
-            if (fhirClass != null) {
+            if (fhirClass != null
+//                    && (file.name == "questionnaire-profile-example-ussg-fht.json"
+//                            || file.name == "questionnaire-example-gcs.json"
+//                            || file.name == "careplan-example-f003-pharynx.json")
+            ) { // todo TEST DEBUG
                 classes.add(Triple(fhirClass, file.name, jsonObject))
                 if (!c.containsKey(fhirClass)) {
                     c[fhirClass] = arrayListOf(Pair(file.name, jsonObject))
@@ -54,76 +58,289 @@ class TestClassRenderer(val spec: FhirSpec) {
     }
 
 
-    private fun createTestCase() {
+//    private fun createTestCases() {
+//
+//        createParaentClass()
+//
+//        val parentClass = ClassName("com.juicelabs.fhir.model", "DataTests")
+//
+//        c.forEach { fhirClass, dataList ->
+//            if (fhirClass.name != "Bundle") {
+////                    || fhirClass.name == "Questionnaire"
+////                    || fhirClass.name == "CarePlan") { // todo TEST DEBUGntry
+//                val out = FileSpec.builder(spec.packageName, fhirClass.name + "Test")
+//
+//                dataList.forEach { (exampleFilename, jsonObject) ->
+//                    val testValues = getTestValues(jsonObject, fhirClass)
+//                    val ab = CreateTestMethod(testValues, fhirClass, exampleFilename, parentClass)
+//                    out.addType(ab.buildMethod())
+////                    out.addType(createTestClass(fhirClass, exampleFilename, jsonObject, parentClass))
+//                }
+//                out.build().writeTo(File(Settings.destinationTestDir))
+//            }
+//
+//
+//            private fun registerGsonTypeAdaptors(classBuilder: TypeSpec.Builder) {
+//                classBuilder.addProperty("mapper", Gson::class.java)
+//                classBuilder.addInitializerBlock(CodeBlock.of(
+//                        """
+//            mapper = com.juicelabs.fhir.base.getFhirGson()
+//
+//            """.trimIndent()))
+//            }
+//
+//        }
+//    }
+//}
+}
 
-        createParaentClass()
+open class TestValue(val origTypeName: String, var propName: String?, val value: String?, val isList: Boolean, val nullable: Boolean = false) {
+    var castRequired = false
+    var jsonArray = false
+    var children = mutableListOf<TestValue>()
+    var fieldName = Settings.reservedMap.getOrDefault(propName, propName)
+    var castVal = ""
+    var typeName = Settings.classMap.getOrDefault(origTypeName.toLowerCase(), origTypeName)
+}
 
-        val parentClass = ClassName("com.juicelabs.fhir.model", "DataTests")
 
-        c.forEach { fhirClass, dataList ->
-            val out = FileSpec.builder(spec.packageName, fhirClass.name + "Test")
-            dataList.forEach { (exampleFilename, jsonObject) ->
-                out.addType(createTestClass(fhirClass, exampleFilename, jsonObject, parentClass))
-            }
-            out.build().writeTo(File(Settings.destinationTestDir))
+class TestValues {
+
+    fun getTestValues(jsonObject: JsonObject, testClass: FhirClass, parentTestValue: TestValue? = null): MutableList<TestValue> {
+        val values = mutableListOf<TestValue>()
+
+        var propClass = testClass
+
+        if (testClass.name == "Resource" && jsonObject.has("resourceType")) {
+            propClass = FhirClass.withName(jsonObject["resourceType"].asString)!!
         }
-    }
 
+        for (key in jsonObject.keySet()) {
+            if (key.startsWith("_")) {
+                continue
+            }
 
-    private fun getTestValues(jsonObject: JsonObject, fhirClass: FhirClass): MutableMap<String, Pair<String, String>> {
-        val values = mutableMapOf<String, Pair<String, String>>()
-        jsonObject.keySet().forEach { key ->
+            val safeKey = Settings.reservedMap.getOrDefault(key, key)
+            val found = findProperty(propClass, safeKey, key, jsonObject) ?: continue
 
-            val o = jsonObject[key]
+            values.add(found)
 
-            var ptype: String? = null
-            for (prop in fhirClass.properties) {
-                if (prop.name == key) {
-                    ptype = prop.typeName
-                    break
+            val value = jsonObject[key]
+
+            if (found.value != null) {
+                addParentCast(parentTestValue, jsonObject)
+            } else if (value.isJsonObject) {
+                addParentCast(parentTestValue, jsonObject)
+                val cls = FhirClass.withName(found.typeName)
+                if (cls != null) {
+                    found.children.addAll(getTestValues(jsonObject[key].asJsonObject, cls, found))
                 }
-            }
+            } else if (value.isJsonArray) {
+                found.jsonArray = true
+                val rootClass = FhirClass.withName(found.typeName)
+                var index = 0
 
-            if ((ptype == null || ptype == "String" || ptype == "Code") && o.isJsonPrimitive) {
-                values[key] = Pair("\"${o.asString}\"", "String")
-            } else if ((ptype == null || ptype == "Boolean") && o.isJsonPrimitive) {
-                values[key] = Pair(o.asString, "Boolean")
+                value.asJsonArray.forEach { entry ->
+                    addArrayEntry(index, entry, found, rootClass)
+                    index++
+                }
+            } else {
+                print(1)
             }
         }
+
         return values
     }
 
-    private fun createTestClass(fhirClass: FhirClass, exampleFilename: String, jsonObject: JsonObject, parentClass: ClassName): TypeSpec {
-        val testClass = ClassName("org.junit.jupiter.api", "Test")
-
-        val values = getTestValues(jsonObject, fhirClass)
-        val classBuilder =
-                TypeSpec.classBuilder(exampleFilename.replace("-", "_").replace(".", "_") + "Test")
-        classBuilder.superclass(parentClass)
-
-        val className = ClassName("com.juicelabs.fhir.model", fhirClass.name)
-
-        // create read and parse code
-        val fspec = FunSpec.builder("${exampleFilename.substringBefore(".")} Test")
-                .addStatement("val json = %T(\"${Settings.samplesDir}/$exampleFilename\").readTextAndClose()", ClassName("java.io", "File"))
-                .addStatement("val obj = mapper.fromJson(json, %T::class.java)", className)
-                .addAnnotation(testClass)
-
-        // create asserts
-        val assertEq = ClassName("kotlin.test", "assertEquals")
-        val assertTrueCN = ClassName("kotlin.test", "assertTrue")
-        values.forEach { k, (v, t) ->
-            if (t == "String") {
-                val s = (if (v.length < 30) v else v.substring(0, 29) + "\"")
-                fspec.addStatement("%T(stringMatch($s, obj.$k))", assertTrueCN)
-            } else {
-                fspec.addStatement("%T($v, if (obj.$k != null) obj.$k else false, \"Field: $k\")", assertEq)
-            }
+    private fun addArrayEntry(index: Int, entry: JsonElement, found: TestValue, rootClass: FhirClass?) {
+        val arrayEntry = TestValue("Array", "[$index]", null, true)
+        addArrayCast(entry, arrayEntry)
+        if (Settings.primitives.contains(found.typeName)) {
+            println("----------000---------")
+            //                            arrayEntry.children.add(addPrimitive(found.typeName, entry.toString()))
+        } else {
+            arrayEntry.children.addAll(getTestValues(entry.asJsonObject, rootClass!!))
+            found.children.add(arrayEntry)
         }
-        classBuilder.addFunction(fspec.build())
-        return classBuilder.build()
     }
 
+    private fun addArrayCast(entry: JsonElement, arrayEntry: TestValue) {
+        if (entry.isJsonObject && entry.asJsonObject.has("resourceType")) {
+            val subClass = FhirClass.withName(entry.asJsonObject["resourceType"].asString)!!
+            arrayEntry.castVal = " as ${subClass.name})"
+            arrayEntry.castRequired = true
+        }
+    }
+
+    private fun addParentCast(parentTestValue: TestValue?, jsonObject: JsonObject) {
+        if (parentTestValue != null && parentTestValue.typeName == "Resource") {
+            val subClass = FhirClass.withName(jsonObject.asJsonObject["resourceType"].asString)!!
+            parentTestValue.castVal = " as ${subClass.name})"
+            parentTestValue.castRequired = true
+        }
+    }
+
+
+    /**
+     * Look for the property named 'key' in testClass. If it's a primitive add it's value to the list.
+     * Searches up the class inheritence hierarchy.
+     */
+    private fun findProperty(testClass: FhirClass,
+                             safeKey: String,
+                             origKey: String,
+                             jsonObject: JsonObject): TestValue? {
+
+        if (testClass.properties.containsKey(safeKey)) {
+            val classProp = testClass.properties[safeKey]!!
+            val propType = Settings.classMap.getOrDefault(classProp.typeName.toLowerCase(), classProp.typeName)
+            return if (!classProp.isList() && Settings.primitives.contains(propType)) {
+                addPrimitive(propType, safeKey, jsonObject[origKey].asString)
+            } else {
+                TestValue(propType, safeKey, null, false, classProp.isNullable())
+            }
+        } else {
+            val superClass = testClass.superClass
+            if (superClass != null) {
+                return findProperty(superClass, safeKey, origKey, jsonObject)
+            } else if (testClass.superclassName == "FhirAbstractResource" && safeKey == "resourceType") {
+                return addPrimitive("String", safeKey, jsonObject[origKey].asString)
+            }
+        }
+        throw Exception("Property $origKey not found")
+    }
+
+    private fun addPrimitive(typeName: String, key: String, value: String): TestValue {
+        return when (typeName) {
+            "Boolean" -> TestValue("Boolean", key, value, false)
+            "Int" -> TestValue("Int", key, value, false)
+            "Float" -> TestValue("Float", key, value, false)
+            "FhirDate" -> TestValue("FhirDate", key, value, false)
+            else -> TestValue("String", key, value, false)
+        }
+    }
+
+}
+
+
+class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableMap<FhirClass, MutableList<Pair<String, JsonObject>>>) {
+
+    private lateinit var fspec: FunSpec.Builder
+    private var testCount = 0
+    private lateinit var classBuilder: TypeSpec.Builder
+    private lateinit var className: ClassName
+    private var testValues = TestValues()
+
+    private var out: FileSpec.Builder? = null
+
+    private lateinit var filename: String
+
+    private val testClass = ClassName("org.junit.jupiter.api", "Test")
+    private val assertEq = ClassName("kotlin.test", "assertEquals")
+    private val assertTrueCN = ClassName("kotlin.test", "assertTrue")
+    private val parentClass = ClassName("com.juicelabs.fhir.model", "DataTests")
+
+
+    init {
+        createParaentClass()
+        createTestClasses()
+    }
+
+
+    // iterate over every example
+    private fun createTestClasses() {
+        // skip bundle until GSON and Kotlin bugs are resolved.
+        rawData.filter {it.key.name != "Bundle"}.forEach { fhirClass, dataList ->
+            className = ClassName("com.juicelabs.fhir.model", fhirClass.name)
+            createClassFile(fhirClass)
+            dataList.forEach { (dataFilename, jsonObject) ->
+                filename = dataFilename
+                val values = testValues.getTestValues(jsonObject, fhirClass)
+                createTestFun()
+                addAsserts(values)
+                finishFunction()
+            }
+            out!!.addType(classBuilder.build())
+            out!!.build().writeTo(File(Settings.destinationTestDir))
+        }
+    }
+
+
+    private fun createClassFile(fhirClass: FhirClass) {
+        out = FileSpec.builder(spec.packageName, fhirClass.name + "DataTest")
+
+        classBuilder = TypeSpec.classBuilder("${fhirClass.name}DataTest")
+        classBuilder.superclass(parentClass)
+    }
+
+    private fun createTestFun() {
+
+        val testName = "${filename.substringBefore(".")} $testCount Test"
+
+        testCount++
+
+        fspec = FunSpec.builder(testName)
+                .addStatement("val json = %T(\"${Settings.samplesDir}/$filename\").readTextAndClose()", ClassName("java.io", "File"))
+                .addStatement("val obj = mapper.fromJson(json, %T::class.java)", className)
+                .addAnnotation(testClass)
+    }
+
+    private fun createKotlinBugNewFun() {
+        classBuilder.addFunction(fspec.build())
+        createTestFun()
+    }
+
+    private fun finishFunction() {
+        classBuilder.addFunction(fspec.build())
+    }
+
+    private var statementCount: Int = 0
+
+    private fun addAsserts(testValues: MutableList<TestValue>, path: String? = null) {
+
+        testValues.forEach { testValue ->
+
+            val propPath = buildCallPath(path, testValue)
+            addAsserts(testValue.children, propPath)
+            if (testValue.value != null) {
+                addAssertStatement(testValue, testValue.value, propPath)
+            }
+        }
+    }
+
+    private fun buildCallPath(path: String?, testValue: TestValue): String {
+        val del = if (path == null || testValue.isList) "" else "."
+        val nullable = if (testValue.nullable) "!!" else ""
+
+        var propPath = (path ?: "obj.") + del + testValue.fieldName + nullable + testValue.castVal
+        if (testValue.castRequired) {
+            propPath = "($propPath"
+        }
+        return propPath
+    }
+
+    private fun addAssertStatement(testValue: TestValue, value: String, propPath: String) {
+        statementCount++
+
+        if (statementCount > 70) {
+            createKotlinBugNewFun()
+            statementCount = 0
+        }
+
+        when {
+            testValue.typeName == "String" -> {
+                val s = (if (value.length < 30) value else value.substring(0, 29))
+                fspec.addStatement("%T(stringMatch(%S, $propPath))", assertTrueCN, s)
+            }
+            testValue.typeName == "Float" -> {
+                val v = "\"%.2f\".format($propPath)"
+                fspec.addStatement("%T(stringMatch(%L, %L))", assertTrueCN, "\"%.2f\".format(${value}f)", v)
+            }
+            testValue.typeName == "FhirDate" -> fspec.addStatement("%T(%S, $propPath.toString())", assertEq, value)
+            testValue.typeName == "Int" -> fspec.addStatement("%T($value, $propPath)", assertEq)
+            else -> fspec.addStatement("%T($value, if ($propPath != null) " +
+                    "$propPath else false, \"Field: $propPath\")", assertEq)
+        }
+    }
 
     private fun createParaentClass() {
         val out = FileSpec.builder(spec.packageName, "DataTests")
@@ -158,21 +375,10 @@ class TestClassRenderer(val spec: FhirSpec) {
 
     private fun registerGsonTypeAdaptors(classBuilder: TypeSpec.Builder) {
         classBuilder.addProperty("mapper", Gson::class.java)
-        classBuilder.addProperty("builder", GsonBuilder::class.java)
-
-        val fd = ClassName("com.juicelabs.fhir.base", "FhirDate")
-        val fdSerializer = ClassName("com.juicelabs.fhir.base", "FhirDateSerializer")
-        val fdDeserializer = ClassName("com.juicelabs.fhir.base", "FhirDateDeSerializer")
         classBuilder.addInitializerBlock(CodeBlock.of(
                 """
-            builder = GsonBuilder()
-            builder.registerTypeAdapter(%T::class.java, %T())
-            builder.registerTypeAdapter(%T::class.java, %T())
-            mapper = builder.create()
+            mapper = com.juicelabs.fhir.base.getFhirGson()
 
-            """.trimIndent(), fd, fdSerializer, fd, fdDeserializer))
+            """.trimIndent()))
     }
-
 }
-
-
