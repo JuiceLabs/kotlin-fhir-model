@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.844 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.536 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -54,7 +53,7 @@ open class PlanDefinition() : DomainResource() {
     /**
      * Date this was last changed
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Name of the publisher (organization or individual)
@@ -79,12 +78,12 @@ open class PlanDefinition() : DomainResource() {
     /**
      * When the plan definition was approved by publisher
      */
-    var approvalDate: FhirDate? = null
+    var approvalDate: String? = null
 
     /**
      * When the plan definition was last reviewed
      */
-    var lastReviewDate: FhirDate? = null
+    var lastReviewDate: String? = null
 
     /**
      * When the plan definition is expected to be used
@@ -229,7 +228,7 @@ open class PlanDefinitionAction() : BackboneElement() {
     /**
      * When the action should take place
      */
-    var timingDateTime: FhirDate? = null
+    var timingDateTime: String? = null
 
     /**
      * When the action should take place

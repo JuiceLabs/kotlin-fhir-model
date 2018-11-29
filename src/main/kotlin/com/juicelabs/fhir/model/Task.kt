@@ -1,12 +1,11 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.050 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.719 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
 import com.google.gson.annotations.SerializedName
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -95,12 +94,12 @@ open class Task() : DomainResource() {
     /**
      * Task Creation Date
      */
-    var authoredOn: FhirDate? = null
+    var authoredOn: String? = null
 
     /**
      * Task Last Modified Date
      */
-    var lastModified: FhirDate? = null
+    var lastModified: String? = null
 
     /**
      * Who is asking for task to be done
@@ -198,12 +197,12 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
-    var valueDate: FhirDate? = null
+    var valueDate: String? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueDateTime: FhirDate? = null
+    var valueDateTime: String? = null
 
     /**
      * Content to use in performing the task
@@ -218,7 +217,7 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
-    var valueInstant: FhirDate? = null
+    var valueInstant: String? = null
 
     /**
      * Content to use in performing the task
@@ -248,7 +247,7 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
-    var valueTime: FhirDate? = null
+    var valueTime: String? = null
 
     /**
      * Content to use in performing the task
@@ -400,12 +399,12 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
-    var valueDate: FhirDate? = null
+    var valueDate: String? = null
 
     /**
      * Result of output
      */
-    var valueDateTime: FhirDate? = null
+    var valueDateTime: String? = null
 
     /**
      * Result of output
@@ -420,7 +419,7 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
-    var valueInstant: FhirDate? = null
+    var valueInstant: String? = null
 
     /**
      * Result of output
@@ -450,7 +449,7 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
-    var valueTime: FhirDate? = null
+    var valueTime: String? = null
 
     /**
      * Result of output

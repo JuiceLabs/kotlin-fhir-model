@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.130 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.814 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -29,7 +28,7 @@ open class PaymentReconciliation() : DomainResource() {
     /**
      * Creation date
      */
-    var created: FhirDate? = null
+    var created: String? = null
 
     /**
      * Insurer
@@ -111,7 +110,7 @@ open class PaymentReconciliationDetail() : BackboneElement() {
     /**
      * Invoice date
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Amount being paid

@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.708 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.392 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -43,7 +42,7 @@ open class RelatedPerson() : DomainResource() {
     /**
      * The date on which the related person was born
      */
-    var birthDate: FhirDate? = null
+    var birthDate: String? = null
 
     val address: List<Address> = mutableListOf<Address>()
 

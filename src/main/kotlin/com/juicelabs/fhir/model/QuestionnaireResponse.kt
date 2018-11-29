@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.029 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.687 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -46,7 +45,7 @@ open class QuestionnaireResponse() : DomainResource() {
     /**
      * Date the answers were gathered
      */
-    var authored: FhirDate? = null
+    var authored: String? = null
 
     /**
      * Person who received and recorded the answers
@@ -117,17 +116,17 @@ open class QuestionnaireResponseItemAnswer() : BackboneElement() {
     /**
      * Single-valued answer to the question
      */
-    var valueDate: FhirDate? = null
+    var valueDate: String? = null
 
     /**
      * Single-valued answer to the question
      */
-    var valueDateTime: FhirDate? = null
+    var valueDateTime: String? = null
 
     /**
      * Single-valued answer to the question
      */
-    var valueTime: FhirDate? = null
+    var valueTime: String? = null
 
     /**
      * Single-valued answer to the question

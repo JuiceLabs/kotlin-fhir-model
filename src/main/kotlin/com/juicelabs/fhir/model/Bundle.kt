@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.891 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.569 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -131,7 +130,7 @@ open class BundleEntryRequest() : BackboneElement() {
     /**
      * For managing update contention
      */
-    var ifModifiedSince: FhirDate? = null
+    var ifModifiedSince: String? = null
 
     /**
      * For managing update contention
@@ -168,7 +167,7 @@ open class BundleEntryResponse() : BackboneElement() {
     /**
      * Server's date time modified
      */
-    var lastModified: FhirDate? = null
+    var lastModified: String? = null
 
     /**
      * OperationOutcome with hints and warnings (for batch/transaction)

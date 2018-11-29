@@ -1,12 +1,11 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.019 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.676 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
 import com.google.gson.annotations.SerializedName
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -15,7 +14,7 @@ import kotlin.collections.List
  * Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.
  */
 open class Timing() : Element() {
-    val event: List<FhirDate> = mutableListOf<FhirDate>()
+    val event: List<String> = mutableListOf<String>()
 
     /**
      * When the event is to occur
@@ -101,7 +100,7 @@ open class TimingRepeat() : Element() {
 
     val dayOfWeek: List<String> = mutableListOf<String>()
 
-    val timeOfDay: List<FhirDate> = mutableListOf<FhirDate>()
+    val timeOfDay: List<String> = mutableListOf<String>()
 
     @SerializedName("when")
     val when_fhir: List<String> = mutableListOf<String>()

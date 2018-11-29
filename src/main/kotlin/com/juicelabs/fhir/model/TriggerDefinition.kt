@@ -1,11 +1,9 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.890 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.568 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
-
-import com.juicelabs.fhir.base.FhirDate
 
 /**
  * Defines an expected trigger for a module
@@ -36,12 +34,12 @@ open class TriggerDefinition() : Element() {
     /**
      * Timing of the event
      */
-    var eventTimingDate: FhirDate? = null
+    var eventTimingDate: String? = null
 
     /**
      * Timing of the event
      */
-    var eventTimingDateTime: FhirDate? = null
+    var eventTimingDateTime: String? = null
 
     /**
      * Triggering data of the event

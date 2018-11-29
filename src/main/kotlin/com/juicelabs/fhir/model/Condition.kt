@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.045 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.709 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -53,7 +52,7 @@ open class Condition() : DomainResource() {
     /**
      * Estimated or actual date,  date-time, or age
      */
-    var onsetDateTime: FhirDate? = null
+    var onsetDateTime: String? = null
 
     /**
      * Estimated or actual date,  date-time, or age
@@ -78,7 +77,7 @@ open class Condition() : DomainResource() {
     /**
      * If/when in resolution/remission
      */
-    var abatementDateTime: FhirDate? = null
+    var abatementDateTime: String? = null
 
     /**
      * If/when in resolution/remission
@@ -108,7 +107,7 @@ open class Condition() : DomainResource() {
     /**
      * Date record was believed accurate
      */
-    var assertedDate: FhirDate? = null
+    var assertedDate: String? = null
 
     /**
      * Person who asserts this condition

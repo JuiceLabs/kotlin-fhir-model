@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.873 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.547 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -54,7 +53,7 @@ open class Library() : DomainResource() {
     /**
      * Date this was last changed
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Name of the publisher (organization or individual)
@@ -79,12 +78,12 @@ open class Library() : DomainResource() {
     /**
      * When the library was approved by publisher
      */
-    var approvalDate: FhirDate? = null
+    var approvalDate: String? = null
 
     /**
      * When the library was last reviewed
      */
-    var lastReviewDate: FhirDate? = null
+    var lastReviewDate: String? = null
 
     /**
      * When the library is expected to be used

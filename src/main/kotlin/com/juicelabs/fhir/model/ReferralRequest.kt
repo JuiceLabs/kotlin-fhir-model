@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.629 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.311 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -62,7 +61,7 @@ open class ReferralRequest() : DomainResource() {
     /**
      * When the service(s) requested in the referral should occur
      */
-    var occurrenceDateTime: FhirDate? = null
+    var occurrenceDateTime: String? = null
 
     /**
      * When the service(s) requested in the referral should occur
@@ -72,7 +71,7 @@ open class ReferralRequest() : DomainResource() {
     /**
      * Date of creation/activation
      */
-    var authoredOn: FhirDate? = null
+    var authoredOn: String? = null
 
     /**
      * Who/what is requesting service

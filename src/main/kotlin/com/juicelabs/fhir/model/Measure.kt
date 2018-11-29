@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.047 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.711 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -49,7 +48,7 @@ open class Measure() : DomainResource() {
     /**
      * Date this was last changed
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Name of the publisher (organization or individual)
@@ -74,12 +73,12 @@ open class Measure() : DomainResource() {
     /**
      * When the measure was approved by publisher
      */
-    var approvalDate: FhirDate? = null
+    var approvalDate: String? = null
 
     /**
      * When the measure was last reviewed
      */
-    var lastReviewDate: FhirDate? = null
+    var lastReviewDate: String? = null
 
     /**
      * When the measure is expected to be used

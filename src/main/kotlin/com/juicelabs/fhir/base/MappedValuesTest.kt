@@ -27,7 +27,7 @@ class MappingDiff() {
                     buildClassList(it)
                 }
         c.forEach { cls, dataList ->
-            if (cls.name.contains("Parameters"))
+//            if (cls.name.contains("Composition"))
                 dataList.forEach { (filename, json) ->
 
                     diffIt(filename, json, cls)
@@ -81,7 +81,7 @@ class MappingDiff() {
         val mappedData: Map<String, Any> = gson.fromJson(convertedJson, mapType)
         val filteredMappedData: Map<String, Any> = filterMap(mappedData)
 
-        val diff = Maps.difference(filteredOrigData, mappedData)
+        val diff = Maps.difference(filteredOrigData, filteredMappedData)
         print("\n\n")
 
         var pass = 0
@@ -111,6 +111,7 @@ private fun filterMap(
         predicate: (Map.Entry<String, Any>) -> Boolean = { !it.key.startsWith("_") }): Map<String, Any> {
     val output: MutableMap<String, Any> = mutableMapOf()
     for (entry in input.entries) {
+
         if (predicate(entry)) {
             if (entry.value is Map<*, *>) {
                 @Suppress("UNCHECKED_CAST")

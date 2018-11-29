@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.987 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.648 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -44,7 +43,7 @@ open class ClinicalImpression() : DomainResource() {
     /**
      * Time of assessment
      */
-    var effectiveDateTime: FhirDate? = null
+    var effectiveDateTime: String? = null
 
     /**
      * Time of assessment
@@ -54,7 +53,7 @@ open class ClinicalImpression() : DomainResource() {
     /**
      * When the assessment was documented
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * The clinician performing the assessment

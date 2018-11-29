@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.831 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.529 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -55,7 +54,7 @@ open class RequestGroup() : DomainResource() {
     /**
      * When the request group was authored
      */
-    var authoredOn: FhirDate? = null
+    var authoredOn: String? = null
 
     /**
      * Device or practitioner that authored the request group
@@ -115,7 +114,7 @@ open class RequestGroupAction() : BackboneElement() {
     /**
      * When the action should take place
      */
-    var timingDateTime: FhirDate? = null
+    var timingDateTime: String? = null
 
     /**
      * When the action should take place

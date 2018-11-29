@@ -1,12 +1,11 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.878 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.552 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
 import com.google.gson.annotations.SerializedName
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -49,7 +48,7 @@ open class Composition() : DomainResource() {
     /**
      * Composition editing time
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     val author: List<Reference> = mutableListOf<Reference>()
 
@@ -88,7 +87,7 @@ open class CompositionAttester() : BackboneElement() {
     /**
      * When the composition was attested
      */
-    var time: FhirDate? = null
+    var time: String? = null
 
     /**
      * Who attested the composition

@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.800 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.477 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -34,12 +33,12 @@ open class PaymentNotice() : DomainResource() {
     /**
      * Payment or clearing date
      */
-    var statusDate: FhirDate? = null
+    var statusDate: String? = null
 
     /**
      * Creation date
      */
-    var created: FhirDate? = null
+    var created: String? = null
 
     /**
      * Insurer or Regulatory body

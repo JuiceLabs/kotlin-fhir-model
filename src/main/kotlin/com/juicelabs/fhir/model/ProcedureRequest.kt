@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.015 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.673 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -67,7 +66,7 @@ open class ProcedureRequest() : DomainResource() {
     /**
      * When procedure should occur
      */
-    var occurrenceDateTime: FhirDate? = null
+    var occurrenceDateTime: String? = null
 
     /**
      * When procedure should occur
@@ -92,7 +91,7 @@ open class ProcedureRequest() : DomainResource() {
     /**
      * Date request signed
      */
-    var authoredOn: FhirDate? = null
+    var authoredOn: String? = null
 
     /**
      * Who/what is requesting procedure or diagnostic

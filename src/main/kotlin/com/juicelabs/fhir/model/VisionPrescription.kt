@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.875 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.550 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -34,7 +33,7 @@ open class VisionPrescription() : DomainResource() {
     /**
      * When prescription was authorized
      */
-    var dateWritten: FhirDate? = null
+    var dateWritten: String? = null
 
     /**
      * Who authorizes the vision product

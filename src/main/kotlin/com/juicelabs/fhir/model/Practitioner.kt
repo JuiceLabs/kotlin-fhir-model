@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.679 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.361 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -35,7 +34,7 @@ open class Practitioner() : DomainResource() {
     /**
      * The date  on which the practitioner was born
      */
-    var birthDate: FhirDate? = null
+    var birthDate: String? = null
 
     val photo: List<Attachment> = mutableListOf<Attachment>()
 

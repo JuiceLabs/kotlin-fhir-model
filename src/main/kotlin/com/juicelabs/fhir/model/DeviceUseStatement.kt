@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.864 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.544 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -44,12 +43,12 @@ open class DeviceUseStatement() : DomainResource() {
     /**
      * How often  the device was used
      */
-    var timingDateTime: FhirDate? = null
+    var timingDateTime: String? = null
 
     /**
      * When statement was recorded
      */
-    var recordedOn: FhirDate? = null
+    var recordedOn: String? = null
 
     /**
      * Who made the statement

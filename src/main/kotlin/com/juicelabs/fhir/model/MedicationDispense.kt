@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.647 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.333 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -72,12 +71,12 @@ open class MedicationDispense() : DomainResource() {
     /**
      * When product was packaged and reviewed
      */
-    var whenPrepared: FhirDate? = null
+    var whenPrepared: String? = null
 
     /**
      * When product was given out
      */
-    var whenHandedOver: FhirDate? = null
+    var whenHandedOver: String? = null
 
     /**
      * Where the medication was sent

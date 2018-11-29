@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.696 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.375 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -27,7 +26,7 @@ open class Contract() : DomainResource() {
     /**
      * When this Contract was issued
      */
-    var issued: FhirDate? = null
+    var issued: String? = null
 
     /**
      * Effective time
@@ -147,7 +146,7 @@ open class ContractValuedItem() : BackboneElement() {
     /**
      * Contract Valued Item Effective Tiem
      */
-    var effectiveTime: FhirDate? = null
+    var effectiveTime: String? = null
 
     /**
      * Count of Contract Valued Items
@@ -189,7 +188,7 @@ open class ContractTerm() : BackboneElement() {
     /**
      * Contract Term Issue Date Time
      */
-    var issued: FhirDate? = null
+    var issued: String? = null
 
     /**
      * Contract Term Effective Time
@@ -264,7 +263,7 @@ open class ContractTermValuedItem() : BackboneElement() {
     /**
      * Contract Term Valued Item Effective Tiem
      */
-    var effectiveTime: FhirDate? = null
+    var effectiveTime: String? = null
 
     /**
      * Contract Term Valued Item Count

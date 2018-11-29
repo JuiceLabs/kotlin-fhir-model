@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.919 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.588 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -43,7 +42,7 @@ open class Observation() : DomainResource() {
     /**
      * Clinically relevant time/time-period for observation
      */
-    var effectiveDateTime: FhirDate? = null
+    var effectiveDateTime: String? = null
 
     /**
      * Clinically relevant time/time-period for observation
@@ -53,7 +52,7 @@ open class Observation() : DomainResource() {
     /**
      * Date/Time this was made available
      */
-    var issued: FhirDate? = null
+    var issued: String? = null
 
     val performer: List<Reference> = mutableListOf<Reference>()
 
@@ -100,12 +99,12 @@ open class Observation() : DomainResource() {
     /**
      * Actual result
      */
-    var valueTime: FhirDate? = null
+    var valueTime: String? = null
 
     /**
      * Actual result
      */
-    var valueDateTime: FhirDate? = null
+    var valueDateTime: String? = null
 
     /**
      * Actual result
@@ -254,12 +253,12 @@ open class ObservationComponent() : BackboneElement() {
     /**
      * Actual component result
      */
-    var valueTime: FhirDate? = null
+    var valueTime: String? = null
 
     /**
      * Actual component result
      */
-    var valueDateTime: FhirDate? = null
+    var valueDateTime: String? = null
 
     /**
      * Actual component result

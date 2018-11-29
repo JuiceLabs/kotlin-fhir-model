@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.840 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.535 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -41,7 +40,7 @@ open class FamilyMemberHistory() : DomainResource() {
     /**
      * When history was captured/updated
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * The family member described
@@ -66,7 +65,7 @@ open class FamilyMemberHistory() : DomainResource() {
     /**
      * (approximate) date of birth
      */
-    var bornDate: FhirDate? = null
+    var bornDate: String? = null
 
     /**
      * (approximate) date of birth
@@ -111,7 +110,7 @@ open class FamilyMemberHistory() : DomainResource() {
     /**
      * Dead? How old/when?
      */
-    var deceasedDate: FhirDate? = null
+    var deceasedDate: String? = null
 
     /**
      * Dead? How old/when?

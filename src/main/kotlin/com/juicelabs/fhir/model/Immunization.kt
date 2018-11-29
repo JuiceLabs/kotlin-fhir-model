@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.058 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.726 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -44,7 +43,7 @@ open class Immunization() : DomainResource() {
     /**
      * Vaccination administration date
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Indicates context the data was recorded in
@@ -74,7 +73,7 @@ open class Immunization() : DomainResource() {
     /**
      * Vaccine expiration date
      */
-    var expirationDate: FhirDate? = null
+    var expirationDate: String? = null
 
     /**
      * Body site vaccine  was administered
@@ -143,7 +142,7 @@ open class ImmunizationReaction() : BackboneElement() {
     /**
      * When reaction started
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Additional information on reaction

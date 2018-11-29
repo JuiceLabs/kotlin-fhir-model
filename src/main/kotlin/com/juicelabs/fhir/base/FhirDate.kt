@@ -12,6 +12,7 @@ import com.google.gson.JsonParseException
 import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory
 import com.juicelabs.fhir.model.Resource
 import java.lang.reflect.Type
 import java.time.LocalDate
@@ -105,11 +106,18 @@ class FhirDate(private val input: String) {
 
 
 fun getFhirGson(): Gson {
+    val runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+            .of(Resource::class.java, "resourceType", true);
+//            .registerSubtype(Parameters::class.java, "Parameters")
+//            .registerSubtype(Binary::class.java, "Binary")
+//            .registerSubtype(ActivityDefinition::class.java, "ActivityDefinition")
+//            .registerSubtype(Questionnaire::class.java, "Questionaire");
+
     return GsonBuilder()
             .registerTypeAdapter(FhirDate::class.java, FhirDateSerializer())
             .registerTypeAdapter(FhirDate::class.java, FhirDateDeSerializer())
-            .registerTypeAdapter(Resource::class.java, ClassDeserializerAdapter<Resource>("resourceType"))
             .registerTypeHierarchyAdapter(Collection::class.java, CollectionAdapter())
+            .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
 //            .addDeserializationExclusionStrategy(FhirPrimitiveExclusionStrategy())
             .registerTypeAdapter(List::class.java, RemoveNullListSerializer())
             .create()
@@ -233,3 +241,4 @@ class FhirPrimitiveExclusionStrategy() : ExclusionStrategy {
     }
 
 }
+

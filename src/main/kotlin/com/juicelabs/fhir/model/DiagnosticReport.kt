@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.938 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.614 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -46,7 +45,7 @@ open class DiagnosticReport() : DomainResource() {
     /**
      * Clinically relevant time/time-period for report
      */
-    var effectiveDateTime: FhirDate? = null
+    var effectiveDateTime: String? = null
 
     /**
      * Clinically relevant time/time-period for report
@@ -56,7 +55,7 @@ open class DiagnosticReport() : DomainResource() {
     /**
      * DateTime this version was released
      */
-    var issued: FhirDate? = null
+    var issued: String? = null
 
     val performer: List<DiagnosticReportPerformer> = mutableListOf<DiagnosticReportPerformer>()
 

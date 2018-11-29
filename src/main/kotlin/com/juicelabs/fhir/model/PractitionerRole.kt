@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.107 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.791 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -76,12 +75,12 @@ open class PractitionerRoleAvailableTime() : BackboneElement() {
     /**
      * Opening time of day (ignored if allDay = true)
      */
-    var availableStartTime: FhirDate? = null
+    var availableStartTime: String? = null
 
     /**
      * Closing time of day (ignored if allDay = true)
      */
-    var availableEndTime: FhirDate? = null
+    var availableEndTime: String? = null
 }
 
 /**

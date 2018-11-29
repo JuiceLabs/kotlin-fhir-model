@@ -35,10 +35,16 @@ class Settings {
                 "integer" to "Int",
                 "positiveint" to "Int",
                 "unsignedint" to "Int",
-                "date" to "FhirDate",
-                "datetime" to "FhirDate",
-                "instant" to "FhirDate",
-                "time" to "FhirDate",
+                "date" to "String",
+                "datetime" to "String",
+                "instant" to "String",
+                "time" to "String",
+
+//                "date" to "FhirDate",
+//                "datetime" to "FhirDate",
+//                "instant" to "FhirDate",
+//                "time" to "FhirDate",
+
                 "decimal" to "Float",
 
                 "markdown" to "String",

@@ -1,12 +1,11 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.033 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.690 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
 import com.google.gson.annotations.SerializedName
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -40,7 +39,7 @@ open class Consent() : DomainResource() {
     /**
      * When this Consent was created or indexed
      */
-    var dateTime: FhirDate? = null
+    var dateTime: String? = null
 
     val consentingParty: List<Reference> = mutableListOf<Reference>()
 

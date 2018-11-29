@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.668 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.352 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -24,12 +23,12 @@ open class AppointmentResponse() : DomainResource() {
     /**
      * Time from appointment, or requested new start time
      */
-    var start: FhirDate? = null
+    var start: String? = null
 
     /**
      * Time from appointment, or requested new end time
      */
-    var end: FhirDate? = null
+    var end: String? = null
 
     val participantType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 

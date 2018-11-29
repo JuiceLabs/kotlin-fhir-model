@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.923 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.600 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -34,7 +33,7 @@ open class NutritionOrder() : DomainResource() {
     /**
      * Date and time the nutrition order was requested
      */
-    var dateTime: FhirDate? = null
+    var dateTime: String? = null
 
     /**
      * Who ordered the diet, formula or nutritional supplement

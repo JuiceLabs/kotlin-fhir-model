@@ -1,11 +1,9 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.105 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.790 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
-
-import com.juicelabs.fhir.base.FhirDate
 
 /**
  * Content in a format defined elsewhere
@@ -51,5 +49,5 @@ open class Attachment() : Element() {
     /**
      * Date attachment was first created
      */
-    var creation: FhirDate? = null
+    var creation: String? = null
 }

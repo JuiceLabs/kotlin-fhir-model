@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.887 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.560 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -48,7 +47,7 @@ open class MedicationStatement() : DomainResource() {
     /**
      * The date/time or interval when the medication was taken
      */
-    var effectiveDateTime: FhirDate? = null
+    var effectiveDateTime: String? = null
 
     /**
      * The date/time or interval when the medication was taken
@@ -58,7 +57,7 @@ open class MedicationStatement() : DomainResource() {
     /**
      * When the statement was asserted?
      */
-    var dateAsserted: FhirDate? = null
+    var dateAsserted: String? = null
 
     /**
      * Person or organization that provided the information about the taking of this medication

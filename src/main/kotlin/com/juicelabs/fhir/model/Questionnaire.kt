@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.086 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.757 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -49,7 +48,7 @@ open class Questionnaire() : DomainResource() {
     /**
      * Date this was last changed
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Name of the publisher (organization or individual)
@@ -69,12 +68,12 @@ open class Questionnaire() : DomainResource() {
     /**
      * When the questionnaire was approved by publisher
      */
-    var approvalDate: FhirDate? = null
+    var approvalDate: String? = null
 
     /**
      * When the questionnaire was last reviewed
      */
-    var lastReviewDate: FhirDate? = null
+    var lastReviewDate: String? = null
 
     /**
      * When the questionnaire is expected to be used
@@ -179,17 +178,17 @@ open class QuestionnaireItem() : BackboneElement() {
     /**
      * Default value when item is first rendered
      */
-    var initialDate: FhirDate? = null
+    var initialDate: String? = null
 
     /**
      * Default value when item is first rendered
      */
-    var initialDateTime: FhirDate? = null
+    var initialDateTime: String? = null
 
     /**
      * Default value when item is first rendered
      */
-    var initialTime: FhirDate? = null
+    var initialTime: String? = null
 
     /**
      * Default value when item is first rendered
@@ -258,17 +257,17 @@ open class QuestionnaireItemEnableWhen() : BackboneElement() {
     /**
      * Value question must have
      */
-    var answerDate: FhirDate? = null
+    var answerDate: String? = null
 
     /**
      * Value question must have
      */
-    var answerDateTime: FhirDate? = null
+    var answerDateTime: String? = null
 
     /**
      * Value question must have
      */
-    var answerTime: FhirDate? = null
+    var answerTime: String? = null
 
     /**
      * Value question must have
@@ -315,12 +314,12 @@ open class QuestionnaireItemOption() : BackboneElement() {
     /**
      * Answer value
      */
-    var valueDate: FhirDate? = null
+    var valueDate: String? = null
 
     /**
      * Answer value
      */
-    var valueTime: FhirDate? = null
+    var valueTime: String? = null
 
     /**
      * Answer value

@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.110 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.793 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -33,7 +32,7 @@ open class Patient() : DomainResource() {
     /**
      * The date of birth for the individual
      */
-    var birthDate: FhirDate? = null
+    var birthDate: String? = null
 
     /**
      * Indicates if the individual is deceased or not
@@ -43,7 +42,7 @@ open class Patient() : DomainResource() {
     /**
      * Indicates if the individual is deceased or not
      */
-    var deceasedDateTime: FhirDate? = null
+    var deceasedDateTime: String? = null
 
     val address: List<Address> = mutableListOf<Address>()
 

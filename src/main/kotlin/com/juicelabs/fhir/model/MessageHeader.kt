@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.962 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.631 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -34,7 +33,7 @@ open class MessageHeader() : DomainResource() {
     /**
      * Time that the message was sent
      */
-    var timestamp: FhirDate? = null
+    var timestamp: String? = null
 
     /**
      * The source of the data entry

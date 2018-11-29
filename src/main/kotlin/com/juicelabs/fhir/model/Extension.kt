@@ -1,11 +1,9 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.764 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.450 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
-
-import com.juicelabs.fhir.base.FhirDate
 
 /**
  * Optional Extensions Element
@@ -36,12 +34,12 @@ open class Extension() : Element() {
     /**
      * Value of extension
      */
-    var valueDate: FhirDate? = null
+    var valueDate: String? = null
 
     /**
      * Value of extension
      */
-    var valueDateTime: FhirDate? = null
+    var valueDateTime: String? = null
 
     /**
      * Value of extension
@@ -56,7 +54,7 @@ open class Extension() : Element() {
     /**
      * Value of extension
      */
-    var valueInstant: FhirDate? = null
+    var valueInstant: String? = null
 
     /**
      * Value of extension
@@ -86,7 +84,7 @@ open class Extension() : Element() {
     /**
      * Value of extension
      */
-    var valueTime: FhirDate? = null
+    var valueTime: String? = null
 
     /**
      * Value of extension

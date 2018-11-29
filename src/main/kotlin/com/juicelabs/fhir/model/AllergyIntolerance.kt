@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.912 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.584 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -51,7 +50,7 @@ open class AllergyIntolerance() : DomainResource() {
     /**
      * When allergy or intolerance was identified
      */
-    var onsetDateTime: FhirDate? = null
+    var onsetDateTime: String? = null
 
     /**
      * When allergy or intolerance was identified
@@ -76,7 +75,7 @@ open class AllergyIntolerance() : DomainResource() {
     /**
      * Date record was believed accurate
      */
-    var assertedDate: FhirDate? = null
+    var assertedDate: String? = null
 
     /**
      * Who recorded the sensitivity
@@ -91,7 +90,7 @@ open class AllergyIntolerance() : DomainResource() {
     /**
      * Date(/time) of last known occurrence of a reaction
      */
-    var lastOccurrence: FhirDate? = null
+    var lastOccurrence: String? = null
 
     val note: List<Annotation> = mutableListOf<Annotation>()
 
@@ -119,7 +118,7 @@ open class AllergyIntoleranceReaction() : BackboneElement() {
     /**
      * Date(/time) when manifestations showed
      */
-    var onset: FhirDate? = null
+    var onset: String? = null
 
     /**
      * mild | moderate | severe (of event as a whole)

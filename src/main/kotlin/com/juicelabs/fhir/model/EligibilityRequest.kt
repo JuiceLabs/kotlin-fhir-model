@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.093 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.766 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -34,7 +33,7 @@ open class EligibilityRequest() : DomainResource() {
     /**
      * Estimated date or dates of Service
      */
-    var servicedDate: FhirDate? = null
+    var servicedDate: String? = null
 
     /**
      * Estimated date or dates of Service
@@ -44,7 +43,7 @@ open class EligibilityRequest() : DomainResource() {
     /**
      * Creation date
      */
-    var created: FhirDate? = null
+    var created: String? = null
 
     /**
      * Author

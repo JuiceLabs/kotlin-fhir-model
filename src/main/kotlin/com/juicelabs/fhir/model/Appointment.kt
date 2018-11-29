@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.978 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.640 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -54,12 +53,12 @@ open class Appointment() : DomainResource() {
     /**
      * When appointment is to take place
      */
-    var start: FhirDate? = null
+    var start: String? = null
 
     /**
      * When appointment is to conclude
      */
-    var end: FhirDate? = null
+    var end: String? = null
 
     /**
      * Can be less than start/end (e.g. estimate)
@@ -71,7 +70,7 @@ open class Appointment() : DomainResource() {
     /**
      * The date that this appointment was initially created
      */
-    var created: FhirDate? = null
+    var created: String? = null
 
     /**
      * Additional comments

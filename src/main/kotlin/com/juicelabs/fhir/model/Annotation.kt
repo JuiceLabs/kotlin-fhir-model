@@ -1,11 +1,9 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.893 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.572 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
-
-import com.juicelabs.fhir.base.FhirDate
 
 /**
  * Text node with attribution
@@ -26,7 +24,7 @@ open class Annotation() : Element() {
     /**
      * When the annotation was made
      */
-    var time: FhirDate? = null
+    var time: String? = null
 
     /**
      * The annotation  - text content

@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.112 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.798 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -39,7 +38,7 @@ open class Specimen() : DomainResource() {
     /**
      * The time when specimen was received for processing
      */
-    var receivedTime: FhirDate? = null
+    var receivedTime: String? = null
 
     val parent: List<Reference> = mutableListOf<Reference>()
 
@@ -71,7 +70,7 @@ open class SpecimenCollection() : BackboneElement() {
     /**
      * Collection time
      */
-    var collectedDateTime: FhirDate? = null
+    var collectedDateTime: String? = null
 
     /**
      * Collection time
@@ -115,7 +114,7 @@ open class SpecimenProcessing() : BackboneElement() {
     /**
      * Date and time of specimen processing
      */
-    var timeDateTime: FhirDate? = null
+    var timeDateTime: String? = null
 
     /**
      * Date and time of specimen processing

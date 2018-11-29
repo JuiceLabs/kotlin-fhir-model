@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.884 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.555 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -46,7 +45,7 @@ open class ChargeItem() : DomainResource() {
     /**
      * When the charged service was applied
      */
-    var occurrenceDateTime: FhirDate? = null
+    var occurrenceDateTime: String? = null
 
     /**
      * When the charged service was applied
@@ -100,7 +99,7 @@ open class ChargeItem() : DomainResource() {
     /**
      * Date the charge item was entered
      */
-    var enteredDate: FhirDate? = null
+    var enteredDate: String? = null
 
     val reason: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 

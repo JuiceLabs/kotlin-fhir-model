@@ -1,11 +1,10 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.728 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.409 
 //
 //   2018, JuiceLab, LLC
 //  
 package com.juicelabs.fhir.model
 
-import com.juicelabs.fhir.base.FhirDate
 import kotlin.collections.List
 
 /**
@@ -41,7 +40,7 @@ open class ExplanationOfBenefit() : DomainResource() {
     /**
      * Creation date
      */
-    var created: FhirDate? = null
+    var created: String? = null
 
     /**
      * Author
@@ -250,7 +249,7 @@ open class ExplanationOfBenefitInformation() : BackboneElement() {
     /**
      * When it occurred
      */
-    var timingDate: FhirDate? = null
+    var timingDate: String? = null
 
     /**
      * When it occurred
@@ -358,7 +357,7 @@ open class ExplanationOfBenefitProcedure() : BackboneElement() {
     /**
      * When the procedure was performed
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Patient's list of procedures performed
@@ -394,7 +393,7 @@ open class ExplanationOfBenefitAccident() : BackboneElement() {
     /**
      * When the accident occurred
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * The nature of the accident
@@ -453,7 +452,7 @@ open class ExplanationOfBenefitItem() : BackboneElement() {
     /**
      * Date or dates of Service
      */
-    var servicedDate: FhirDate? = null
+    var servicedDate: String? = null
 
     /**
      * Date or dates of Service
@@ -768,7 +767,7 @@ open class ExplanationOfBenefitPayment() : BackboneElement() {
     /**
      * Expected date of Payment
      */
-    var date: FhirDate? = null
+    var date: String? = null
 
     /**
      * Payable amount after adjustment
