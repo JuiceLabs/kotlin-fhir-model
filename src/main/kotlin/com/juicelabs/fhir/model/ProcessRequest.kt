@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.738 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.801 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -87,5 +87,5 @@ open class ProcessRequestItem() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequenceLinkId: Int = 0
+    var sequenceLinkId: Int? = null
 }

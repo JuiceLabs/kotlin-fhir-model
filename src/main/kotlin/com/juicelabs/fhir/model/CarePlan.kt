@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.635 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.689 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -26,12 +26,12 @@ open class CarePlan() : DomainResource() {
     /**
      * draft | active | suspended | completed | entered-in-error | cancelled | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * proposal | plan | order | option
      */
-    var intent: String = ""
+    var intent: String? = null
 
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -128,7 +128,7 @@ open class CarePlanActivityDetail() : BackboneElement() {
     /**
      * not-started | scheduled | in-progress | on-hold | completed | cancelled | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Reason for current status

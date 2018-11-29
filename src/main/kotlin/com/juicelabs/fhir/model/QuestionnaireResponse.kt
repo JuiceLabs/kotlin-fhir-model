@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.889 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.029 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -31,7 +31,7 @@ open class QuestionnaireResponse() : DomainResource() {
     /**
      * in-progress | completed | amended | entered-in-error | stopped
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * The subject of the questions
@@ -70,7 +70,7 @@ open class QuestionnaireResponseItem() : BackboneElement() {
     /**
      * Pointer to specific item from Questionnaire
      */
-    var linkId: String = ""
+    var linkId: String? = null
 
     /**
      * ElementDefinition - details for the item

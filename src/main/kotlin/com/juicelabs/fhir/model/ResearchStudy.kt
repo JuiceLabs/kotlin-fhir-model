@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.831 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.930 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -27,7 +27,7 @@ open class ResearchStudy() : DomainResource() {
     /**
      * draft | in-progress | suspended | stopped | completed | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -84,7 +84,7 @@ open class ResearchStudyArm() : BackboneElement() {
     /**
      * Label for study arm
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Categorization of study arm

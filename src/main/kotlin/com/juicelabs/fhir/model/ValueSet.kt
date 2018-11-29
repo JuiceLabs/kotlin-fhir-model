@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.877 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.011 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -39,7 +39,7 @@ open class ValueSet() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -152,7 +152,7 @@ open class ValueSetComposeIncludeConcept() : BackboneElement() {
     /**
      * Code or expression from system
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Text to display for this code for this value set in this valueset
@@ -182,7 +182,7 @@ open class ValueSetComposeIncludeConceptDesignation() : BackboneElement() {
     /**
      * The text value for this designation
      */
-    var value: String = ""
+    var value: String? = null
 }
 
 /**
@@ -194,17 +194,17 @@ open class ValueSetComposeIncludeFilter() : BackboneElement() {
     /**
      * A property defined by the code system
      */
-    var property: String = ""
+    var property: String? = null
 
     /**
      * = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
      */
-    var op: String = ""
+    var op: String? = null
 
     /**
      * Code from the system, or regex criteria, or boolean value for exists
      */
-    var value: String = ""
+    var value: String? = null
 }
 
 /**
@@ -216,12 +216,12 @@ open class ValueSetExpansion() : BackboneElement() {
     /**
      * Uniquely identifies this expansion
      */
-    var identifier: String = ""
+    var identifier: String? = null
 
     /**
      * Time ValueSet expansion happened
      */
-    var timestamp: FhirDate = FhirDate.now()
+    var timestamp: FhirDate? = null
 
     /**
      * Total number of codes in the expansion
@@ -247,7 +247,7 @@ open class ValueSetExpansionParameter() : BackboneElement() {
     /**
      * Name as assigned by the server
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Value of the named parameter

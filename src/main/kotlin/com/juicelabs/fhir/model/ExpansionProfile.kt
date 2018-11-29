@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.749 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.807 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -37,7 +37,7 @@ open class ExpansionProfile() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -128,17 +128,17 @@ open class ExpansionProfileFixedVersion() : BackboneElement() {
     /**
      * System to have its version fixed
      */
-    var system: String = ""
+    var system: String? = null
 
     /**
      * Specific version of the code system referred to
      */
-    var version: String = ""
+    var version: String? = null
 
     /**
      * default | check | override
      */
-    var mode: String = ""
+    var mode: String? = null
 }
 
 /**
@@ -150,7 +150,7 @@ open class ExpansionProfileExcludedSystem() : BackboneElement() {
     /**
      * The specific code system to be excluded
      */
-    var system: String = ""
+    var system: String? = null
 
     /**
      * Specific version of the code system referred to

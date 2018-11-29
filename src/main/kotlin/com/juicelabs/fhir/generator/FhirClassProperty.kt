@@ -41,7 +41,6 @@ class FhirClassProperty(element: FhirStructureDefinitionElement, type: FhirEleme
         } else {
             oneOfMany = null
         }
-        min = element.min ?: 1
         max = element.max
 
         origName = n
@@ -59,6 +58,12 @@ class FhirClassProperty(element: FhirStructureDefinitionElement, type: FhirEleme
         // nonOptional = // todo
         referenceToNames = if (type.profile != null) mutableListOf(spec.classNameForProfile(type.profile.asString)) else mutableListOf()
         representation = element.definition.representation
+
+        if (Settings.primitives.contains(className)) {
+            min = 0
+        } else {
+            min = element.min ?: 1
+        }
     }
 
     fun isList(): Boolean {

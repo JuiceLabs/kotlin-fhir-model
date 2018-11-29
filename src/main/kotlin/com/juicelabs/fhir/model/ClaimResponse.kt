@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.720 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.780 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -118,7 +118,7 @@ open class ClaimResponseItem() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequenceLinkId: Int = 0
+    var sequenceLinkId: Int? = null
 
     val noteNumber: List<Int> = mutableListOf<Int>()
 
@@ -164,7 +164,7 @@ open class ClaimResponseItemDetail() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequenceLinkId: Int = 0
+    var sequenceLinkId: Int? = null
 
     val noteNumber: List<Int> = mutableListOf<Int>()
 
@@ -184,7 +184,7 @@ open class ClaimResponseItemDetailSubDetail() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequenceLinkId: Int = 0
+    var sequenceLinkId: Int? = null
 
     val noteNumber: List<Int> = mutableListOf<Int>()
 
@@ -364,12 +364,12 @@ open class ClaimResponseInsurance() : BackboneElement() {
     /**
      * Service instance identifier
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Is the focal Coverage
      */
-    var focal: Boolean = false
+    var focal: Boolean? = null
 
     /**
      * Insurance information

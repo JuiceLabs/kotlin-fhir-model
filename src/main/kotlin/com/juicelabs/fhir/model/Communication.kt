@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.874 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.006 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -25,7 +25,7 @@ open class Communication() : DomainResource() {
     /**
      * preparation | in-progress | suspended | aborted | completed | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Communication did not occur
@@ -88,7 +88,7 @@ open class CommunicationPayload() : BackboneElement() {
     /**
      * Message part content
      */
-    var contentString: String = ""
+    var contentString: String? = null
 
     /**
      * Message part content

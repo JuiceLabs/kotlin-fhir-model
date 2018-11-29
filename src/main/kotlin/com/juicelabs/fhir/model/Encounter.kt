@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.976 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.139 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -19,7 +19,7 @@ open class Encounter() : DomainResource() {
     /**
      * planned | arrived | triaged | in-progress | onleave | finished | cancelled +
      */
-    var status: String = ""
+    var status: String? = null
 
     val statusHistory: List<EncounterStatusHistory> = mutableListOf<EncounterStatusHistory>()
 
@@ -97,7 +97,7 @@ open class EncounterStatusHistory() : BackboneElement() {
     /**
      * planned | arrived | triaged | in-progress | onleave | finished | cancelled +
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * The time that the episode was in the specified status

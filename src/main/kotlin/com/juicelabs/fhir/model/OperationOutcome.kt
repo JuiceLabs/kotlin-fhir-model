@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.890 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.031 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -25,12 +25,12 @@ open class OperationOutcomeIssue() : BackboneElement() {
     /**
      * fatal | error | warning | information
      */
-    var severity: String = ""
+    var severity: String? = null
 
     /**
      * Error or warning code
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Additional details about the error

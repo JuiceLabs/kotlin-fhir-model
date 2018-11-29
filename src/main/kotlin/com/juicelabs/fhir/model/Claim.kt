@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.868 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.996 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -191,7 +191,7 @@ open class ClaimCareTeam() : BackboneElement() {
     /**
      * Number to covey order of careTeam
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Provider individual or organization
@@ -223,7 +223,7 @@ open class ClaimInformation() : BackboneElement() {
     /**
      * Information instance identifier
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * General class of information
@@ -280,7 +280,7 @@ open class ClaimDiagnosis() : BackboneElement() {
     /**
      * Number to covey order of diagnosis
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Patient's diagnosis
@@ -309,7 +309,7 @@ open class ClaimProcedure() : BackboneElement() {
     /**
      * Procedure sequence for reference
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * When the procedure was performed
@@ -336,12 +336,12 @@ open class ClaimInsurance() : BackboneElement() {
     /**
      * Service instance identifier
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Is the focal Coverage
      */
-    var focal: Boolean = false
+    var focal: Boolean? = null
 
     /**
      * Insurance information
@@ -372,7 +372,7 @@ open class ClaimAccident() : BackboneElement() {
      * see information codes
      * see information codes
      */
-    var date: FhirDate = FhirDate.now()
+    var date: FhirDate? = null
 
     /**
      * The nature of the accident
@@ -399,7 +399,7 @@ open class ClaimItem() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     val careTeamLinkId: List<Int> = mutableListOf<Int>()
 
@@ -496,7 +496,7 @@ open class ClaimItemDetail() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Revenue or cost center code
@@ -551,7 +551,7 @@ open class ClaimItemDetailSubDetail() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Revenue or cost center code

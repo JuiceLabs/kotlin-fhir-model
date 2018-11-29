@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.979 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.143 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,7 +17,7 @@ open class ElementDefinition() : Element() {
     /**
      * Path of the element in the hierarchy of elements
      */
-    var path: String = ""
+    var path: String? = null
 
     val representation: List<String> = mutableListOf<String>()
 
@@ -808,7 +808,7 @@ open class ElementDefinitionSlicing() : Element() {
     /**
      * closed | open | openAtEnd
      */
-    var rules: String = ""
+    var rules: String? = null
 }
 
 /**
@@ -820,12 +820,12 @@ open class ElementDefinitionSlicingDiscriminator() : Element() {
     /**
      * value | exists | pattern | type | profile
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Path to element value
      */
-    var path: String = ""
+    var path: String? = null
 }
 
 /**
@@ -837,17 +837,17 @@ open class ElementDefinitionBase() : Element() {
     /**
      * Path that identifies the base element
      */
-    var path: String = ""
+    var path: String? = null
 
     /**
      * Min cardinality of the base element
      */
-    var min: Int = 0
+    var min: Int? = null
 
     /**
      * Max cardinality of the base element
      */
-    var max: String = ""
+    var max: String? = null
 }
 
 /**
@@ -859,7 +859,7 @@ open class ElementDefinitionType() : Element() {
     /**
      * Data type or Resource (reference to definition)
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Profile (StructureDefinition) to apply (or IG)
@@ -888,87 +888,87 @@ open class ElementDefinitionExample() : Element() {
     /**
      * Describes the purpose of this example
      */
-    var label: String = ""
+    var label: String? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueBase64Binary: String = ""
+    var valueBase64Binary: String? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueBoolean: Boolean = false
+    var valueBoolean: Boolean? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueCode: String = ""
+    var valueCode: String? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueDate: FhirDate = FhirDate.now()
+    var valueDate: FhirDate? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueDateTime: FhirDate = FhirDate.now()
+    var valueDateTime: FhirDate? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueDecimal: Float = 0.0f
+    var valueDecimal: Float? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueId: String = ""
+    var valueId: String? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueInstant: FhirDate = FhirDate.now()
+    var valueInstant: FhirDate? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueInteger: Int = 0
+    var valueInteger: Int? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueMarkdown: String = ""
+    var valueMarkdown: String? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueOid: String = ""
+    var valueOid: String? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valuePositiveInt: Int = 0
+    var valuePositiveInt: Int? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueString: String = ""
+    var valueString: String? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueTime: FhirDate = FhirDate.now()
+    var valueTime: FhirDate? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueUnsignedInt: Int = 0
+    var valueUnsignedInt: Int? = null
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueUri: String = ""
+    var valueUri: String? = null
 
     /**
      * Value of Example (one of allowed types)
@@ -1090,7 +1090,7 @@ open class ElementDefinitionConstraint() : Element() {
     /**
      * Target of 'condition' reference above
      */
-    var key: String = ""
+    var key: String? = null
 
     /**
      * Why this constraint is necessary or appropriate
@@ -1100,17 +1100,17 @@ open class ElementDefinitionConstraint() : Element() {
     /**
      * error | warning
      */
-    var severity: String = ""
+    var severity: String? = null
 
     /**
      * Human description of constraint
      */
-    var human: String = ""
+    var human: String? = null
 
     /**
      * FHIRPath expression of constraint
      */
-    var expression: String = ""
+    var expression: String? = null
 
     /**
      * XPath expression of constraint
@@ -1132,7 +1132,7 @@ open class ElementDefinitionBinding() : Element() {
     /**
      * required | extensible | preferred | example
      */
-    var strength: String = ""
+    var strength: String? = null
 
     /**
      * Human explanation of the value set
@@ -1159,7 +1159,7 @@ open class ElementDefinitionMapping() : Element() {
     /**
      * Reference to mapping declaration
      */
-    var identity: String = ""
+    var identity: String? = null
 
     /**
      * Computable language of mapping
@@ -1169,7 +1169,7 @@ open class ElementDefinitionMapping() : Element() {
     /**
      * Details of the mapping
      */
-    var map: String = ""
+    var map: String? = null
 
     /**
      * Comments about the mapping or its use

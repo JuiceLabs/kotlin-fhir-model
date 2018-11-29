@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.950 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.099 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -16,12 +16,12 @@ open class Contributor() : Element() {
     /**
      * author | editor | reviewer | endorser
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Who contributed the content
      */
-    var name: String = ""
+    var name: String? = null
 
     val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 }

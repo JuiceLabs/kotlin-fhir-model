@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.707 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.756 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,7 +17,7 @@ open class ImagingStudy() : DomainResource() {
     /**
      * Formal DICOM identifier for the study
      */
-    var uid: String = ""
+    var uid: String? = null
 
     /**
      * Related workflow identifier ("Accession Number")
@@ -95,7 +95,7 @@ open class ImagingStudySeries() : BackboneElement() {
     /**
      * Formal DICOM identifier for this series
      */
-    var uid: String = ""
+    var uid: String? = null
 
     /**
      * Numeric identifier of this series
@@ -153,7 +153,7 @@ open class ImagingStudySeriesInstance() : BackboneElement() {
     /**
      * Formal DICOM identifier for this instance
      */
-    var uid: String = ""
+    var uid: String? = null
 
     /**
      * The number of this instance in the series
@@ -163,7 +163,7 @@ open class ImagingStudySeriesInstance() : BackboneElement() {
     /**
      * DICOM class type
      */
-    var sopClass: String = ""
+    var sopClass: String? = null
 
     /**
      * Description of instance

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.676 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.728 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -235,7 +235,7 @@ open class ExplanationOfBenefitInformation() : BackboneElement() {
     /**
      * Information instance identifier
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * General class of information
@@ -292,7 +292,7 @@ open class ExplanationOfBenefitCareTeam() : BackboneElement() {
     /**
      * Number to covey order of careteam
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Member of the Care Team
@@ -324,7 +324,7 @@ open class ExplanationOfBenefitDiagnosis() : BackboneElement() {
     /**
      * Number to covey order of diagnosis
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Patient's diagnosis
@@ -353,7 +353,7 @@ open class ExplanationOfBenefitProcedure() : BackboneElement() {
     /**
      * Procedure sequence for reference
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * When the procedure was performed
@@ -421,7 +421,7 @@ open class ExplanationOfBenefitItem() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     val careTeamLinkId: List<Int> = mutableListOf<Int>()
 
@@ -551,7 +551,7 @@ open class ExplanationOfBenefitItemDetail() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Group or type of product or service
@@ -617,7 +617,7 @@ open class ExplanationOfBenefitItemDetailSubDetail() : BackboneElement() {
     /**
      * Service instance
      */
-    var sequence: Int = 0
+    var sequence: Int? = null
 
     /**
      * Type of product or service

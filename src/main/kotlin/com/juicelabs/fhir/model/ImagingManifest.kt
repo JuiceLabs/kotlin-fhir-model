@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.926 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.071 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -51,7 +51,7 @@ open class ImagingManifestStudy() : BackboneElement() {
     /**
      * Study instance UID
      */
-    var uid: String = ""
+    var uid: String? = null
 
     /**
      * Reference to ImagingStudy
@@ -72,7 +72,7 @@ open class ImagingManifestStudySeries() : BackboneElement() {
     /**
      * Series instance UID
      */
-    var uid: String = ""
+    var uid: String? = null
 
     val endpoint: List<Reference> = mutableListOf<Reference>()
 
@@ -89,10 +89,10 @@ open class ImagingManifestStudySeriesInstance() : BackboneElement() {
     /**
      * SOP class UID of instance
      */
-    var sopClass: String = ""
+    var sopClass: String? = null
 
     /**
      * Selected instance UID
      */
-    var uid: String = ""
+    var uid: String? = null
 }

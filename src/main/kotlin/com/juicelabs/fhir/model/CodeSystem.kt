@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.884 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.021 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -42,7 +42,7 @@ open class CodeSystem() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -108,7 +108,7 @@ open class CodeSystem() : DomainResource() {
     /**
      * not-present | example | fragment | complete
      */
-    var content: String = ""
+    var content: String? = null
 
     /**
      * Total concepts in the code system
@@ -131,7 +131,7 @@ open class CodeSystemFilter() : BackboneElement() {
     /**
      * Code that identifies the filter
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * How or why the filter is used
@@ -143,7 +143,7 @@ open class CodeSystemFilter() : BackboneElement() {
     /**
      * What to use for the value
      */
-    var value: String = ""
+    var value: String? = null
 }
 
 /**
@@ -155,7 +155,7 @@ open class CodeSystemProperty() : BackboneElement() {
     /**
      * Identifies the property on the concepts, and when referred to in operations
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Formal identifier for the property
@@ -170,7 +170,7 @@ open class CodeSystemProperty() : BackboneElement() {
     /**
      * code | Coding | string | integer | boolean | dateTime
      */
-    var type: String = ""
+    var type: String? = null
 }
 
 /**
@@ -182,7 +182,7 @@ open class CodeSystemConcept() : BackboneElement() {
     /**
      * Code that identifies concept
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Text to display to the user
@@ -221,7 +221,7 @@ open class CodeSystemConceptDesignation() : BackboneElement() {
     /**
      * The text value for this designation
      */
-    var value: String = ""
+    var value: String? = null
 }
 
 /**
@@ -233,12 +233,12 @@ open class CodeSystemConceptProperty() : BackboneElement() {
     /**
      * Reference to CodeSystem.property.code
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Value of the property for this concept
      */
-    var valueCode: String = ""
+    var valueCode: String? = null
 
     /**
      * Value of the property for this concept
@@ -248,20 +248,20 @@ open class CodeSystemConceptProperty() : BackboneElement() {
     /**
      * Value of the property for this concept
      */
-    var valueString: String = ""
+    var valueString: String? = null
 
     /**
      * Value of the property for this concept
      */
-    var valueInteger: Int = 0
+    var valueInteger: Int? = null
 
     /**
      * Value of the property for this concept
      */
-    var valueBoolean: Boolean = false
+    var valueBoolean: Boolean? = null
 
     /**
      * Value of the property for this concept
      */
-    var valueDateTime: FhirDate = FhirDate.now()
+    var valueDateTime: FhirDate? = null
 }

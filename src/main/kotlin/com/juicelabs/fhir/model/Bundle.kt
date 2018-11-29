@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.809 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.891 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -22,7 +22,7 @@ open class Bundle() : Resource() {
     /**
      * document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * If search, the total number of matches
@@ -48,12 +48,12 @@ open class BundleLink() : BackboneElement() {
     /**
      * See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
      */
-    var relation: String = ""
+    var relation: String? = null
 
     /**
      * Reference details for the link
      */
-    var url: String = ""
+    var url: String? = null
 }
 
 /**
@@ -116,12 +116,12 @@ open class BundleEntryRequest() : BackboneElement() {
     /**
      * GET | POST | PUT | DELETE
      */
-    var method: String = ""
+    var method: String? = null
 
     /**
      * URL for HTTP equivalent of this entry
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * For managing cache currency
@@ -153,7 +153,7 @@ open class BundleEntryResponse() : BackboneElement() {
     /**
      * Status response code (text optional)
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * The location, if the operation returns a location

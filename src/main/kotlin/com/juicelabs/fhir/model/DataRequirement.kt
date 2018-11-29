@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.782 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.836 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,7 +17,7 @@ open class DataRequirement() : Element() {
     /**
      * The type of the required data
      */
-    var type: String = ""
+    var type: String? = null
 
     val profile: List<String> = mutableListOf<String>()
 
@@ -37,7 +37,7 @@ open class DataRequirementCodeFilter() : Element() {
     /**
      * The code-valued attribute of the filter
      */
-    var path: String = ""
+    var path: String? = null
 
     /**
      * Valueset for the filter
@@ -65,7 +65,7 @@ open class DataRequirementDateFilter() : Element() {
     /**
      * The date-valued attribute of the filter
      */
-    var path: String = ""
+    var path: String? = null
 
     /**
      * The value of the filter, as a Period, DateTime, or Duration value

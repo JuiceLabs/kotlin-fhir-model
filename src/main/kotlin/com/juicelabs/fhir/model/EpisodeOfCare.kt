@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.937 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.083 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -18,7 +18,7 @@ open class EpisodeOfCare() : DomainResource() {
     /**
      * planned | waitlist | active | onhold | finished | cancelled | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     val statusHistory: List<EpisodeOfCareStatusHistory> =
             mutableListOf<EpisodeOfCareStatusHistory>()
@@ -63,7 +63,7 @@ open class EpisodeOfCareStatusHistory() : BackboneElement() {
     /**
      * planned | waitlist | active | onhold | finished | cancelled | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Duration the EpisodeOfCare was in the specified status

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.948 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.097 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -38,17 +38,17 @@ open class Slot() : DomainResource() {
     /**
      * busy | free | busy-unavailable | busy-tentative | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Date/Time that the slot is to begin
      */
-    var start: FhirDate = FhirDate.now()
+    var start: FhirDate? = null
 
     /**
      * Date/Time that the slot is to conclude
      */
-    var end: FhirDate = FhirDate.now()
+    var end: FhirDate? = null
 
     /**
      * This slot has already been overbooked, appointments are unlikely to be accepted for this time

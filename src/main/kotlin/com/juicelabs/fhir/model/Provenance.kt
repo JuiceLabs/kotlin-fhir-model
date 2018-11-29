@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.952 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.102 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -24,7 +24,7 @@ open class Provenance() : DomainResource() {
     /**
      * When the activity was recorded / updated
      */
-    var recorded: FhirDate = FhirDate.now()
+    var recorded: FhirDate? = null
 
     val policy: List<String> = mutableListOf<String>()
 
@@ -58,7 +58,7 @@ open class ProvenanceAgent() : BackboneElement() {
     /**
      * Who participated
      */
-    var whoUri: String = ""
+    var whoUri: String? = null
 
     /**
      * Who participated
@@ -90,12 +90,12 @@ open class ProvenanceEntity() : BackboneElement() {
     /**
      * derivation | revision | quotation | source | removal
      */
-    var role: String = ""
+    var role: String? = null
 
     /**
      * Identity of entity
      */
-    var whatUri: String = ""
+    var whatUri: String? = null
 
     /**
      * Identity of entity

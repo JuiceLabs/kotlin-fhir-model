@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.663 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.710 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -19,7 +19,7 @@ open class ResearchSubject() : DomainResource() {
     /**
      * candidate | enrolled | active | suspended | withdrawn | completed
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Start and end of participation

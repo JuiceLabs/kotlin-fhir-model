@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.824 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.923 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -34,7 +34,7 @@ open class NutritionOrder() : DomainResource() {
     /**
      * Date and time the nutrition order was requested
      */
-    var dateTime: FhirDate = FhirDate.now()
+    var dateTime: FhirDate? = null
 
     /**
      * Who ordered the diet, formula or nutritional supplement

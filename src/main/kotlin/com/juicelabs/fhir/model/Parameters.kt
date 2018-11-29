@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.929 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.073 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -26,7 +26,7 @@ open class ParametersParameter() : BackboneElement() {
     /**
      * Name from the definition
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * If parameter is a data type

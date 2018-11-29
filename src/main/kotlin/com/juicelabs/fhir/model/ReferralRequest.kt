@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.583 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.629 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -30,12 +30,12 @@ open class ReferralRequest() : DomainResource() {
     /**
      * draft | active | suspended | cancelled | completed | entered-in-error | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * proposal | plan | order
      */
-    var intent: String = ""
+    var intent: String? = null
 
     /**
      * Referral/Transition of care request type

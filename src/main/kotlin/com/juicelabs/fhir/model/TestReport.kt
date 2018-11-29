@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.759 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.826 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -28,7 +28,7 @@ open class TestReport() : DomainResource() {
     /**
      * completed | in-progress | waiting | stopped | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Reference to the  version-specific TestScript that was executed to produce this TestReport
@@ -38,7 +38,7 @@ open class TestReport() : DomainResource() {
     /**
      * pass | fail | pending
      */
-    var result: String = ""
+    var result: String? = null
 
     /**
      * The final score (percentage of tests passed) resulting from the execution of the TestScript
@@ -79,12 +79,12 @@ open class TestReportParticipant() : BackboneElement() {
     /**
      * test-engine | client | server
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * The uri of the participant. An absolute URL is preferred
      */
-    var uri: String = ""
+    var uri: String? = null
 
     /**
      * The display name of the participant
@@ -128,7 +128,7 @@ open class TestReportSetupActionOperation() : BackboneElement() {
     /**
      * pass | skip | fail | warning | error
      */
-    var result: String = ""
+    var result: String? = null
 
     /**
      * A message associated with the result
@@ -150,7 +150,7 @@ open class TestReportSetupActionAssert() : BackboneElement() {
     /**
      * pass | skip | fail | warning | error
      */
-    var result: String = ""
+    var result: String? = null
 
     /**
      * A message associated with the result

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.842 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.945 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -18,7 +18,7 @@ open class TestScript() : DomainResource() {
     /**
      * Logical URI to reference this test script (globally unique)
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * Additional identifier for the test script
@@ -33,7 +33,7 @@ open class TestScript() : DomainResource() {
     /**
      * Name for this test script (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Name for this test script (human friendly)
@@ -43,7 +43,7 @@ open class TestScript() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -122,7 +122,7 @@ open class TestScriptOrigin() : BackboneElement() {
     /**
      * The index of the abstract origin server starting at 1
      */
-    var index: Int = 0
+    var index: Int? = null
 
     /**
      * FHIR-Client | FHIR-SDC-FormFiller
@@ -139,7 +139,7 @@ open class TestScriptDestination() : BackboneElement() {
     /**
      * The index of the abstract destination server starting at 1
      */
-    var index: Int = 0
+    var index: Int? = null
 
     /**
      * FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-FormProcessor
@@ -168,7 +168,7 @@ open class TestScriptMetadataLink() : BackboneElement() {
     /**
      * URL to the specification
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * Short description
@@ -243,7 +243,7 @@ open class TestScriptVariable() : BackboneElement() {
     /**
      * Descriptive name for this variable
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Default, hard-coded, or user-defined value for this variable
@@ -304,7 +304,7 @@ open class TestScriptRuleParam() : BackboneElement() {
     /**
      * Parameter name matching external assert rule parameter
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Parameter value defined either explicitly or dynamically
@@ -335,7 +335,7 @@ open class TestScriptRulesetRule() : BackboneElement() {
     /**
      * Id of referenced rule within the ruleset
      */
-    var ruleId: String = ""
+    var ruleId: String? = null
 
     val param: List<TestScriptRulesetRuleParam> = mutableListOf<TestScriptRulesetRuleParam>()
 }
@@ -349,7 +349,7 @@ open class TestScriptRulesetRuleParam() : BackboneElement() {
     /**
      * Parameter name matching external assert ruleset rule parameter
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Parameter value defined either explicitly or dynamically
@@ -478,12 +478,12 @@ open class TestScriptSetupActionOperationRequestHeader() : BackboneElement() {
     /**
      * HTTP header field name
      */
-    var field: String = ""
+    var field: String? = null
 
     /**
      * HTTP headerfield value
      */
-    var value: String = ""
+    var value: String? = null
 }
 
 /**
@@ -622,7 +622,7 @@ open class TestScriptSetupActionAssertRule() : BackboneElement() {
     /**
      * Id of the TestScript.rule
      */
-    var ruleId: String = ""
+    var ruleId: String? = null
 
     val param: List<TestScriptSetupActionAssertRuleParam> =
             mutableListOf<TestScriptSetupActionAssertRuleParam>()
@@ -637,12 +637,12 @@ open class TestScriptSetupActionAssertRuleParam() : BackboneElement() {
     /**
      * Parameter name matching external assert rule parameter
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Parameter value defined either explicitly or dynamically
      */
-    var value: String = ""
+    var value: String? = null
 }
 
 /**
@@ -654,7 +654,7 @@ open class TestScriptSetupActionAssertRuleset() : BackboneElement() {
     /**
      * Id of the TestScript.ruleset
      */
-    var rulesetId: String = ""
+    var rulesetId: String? = null
 
     val rule: List<TestScriptSetupActionAssertRulesetRule> =
             mutableListOf<TestScriptSetupActionAssertRulesetRule>()
@@ -669,7 +669,7 @@ open class TestScriptSetupActionAssertRulesetRule() : BackboneElement() {
     /**
      * Id of referenced rule within the ruleset
      */
-    var ruleId: String = ""
+    var ruleId: String? = null
 
     val param: List<TestScriptSetupActionAssertRulesetRuleParam> =
             mutableListOf<TestScriptSetupActionAssertRulesetRuleParam>()
@@ -684,12 +684,12 @@ open class TestScriptSetupActionAssertRulesetRuleParam() : BackboneElement() {
     /**
      * Parameter name matching external assert ruleset rule parameter
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Parameter value defined either explicitly or dynamically
      */
-    var value: String = ""
+    var value: String? = null
 }
 
 /**

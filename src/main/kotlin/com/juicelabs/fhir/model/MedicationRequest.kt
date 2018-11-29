@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.967 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.125 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -33,7 +33,7 @@ open class MedicationRequest() : DomainResource() {
     /**
      * proposal | plan | order | instance-order
      */
-    var intent: String = ""
+    var intent: String? = null
 
     /**
      * Type of medication usage
@@ -168,7 +168,7 @@ open class MedicationRequestSubstitution() : BackboneElement() {
     /**
      * Whether substitution is allowed or not
      */
-    var allowed: Boolean = false
+    var allowed: Boolean? = null
 
     /**
      * Why should (not) substitution be made

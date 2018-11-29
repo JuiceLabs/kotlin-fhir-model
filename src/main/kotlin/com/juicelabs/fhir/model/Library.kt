@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.796 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.873 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -39,7 +39,7 @@ open class Library() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.599 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.647 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -141,7 +141,7 @@ open class MedicationDispenseSubstitution() : BackboneElement() {
     /**
      * Whether a substitution was or was not performed on the dispense
      */
-    var wasSubstituted: Boolean = false
+    var wasSubstituted: Boolean? = null
 
     /**
      * Code signifying whether a different drug was dispensed from what was prescribed

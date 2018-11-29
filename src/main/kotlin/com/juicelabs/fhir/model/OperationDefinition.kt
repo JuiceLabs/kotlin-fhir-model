@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.591 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.636 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -27,17 +27,17 @@ open class OperationDefinition() : DomainResource() {
     /**
      * Name for this operation definition (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * operation | query
      */
-    var kind: String = ""
+    var kind: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -78,7 +78,7 @@ open class OperationDefinition() : DomainResource() {
     /**
      * Name used to invoke the operation
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Additional information about use
@@ -95,17 +95,17 @@ open class OperationDefinition() : DomainResource() {
     /**
      * Invoke at the system level?
      */
-    var system: Boolean = false
+    var system: Boolean? = null
 
     /**
      * Invole at the type level?
      */
-    var type: Boolean = false
+    var type: Boolean? = null
 
     /**
      * Invoke on an instance?
      */
-    var instance: Boolean = false
+    var instance: Boolean? = null
 
     val parameter: List<OperationDefinitionParameter> =
             mutableListOf<OperationDefinitionParameter>()
@@ -122,22 +122,22 @@ open class OperationDefinitionParameter() : BackboneElement() {
     /**
      * Name in Parameters.parameter.name or in URL
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * in | out
      */
-    var use: String = ""
+    var use: String? = null
 
     /**
      * Minimum Cardinality
      */
-    var min: Int = 0
+    var min: Int? = null
 
     /**
      * Maximum Cardinality (a number or *)
      */
-    var max: String = ""
+    var max: String? = null
 
     /**
      * Description of meaning/use
@@ -176,12 +176,12 @@ open class OperationDefinitionParameterBinding() : BackboneElement() {
     /**
      * required | extensible | preferred | example
      */
-    var strength: String = ""
+    var strength: String? = null
 
     /**
      * Source of value set
      */
-    var valueSetUri: String = ""
+    var valueSetUri: String? = null
 
     /**
      * Source of value set

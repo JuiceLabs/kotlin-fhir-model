@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.821 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.919 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -21,7 +21,7 @@ open class Observation() : DomainResource() {
     /**
      * registered | preliminary | final | amended +
      */
-    var status: String = ""
+    var status: String? = null
 
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 

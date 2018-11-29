@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.973 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.135 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -32,7 +32,7 @@ open class RiskAssessment() : DomainResource() {
     /**
      * registered | preliminary | final | amended +
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Evaluation mechanism

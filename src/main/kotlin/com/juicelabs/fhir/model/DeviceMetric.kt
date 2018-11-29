@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.923 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.066 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -52,7 +52,7 @@ open class DeviceMetric() : DomainResource() {
     /**
      * measurement | setting | calculation | unspecified
      */
-    var category: String = ""
+    var category: String? = null
 
     /**
      * Describes the measurement repetition time

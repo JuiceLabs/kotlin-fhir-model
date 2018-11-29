@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.963 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.120 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -18,7 +18,7 @@ open class StructureMap() : DomainResource() {
     /**
      * Logical URI to reference this structure map (globally unique)
      */
-    var url: String = ""
+    var url: String? = null
 
     val identifier: List<Identifier> = mutableListOf<Identifier>()
 
@@ -30,7 +30,7 @@ open class StructureMap() : DomainResource() {
     /**
      * Name for this structure map (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Name for this structure map (human friendly)
@@ -40,7 +40,7 @@ open class StructureMap() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -95,12 +95,12 @@ open class StructureMapStructure() : BackboneElement() {
     /**
      * Canonical URL for structure definition
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * source | queried | target | produced
      */
-    var mode: String = ""
+    var mode: String? = null
 
     /**
      * Name for type in this map
@@ -122,7 +122,7 @@ open class StructureMapGroup() : BackboneElement() {
     /**
      * Human-readable label
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Another group that this group adds rules to
@@ -132,7 +132,7 @@ open class StructureMapGroup() : BackboneElement() {
     /**
      * none | types | type-and-types
      */
-    var typeMode: String = ""
+    var typeMode: String? = null
 
     /**
      * Additional description/explaination for group
@@ -153,7 +153,7 @@ open class StructureMapGroupInput() : BackboneElement() {
     /**
      * Name for this instance of data
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Type for this instance of data
@@ -163,7 +163,7 @@ open class StructureMapGroupInput() : BackboneElement() {
     /**
      * source | target
      */
-    var mode: String = ""
+    var mode: String? = null
 
     /**
      * Documentation for this instance of data
@@ -180,7 +180,7 @@ open class StructureMapGroupRule() : BackboneElement() {
     /**
      * Name of the rule for internal references
      */
-    var name: String = ""
+    var name: String? = null
 
     val source: List<StructureMapGroupRuleSource> = mutableListOf<StructureMapGroupRuleSource>()
 
@@ -206,7 +206,7 @@ open class StructureMapGroupRuleSource() : BackboneElement() {
     /**
      * Type or variable this rule applies to
      */
-    var context: String = ""
+    var context: String? = null
 
     /**
      * Specified minimum cardinality
@@ -490,27 +490,27 @@ open class StructureMapGroupRuleTargetParameter() : BackboneElement() {
     /**
      * Parameter value - variable or literal
      */
-    var valueId: String = ""
+    var valueId: String? = null
 
     /**
      * Parameter value - variable or literal
      */
-    var valueString: String = ""
+    var valueString: String? = null
 
     /**
      * Parameter value - variable or literal
      */
-    var valueBoolean: Boolean = false
+    var valueBoolean: Boolean? = null
 
     /**
      * Parameter value - variable or literal
      */
-    var valueInteger: Int = 0
+    var valueInteger: Int? = null
 
     /**
      * Parameter value - variable or literal
      */
-    var valueDecimal: Float = 0.0f
+    var valueDecimal: Float? = null
 }
 
 /**
@@ -522,7 +522,7 @@ open class StructureMapGroupRuleDependent() : BackboneElement() {
     /**
      * Name of a rule or group to apply
      */
-    var name: String = ""
+    var name: String? = null
 
     val variable: List<String> = mutableListOf<String>()
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.989 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.155 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -27,12 +27,12 @@ open class GraphDefinition() : DomainResource() {
     /**
      * Name for this graph definition (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -68,7 +68,7 @@ open class GraphDefinition() : DomainResource() {
     /**
      * Type of resource at which the graph starts
      */
-    var start: String = ""
+    var start: String? = null
 
     /**
      * Profile on base resource
@@ -87,7 +87,7 @@ open class GraphDefinitionLink() : BackboneElement() {
     /**
      * Path in the resource that contains the link
      */
-    var path: String = ""
+    var path: String? = null
 
     /**
      * Which slice (if profiled)
@@ -121,7 +121,7 @@ open class GraphDefinitionLinkTarget() : BackboneElement() {
     /**
      * Type of resource this link refers to
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Profile for the target resource
@@ -143,12 +143,12 @@ open class GraphDefinitionLinkTargetCompartment() : BackboneElement() {
     /**
      * Identifies the compartment
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * identical | matching | different | custom
      */
-    var rule: String = ""
+    var rule: String? = null
 
     /**
      * Custom rule, as a FHIRPath expression

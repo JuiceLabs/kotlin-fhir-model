@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.863 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.989 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -23,7 +23,7 @@ open class MedicationAdministration() : DomainResource() {
     /**
      * in-progress | on-hold | completed | entered-in-error | stopped | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Type of medication usage
@@ -55,7 +55,7 @@ open class MedicationAdministration() : DomainResource() {
     /**
      * Start and end time of administration
      */
-    var effectiveDateTime: FhirDate = FhirDate.now()
+    var effectiveDateTime: FhirDate? = null
 
     /**
      * Start and end time of administration

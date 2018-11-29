@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.784 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.840 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -21,7 +21,7 @@ open class FamilyMemberHistory() : DomainResource() {
     /**
      * partial | completed | entered-in-error | health-unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * The taking of a family member's history did not occur

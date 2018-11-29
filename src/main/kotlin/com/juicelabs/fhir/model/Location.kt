@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.990 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.158 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -86,12 +86,12 @@ open class LocationPosition() : BackboneElement() {
     /**
      * Longitude with WGS84 datum
      */
-    var longitude: Float = 0.0f
+    var longitude: Float? = null
 
     /**
      * Latitude with WGS84 datum
      */
-    var latitude: Float = 0.0f
+    var latitude: Float? = null
 
     /**
      * Altitude with WGS84 datum

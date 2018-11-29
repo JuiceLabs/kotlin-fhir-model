@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.618 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.668 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -41,7 +41,7 @@ open class AppointmentResponse() : DomainResource() {
     /**
      * accepted | declined | tentative | in-process | completed | needs-action | entered-in-error
      */
-    var participantStatus: String = ""
+    var participantStatus: String? = null
 
     /**
      * Additional comments

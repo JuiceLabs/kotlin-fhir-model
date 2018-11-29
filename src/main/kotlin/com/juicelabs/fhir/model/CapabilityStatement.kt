@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.931 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.076 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -37,7 +37,7 @@ open class CapabilityStatement() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -47,7 +47,7 @@ open class CapabilityStatement() : DomainResource() {
     /**
      * Date this was last changed
      */
-    var date: FhirDate = FhirDate.now()
+    var date: FhirDate? = null
 
     /**
      * Name of the publisher (organization or individual)
@@ -78,7 +78,7 @@ open class CapabilityStatement() : DomainResource() {
     /**
      * instance | capability | requirements
      */
-    var kind: String = ""
+    var kind: String? = null
 
     val instantiates: List<String> = mutableListOf<String>()
 
@@ -95,12 +95,12 @@ open class CapabilityStatement() : DomainResource() {
     /**
      * FHIR Version the system uses
      */
-    var fhirVersion: String = ""
+    var fhirVersion: String? = null
 
     /**
      * no | extensions | elements | both
      */
-    var acceptUnknown: String = ""
+    var acceptUnknown: String? = null
 
     val format: List<String> = mutableListOf<String>()
 
@@ -127,7 +127,7 @@ open class CapabilityStatementSoftware() : BackboneElement() {
     /**
      * A name the software is known by
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Version covered by this statement
@@ -149,7 +149,7 @@ open class CapabilityStatementImplementation() : BackboneElement() {
     /**
      * Describes this specific instance
      */
-    var description: String = ""
+    var description: String? = null
 
     /**
      * Base URL for the installation
@@ -166,7 +166,7 @@ open class CapabilityStatementRest() : BackboneElement() {
     /**
      * client | server
      */
-    var mode: String = ""
+    var mode: String? = null
 
     /**
      * General description of implementation
@@ -241,7 +241,7 @@ open class CapabilityStatementRestResource() : BackboneElement() {
     /**
      * A resource type that is supported
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Base System profile for all uses of resource
@@ -310,7 +310,7 @@ open class CapabilityStatementRestResourceInteraction() : BackboneElement() {
     /**
      * read | vread | update | patch | delete | history-instance | history-type | create | search-type
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Anything special about operation behavior
@@ -327,7 +327,7 @@ open class CapabilityStatementRestResourceSearchParam() : BackboneElement() {
     /**
      * Name of search parameter
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Source of definition for parameter
@@ -337,7 +337,7 @@ open class CapabilityStatementRestResourceSearchParam() : BackboneElement() {
     /**
      * number | date | string | token | reference | composite | quantity | uri
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Server-specific usage
@@ -354,7 +354,7 @@ open class CapabilityStatementRestInteraction() : BackboneElement() {
     /**
      * transaction | batch | search-system | history-system
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Anything special about operation behavior
@@ -371,7 +371,7 @@ open class CapabilityStatementRestOperation() : BackboneElement() {
     /**
      * Name by which the operation/query is invoked
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * The defined operation/query
@@ -419,7 +419,7 @@ open class CapabilityStatementMessagingEndpoint() : BackboneElement() {
     /**
      * Network address or identifier of the end-point
      */
-    var address: String = ""
+    var address: String? = null
 }
 
 /**
@@ -431,7 +431,7 @@ open class CapabilityStatementMessagingSupportedMessage() : BackboneElement() {
     /**
      * sender | receiver
      */
-    var mode: String = ""
+    var mode: String? = null
 
     /**
      * Message supported by this system
@@ -458,12 +458,12 @@ open class CapabilityStatementMessagingEvent() : BackboneElement() {
     /**
      * sender | receiver
      */
-    var mode: String = ""
+    var mode: String? = null
 
     /**
      * Resource that's focus of message
      */
-    var focus: String = ""
+    var focus: String? = null
 
     /**
      * Profile that describes the request
@@ -490,7 +490,7 @@ open class CapabilityStatementDocument() : BackboneElement() {
     /**
      * producer | consumer
      */
-    var mode: String = ""
+    var mode: String? = null
 
     /**
      * Description of document support

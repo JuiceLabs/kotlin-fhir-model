@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.756 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.822 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,7 +17,7 @@ open class Subscription() : DomainResource() {
     /**
      * requested | active | error | off
      */
-    var status: String = ""
+    var status: String? = null
 
     val contact: List<ContactPoint> = mutableListOf<ContactPoint>()
 
@@ -29,12 +29,12 @@ open class Subscription() : DomainResource() {
     /**
      * Description of why this subscription was created
      */
-    var reason: String = ""
+    var reason: String? = null
 
     /**
      * Rule for server push criteria
      */
-    var criteria: String = ""
+    var criteria: String? = null
 
     /**
      * Latest error note
@@ -58,7 +58,7 @@ open class SubscriptionChannel() : BackboneElement() {
     /**
      * rest-hook | websocket | email | sms | message
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Where the channel points to

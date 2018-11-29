@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.944 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.092 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -19,7 +19,7 @@ open class SampledData() : Element() {
     /**
      * Number of milliseconds between samples
      */
-    var period: Float = 0.0f
+    var period: Float? = null
 
     /**
      * Multiply data by this before adding to origin
@@ -39,10 +39,10 @@ open class SampledData() : Element() {
     /**
      * Number of sample points at each time point
      */
-    var dimensions: Int = 0
+    var dimensions: Int? = null
 
     /**
      * Decimal values with spaces, or "E" | "U" | "L"
      */
-    var data: String = ""
+    var data: String? = null
 }

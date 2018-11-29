@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.907 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.050 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -39,7 +39,7 @@ open class Task() : DomainResource() {
     /**
      * draft | requested | received | accepted | +
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Reason for current status
@@ -54,7 +54,7 @@ open class Task() : DomainResource() {
     /**
      * proposal | plan | order +
      */
-    var intent: String = ""
+    var intent: String? = null
 
     /**
      * normal | urgent | asap | stat
@@ -183,82 +183,82 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
-    var valueBase64Binary: String = ""
+    var valueBase64Binary: String? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueBoolean: Boolean = false
+    var valueBoolean: Boolean? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueCode: String = ""
+    var valueCode: String? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueDate: FhirDate = FhirDate.now()
+    var valueDate: FhirDate? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueDateTime: FhirDate = FhirDate.now()
+    var valueDateTime: FhirDate? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueDecimal: Float = 0.0f
+    var valueDecimal: Float? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueId: String = ""
+    var valueId: String? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueInstant: FhirDate = FhirDate.now()
+    var valueInstant: FhirDate? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueInteger: Int = 0
+    var valueInteger: Int? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueMarkdown: String = ""
+    var valueMarkdown: String? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueOid: String = ""
+    var valueOid: String? = null
 
     /**
      * Content to use in performing the task
      */
-    var valuePositiveInt: Int = 0
+    var valuePositiveInt: Int? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueString: String = ""
+    var valueString: String? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueTime: FhirDate = FhirDate.now()
+    var valueTime: FhirDate? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueUnsignedInt: Int = 0
+    var valueUnsignedInt: Int? = null
 
     /**
      * Content to use in performing the task
      */
-    var valueUri: String = ""
+    var valueUri: String? = null
 
     /**
      * Content to use in performing the task
@@ -385,82 +385,82 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
-    var valueBase64Binary: String = ""
+    var valueBase64Binary: String? = null
 
     /**
      * Result of output
      */
-    var valueBoolean: Boolean = false
+    var valueBoolean: Boolean? = null
 
     /**
      * Result of output
      */
-    var valueCode: String = ""
+    var valueCode: String? = null
 
     /**
      * Result of output
      */
-    var valueDate: FhirDate = FhirDate.now()
+    var valueDate: FhirDate? = null
 
     /**
      * Result of output
      */
-    var valueDateTime: FhirDate = FhirDate.now()
+    var valueDateTime: FhirDate? = null
 
     /**
      * Result of output
      */
-    var valueDecimal: Float = 0.0f
+    var valueDecimal: Float? = null
 
     /**
      * Result of output
      */
-    var valueId: String = ""
+    var valueId: String? = null
 
     /**
      * Result of output
      */
-    var valueInstant: FhirDate = FhirDate.now()
+    var valueInstant: FhirDate? = null
 
     /**
      * Result of output
      */
-    var valueInteger: Int = 0
+    var valueInteger: Int? = null
 
     /**
      * Result of output
      */
-    var valueMarkdown: String = ""
+    var valueMarkdown: String? = null
 
     /**
      * Result of output
      */
-    var valueOid: String = ""
+    var valueOid: String? = null
 
     /**
      * Result of output
      */
-    var valuePositiveInt: Int = 0
+    var valuePositiveInt: Int? = null
 
     /**
      * Result of output
      */
-    var valueString: String = ""
+    var valueString: String? = null
 
     /**
      * Result of output
      */
-    var valueTime: FhirDate = FhirDate.now()
+    var valueTime: FhirDate? = null
 
     /**
      * Result of output
      */
-    var valueUnsignedInt: Int = 0
+    var valueUnsignedInt: Int? = null
 
     /**
      * Result of output
      */
-    var valueUri: String = ""
+    var valueUri: String? = null
 
     /**
      * Result of output

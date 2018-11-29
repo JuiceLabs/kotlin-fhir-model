@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.779 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.831 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -30,12 +30,12 @@ open class RequestGroup() : DomainResource() {
     /**
      * draft | active | suspended | cancelled | completed | entered-in-error | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * proposal | plan | order
      */
-    var intent: String = ""
+    var intent: String? = null
 
     /**
      * routine | urgent | asap | stat
@@ -186,7 +186,7 @@ open class RequestGroupActionCondition() : BackboneElement() {
     /**
      * applicability | start | stop
      */
-    var kind: String = ""
+    var kind: String? = null
 
     /**
      * Natural language description of the condition
@@ -213,12 +213,12 @@ open class RequestGroupActionRelatedAction() : BackboneElement() {
     /**
      * What action this is related to
      */
-    var actionId: String = ""
+    var actionId: String? = null
 
     /**
      * before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
      */
-    var relationship: String = ""
+    var relationship: String? = null
 
     /**
      * Time offset for the relationship

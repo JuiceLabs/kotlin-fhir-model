@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.939 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.086 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -39,7 +39,7 @@ open class Questionnaire() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -108,7 +108,7 @@ open class QuestionnaireItem() : BackboneElement() {
     /**
      * Unique id for item in questionnaire
      */
-    var linkId: String = ""
+    var linkId: String? = null
 
     /**
      * ElementDefinition - details for the item
@@ -130,7 +130,7 @@ open class QuestionnaireItem() : BackboneElement() {
     /**
      * group | display | boolean | decimal | integer | date | dateTime +
      */
-    var type: String = ""
+    var type: String? = null
 
     val enableWhen: List<QuestionnaireItemEnableWhen> = mutableListOf<QuestionnaireItemEnableWhen>()
 
@@ -233,7 +233,7 @@ open class QuestionnaireItemEnableWhen() : BackboneElement() {
     /**
      * Question that determines whether item is enabled
      */
-    var question: String = ""
+    var question: String? = null
 
     /**
      * Enable when answered or not
@@ -310,22 +310,22 @@ open class QuestionnaireItemOption() : BackboneElement() {
     /**
      * Answer value
      */
-    var valueInteger: Int = 0
+    var valueInteger: Int? = null
 
     /**
      * Answer value
      */
-    var valueDate: FhirDate = FhirDate.now()
+    var valueDate: FhirDate? = null
 
     /**
      * Answer value
      */
-    var valueTime: FhirDate = FhirDate.now()
+    var valueTime: FhirDate? = null
 
     /**
      * Answer value
      */
-    var valueString: String = ""
+    var valueString: String? = null
 
     /**
      * Answer value

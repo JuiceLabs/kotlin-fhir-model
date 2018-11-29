@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.526 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.576 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -131,7 +131,7 @@ open class HealthcareServiceNotAvailable() : BackboneElement() {
     /**
      * Reason presented to the user explaining why time not available
      */
-    var description: String = ""
+    var description: String? = null
 
     /**
      * Service not availablefrom this date

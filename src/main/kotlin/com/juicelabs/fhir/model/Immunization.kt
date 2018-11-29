@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.913 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.058 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -19,12 +19,12 @@ open class Immunization() : DomainResource() {
     /**
      * completed | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Flag for whether immunization was given
      */
-    var notGiven: Boolean = false
+    var notGiven: Boolean? = null
 
     /**
      * Vaccine product administered
@@ -49,7 +49,7 @@ open class Immunization() : DomainResource() {
     /**
      * Indicates context the data was recorded in
      */
-    var primarySource: Boolean = false
+    var primarySource: Boolean? = null
 
     /**
      * Indicates the source of a secondarily reported record

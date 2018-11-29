@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.904 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.047 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -39,7 +39,7 @@ open class Measure() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -219,7 +219,7 @@ open class MeasureGroupPopulation() : BackboneElement() {
     /**
      * The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria
      */
-    var criteria: String = ""
+    var criteria: String? = null
 }
 
 /**

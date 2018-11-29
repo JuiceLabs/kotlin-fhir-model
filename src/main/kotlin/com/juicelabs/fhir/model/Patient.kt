@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.956 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.110 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -172,5 +172,5 @@ open class PatientLink() : BackboneElement() {
     /**
      * replaced-by | replaces | refer | seealso - type of link
      */
-    var type: String = ""
+    var type: String? = null
 }

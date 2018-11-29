@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.854 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.975 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -25,7 +25,7 @@ open class DocumentReference() : DomainResource() {
     /**
      * current | superseded | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * preliminary | final | appended | amended | entered-in-error
@@ -56,7 +56,7 @@ open class DocumentReference() : DomainResource() {
     /**
      * When this document reference was created
      */
-    var indexed: FhirDate = FhirDate.now()
+    var indexed: FhirDate? = null
 
     val author: List<Reference> = mutableListOf<Reference>()
 
@@ -96,7 +96,7 @@ open class DocumentReferenceRelatesTo() : BackboneElement() {
     /**
      * replaces | transforms | signs | appends
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Target of the relationship

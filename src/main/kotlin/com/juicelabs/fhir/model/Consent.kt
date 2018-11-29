@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.891 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.033 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -23,7 +23,7 @@ open class Consent() : DomainResource() {
     /**
      * draft | proposed | active | rejected | inactive | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -129,7 +129,7 @@ open class ConsentData() : BackboneElement() {
     /**
      * instance | related | dependents | authoredby
      */
-    var meaning: String = ""
+    var meaning: String? = null
 
     /**
      * The actual data reference
@@ -146,7 +146,7 @@ open class ConsentExcept() : BackboneElement() {
     /**
      * deny | permit
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Timeframe for this exception
@@ -200,7 +200,7 @@ open class ConsentExceptData() : BackboneElement() {
     /**
      * instance | related | dependents | authoredby
      */
-    var meaning: String = ""
+    var meaning: String? = null
 
     /**
      * The actual data reference

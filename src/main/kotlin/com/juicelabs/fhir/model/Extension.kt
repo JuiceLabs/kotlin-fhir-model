@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.713 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.764 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -16,7 +16,7 @@ open class Extension() : Element() {
     /**
      * identifies the meaning of the extension
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * Value of extension

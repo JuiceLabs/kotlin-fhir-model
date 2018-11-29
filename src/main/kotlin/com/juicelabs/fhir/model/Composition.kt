@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.799 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.878 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -23,7 +23,7 @@ open class Composition() : DomainResource() {
     /**
      * preliminary | final | amended | entered-in-error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Kind of composition (LOINC if possible)
@@ -49,14 +49,14 @@ open class Composition() : DomainResource() {
     /**
      * Composition editing time
      */
-    var date: FhirDate = FhirDate.now()
+    var date: FhirDate? = null
 
     val author: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Human Readable name/title
      */
-    var title: String = ""
+    var title: String? = null
 
     /**
      * As defined by affinity domain
@@ -105,7 +105,7 @@ open class CompositionRelatesTo() : BackboneElement() {
     /**
      * replaces | transforms | signs | appends
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Target of the relationship

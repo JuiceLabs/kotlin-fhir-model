@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.819 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.914 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,22 +17,22 @@ open class NamingSystem() : DomainResource() {
     /**
      * Name for this naming system (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * codesystem | identifier | root
      */
-    var kind: String = ""
+    var kind: String? = null
 
     /**
      * Date this was last changed
      */
-    var date: FhirDate = FhirDate.now()
+    var date: FhirDate? = null
 
     /**
      * Name of the publisher (organization or individual)
@@ -82,12 +82,12 @@ open class NamingSystemUniqueId() : BackboneElement() {
     /**
      * oid | uuid | uri | other
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * The unique identifier
      */
-    var value: String = ""
+    var value: String? = null
 
     /**
      * Is this the id that should be used for this type

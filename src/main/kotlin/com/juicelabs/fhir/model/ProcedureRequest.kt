@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.880 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.015 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -30,12 +30,12 @@ open class ProcedureRequest() : DomainResource() {
     /**
      * draft | active | suspended | completed | entered-in-error | cancelled
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * proposal | plan | order +
      */
-    var intent: String = ""
+    var intent: String? = null
 
     /**
      * routine | urgent | asap | stat

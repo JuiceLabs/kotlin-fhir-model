@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.838 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.940 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -29,7 +29,7 @@ open class DataElement() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -86,7 +86,7 @@ open class DataElementMapping() : BackboneElement() {
     /**
      * Internal id when this mapping is used
      */
-    var identity: String = ""
+    var identity: String? = null
 
     /**
      * Identifies what this mapping refers to

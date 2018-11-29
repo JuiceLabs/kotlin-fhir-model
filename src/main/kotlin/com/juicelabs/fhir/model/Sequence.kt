@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.899 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.041 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -23,7 +23,7 @@ open class Sequence() : DomainResource() {
     /**
      * Base number of coordinate system (0 for 0-based numbering or coordinates, inclusive start, exclusive end, 1 for 1-based numbering, inclusive start, inclusive end)
      */
-    var coordinateSystem: Int = 0
+    var coordinateSystem: Int? = null
 
     /**
      * Who and/or what this is about
@@ -113,12 +113,12 @@ open class SequenceReferenceSeq() : BackboneElement() {
     /**
      * Start position of the window on the  reference sequence
      */
-    var windowStart: Int = 0
+    var windowStart: Int? = null
 
     /**
      * End position of the window on the reference sequence
      */
-    var windowEnd: Int = 0
+    var windowEnd: Int? = null
 }
 
 /**
@@ -167,7 +167,7 @@ open class SequenceQuality() : BackboneElement() {
     /**
      * indel | snp | unknown
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Standard sequence for comparison
@@ -244,7 +244,7 @@ open class SequenceRepository() : BackboneElement() {
     /**
      * directlink | openapi | login | oauth | other
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * URI of the repository

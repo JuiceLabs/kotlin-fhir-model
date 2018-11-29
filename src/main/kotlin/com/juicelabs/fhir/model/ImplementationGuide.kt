@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.865 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.991 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -18,7 +18,7 @@ open class ImplementationGuide() : DomainResource() {
     /**
      * Logical URI to reference this implementation guide (globally unique)
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * Business version of the implementation guide
@@ -28,12 +28,12 @@ open class ImplementationGuide() : DomainResource() {
     /**
      * Name for this implementation guide (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -97,12 +97,12 @@ open class ImplementationGuideDependency() : BackboneElement() {
     /**
      * reference | inclusion
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Where to find dependency
      */
-    var uri: String = ""
+    var uri: String? = null
 }
 
 /**
@@ -114,7 +114,7 @@ open class ImplementationGuidePackage() : BackboneElement() {
     /**
      * Name used .page.package
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Human readable text describing the package
@@ -134,7 +134,7 @@ open class ImplementationGuidePackageResource() : BackboneElement() {
     /**
      * If not an example, has its normal meaning
      */
-    var example: Boolean = false
+    var example: Boolean? = null
 
     /**
      * Human Name for the resource
@@ -154,7 +154,7 @@ open class ImplementationGuidePackageResource() : BackboneElement() {
     /**
      * Location of the resource
      */
-    var sourceUri: String = ""
+    var sourceUri: String? = null
 
     /**
      * Location of the resource
@@ -176,7 +176,7 @@ open class ImplementationGuideGlobal() : BackboneElement() {
     /**
      * Type this profiles applies to
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Profile that all resources must conform to
@@ -193,17 +193,17 @@ open class ImplementationGuidePage() : BackboneElement() {
     /**
      * Where to find that page
      */
-    var source: String = ""
+    var source: String? = null
 
     /**
      * Short title shown for navigational assistance
      */
-    var title: String = ""
+    var title: String? = null
 
     /**
      * page | example | list | include | directory | dictionary | toc | resource
      */
-    var kind: String = ""
+    var kind: String? = null
 
     val type: List<String> = mutableListOf<String>()
 

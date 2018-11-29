@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.875 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.009 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -23,12 +23,12 @@ open class Group() : DomainResource() {
     /**
      * person | animal | practitioner | device | medication | substance
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Descriptive or actual
      */
-    var actual: Boolean = false
+    var actual: Boolean? = null
 
     /**
      * Kind of Group members
@@ -69,7 +69,7 @@ open class GroupCharacteristic() : BackboneElement() {
     /**
      * Value held by characteristic
      */
-    var valueBoolean: Boolean = false
+    var valueBoolean: Boolean? = null
 
     /**
      * Value held by characteristic
@@ -84,7 +84,7 @@ open class GroupCharacteristic() : BackboneElement() {
     /**
      * Group includes or excludes
      */
-    var exclude: Boolean = false
+    var exclude: Boolean? = null
 
     /**
      * Period over which characteristic is tested

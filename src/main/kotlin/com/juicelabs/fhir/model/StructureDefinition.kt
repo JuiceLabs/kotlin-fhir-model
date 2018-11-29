@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.497 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.539 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,7 +17,7 @@ open class StructureDefinition() : DomainResource() {
     /**
      * Logical URI to reference this structure definition (globally unique)
      */
-    var url: String = ""
+    var url: String? = null
 
     val identifier: List<Identifier> = mutableListOf<Identifier>()
 
@@ -29,7 +29,7 @@ open class StructureDefinition() : DomainResource() {
     /**
      * Name for this structure definition (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Name for this structure definition (human friendly)
@@ -39,7 +39,7 @@ open class StructureDefinition() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -89,12 +89,12 @@ open class StructureDefinition() : DomainResource() {
     /**
      * primitive-type | complex-type | resource | logical
      */
-    var kind: String = ""
+    var kind: String? = null
 
     /**
      * Whether the structure is abstract
      */
-    var abstract: Boolean = false
+    var abstract: Boolean? = null
 
     /**
      * resource | datatype | extension
@@ -108,7 +108,7 @@ open class StructureDefinition() : DomainResource() {
     /**
      * Type defined or constrained by this structure
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Definition that this type is constrained/specialized from
@@ -140,7 +140,7 @@ open class StructureDefinitionMapping() : BackboneElement() {
     /**
      * Internal id when this mapping is used
      */
-    var identity: String = ""
+    var identity: String? = null
 
     /**
      * Identifies what this mapping refers to

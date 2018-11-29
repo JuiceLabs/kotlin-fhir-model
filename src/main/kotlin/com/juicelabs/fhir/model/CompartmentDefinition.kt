@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.655 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.704 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,12 +17,12 @@ open class CompartmentDefinition() : DomainResource() {
     /**
      * Logical URI to reference this compartment definition (globally unique)
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * Name for this compartment definition (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * Name for this compartment definition (human friendly)
@@ -32,7 +32,7 @@ open class CompartmentDefinition() : DomainResource() {
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -68,12 +68,12 @@ open class CompartmentDefinition() : DomainResource() {
     /**
      * Patient | Encounter | RelatedPerson | Practitioner | Device
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Whether the search syntax is supported
      */
-    var search: Boolean = false
+    var search: Boolean? = null
 
     val resource: List<CompartmentDefinitionResource> =
             mutableListOf<CompartmentDefinitionResource>()
@@ -88,7 +88,7 @@ open class CompartmentDefinitionResource() : BackboneElement() {
     /**
      * Name of resource type
      */
-    var code: String = ""
+    var code: String? = null
 
     val param: List<String> = mutableListOf<String>()
 

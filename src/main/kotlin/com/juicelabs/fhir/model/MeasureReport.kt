@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.609 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.656 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -22,12 +22,12 @@ open class MeasureReport() : DomainResource() {
     /**
      * complete | pending | error
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * individual | patient-list | summary
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * What measure was evaluated
@@ -136,7 +136,7 @@ open class MeasureReportGroupStratifierStratum() : BackboneElement() {
     /**
      * The stratum value, e.g. male
      */
-    var value: String = ""
+    var value: String? = null
 
     val population: List<MeasureReportGroupStratifierStratumPopulation> =
             mutableListOf<MeasureReportGroupStratifierStratumPopulation>()

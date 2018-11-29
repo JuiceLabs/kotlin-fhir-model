@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.623 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.675 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -19,7 +19,7 @@ open class Goal() : DomainResource() {
     /**
      * proposed | accepted | planned | in-progress | on-target | ahead-of-target | behind-target | sustaining | achieved | on-hold | cancelled | entered-in-error | rejected
      */
-    var status: String = ""
+    var status: String? = null
 
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.579 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.627 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,7 +14,7 @@ open class RelatedArtifact() : Element() {
     /**
      * documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Brief description of the related artifact

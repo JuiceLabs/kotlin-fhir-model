@@ -1,6 +1,18 @@
 package com.juicelabs.fhir.generator
 
 import java.io.File
+import com.google.gson.JsonObject
+import java.io.IOException
+import com.google.gson.stream.JsonReader
+import com.google.gson.stream.JsonWriter
+import com.google.gson.JsonElement
+import com.google.gson.TypeAdapter
+import sun.util.locale.provider.LocaleProviderAdapter.getAdapter
+import com.google.gson.internal.`$Gson$Types`.getRawType
+import com.google.gson.Gson
+import com.google.gson.TypeAdapterFactory
+
+
 
 
 open class FhirRenderer(val spec: FhirSpec) {
@@ -20,3 +32,5 @@ open class FhirRenderer(val spec: FhirSpec) {
                 }
     }
 }
+
+

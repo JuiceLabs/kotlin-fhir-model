@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.873 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.003 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,7 +17,7 @@ open class SearchParameter() : DomainResource() {
     /**
      * Logical URI to reference this search parameter (globally unique)
      */
-    var url: String = ""
+    var url: String? = null
 
     /**
      * Business version of the search parameter
@@ -27,12 +27,12 @@ open class SearchParameter() : DomainResource() {
     /**
      * Name for this search parameter (computer friendly)
      */
-    var name: String = ""
+    var name: String? = null
 
     /**
      * draft | active | retired | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * For testing purposes, not real usage
@@ -63,14 +63,14 @@ open class SearchParameter() : DomainResource() {
     /**
      * Code used in URL
      */
-    var code: String = ""
+    var code: String? = null
 
     val base: List<String> = mutableListOf<String>()
 
     /**
      * number | date | string | token | reference | composite | quantity | uri
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Original Definition for the search parameter
@@ -80,7 +80,7 @@ open class SearchParameter() : DomainResource() {
     /**
      * Natural language description of the search parameter
      */
-    var description: String = ""
+    var description: String? = null
 
     /**
      * FHIRPath expression that extracts the values
@@ -122,5 +122,5 @@ open class SearchParameterComponent() : BackboneElement() {
     /**
      * Subexpression relative to main expression
      */
-    var expression: String = ""
+    var expression: String? = null
 }

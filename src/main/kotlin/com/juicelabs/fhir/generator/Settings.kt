@@ -76,8 +76,8 @@ class Settings {
                 "str" to "String",
                 "int" to "Int",
                 "bool" to "Boolean",
-                "float" to "Float",
-                "FhirDate" to "FhirDateTime"
+                "float" to "Float"
+//                "FhirDate" to "FhirDateTime"
         )
 
         const val jsonMapDefault = "dict"

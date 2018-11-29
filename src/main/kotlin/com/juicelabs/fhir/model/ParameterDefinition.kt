@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.936 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.082 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -19,7 +19,7 @@ open class ParameterDefinition() : Element() {
     /**
      * in | out
      */
-    var use: String = ""
+    var use: String? = null
 
     /**
      * Minimum cardinality
@@ -39,7 +39,7 @@ open class ParameterDefinition() : Element() {
     /**
      * What type of value
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * What profile the value is expected to be

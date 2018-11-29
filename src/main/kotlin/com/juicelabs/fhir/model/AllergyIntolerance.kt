@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.817 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.912 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -24,7 +24,7 @@ open class AllergyIntolerance() : DomainResource() {
     /**
      * unconfirmed | confirmed | refuted | entered-in-error
      */
-    var verificationStatus: String = ""
+    var verificationStatus: String? = null
 
     /**
      * allergy | intolerance - Underlying mechanism (if known)

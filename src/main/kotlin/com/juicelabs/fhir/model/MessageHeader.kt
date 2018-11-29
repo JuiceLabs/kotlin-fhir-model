@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.848 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.962 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -34,7 +34,7 @@ open class MessageHeader() : DomainResource() {
     /**
      * Time that the message was sent
      */
-    var timestamp: FhirDate = FhirDate.now()
+    var timestamp: FhirDate? = null
 
     /**
      * The source of the data entry
@@ -88,7 +88,7 @@ open class MessageHeaderDestination() : BackboneElement() {
     /**
      * Actual destination address or id
      */
-    var endpoint: String = ""
+    var endpoint: String? = null
 }
 
 /**
@@ -120,7 +120,7 @@ open class MessageHeaderSource() : BackboneElement() {
     /**
      * Actual message source address or id
      */
-    var endpoint: String = ""
+    var endpoint: String? = null
 }
 
 /**
@@ -132,12 +132,12 @@ open class MessageHeaderResponse() : BackboneElement() {
     /**
      * Id of original message
      */
-    var identifier: String = ""
+    var identifier: String? = null
 
     /**
      * ok | transient-error | fatal-error
      */
-    var code: String = ""
+    var code: String? = null
 
     /**
      * Specific list of hints/warnings/errors

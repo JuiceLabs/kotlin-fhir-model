@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.887 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:15.026 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -29,7 +29,7 @@ open class AuditEvent() : DomainResource() {
     /**
      * Time when the event occurred on source
      */
-    var recorded: FhirDate = FhirDate.now()
+    var recorded: FhirDate? = null
 
     /**
      * Whether the event succeeded or failed
@@ -84,7 +84,7 @@ open class AuditEventAgent() : BackboneElement() {
     /**
      * Whether user is initiator
      */
-    var requestor: Boolean = false
+    var requestor: Boolean? = null
 
     /**
      * Where
@@ -202,10 +202,10 @@ open class AuditEventEntityDetail() : BackboneElement() {
     /**
      * Name of the property
      */
-    var type: String = ""
+    var type: String? = null
 
     /**
      * Property value
      */
-    var value: String = ""
+    var value: String? = null
 }

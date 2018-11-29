@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.805 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.887 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -28,7 +28,7 @@ open class MedicationStatement() : DomainResource() {
     /**
      * active | completed | entered-in-error | intended | stopped | on-hold
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Type of medication usage
@@ -75,7 +75,7 @@ open class MedicationStatement() : DomainResource() {
     /**
      * y | n | unk | na
      */
-    var taken: String = ""
+    var taken: String? = null
 
     val reasonNotTaken: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 

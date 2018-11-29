@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.802 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.884 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -24,7 +24,7 @@ open class ChargeItem() : DomainResource() {
     /**
      * planned | billable | not-billable | aborted | billed | entered-in-error | unknown
      */
-    var status: String = ""
+    var status: String? = null
 
     val partOf: List<Reference> = mutableListOf<Reference>()
 

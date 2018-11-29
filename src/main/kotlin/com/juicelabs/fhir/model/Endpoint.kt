@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-27T12:50:39.794 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T05:04:14.872 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -18,7 +18,7 @@ open class Endpoint() : DomainResource() {
     /**
      * active | suspended | error | off | entered-in-error | test
      */
-    var status: String = ""
+    var status: String? = null
 
     /**
      * Protocol/Profile/Standard to be used with this endpoint connection
@@ -49,7 +49,7 @@ open class Endpoint() : DomainResource() {
     /**
      * The technical base address for connecting to this endpoint
      */
-    var address: String = ""
+    var address: String? = null
 
     val header: List<String> = mutableListOf<String>()
 }
