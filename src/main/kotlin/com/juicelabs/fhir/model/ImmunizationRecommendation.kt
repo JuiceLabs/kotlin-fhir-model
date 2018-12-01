@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.782 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.097 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -35,15 +35,8 @@ open class ImmunizationRecommendationRecommendation() : BackboneElement() {
      */
     var date: String? = null
 
-    /**
-     * Vaccine recommendation applies to
-     */
-    var vaccineCode: CodeableConcept? = null
-
-    /**
-     * Disease to be immunized against
-     */
-    var targetDisease: CodeableConcept? = null
+    val dateCriterion: List<ImmunizationRecommendationRecommendationDateCriterion> =
+            mutableListOf<ImmunizationRecommendationRecommendationDateCriterion>()
 
     /**
      * Recommended dose number
@@ -55,9 +48,6 @@ open class ImmunizationRecommendationRecommendation() : BackboneElement() {
      */
     var forecastStatus: CodeableConcept = CodeableConcept()
 
-    val dateCriterion: List<ImmunizationRecommendationRecommendationDateCriterion> =
-            mutableListOf<ImmunizationRecommendationRecommendationDateCriterion>()
-
     /**
      * Protocol used by recommendation
      */
@@ -66,6 +56,16 @@ open class ImmunizationRecommendationRecommendation() : BackboneElement() {
     val supportingImmunization: List<Reference> = mutableListOf<Reference>()
 
     val supportingPatientInformation: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Disease to be immunized against
+     */
+    var targetDisease: CodeableConcept? = null
+
+    /**
+     * Vaccine recommendation applies to
+     */
+    var vaccineCode: CodeableConcept? = null
 }
 
 /**
@@ -92,9 +92,9 @@ open class ImmunizationRecommendationRecommendationDateCriterion() : BackboneEle
  */
 open class ImmunizationRecommendationRecommendationProtocol() : BackboneElement() {
     /**
-     * Dose number within sequence
+     * Who is responsible for protocol
      */
-    var doseSequence: Int? = null
+    var authority: Reference? = null
 
     /**
      * Protocol details
@@ -102,9 +102,9 @@ open class ImmunizationRecommendationRecommendationProtocol() : BackboneElement(
     var description: String? = null
 
     /**
-     * Who is responsible for protocol
+     * Dose number within sequence
      */
-    var authority: Reference? = null
+    var doseSequence: Int? = null
 
     /**
      * Name of vaccination series

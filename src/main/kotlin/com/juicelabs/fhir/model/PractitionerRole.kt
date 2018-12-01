@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.791 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.101 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,36 @@ import kotlin.collections.List
  * A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
  */
 open class PractitionerRole() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
      * Whether this practitioner's record is in active use
      */
     var active: Boolean? = null
+
+    /**
+     * Description of availability exceptions
+     */
+    var availabilityExceptions: String? = null
+
+    val availableTime: List<PractitionerRoleAvailableTime> =
+            mutableListOf<PractitionerRoleAvailableTime>()
+
+    val code: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val endpoint: List<Reference> = mutableListOf<Reference>()
+
+    val healthcareService: List<Reference> = mutableListOf<Reference>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val location: List<Reference> = mutableListOf<Reference>()
+
+    val notAvailable: List<PractitionerRoleNotAvailable> =
+            mutableListOf<PractitionerRoleNotAvailable>()
+
+    /**
+     * Organization where the roles are available
+     */
+    var organization: Reference? = null
 
     /**
      * The period during which the practitioner is authorized to perform in these role(s)
@@ -30,33 +54,9 @@ open class PractitionerRole() : DomainResource() {
      */
     var practitioner: Reference? = null
 
-    /**
-     * Organization where the roles are available
-     */
-    var organization: Reference? = null
-
-    val code: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
     val specialty: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
-    val location: List<Reference> = mutableListOf<Reference>()
-
-    val healthcareService: List<Reference> = mutableListOf<Reference>()
-
     val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
-
-    val availableTime: List<PractitionerRoleAvailableTime> =
-            mutableListOf<PractitionerRoleAvailableTime>()
-
-    val notAvailable: List<PractitionerRoleNotAvailable> =
-            mutableListOf<PractitionerRoleNotAvailable>()
-
-    /**
-     * Description of availability exceptions
-     */
-    var availabilityExceptions: String? = null
-
-    val endpoint: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -65,22 +65,22 @@ open class PractitionerRole() : DomainResource() {
  * A collection of times that the Service Site is available.
  */
 open class PractitionerRoleAvailableTime() : BackboneElement() {
-    val daysOfWeek: List<String> = mutableListOf<String>()
-
     /**
      * Always available? e.g. 24 hour service
      */
     var allDay: Boolean? = null
 
     /**
+     * Closing time of day (ignored if allDay = true)
+     */
+    var availableEndTime: String? = null
+
+    /**
      * Opening time of day (ignored if allDay = true)
      */
     var availableStartTime: String? = null
 
-    /**
-     * Closing time of day (ignored if allDay = true)
-     */
-    var availableEndTime: String? = null
+    val daysOfWeek: List<String> = mutableListOf<String>()
 }
 
 /**

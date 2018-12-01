@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.811 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.113 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,26 +13,12 @@ import kotlin.collections.List
  * An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.
  */
 open class MedicationRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    val definition: List<Reference> = mutableListOf<Reference>()
+    /**
+     * When request was initially authored
+     */
+    var authoredOn: String? = null
 
     val basedOn: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Composite request this is part of
-     */
-    var groupIdentifier: Identifier? = null
-
-    /**
-     * active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown
-     */
-    var status: String? = null
-
-    /**
-     * proposal | plan | order | instance-order
-     */
-    var intent: String? = null
 
     /**
      * Type of medication usage
@@ -40,9 +26,34 @@ open class MedicationRequest() : DomainResource() {
     var category: CodeableConcept? = null
 
     /**
-     * routine | urgent | stat | asap
+     * Created during encounter/admission/stay
      */
-    var priority: String? = null
+    var context: Reference? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    val detectedIssue: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Medication supply authorization
+     */
+    var dispenseRequest: MedicationRequestDispenseRequest? = null
+
+    val dosageInstruction: List<Dosage> = mutableListOf<Dosage>()
+
+    val eventHistory: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Composite request this is part of
+     */
+    var groupIdentifier: Identifier? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * proposal | plan | order | instance-order
+     */
+    var intent: String? = null
 
     /**
      * Medication to be taken
@@ -54,22 +65,26 @@ open class MedicationRequest() : DomainResource() {
      */
     var medicationReference: Reference = Reference()
 
-    /**
-     * Who or group medication request is for
-     */
-    var subject: Reference = Reference()
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
-     * Created during encounter/admission/stay
+     * An order/prescription that is being replaced
      */
-    var context: Reference? = null
-
-    val supportingInformation: List<Reference> = mutableListOf<Reference>()
+    var priorPrescription: Reference? = null
 
     /**
-     * When request was initially authored
+     * routine | urgent | stat | asap
      */
-    var authoredOn: String? = null
+    var priority: String? = null
+
+    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val reasonReference: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Person who entered the request
+     */
+    var recorder: Reference? = null
 
     /**
      * Who/What requested the Request
@@ -77,36 +92,21 @@ open class MedicationRequest() : DomainResource() {
     var requester: MedicationRequestRequester? = null
 
     /**
-     * Person who entered the request
+     * active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown
      */
-    var recorder: Reference? = null
-
-    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val reasonReference: List<Reference> = mutableListOf<Reference>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val dosageInstruction: List<Dosage> = mutableListOf<Dosage>()
+    var status: String? = null
 
     /**
-     * Medication supply authorization
+     * Who or group medication request is for
      */
-    var dispenseRequest: MedicationRequestDispenseRequest? = null
+    var subject: Reference = Reference()
 
     /**
      * Any restrictions on medication substitution
      */
     var substitution: MedicationRequestSubstitution? = null
 
-    /**
-     * An order/prescription that is being replaced
-     */
-    var priorPrescription: Reference? = null
-
-    val detectedIssue: List<Reference> = mutableListOf<Reference>()
-
-    val eventHistory: List<Reference> = mutableListOf<Reference>()
+    val supportingInformation: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -133,9 +133,9 @@ open class MedicationRequestRequester() : BackboneElement() {
  */
 open class MedicationRequestDispenseRequest() : BackboneElement() {
     /**
-     * Time period supply is authorized for
+     * Number of days supply per dispense
      */
-    var validityPeriod: Period? = null
+    var expectedSupplyDuration: Duration? = null
 
     /**
      * Number of refills authorized
@@ -143,19 +143,19 @@ open class MedicationRequestDispenseRequest() : BackboneElement() {
     var numberOfRepeatsAllowed: Int? = null
 
     /**
+     * Intended dispenser
+     */
+    var performer: Reference? = null
+
+    /**
      * Amount of medication to supply per dispense
      */
     var quantity: Quantity? = null
 
     /**
-     * Number of days supply per dispense
+     * Time period supply is authorized for
      */
-    var expectedSupplyDuration: Duration? = null
-
-    /**
-     * Intended dispenser
-     */
-    var performer: Reference? = null
+    var validityPeriod: Period? = null
 }
 
 /**

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.516 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.919 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,34 +14,11 @@ import kotlin.collections.List
  */
 open class ExpansionProfile() : DomainResource() {
     /**
-     * Logical URI to reference this expansion profile (globally unique)
+     * Include or exclude inactive concepts in the expansion
      */
-    var url: String? = null
+    var activeOnly: Boolean? = null
 
-    /**
-     * Additional identifier for the expansion profile
-     */
-    var identifier: Identifier? = null
-
-    /**
-     * Business version of the expansion profile
-     */
-    var version: String? = null
-
-    /**
-     * Name for this expansion profile (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 
     /**
      * Date this was last changed
@@ -49,33 +26,9 @@ open class ExpansionProfile() : DomainResource() {
     var date: String? = null
 
     /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
      * Natural language description of the expansion profile
      */
     var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val fixedVersion: List<ExpansionProfileFixedVersion> =
-            mutableListOf<ExpansionProfileFixedVersion>()
-
-    /**
-     * Systems/Versions to be exclude
-     */
-    var excludedSystem: ExpansionProfileExcludedSystem? = null
-
-    /**
-     * Whether the expansion should include concept designations
-     */
-    var includeDesignations: Boolean? = null
 
     /**
      * When the expansion profile imposes designation contraints
@@ -83,14 +36,9 @@ open class ExpansionProfile() : DomainResource() {
     var designation: ExpansionProfileDesignation? = null
 
     /**
-     * Include or exclude the value set definition in the expansion
+     * Specify the language for the display element of codes in the value set expansion
      */
-    var includeDefinition: Boolean? = null
-
-    /**
-     * Include or exclude inactive concepts in the expansion
-     */
-    var activeOnly: Boolean? = null
+    var displayLanguage: String? = null
 
     /**
      * Nested codes in the expansion or not
@@ -108,14 +56,66 @@ open class ExpansionProfile() : DomainResource() {
     var excludePostCoordinated: Boolean? = null
 
     /**
-     * Specify the language for the display element of codes in the value set expansion
+     * Systems/Versions to be exclude
      */
-    var displayLanguage: String? = null
+    var excludedSystem: ExpansionProfileExcludedSystem? = null
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    val fixedVersion: List<ExpansionProfileFixedVersion> =
+            mutableListOf<ExpansionProfileFixedVersion>()
+
+    /**
+     * Additional identifier for the expansion profile
+     */
+    var identifier: Identifier? = null
+
+    /**
+     * Include or exclude the value set definition in the expansion
+     */
+    var includeDefinition: Boolean? = null
+
+    /**
+     * Whether the expansion should include concept designations
+     */
+    var includeDesignations: Boolean? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Controls behaviour of the value set expand operation when value sets are too large to be completely expanded
      */
     var limitedExpansion: Boolean? = null
+
+    /**
+     * Name for this expansion profile (computer friendly)
+     */
+    var name: String? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Logical URI to reference this expansion profile (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the expansion profile
+     */
+    var version: String? = null
 }
 
 /**
@@ -125,6 +125,11 @@ open class ExpansionProfile() : DomainResource() {
  */
 open class ExpansionProfileFixedVersion() : BackboneElement() {
     /**
+     * default | check | override
+     */
+    var mode: String? = null
+
+    /**
      * System to have its version fixed
      */
     var system: String? = null
@@ -133,11 +138,6 @@ open class ExpansionProfileFixedVersion() : BackboneElement() {
      * Specific version of the code system referred to
      */
     var version: String? = null
-
-    /**
-     * default | check | override
-     */
-    var mode: String? = null
 }
 
 /**
@@ -164,14 +164,14 @@ open class ExpansionProfileExcludedSystem() : BackboneElement() {
  */
 open class ExpansionProfileDesignation() : BackboneElement() {
     /**
-     * Designations to be included
-     */
-    var include: ExpansionProfileDesignationInclude? = null
-
-    /**
      * Designations to be excluded
      */
     var exclude: ExpansionProfileDesignationExclude? = null
+
+    /**
+     * Designations to be included
+     */
+    var include: ExpansionProfileDesignationInclude? = null
 }
 
 /**

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.837 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.156 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,61 +13,7 @@ import kotlin.collections.List
  * Captures constraints on each element within the resource, profile, or extension.
  */
 open class ElementDefinition() : Element() {
-    /**
-     * Path of the element in the hierarchy of elements
-     */
-    var path: String? = null
-
-    val representation: List<String> = mutableListOf<String>()
-
-    /**
-     * Name for this particular element (in a set of slices)
-     */
-    var sliceName: String? = null
-
-    /**
-     * Name for element to display with or prompt for element
-     */
-    var label: String? = null
-
-    val code: List<Coding> = mutableListOf<Coding>()
-
-    /**
-     * This element is sliced - slices follow
-     */
-    var slicing: ElementDefinitionSlicing? = null
-
-    /**
-     * Concise definition for space-constrained presentation
-     */
-    var short: String? = null
-
-    /**
-     * Full formal definition as narrative text
-     */
-    var definition: String? = null
-
-    /**
-     * Comments about the use of this element
-     */
-    var comment: String? = null
-
-    /**
-     * Why this resource has been created
-     */
-    var requirements: String? = null
-
     val alias: List<String> = mutableListOf<String>()
-
-    /**
-     * Minimum Cardinality
-     */
-    var min: Int? = null
-
-    /**
-     * Maximum Cardinality (a number or *)
-     */
-    var max: String? = null
 
     /**
      * Base definition information for tools
@@ -75,91 +21,25 @@ open class ElementDefinition() : Element() {
     var base: ElementDefinitionBase? = null
 
     /**
+     * ValueSet details if this is coded
+     */
+    var binding: ElementDefinitionBinding? = null
+
+    val code: List<Coding> = mutableListOf<Coding>()
+
+    /**
+     * Comments about the use of this element
+     */
+    var comment: String? = null
+
+    val condition: List<String> = mutableListOf<String>()
+
+    val constraint: List<ElementDefinitionConstraint> = mutableListOf<ElementDefinitionConstraint>()
+
+    /**
      * Reference to definition of content for the element
      */
     var contentReference: String? = null
-
-    val type: List<ElementDefinitionType> = mutableListOf<ElementDefinitionType>()
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueBase64Binary: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueBoolean: Boolean? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueCode: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueDate: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueDateTime: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueDecimal: Float? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueId: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueInstant: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueInteger: Int? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueMarkdown: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueOid: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValuePositiveInt: Int? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueString: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueTime: String? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueUnsignedInt: Int? = null
-
-    /**
-     * Specified value if missing from instance
-     */
-    var defaultValueUri: String? = null
 
     /**
      * Specified value if missing from instance
@@ -184,6 +64,21 @@ open class ElementDefinition() : Element() {
     /**
      * Specified value if missing from instance
      */
+    var defaultValueBase64Binary: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueBoolean: Boolean? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueCode: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
     var defaultValueCodeableConcept: CodeableConcept? = null
 
     /**
@@ -204,6 +99,21 @@ open class ElementDefinition() : Element() {
     /**
      * Specified value if missing from instance
      */
+    var defaultValueDate: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueDateTime: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueDecimal: Float? = null
+
+    /**
+     * Specified value if missing from instance
+     */
     var defaultValueDistance: Distance? = null
 
     /**
@@ -219,7 +129,32 @@ open class ElementDefinition() : Element() {
     /**
      * Specified value if missing from instance
      */
+    var defaultValueId: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
     var defaultValueIdentifier: Identifier? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueInstant: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueInteger: Int? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueMarkdown: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueMeta: Meta? = null
 
     /**
      * Specified value if missing from instance
@@ -229,7 +164,17 @@ open class ElementDefinition() : Element() {
     /**
      * Specified value if missing from instance
      */
+    var defaultValueOid: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
     var defaultValuePeriod: Period? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValuePositiveInt: Int? = null
 
     /**
      * Specified value if missing from instance
@@ -264,102 +209,34 @@ open class ElementDefinition() : Element() {
     /**
      * Specified value if missing from instance
      */
+    var defaultValueString: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
+    var defaultValueTime: String? = null
+
+    /**
+     * Specified value if missing from instance
+     */
     var defaultValueTiming: Timing? = null
 
     /**
      * Specified value if missing from instance
      */
-    var defaultValueMeta: Meta? = null
+    var defaultValueUnsignedInt: Int? = null
 
     /**
-     * Implicit meaning when this element is missing
+     * Specified value if missing from instance
      */
-    var meaningWhenMissing: String? = null
+    var defaultValueUri: String? = null
 
     /**
-     * What the order of the elements means
+     * Full formal definition as narrative text
      */
-    var orderMeaning: String? = null
+    var definition: String? = null
 
-    /**
-     * Value must be exactly this
-     */
-    var fixedBase64Binary: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedBoolean: Boolean? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedCode: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedDate: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedDateTime: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedDecimal: Float? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedId: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedInstant: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedInteger: Int? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedMarkdown: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedOid: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedPositiveInt: Int? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedString: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedTime: String? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedUnsignedInt: Int? = null
-
-    /**
-     * Value must be exactly this
-     */
-    var fixedUri: String? = null
+    val example: List<ElementDefinitionExample> = mutableListOf<ElementDefinitionExample>()
 
     /**
      * Value must be exactly this
@@ -384,6 +261,21 @@ open class ElementDefinition() : Element() {
     /**
      * Value must be exactly this
      */
+    var fixedBase64Binary: String? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedBoolean: Boolean? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedCode: String? = null
+
+    /**
+     * Value must be exactly this
+     */
     var fixedCodeableConcept: CodeableConcept? = null
 
     /**
@@ -404,6 +296,21 @@ open class ElementDefinition() : Element() {
     /**
      * Value must be exactly this
      */
+    var fixedDate: String? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedDateTime: String? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedDecimal: Float? = null
+
+    /**
+     * Value must be exactly this
+     */
     var fixedDistance: Distance? = null
 
     /**
@@ -419,7 +326,32 @@ open class ElementDefinition() : Element() {
     /**
      * Value must be exactly this
      */
+    var fixedId: String? = null
+
+    /**
+     * Value must be exactly this
+     */
     var fixedIdentifier: Identifier? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedInstant: String? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedInteger: Int? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedMarkdown: String? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedMeta: Meta? = null
 
     /**
      * Value must be exactly this
@@ -429,7 +361,17 @@ open class ElementDefinition() : Element() {
     /**
      * Value must be exactly this
      */
+    var fixedOid: String? = null
+
+    /**
+     * Value must be exactly this
+     */
     var fixedPeriod: Period? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedPositiveInt: Int? = null
 
     /**
      * Value must be exactly this
@@ -464,92 +406,169 @@ open class ElementDefinition() : Element() {
     /**
      * Value must be exactly this
      */
+    var fixedString: String? = null
+
+    /**
+     * Value must be exactly this
+     */
+    var fixedTime: String? = null
+
+    /**
+     * Value must be exactly this
+     */
     var fixedTiming: Timing? = null
 
     /**
      * Value must be exactly this
      */
-    var fixedMeta: Meta? = null
+    var fixedUnsignedInt: Int? = null
 
     /**
-     * Value must have at least these property values
+     * Value must be exactly this
      */
-    var patternBase64Binary: String? = null
+    var fixedUri: String? = null
 
     /**
-     * Value must have at least these property values
+     * If this modifies the meaning of other elements
      */
-    var patternBoolean: Boolean? = null
+    var isModifier: Boolean? = null
 
     /**
-     * Value must have at least these property values
+     * Include when _summary = true?
      */
-    var patternCode: String? = null
+    var isSummary: Boolean? = null
 
     /**
-     * Value must have at least these property values
+     * Name for element to display with or prompt for element
      */
-    var patternDate: String? = null
+    var label: String? = null
+
+    val mapping: List<ElementDefinitionMapping> = mutableListOf<ElementDefinitionMapping>()
 
     /**
-     * Value must have at least these property values
+     * Maximum Cardinality (a number or *)
      */
-    var patternDateTime: String? = null
+    var max: String? = null
 
     /**
-     * Value must have at least these property values
+     * Max length for strings
      */
-    var patternDecimal: Float? = null
+    var maxLength: Int? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternId: String? = null
+    var maxValueDate: String? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternInstant: String? = null
+    var maxValueDateTime: String? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternInteger: Int? = null
+    var maxValueDecimal: Float? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternMarkdown: String? = null
+    var maxValueInstant: String? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternOid: String? = null
+    var maxValueInteger: Int? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternPositiveInt: Int? = null
+    var maxValuePositiveInt: Int? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternString: String? = null
+    var maxValueQuantity: Quantity? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternTime: String? = null
+    var maxValueTime: String? = null
 
     /**
-     * Value must have at least these property values
+     * Maximum Allowed Value (for some types)
      */
-    var patternUnsignedInt: Int? = null
+    var maxValueUnsignedInt: Int? = null
 
     /**
-     * Value must have at least these property values
+     * Implicit meaning when this element is missing
      */
-    var patternUri: String? = null
+    var meaningWhenMissing: String? = null
+
+    /**
+     * Minimum Cardinality
+     */
+    var min: Int? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueDate: String? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueDateTime: String? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueDecimal: Float? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueInstant: String? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueInteger: Int? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValuePositiveInt: Int? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueQuantity: Quantity? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueTime: String? = null
+
+    /**
+     * Minimum Allowed Value (for some types)
+     */
+    var minValueUnsignedInt: Int? = null
+
+    /**
+     * If the element must supported
+     */
+    var mustSupport: Boolean? = null
+
+    /**
+     * What the order of the elements means
+     */
+    var orderMeaning: String? = null
+
+    /**
+     * Path of the element in the hierarchy of elements
+     */
+    var path: String? = null
 
     /**
      * Value must have at least these property values
@@ -574,6 +593,21 @@ open class ElementDefinition() : Element() {
     /**
      * Value must have at least these property values
      */
+    var patternBase64Binary: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternBoolean: Boolean? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternCode: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
     var patternCodeableConcept: CodeableConcept? = null
 
     /**
@@ -594,6 +628,21 @@ open class ElementDefinition() : Element() {
     /**
      * Value must have at least these property values
      */
+    var patternDate: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternDateTime: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternDecimal: Float? = null
+
+    /**
+     * Value must have at least these property values
+     */
     var patternDistance: Distance? = null
 
     /**
@@ -609,7 +658,32 @@ open class ElementDefinition() : Element() {
     /**
      * Value must have at least these property values
      */
+    var patternId: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
     var patternIdentifier: Identifier? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternInstant: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternInteger: Int? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternMarkdown: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternMeta: Meta? = null
 
     /**
      * Value must have at least these property values
@@ -619,7 +693,17 @@ open class ElementDefinition() : Element() {
     /**
      * Value must have at least these property values
      */
+    var patternOid: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
     var patternPeriod: Period? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternPositiveInt: Int? = null
 
     /**
      * Value must have at least these property values
@@ -654,135 +738,51 @@ open class ElementDefinition() : Element() {
     /**
      * Value must have at least these property values
      */
+    var patternString: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
+    var patternTime: String? = null
+
+    /**
+     * Value must have at least these property values
+     */
     var patternTiming: Timing? = null
 
     /**
      * Value must have at least these property values
      */
-    var patternMeta: Meta? = null
-
-    val example: List<ElementDefinitionExample> = mutableListOf<ElementDefinitionExample>()
+    var patternUnsignedInt: Int? = null
 
     /**
-     * Minimum Allowed Value (for some types)
+     * Value must have at least these property values
      */
-    var minValueDate: String? = null
+    var patternUri: String? = null
+
+    val representation: List<String> = mutableListOf<String>()
 
     /**
-     * Minimum Allowed Value (for some types)
+     * Why this resource has been created
      */
-    var minValueDateTime: String? = null
+    var requirements: String? = null
 
     /**
-     * Minimum Allowed Value (for some types)
+     * Concise definition for space-constrained presentation
      */
-    var minValueInstant: String? = null
+    var short: String? = null
 
     /**
-     * Minimum Allowed Value (for some types)
+     * Name for this particular element (in a set of slices)
      */
-    var minValueTime: String? = null
+    var sliceName: String? = null
 
     /**
-     * Minimum Allowed Value (for some types)
+     * This element is sliced - slices follow
      */
-    var minValueDecimal: Float? = null
+    var slicing: ElementDefinitionSlicing? = null
 
-    /**
-     * Minimum Allowed Value (for some types)
-     */
-    var minValueInteger: Int? = null
-
-    /**
-     * Minimum Allowed Value (for some types)
-     */
-    var minValuePositiveInt: Int? = null
-
-    /**
-     * Minimum Allowed Value (for some types)
-     */
-    var minValueUnsignedInt: Int? = null
-
-    /**
-     * Minimum Allowed Value (for some types)
-     */
-    var minValueQuantity: Quantity? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueDate: String? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueDateTime: String? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueInstant: String? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueTime: String? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueDecimal: Float? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueInteger: Int? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValuePositiveInt: Int? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueUnsignedInt: Int? = null
-
-    /**
-     * Maximum Allowed Value (for some types)
-     */
-    var maxValueQuantity: Quantity? = null
-
-    /**
-     * Max length for strings
-     */
-    var maxLength: Int? = null
-
-    val condition: List<String> = mutableListOf<String>()
-
-    val constraint: List<ElementDefinitionConstraint> = mutableListOf<ElementDefinitionConstraint>()
-
-    /**
-     * If the element must supported
-     */
-    var mustSupport: Boolean? = null
-
-    /**
-     * If this modifies the meaning of other elements
-     */
-    var isModifier: Boolean? = null
-
-    /**
-     * Include when _summary = true?
-     */
-    var isSummary: Boolean? = null
-
-    /**
-     * ValueSet details if this is coded
-     */
-    var binding: ElementDefinitionBinding? = null
-
-    val mapping: List<ElementDefinitionMapping> = mutableListOf<ElementDefinitionMapping>()
+    val type: List<ElementDefinitionType> = mutableListOf<ElementDefinitionType>()
 }
 
 /**
@@ -791,13 +791,13 @@ open class ElementDefinition() : Element() {
  * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
  */
 open class ElementDefinitionSlicing() : Element() {
-    val discriminator: List<ElementDefinitionSlicingDiscriminator> =
-            mutableListOf<ElementDefinitionSlicingDiscriminator>()
-
     /**
      * Text description of how slicing works (or not)
      */
     var description: String? = null
+
+    val discriminator: List<ElementDefinitionSlicingDiscriminator> =
+            mutableListOf<ElementDefinitionSlicingDiscriminator>()
 
     /**
      * If elements must be in same order as slices
@@ -817,14 +817,14 @@ open class ElementDefinitionSlicing() : Element() {
  */
 open class ElementDefinitionSlicingDiscriminator() : Element() {
     /**
-     * value | exists | pattern | type | profile
-     */
-    var type: String? = null
-
-    /**
      * Path to element value
      */
     var path: String? = null
+
+    /**
+     * value | exists | pattern | type | profile
+     */
+    var type: String? = null
 }
 
 /**
@@ -834,9 +834,9 @@ open class ElementDefinitionSlicingDiscriminator() : Element() {
  */
 open class ElementDefinitionBase() : Element() {
     /**
-     * Path that identifies the base element
+     * Max cardinality of the base element
      */
-    var path: String? = null
+    var max: String? = null
 
     /**
      * Min cardinality of the base element
@@ -844,9 +844,9 @@ open class ElementDefinitionBase() : Element() {
     var min: Int? = null
 
     /**
-     * Max cardinality of the base element
+     * Path that identifies the base element
      */
-    var max: String? = null
+    var path: String? = null
 }
 
 /**
@@ -855,6 +855,8 @@ open class ElementDefinitionBase() : Element() {
  * The data type or resource that the value of this element is permitted to be.
  */
 open class ElementDefinitionType() : Element() {
+    val aggregation: List<String> = mutableListOf<String>()
+
     /**
      * Data type or Resource (reference to definition)
      */
@@ -869,8 +871,6 @@ open class ElementDefinitionType() : Element() {
      * Profile (StructureDefinition) to apply to reference target (or IG)
      */
     var targetProfile: String? = null
-
-    val aggregation: List<String> = mutableListOf<String>()
 
     /**
      * either | independent | specific
@@ -888,86 +888,6 @@ open class ElementDefinitionExample() : Element() {
      * Describes the purpose of this example
      */
     var label: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueBase64Binary: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueBoolean: Boolean? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueCode: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueDate: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueDateTime: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueDecimal: Float? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueId: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueInstant: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueInteger: Int? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueMarkdown: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueOid: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valuePositiveInt: Int? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueString: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueTime: String? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueUnsignedInt: Int? = null
-
-    /**
-     * Value of Example (one of allowed types)
-     */
-    var valueUri: String? = null
 
     /**
      * Value of Example (one of allowed types)
@@ -992,6 +912,21 @@ open class ElementDefinitionExample() : Element() {
     /**
      * Value of Example (one of allowed types)
      */
+    var valueBase64Binary: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueBoolean: Boolean? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueCode: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
     var valueCodeableConcept: CodeableConcept = CodeableConcept()
 
     /**
@@ -1012,6 +947,21 @@ open class ElementDefinitionExample() : Element() {
     /**
      * Value of Example (one of allowed types)
      */
+    var valueDate: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueDateTime: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueDecimal: Float? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
     var valueDistance: Distance = Distance()
 
     /**
@@ -1027,7 +977,32 @@ open class ElementDefinitionExample() : Element() {
     /**
      * Value of Example (one of allowed types)
      */
+    var valueId: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
     var valueIdentifier: Identifier = Identifier()
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueInstant: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueInteger: Int? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueMarkdown: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueMeta: Meta = Meta()
 
     /**
      * Value of Example (one of allowed types)
@@ -1037,7 +1012,17 @@ open class ElementDefinitionExample() : Element() {
     /**
      * Value of Example (one of allowed types)
      */
+    var valueOid: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
     var valuePeriod: Period = Period()
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valuePositiveInt: Int? = null
 
     /**
      * Value of Example (one of allowed types)
@@ -1072,12 +1057,27 @@ open class ElementDefinitionExample() : Element() {
     /**
      * Value of Example (one of allowed types)
      */
+    var valueString: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueTime: String? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
     var valueTiming: Timing = Timing()
 
     /**
      * Value of Example (one of allowed types)
      */
-    var valueMeta: Meta = Meta()
+    var valueUnsignedInt: Int? = null
+
+    /**
+     * Value of Example (one of allowed types)
+     */
+    var valueUri: String? = null
 }
 
 /**
@@ -1086,6 +1086,16 @@ open class ElementDefinitionExample() : Element() {
  * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
  */
 open class ElementDefinitionConstraint() : Element() {
+    /**
+     * FHIRPath expression of constraint
+     */
+    var expression: String? = null
+
+    /**
+     * Human description of constraint
+     */
+    var human: String? = null
+
     /**
      * Target of 'condition' reference above
      */
@@ -1102,24 +1112,14 @@ open class ElementDefinitionConstraint() : Element() {
     var severity: String? = null
 
     /**
-     * Human description of constraint
+     * Reference to original source of constraint
      */
-    var human: String? = null
-
-    /**
-     * FHIRPath expression of constraint
-     */
-    var expression: String? = null
+    var source: String? = null
 
     /**
      * XPath expression of constraint
      */
     var xpath: String? = null
-
-    /**
-     * Reference to original source of constraint
-     */
-    var source: String? = null
 }
 
 /**
@@ -1129,24 +1129,24 @@ open class ElementDefinitionConstraint() : Element() {
  */
 open class ElementDefinitionBinding() : Element() {
     /**
-     * required | extensible | preferred | example
-     */
-    var strength: String? = null
-
-    /**
      * Human explanation of the value set
      */
     var description: String? = null
 
     /**
-     * Source of value set
+     * required | extensible | preferred | example
      */
-    var valueSetUri: String? = null
+    var strength: String? = null
 
     /**
      * Source of value set
      */
     var valueSetReference: Reference? = null
+
+    /**
+     * Source of value set
+     */
+    var valueSetUri: String? = null
 }
 
 /**
@@ -1155,6 +1155,11 @@ open class ElementDefinitionBinding() : Element() {
  * Identifies a concept from an external specification that roughly corresponds to this element.
  */
 open class ElementDefinitionMapping() : Element() {
+    /**
+     * Comments about the mapping or its use
+     */
+    var comment: String? = null
+
     /**
      * Reference to mapping declaration
      */
@@ -1169,9 +1174,4 @@ open class ElementDefinitionMapping() : Element() {
      * Details of the mapping
      */
     var map: String? = null
-
-    /**
-     * Comments about the mapping or its use
-     */
-    var comment: String? = null
 }

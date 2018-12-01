@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.719 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.059 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,36 +14,12 @@ import kotlin.collections.List
  * A task to be performed.
  */
 open class Task() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
-     * Formal definition of task
+     * Task Creation Date
      */
-    var definitionUri: String? = null
-
-    /**
-     * Formal definition of task
-     */
-    var definitionReference: Reference? = null
+    var authoredOn: String? = null
 
     val basedOn: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Requisition or grouper id
-     */
-    var groupIdentifier: Identifier? = null
-
-    val partOf: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * draft | requested | received | accepted | +
-     */
-    var status: String? = null
-
-    /**
-     * Reason for current status
-     */
-    var statusReason: CodeableConcept? = null
 
     /**
      * E.g. "Specimen collected", "IV prepped"
@@ -51,24 +27,34 @@ open class Task() : DomainResource() {
     var businessStatus: CodeableConcept? = null
 
     /**
-     * proposal | plan | order +
-     */
-    var intent: String? = null
-
-    /**
-     * normal | urgent | asap | stat
-     */
-    var priority: String? = null
-
-    /**
      * Task Type
      */
     var code: CodeableConcept? = null
 
     /**
+     * Healthcare event during which this task originated
+     */
+    var context: Reference? = null
+
+    /**
+     * Formal definition of task
+     */
+    var definitionReference: Reference? = null
+
+    /**
+     * Formal definition of task
+     */
+    var definitionUri: String? = null
+
+    /**
      * Human-readable explanation of task
      */
     var description: String? = null
+
+    /**
+     * Start and end time of execution
+     */
+    var executionPeriod: Period? = null
 
     /**
      * What task is acting on
@@ -82,54 +68,68 @@ open class Task() : DomainResource() {
     var for_fhir: Reference? = null
 
     /**
-     * Healthcare event during which this task originated
+     * Requisition or grouper id
      */
-    var context: Reference? = null
+    var groupIdentifier: Identifier? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val input: List<TaskInput> = mutableListOf<TaskInput>()
 
     /**
-     * Start and end time of execution
+     * proposal | plan | order +
      */
-    var executionPeriod: Period? = null
-
-    /**
-     * Task Creation Date
-     */
-    var authoredOn: String? = null
+    var intent: String? = null
 
     /**
      * Task Last Modified Date
      */
     var lastModified: String? = null
 
-    /**
-     * Who is asking for task to be done
-     */
-    var requester: TaskRequester? = null
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
-    val performerType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val output: List<TaskOutput> = mutableListOf<TaskOutput>()
 
     /**
      * Responsible individual
      */
     var owner: Reference? = null
 
+    val partOf: List<Reference> = mutableListOf<Reference>()
+
+    val performerType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * normal | urgent | asap | stat
+     */
+    var priority: String? = null
+
     /**
      * Why task is needed
      */
     var reason: CodeableConcept? = null
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
     val relevantHistory: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Who is asking for task to be done
+     */
+    var requester: TaskRequester? = null
 
     /**
      * Constraints on fulfillment tasks
      */
     var restriction: TaskRestriction? = null
 
-    val input: List<TaskInput> = mutableListOf<TaskInput>()
+    /**
+     * draft | requested | received | accepted | +
+     */
+    var status: String? = null
 
-    val output: List<TaskOutput> = mutableListOf<TaskOutput>()
+    /**
+     * Reason for current status
+     */
+    var statusReason: CodeableConcept? = null
 }
 
 /**
@@ -156,16 +156,16 @@ open class TaskRequester() : BackboneElement() {
  */
 open class TaskRestriction() : BackboneElement() {
     /**
-     * How many times to repeat
-     */
-    var repetitions: Int? = null
-
-    /**
      * When fulfillment sought
      */
     var period: Period? = null
 
     val recipient: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * How many times to repeat
+     */
+    var repetitions: Int? = null
 }
 
 /**
@@ -182,86 +182,6 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
-    var valueBase64Binary: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueBoolean: Boolean? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueCode: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueDate: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueDateTime: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueDecimal: Float? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueId: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueInstant: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueInteger: Int? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueMarkdown: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueOid: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valuePositiveInt: Int? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueString: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueTime: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueUnsignedInt: Int? = null
-
-    /**
-     * Content to use in performing the task
-     */
-    var valueUri: String? = null
-
-    /**
-     * Content to use in performing the task
-     */
     var valueAddress: Address = Address()
 
     /**
@@ -278,6 +198,21 @@ open class TaskInput() : BackboneElement() {
      * Content to use in performing the task
      */
     var valueAttachment: Attachment = Attachment()
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueBase64Binary: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueBoolean: Boolean? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueCode: String? = null
 
     /**
      * Content to use in performing the task
@@ -302,6 +237,21 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
+    var valueDate: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueDateTime: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueDecimal: Float? = null
+
+    /**
+     * Content to use in performing the task
+     */
     var valueDistance: Distance = Distance()
 
     /**
@@ -317,7 +267,32 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
+    var valueId: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
     var valueIdentifier: Identifier = Identifier()
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueInstant: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueInteger: Int? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueMarkdown: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueMeta: Meta = Meta()
 
     /**
      * Content to use in performing the task
@@ -327,7 +302,17 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
+    var valueOid: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
     var valuePeriod: Period = Period()
+
+    /**
+     * Content to use in performing the task
+     */
+    var valuePositiveInt: Int? = null
 
     /**
      * Content to use in performing the task
@@ -362,12 +347,27 @@ open class TaskInput() : BackboneElement() {
     /**
      * Content to use in performing the task
      */
+    var valueString: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueTime: String? = null
+
+    /**
+     * Content to use in performing the task
+     */
     var valueTiming: Timing = Timing()
 
     /**
      * Content to use in performing the task
      */
-    var valueMeta: Meta = Meta()
+    var valueUnsignedInt: Int? = null
+
+    /**
+     * Content to use in performing the task
+     */
+    var valueUri: String? = null
 }
 
 /**
@@ -384,86 +384,6 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
-    var valueBase64Binary: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueBoolean: Boolean? = null
-
-    /**
-     * Result of output
-     */
-    var valueCode: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueDate: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueDateTime: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueDecimal: Float? = null
-
-    /**
-     * Result of output
-     */
-    var valueId: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueInstant: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueInteger: Int? = null
-
-    /**
-     * Result of output
-     */
-    var valueMarkdown: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueOid: String? = null
-
-    /**
-     * Result of output
-     */
-    var valuePositiveInt: Int? = null
-
-    /**
-     * Result of output
-     */
-    var valueString: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueTime: String? = null
-
-    /**
-     * Result of output
-     */
-    var valueUnsignedInt: Int? = null
-
-    /**
-     * Result of output
-     */
-    var valueUri: String? = null
-
-    /**
-     * Result of output
-     */
     var valueAddress: Address = Address()
 
     /**
@@ -480,6 +400,21 @@ open class TaskOutput() : BackboneElement() {
      * Result of output
      */
     var valueAttachment: Attachment = Attachment()
+
+    /**
+     * Result of output
+     */
+    var valueBase64Binary: String? = null
+
+    /**
+     * Result of output
+     */
+    var valueBoolean: Boolean? = null
+
+    /**
+     * Result of output
+     */
+    var valueCode: String? = null
 
     /**
      * Result of output
@@ -504,6 +439,21 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
+    var valueDate: String? = null
+
+    /**
+     * Result of output
+     */
+    var valueDateTime: String? = null
+
+    /**
+     * Result of output
+     */
+    var valueDecimal: Float? = null
+
+    /**
+     * Result of output
+     */
     var valueDistance: Distance = Distance()
 
     /**
@@ -519,7 +469,32 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
+    var valueId: String? = null
+
+    /**
+     * Result of output
+     */
     var valueIdentifier: Identifier = Identifier()
+
+    /**
+     * Result of output
+     */
+    var valueInstant: String? = null
+
+    /**
+     * Result of output
+     */
+    var valueInteger: Int? = null
+
+    /**
+     * Result of output
+     */
+    var valueMarkdown: String? = null
+
+    /**
+     * Result of output
+     */
+    var valueMeta: Meta = Meta()
 
     /**
      * Result of output
@@ -529,7 +504,17 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
+    var valueOid: String? = null
+
+    /**
+     * Result of output
+     */
     var valuePeriod: Period = Period()
+
+    /**
+     * Result of output
+     */
+    var valuePositiveInt: Int? = null
 
     /**
      * Result of output
@@ -564,10 +549,25 @@ open class TaskOutput() : BackboneElement() {
     /**
      * Result of output
      */
+    var valueString: String? = null
+
+    /**
+     * Result of output
+     */
+    var valueTime: String? = null
+
+    /**
+     * Result of output
+     */
     var valueTiming: Timing = Timing()
 
     /**
      * Result of output
      */
-    var valueMeta: Meta = Meta()
+    var valueUnsignedInt: Int? = null
+
+    /**
+     * Result of output
+     */
+    var valueUri: String? = null
 }

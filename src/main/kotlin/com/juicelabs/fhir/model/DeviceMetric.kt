@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.740 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.073 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,10 +13,42 @@ import kotlin.collections.List
  * Describes a measurement, calculation or setting capability of a medical device.
  */
 open class DeviceMetric() : DomainResource() {
+    val calibration: List<DeviceMetricCalibration> = mutableListOf<DeviceMetricCalibration>()
+
+    /**
+     * measurement | setting | calculation | unspecified
+     */
+    var category: String? = null
+
+    /**
+     * black | red | green | yellow | blue | magenta | cyan | white
+     */
+    var color: String? = null
+
     /**
      * Unique identifier of this DeviceMetric
      */
     var identifier: Identifier = Identifier()
+
+    /**
+     * Describes the measurement repetition time
+     */
+    var measurementPeriod: Timing? = null
+
+    /**
+     * on | off | standby | entered-in-error
+     */
+    var operationalStatus: String? = null
+
+    /**
+     * Describes the link to the parent DeviceComponent
+     */
+    var parent: Reference? = null
+
+    /**
+     * Describes the link to the source Device
+     */
+    var source: Reference? = null
 
     /**
      * Identity of metric, for example Heart Rate or PEEP Setting
@@ -27,38 +59,6 @@ open class DeviceMetric() : DomainResource() {
      * Unit of Measure for the Metric
      */
     var unit: CodeableConcept? = null
-
-    /**
-     * Describes the link to the source Device
-     */
-    var source: Reference? = null
-
-    /**
-     * Describes the link to the parent DeviceComponent
-     */
-    var parent: Reference? = null
-
-    /**
-     * on | off | standby | entered-in-error
-     */
-    var operationalStatus: String? = null
-
-    /**
-     * black | red | green | yellow | blue | magenta | cyan | white
-     */
-    var color: String? = null
-
-    /**
-     * measurement | setting | calculation | unspecified
-     */
-    var category: String? = null
-
-    /**
-     * Describes the measurement repetition time
-     */
-    var measurementPeriod: Timing? = null
-
-    val calibration: List<DeviceMetricCalibration> = mutableListOf<DeviceMetricCalibration>()
 }
 
 /**
@@ -68,11 +68,6 @@ open class DeviceMetric() : DomainResource() {
  */
 open class DeviceMetricCalibration() : BackboneElement() {
     /**
-     * unspecified | offset | gain | two-point
-     */
-    var type: String? = null
-
-    /**
      * not-calibrated | calibration-required | calibrated | unspecified
      */
     var state: String? = null
@@ -81,4 +76,9 @@ open class DeviceMetricCalibration() : BackboneElement() {
      * Describes the time last calibration has been performed
      */
     var time: String? = null
+
+    /**
+     * unspecified | offset | gain | two-point
+     */
+    var type: String? = null
 }

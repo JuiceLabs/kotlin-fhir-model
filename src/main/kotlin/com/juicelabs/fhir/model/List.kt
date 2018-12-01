@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.697 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.051 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,9 +12,9 @@ package com.juicelabs.fhir.model
  */
 open class ListEntry() : BackboneElement() {
     /**
-     * Status/Workflow information about this item
+     * When item added to list
      */
-    var flag: CodeableConcept? = null
+    var date: String? = null
 
     /**
      * If this item is actually marked as deleted
@@ -22,9 +22,9 @@ open class ListEntry() : BackboneElement() {
     var deleted: Boolean? = null
 
     /**
-     * When item added to list
+     * Status/Workflow information about this item
      */
-    var date: String? = null
+    var flag: CodeableConcept? = null
 
     /**
      * Actual entry

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.309 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.811 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,24 +12,14 @@ package com.juicelabs.fhir.model
  */
 open class RelatedArtifact() : Element() {
     /**
-     * documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of
-     */
-    var type: String? = null
-
-    /**
-     * Brief description of the related artifact
-     */
-    var display: String? = null
-
-    /**
      * Bibliographic citation for the artifact
      */
     var citation: String? = null
 
     /**
-     * Where the artifact can be accessed
+     * Brief description of the related artifact
      */
-    var url: String? = null
+    var display: String? = null
 
     /**
      * What document is being referenced
@@ -40,4 +30,14 @@ open class RelatedArtifact() : Element() {
      * What resource is being referenced
      */
     var resource: Reference? = null
+
+    /**
+     * documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of
+     */
+    var type: String? = null
+
+    /**
+     * Where the artifact can be accessed
+     */
+    var url: String? = null
 }

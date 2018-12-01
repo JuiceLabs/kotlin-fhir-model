@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.396 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.865 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,29 +12,9 @@ package com.juicelabs.fhir.model
  */
 open class ResearchSubject() : DomainResource() {
     /**
-     * Business Identifier for research subject
+     * What path was followed
      */
-    var identifier: Identifier? = null
-
-    /**
-     * candidate | enrolled | active | suspended | withdrawn | completed
-     */
-    var status: String? = null
-
-    /**
-     * Start and end of participation
-     */
-    var period: Period? = null
-
-    /**
-     * Study subject is part of
-     */
-    var study: Reference = Reference()
-
-    /**
-     * Who is part of study
-     */
-    var individual: Reference = Reference()
+    var actualArm: String? = null
 
     /**
      * What path should be followed
@@ -42,12 +22,32 @@ open class ResearchSubject() : DomainResource() {
     var assignedArm: String? = null
 
     /**
-     * What path was followed
-     */
-    var actualArm: String? = null
-
-    /**
      * Agreement to participate in study
      */
     var consent: Reference? = null
+
+    /**
+     * Business Identifier for research subject
+     */
+    var identifier: Identifier? = null
+
+    /**
+     * Who is part of study
+     */
+    var individual: Reference = Reference()
+
+    /**
+     * Start and end of participation
+     */
+    var period: Period? = null
+
+    /**
+     * candidate | enrolled | active | suspended | withdrawn | completed
+     */
+    var status: String? = null
+
+    /**
+     * Study subject is part of
+     */
+    var study: Reference = Reference()
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.293 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.800 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,47 +13,24 @@ import kotlin.collections.List
  * This resource provides eligibility and plan details from the processing of an Eligibility resource.
  */
 open class EligibilityResponse() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * active | cancelled | draft | entered-in-error
-     */
-    var status: String? = null
-
     /**
      * Creation date
      */
     var created: String? = null
 
     /**
-     * Responsible practitioner
-     */
-    var requestProvider: Reference? = null
-
-    /**
-     * Responsible organization
-     */
-    var requestOrganization: Reference? = null
-
-    /**
-     * Eligibility reference
-     */
-    var request: Reference? = null
-
-    /**
-     * complete | error | partial
-     */
-    var outcome: CodeableConcept? = null
-
-    /**
      * Disposition Message
      */
     var disposition: String? = null
 
+    val error: List<EligibilityResponseError> = mutableListOf<EligibilityResponseError>()
+
     /**
-     * Insurer issuing the coverage
+     * Printed Form Identifier
      */
-    var insurer: Reference? = null
+    var form: CodeableConcept? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * Coverage inforce indicator
@@ -64,11 +41,34 @@ open class EligibilityResponse() : DomainResource() {
             mutableListOf<EligibilityResponseInsurance>()
 
     /**
-     * Printed Form Identifier
+     * Insurer issuing the coverage
      */
-    var form: CodeableConcept? = null
+    var insurer: Reference? = null
 
-    val error: List<EligibilityResponseError> = mutableListOf<EligibilityResponseError>()
+    /**
+     * complete | error | partial
+     */
+    var outcome: CodeableConcept? = null
+
+    /**
+     * Eligibility reference
+     */
+    var request: Reference? = null
+
+    /**
+     * Responsible organization
+     */
+    var requestOrganization: Reference? = null
+
+    /**
+     * Responsible practitioner
+     */
+    var requestProvider: Reference? = null
+
+    /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
 }
 
 /**
@@ -77,18 +77,18 @@ open class EligibilityResponse() : DomainResource() {
  * The insurer may provide both the details for the requested coverage as well as details for additional coverages known to the insurer.
  */
 open class EligibilityResponseInsurance() : BackboneElement() {
-    /**
-     * Updated Coverage details
-     */
-    var coverage: Reference? = null
+    val benefitBalance: List<EligibilityResponseInsuranceBenefitBalance> =
+            mutableListOf<EligibilityResponseInsuranceBenefitBalance>()
 
     /**
      * Contract details
      */
     var contract: Reference? = null
 
-    val benefitBalance: List<EligibilityResponseInsuranceBenefitBalance> =
-            mutableListOf<EligibilityResponseInsuranceBenefitBalance>()
+    /**
+     * Updated Coverage details
+     */
+    var coverage: Reference? = null
 }
 
 /**
@@ -103,14 +103,17 @@ open class EligibilityResponseInsuranceBenefitBalance() : BackboneElement() {
     var category: CodeableConcept = CodeableConcept()
 
     /**
-     * Detailed services covered within the type
+     * Description of the benefit or services covered
      */
-    var subCategory: CodeableConcept? = null
+    var description: String? = null
 
     /**
      * Excluded from the plan
      */
     var excluded: Boolean? = null
+
+    val financial: List<EligibilityResponseInsuranceBenefitBalanceFinancial> =
+            mutableListOf<EligibilityResponseInsuranceBenefitBalanceFinancial>()
 
     /**
      * Short name for the benefit
@@ -118,27 +121,24 @@ open class EligibilityResponseInsuranceBenefitBalance() : BackboneElement() {
     var name: String? = null
 
     /**
-     * Description of the benefit or services covered
-     */
-    var description: String? = null
-
-    /**
      * In or out of network
      */
     var network: CodeableConcept? = null
 
     /**
-     * Individual or family
+     * Detailed services covered within the type
      */
-    var unit: CodeableConcept? = null
+    var subCategory: CodeableConcept? = null
 
     /**
      * Annual or lifetime
      */
     var term: CodeableConcept? = null
 
-    val financial: List<EligibilityResponseInsuranceBenefitBalanceFinancial> =
-            mutableListOf<EligibilityResponseInsuranceBenefitBalanceFinancial>()
+    /**
+     * Individual or family
+     */
+    var unit: CodeableConcept? = null
 }
 
 /**
@@ -148,14 +148,9 @@ open class EligibilityResponseInsuranceBenefitBalance() : BackboneElement() {
  */
 open class EligibilityResponseInsuranceBenefitBalanceFinancial() : BackboneElement() {
     /**
-     * Deductable, visits, benefit amount
-     */
-    var type: CodeableConcept = CodeableConcept()
-
-    /**
      * Benefits allowed
      */
-    var allowedUnsignedInt: Int? = null
+    var allowedMoney: Money? = null
 
     /**
      * Benefits allowed
@@ -165,17 +160,22 @@ open class EligibilityResponseInsuranceBenefitBalanceFinancial() : BackboneEleme
     /**
      * Benefits allowed
      */
-    var allowedMoney: Money? = null
+    var allowedUnsignedInt: Int? = null
 
     /**
-     * Benefits used
+     * Deductable, visits, benefit amount
      */
-    var usedUnsignedInt: Int? = null
+    var type: CodeableConcept = CodeableConcept()
 
     /**
      * Benefits used
      */
     var usedMoney: Money? = null
+
+    /**
+     * Benefits used
+     */
+    var usedUnsignedInt: Int? = null
 }
 
 /**

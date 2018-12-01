@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.769 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.094 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,34 +13,46 @@ import kotlin.collections.List
  * A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
  */
 open class Media() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     val basedOn: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * photo | video | audio
+     * Body part in media
      */
-    var type: String? = null
+    var bodySite: CodeableConcept? = null
 
     /**
-     * The type of acquisition equipment/process
+     * Actual Media - reference or data
      */
-    var subtype: CodeableConcept? = null
-
-    /**
-     * Imaging view, e.g. Lateral or Antero-posterior
-     */
-    var view: CodeableConcept? = null
-
-    /**
-     * Who/What this Media is a record of
-     */
-    var subject: Reference? = null
+    var content: Attachment = Attachment()
 
     /**
      * Encounter / Episode associated with media
      */
     var context: Reference? = null
+
+    /**
+     * Observing Device
+     */
+    var device: Reference? = null
+
+    /**
+     * Length in seconds (audio / video)
+     */
+    var duration: Int? = null
+
+    /**
+     * Number of frames if > 1 (photo)
+     */
+    var frames: Int? = null
+
+    /**
+     * Height of the image in pixels (photo/video)
+     */
+    var height: Int? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * When Media was collected
@@ -60,39 +72,27 @@ open class Media() : DomainResource() {
     val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
-     * Body part in media
+     * Who/What this Media is a record of
      */
-    var bodySite: CodeableConcept? = null
+    var subject: Reference? = null
 
     /**
-     * Observing Device
+     * The type of acquisition equipment/process
      */
-    var device: Reference? = null
+    var subtype: CodeableConcept? = null
 
     /**
-     * Height of the image in pixels (photo/video)
+     * photo | video | audio
      */
-    var height: Int? = null
+    var type: String? = null
+
+    /**
+     * Imaging view, e.g. Lateral or Antero-posterior
+     */
+    var view: CodeableConcept? = null
 
     /**
      * Width of the image in pixels (photo/video)
      */
     var width: Int? = null
-
-    /**
-     * Number of frames if > 1 (photo)
-     */
-    var frames: Int? = null
-
-    /**
-     * Length in seconds (audio / video)
-     */
-    var duration: Int? = null
-
-    /**
-     * Actual Media - reference or data
-     */
-    var content: Attachment = Attachment()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
 }

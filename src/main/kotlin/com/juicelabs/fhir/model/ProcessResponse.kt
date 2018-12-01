@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.454 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.899 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,7 @@ import kotlin.collections.List
  * This resource provides processing status, errors and notes from the processing of a resource.
  */
 open class ProcessResponse() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * active | cancelled | draft | entered-in-error
-     */
-    var status: String? = null
+    val communicationRequest: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Creation date
@@ -26,9 +21,30 @@ open class ProcessResponse() : DomainResource() {
     var created: String? = null
 
     /**
+     * Disposition Message
+     */
+    var disposition: String? = null
+
+    val error: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Printed Form Identifier
+     */
+    var form: CodeableConcept? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
      * Authoring Organization
      */
     var organization: Reference? = null
+
+    /**
+     * Processing outcome
+     */
+    var outcome: CodeableConcept? = null
+
+    val processNote: List<ProcessResponseProcessNote> = mutableListOf<ProcessResponseProcessNote>()
 
     /**
      * Request reference
@@ -36,14 +52,9 @@ open class ProcessResponse() : DomainResource() {
     var request: Reference? = null
 
     /**
-     * Processing outcome
+     * Responsible organization
      */
-    var outcome: CodeableConcept? = null
-
-    /**
-     * Disposition Message
-     */
-    var disposition: String? = null
+    var requestOrganization: Reference? = null
 
     /**
      * Responsible Practitioner
@@ -51,20 +62,9 @@ open class ProcessResponse() : DomainResource() {
     var requestProvider: Reference? = null
 
     /**
-     * Responsible organization
+     * active | cancelled | draft | entered-in-error
      */
-    var requestOrganization: Reference? = null
-
-    /**
-     * Printed Form Identifier
-     */
-    var form: CodeableConcept? = null
-
-    val processNote: List<ProcessResponseProcessNote> = mutableListOf<ProcessResponseProcessNote>()
-
-    val error: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val communicationRequest: List<Reference> = mutableListOf<Reference>()
+    var status: String? = null
 }
 
 /**
@@ -74,12 +74,12 @@ open class ProcessResponse() : DomainResource() {
  */
 open class ProcessResponseProcessNote() : BackboneElement() {
     /**
-     * display | print | printoper
-     */
-    var type: CodeableConcept? = null
-
-    /**
      * Comment on the processing
      */
     var text: String? = null
+
+    /**
+     * display | print | printoper
+     */
+    var type: CodeableConcept? = null
 }

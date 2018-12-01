@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.648 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.022 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,12 @@ import kotlin.collections.List
  * A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called "ClinicalImpression" rather than "ClinicalAssessment" to avoid confusion with the recording of assessment tools such as Apgar score.
  */
 open class ClinicalImpression() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val action: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * draft | completed | entered-in-error
+     * The clinician performing the assessment
      */
-    var status: String? = null
+    var assessor: Reference? = null
 
     /**
      * Kind of assessment performed
@@ -26,19 +26,19 @@ open class ClinicalImpression() : DomainResource() {
     var code: CodeableConcept? = null
 
     /**
-     * Why/how the assessment was performed
-     */
-    var description: String? = null
-
-    /**
-     * Patient or group assessed
-     */
-    var subject: Reference = Reference()
-
-    /**
      * Encounter or Episode created from
      */
     var context: Reference? = null
+
+    /**
+     * When the assessment was documented
+     */
+    var date: String? = null
+
+    /**
+     * Why/how the assessment was performed
+     */
+    var description: String? = null
 
     /**
      * Time of assessment
@@ -50,15 +50,14 @@ open class ClinicalImpression() : DomainResource() {
      */
     var effectivePeriod: Period? = null
 
-    /**
-     * When the assessment was documented
-     */
-    var date: String? = null
+    val finding: List<ClinicalImpressionFinding> = mutableListOf<ClinicalImpressionFinding>()
 
-    /**
-     * The clinician performing the assessment
-     */
-    var assessor: Reference? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val investigation: List<ClinicalImpressionInvestigation> =
+            mutableListOf<ClinicalImpressionInvestigation>()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * Reference to last assessment
@@ -67,25 +66,26 @@ open class ClinicalImpression() : DomainResource() {
 
     val problem: List<Reference> = mutableListOf<Reference>()
 
-    val investigation: List<ClinicalImpressionInvestigation> =
-            mutableListOf<ClinicalImpressionInvestigation>()
+    val prognosisCodeableConcept: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val prognosisReference: List<Reference> = mutableListOf<Reference>()
 
     val protocol: List<String> = mutableListOf<String>()
+
+    /**
+     * draft | completed | entered-in-error
+     */
+    var status: String? = null
+
+    /**
+     * Patient or group assessed
+     */
+    var subject: Reference = Reference()
 
     /**
      * Summary of the assessment
      */
     var summary: String? = null
-
-    val finding: List<ClinicalImpressionFinding> = mutableListOf<ClinicalImpressionFinding>()
-
-    val prognosisCodeableConcept: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val prognosisReference: List<Reference> = mutableListOf<Reference>()
-
-    val action: List<Reference> = mutableListOf<Reference>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
 }
 
 /**
@@ -109,6 +109,11 @@ open class ClinicalImpressionInvestigation() : BackboneElement() {
  */
 open class ClinicalImpressionFinding() : BackboneElement() {
     /**
+     * Which investigations support finding
+     */
+    var basis: String? = null
+
+    /**
      * What was found
      */
     var itemCodeableConcept: CodeableConcept = CodeableConcept()
@@ -117,9 +122,4 @@ open class ClinicalImpressionFinding() : BackboneElement() {
      * What was found
      */
     var itemReference: Reference = Reference()
-
-    /**
-     * Which investigations support finding
-     */
-    var basis: String? = null
 }

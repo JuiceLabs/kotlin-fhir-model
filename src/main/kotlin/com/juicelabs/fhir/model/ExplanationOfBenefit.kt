@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.409 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.876 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,64 +13,22 @@ import kotlin.collections.List
  * This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided.
  */
 open class ExplanationOfBenefit() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
-     * active | cancelled | draft | entered-in-error
+     * Details of an accident
      */
-    var status: String? = null
+    var accident: ExplanationOfBenefitAccident? = null
 
-    /**
-     * Type or discipline
-     */
-    var type: CodeableConcept? = null
+    val addItem: List<ExplanationOfBenefitAddItem> = mutableListOf<ExplanationOfBenefitAddItem>()
 
-    val subType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * The subject of the Products and Services
-     */
-    var patient: Reference? = null
+    val benefitBalance: List<ExplanationOfBenefitBenefitBalance> =
+            mutableListOf<ExplanationOfBenefitBenefitBalance>()
 
     /**
      * Period for charge submission
      */
     var billablePeriod: Period? = null
 
-    /**
-     * Creation date
-     */
-    var created: String? = null
-
-    /**
-     * Author
-     */
-    var enterer: Reference? = null
-
-    /**
-     * Insurer responsible for the EOB
-     */
-    var insurer: Reference? = null
-
-    /**
-     * Responsible provider for the claim
-     */
-    var provider: Reference? = null
-
-    /**
-     * Responsible organization for the claim
-     */
-    var organization: Reference? = null
-
-    /**
-     * Treatment Referral
-     */
-    var referral: Reference? = null
-
-    /**
-     * Servicing Facility
-     */
-    var facility: Reference? = null
+    val careTeam: List<ExplanationOfBenefitCareTeam> = mutableListOf<ExplanationOfBenefitCareTeam>()
 
     /**
      * Claim reference
@@ -83,57 +41,17 @@ open class ExplanationOfBenefit() : DomainResource() {
     var claimResponse: Reference? = null
 
     /**
-     * complete | error | partial
+     * Creation date
      */
-    var outcome: CodeableConcept? = null
+    var created: String? = null
+
+    val diagnosis: List<ExplanationOfBenefitDiagnosis> =
+            mutableListOf<ExplanationOfBenefitDiagnosis>()
 
     /**
      * Disposition Message
      */
     var disposition: String? = null
-
-    val related: List<ExplanationOfBenefitRelated> = mutableListOf<ExplanationOfBenefitRelated>()
-
-    /**
-     * Prescription authorizing services or products
-     */
-    var prescription: Reference? = null
-
-    /**
-     * Original prescription if superceded by fulfiller
-     */
-    var originalPrescription: Reference? = null
-
-    /**
-     * Party to be paid any benefits payable
-     */
-    var payee: ExplanationOfBenefitPayee? = null
-
-    val information: List<ExplanationOfBenefitInformation> =
-            mutableListOf<ExplanationOfBenefitInformation>()
-
-    val careTeam: List<ExplanationOfBenefitCareTeam> = mutableListOf<ExplanationOfBenefitCareTeam>()
-
-    val diagnosis: List<ExplanationOfBenefitDiagnosis> =
-            mutableListOf<ExplanationOfBenefitDiagnosis>()
-
-    val procedure: List<ExplanationOfBenefitProcedure> =
-            mutableListOf<ExplanationOfBenefitProcedure>()
-
-    /**
-     * Precedence (primary, secondary, etc.)
-     */
-    var precedence: Int? = null
-
-    /**
-     * Insurance or medical plan
-     */
-    var insurance: ExplanationOfBenefitInsurance? = null
-
-    /**
-     * Details of an accident
-     */
-    var accident: ExplanationOfBenefitAccident? = null
 
     /**
      * Period unable to work
@@ -141,28 +59,66 @@ open class ExplanationOfBenefit() : DomainResource() {
     var employmentImpacted: Period? = null
 
     /**
+     * Author
+     */
+    var enterer: Reference? = null
+
+    /**
+     * Servicing Facility
+     */
+    var facility: Reference? = null
+
+    /**
+     * Printed Form Identifier
+     */
+    var form: CodeableConcept? = null
+
+    /**
      * Period in hospital
      */
     var hospitalization: Period? = null
 
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val information: List<ExplanationOfBenefitInformation> =
+            mutableListOf<ExplanationOfBenefitInformation>()
+
+    /**
+     * Insurance or medical plan
+     */
+    var insurance: ExplanationOfBenefitInsurance? = null
+
+    /**
+     * Insurer responsible for the EOB
+     */
+    var insurer: Reference? = null
+
     val item: List<ExplanationOfBenefitItem> = mutableListOf<ExplanationOfBenefitItem>()
 
-    val addItem: List<ExplanationOfBenefitAddItem> = mutableListOf<ExplanationOfBenefitAddItem>()
+    /**
+     * Responsible organization for the claim
+     */
+    var organization: Reference? = null
 
     /**
-     * Total Cost of service from the Claim
+     * Original prescription if superceded by fulfiller
      */
-    var totalCost: Money? = null
+    var originalPrescription: Reference? = null
 
     /**
-     * Unallocated deductable
+     * complete | error | partial
      */
-    var unallocDeductable: Money? = null
+    var outcome: CodeableConcept? = null
 
     /**
-     * Total benefit payable for the Claim
+     * The subject of the Products and Services
      */
-    var totalBenefit: Money? = null
+    var patient: Reference? = null
+
+    /**
+     * Party to be paid any benefits payable
+     */
+    var payee: ExplanationOfBenefitPayee? = null
 
     /**
      * Payment (if paid)
@@ -170,15 +126,59 @@ open class ExplanationOfBenefit() : DomainResource() {
     var payment: ExplanationOfBenefitPayment? = null
 
     /**
-     * Printed Form Identifier
+     * Precedence (primary, secondary, etc.)
      */
-    var form: CodeableConcept? = null
+    var precedence: Int? = null
+
+    /**
+     * Prescription authorizing services or products
+     */
+    var prescription: Reference? = null
+
+    val procedure: List<ExplanationOfBenefitProcedure> =
+            mutableListOf<ExplanationOfBenefitProcedure>()
 
     val processNote: List<ExplanationOfBenefitProcessNote> =
             mutableListOf<ExplanationOfBenefitProcessNote>()
 
-    val benefitBalance: List<ExplanationOfBenefitBenefitBalance> =
-            mutableListOf<ExplanationOfBenefitBenefitBalance>()
+    /**
+     * Responsible provider for the claim
+     */
+    var provider: Reference? = null
+
+    /**
+     * Treatment Referral
+     */
+    var referral: Reference? = null
+
+    val related: List<ExplanationOfBenefitRelated> = mutableListOf<ExplanationOfBenefitRelated>()
+
+    /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
+
+    val subType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Total benefit payable for the Claim
+     */
+    var totalBenefit: Money? = null
+
+    /**
+     * Total Cost of service from the Claim
+     */
+    var totalCost: Money? = null
+
+    /**
+     * Type or discipline
+     */
+    var type: CodeableConcept? = null
+
+    /**
+     * Unallocated deductable
+     */
+    var unallocDeductable: Money? = null
 }
 
 /**
@@ -193,14 +193,14 @@ open class ExplanationOfBenefitRelated() : BackboneElement() {
     var claim: Reference? = null
 
     /**
-     * How the reference claim is related
-     */
-    var relationship: CodeableConcept? = null
-
-    /**
      * Related file or case reference
      */
     var reference: Identifier? = null
+
+    /**
+     * How the reference claim is related
+     */
+    var relationship: CodeableConcept? = null
 }
 
 /**
@@ -210,9 +210,9 @@ open class ExplanationOfBenefitRelated() : BackboneElement() {
  */
 open class ExplanationOfBenefitPayee() : BackboneElement() {
     /**
-     * Type of party: Subscriber, Provider, other
+     * Party to receive the payable
      */
-    var type: CodeableConcept? = null
+    var party: Reference? = null
 
     /**
      * organization | patient | practitioner | relatedperson
@@ -220,9 +220,9 @@ open class ExplanationOfBenefitPayee() : BackboneElement() {
     var resourceType: CodeableConcept? = null
 
     /**
-     * Party to receive the payable
+     * Type of party: Subscriber, Provider, other
      */
-    var party: Reference? = null
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -232,11 +232,6 @@ open class ExplanationOfBenefitPayee() : BackboneElement() {
  */
 open class ExplanationOfBenefitInformation() : BackboneElement() {
     /**
-     * Information instance identifier
-     */
-    var sequence: Int? = null
-
-    /**
      * General class of information
      */
     var category: CodeableConcept = CodeableConcept()
@@ -245,6 +240,16 @@ open class ExplanationOfBenefitInformation() : BackboneElement() {
      * Type of information
      */
     var code: CodeableConcept? = null
+
+    /**
+     * Reason associated with the information
+     */
+    var reason: Coding? = null
+
+    /**
+     * Information instance identifier
+     */
+    var sequence: Int? = null
 
     /**
      * When it occurred
@@ -259,7 +264,7 @@ open class ExplanationOfBenefitInformation() : BackboneElement() {
     /**
      * Additional Data or supporting information
      */
-    var valueString: String? = null
+    var valueAttachment: Attachment? = null
 
     /**
      * Additional Data or supporting information
@@ -269,17 +274,12 @@ open class ExplanationOfBenefitInformation() : BackboneElement() {
     /**
      * Additional Data or supporting information
      */
-    var valueAttachment: Attachment? = null
+    var valueReference: Reference? = null
 
     /**
      * Additional Data or supporting information
      */
-    var valueReference: Reference? = null
-
-    /**
-     * Reason associated with the information
-     */
-    var reason: Coding? = null
+    var valueString: String? = null
 }
 
 /**
@@ -289,14 +289,14 @@ open class ExplanationOfBenefitInformation() : BackboneElement() {
  */
 open class ExplanationOfBenefitCareTeam() : BackboneElement() {
     /**
-     * Number to covey order of careteam
-     */
-    var sequence: Int? = null
-
-    /**
      * Member of the Care Team
      */
     var provider: Reference = Reference()
+
+    /**
+     * Type, classification or Specialization
+     */
+    var qualification: CodeableConcept? = null
 
     /**
      * Billing practitioner
@@ -309,9 +309,9 @@ open class ExplanationOfBenefitCareTeam() : BackboneElement() {
     var role: CodeableConcept? = null
 
     /**
-     * Type, classification or Specialization
+     * Number to covey order of careteam
      */
-    var qualification: CodeableConcept? = null
+    var sequence: Int? = null
 }
 
 /**
@@ -320,11 +320,6 @@ open class ExplanationOfBenefitCareTeam() : BackboneElement() {
  * Ordered list of patient diagnosis for which care is sought.
  */
 open class ExplanationOfBenefitDiagnosis() : BackboneElement() {
-    /**
-     * Number to covey order of diagnosis
-     */
-    var sequence: Int? = null
-
     /**
      * Patient's diagnosis
      */
@@ -335,12 +330,17 @@ open class ExplanationOfBenefitDiagnosis() : BackboneElement() {
      */
     var diagnosisReference: Reference = Reference()
 
-    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
     /**
      * Package billing code
      */
     var packageCode: CodeableConcept? = null
+
+    /**
+     * Number to covey order of diagnosis
+     */
+    var sequence: Int? = null
+
+    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 }
 
 /**
@@ -349,11 +349,6 @@ open class ExplanationOfBenefitDiagnosis() : BackboneElement() {
  * Ordered list of patient procedures performed to support the adjudication.
  */
 open class ExplanationOfBenefitProcedure() : BackboneElement() {
-    /**
-     * Procedure sequence for reference
-     */
-    var sequence: Int? = null
-
     /**
      * When the procedure was performed
      */
@@ -368,6 +363,11 @@ open class ExplanationOfBenefitProcedure() : BackboneElement() {
      * Patient's list of procedures performed
      */
     var procedureReference: Reference = Reference()
+
+    /**
+     * Procedure sequence for reference
+     */
+    var sequence: Int? = null
 }
 
 /**
@@ -396,11 +396,6 @@ open class ExplanationOfBenefitAccident() : BackboneElement() {
     var date: String? = null
 
     /**
-     * The nature of the accident
-     */
-    var type: CodeableConcept? = null
-
-    /**
      * Accident Place
      */
     var locationAddress: Address? = null
@@ -409,6 +404,11 @@ open class ExplanationOfBenefitAccident() : BackboneElement() {
      * Accident Place
      */
     var locationReference: Reference? = null
+
+    /**
+     * The nature of the accident
+     */
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -417,18 +417,67 @@ open class ExplanationOfBenefitAccident() : BackboneElement() {
  * First tier of goods and services.
  */
 open class ExplanationOfBenefitItem() : BackboneElement() {
+    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
+            mutableListOf<ExplanationOfBenefitItemAdjudication>()
+
     /**
-     * Service instance
+     * Service Location
      */
-    var sequence: Int? = null
+    var bodySite: CodeableConcept? = null
 
     val careTeamLinkId: List<Int> = mutableListOf<Int>()
 
+    /**
+     * Type of service or product
+     */
+    var category: CodeableConcept? = null
+
+    val detail: List<ExplanationOfBenefitItemDetail> =
+            mutableListOf<ExplanationOfBenefitItemDetail>()
+
     val diagnosisLinkId: List<Int> = mutableListOf<Int>()
+
+    val encounter: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Price scaling factor
+     */
+    var factor: Float? = null
+
+    val informationLinkId: List<Int> = mutableListOf<Int>()
+
+    /**
+     * Place of service
+     */
+    var locationAddress: Address? = null
+
+    /**
+     * Place of service
+     */
+    var locationCodeableConcept: CodeableConcept? = null
+
+    /**
+     * Place of service
+     */
+    var locationReference: Reference? = null
+
+    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Total item cost
+     */
+    var net: Money? = null
+
+    val noteNumber: List<Int> = mutableListOf<Int>()
 
     val procedureLinkId: List<Int> = mutableListOf<Int>()
 
-    val informationLinkId: List<Int> = mutableListOf<Int>()
+    val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Count of Products or Services
+     */
+    var quantity: Quantity? = null
 
     /**
      * Revenue or cost center code
@@ -436,18 +485,14 @@ open class ExplanationOfBenefitItem() : BackboneElement() {
     var revenue: CodeableConcept? = null
 
     /**
-     * Type of service or product
+     * Service instance
      */
-    var category: CodeableConcept? = null
+    var sequence: Int? = null
 
     /**
      * Billing Code
      */
     var service: CodeableConcept? = null
-
-    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Date or dates of Service
@@ -459,59 +504,14 @@ open class ExplanationOfBenefitItem() : BackboneElement() {
      */
     var servicedPeriod: Period? = null
 
-    /**
-     * Place of service
-     */
-    var locationCodeableConcept: CodeableConcept? = null
+    val subSite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
-    /**
-     * Place of service
-     */
-    var locationAddress: Address? = null
-
-    /**
-     * Place of service
-     */
-    var locationReference: Reference? = null
-
-    /**
-     * Count of Products or Services
-     */
-    var quantity: Quantity? = null
+    val udi: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Fee, charge or cost per point
      */
     var unitPrice: Money? = null
-
-    /**
-     * Price scaling factor
-     */
-    var factor: Float? = null
-
-    /**
-     * Total item cost
-     */
-    var net: Money? = null
-
-    val udi: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Service Location
-     */
-    var bodySite: CodeableConcept? = null
-
-    val subSite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val encounter: List<Reference> = mutableListOf<Reference>()
-
-    val noteNumber: List<Int> = mutableListOf<Int>()
-
-    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
-            mutableListOf<ExplanationOfBenefitItemAdjudication>()
-
-    val detail: List<ExplanationOfBenefitItemDetail> =
-            mutableListOf<ExplanationOfBenefitItemDetail>()
 }
 
 /**
@@ -521,6 +521,11 @@ open class ExplanationOfBenefitItem() : BackboneElement() {
  */
 open class ExplanationOfBenefitItemAdjudication() : BackboneElement() {
     /**
+     * Monetary amount
+     */
+    var amount: Money? = null
+
+    /**
      * Adjudication category such as co-pay, eligible, benefit, etc.
      */
     var category: CodeableConcept = CodeableConcept()
@@ -529,11 +534,6 @@ open class ExplanationOfBenefitItemAdjudication() : BackboneElement() {
      * Explanation of Adjudication outcome
      */
     var reason: CodeableConcept? = null
-
-    /**
-     * Monetary amount
-     */
-    var amount: Money? = null
 
     /**
      * Non-monitory value
@@ -547,20 +547,8 @@ open class ExplanationOfBenefitItemAdjudication() : BackboneElement() {
  * Second tier of goods and services.
  */
 open class ExplanationOfBenefitItemDetail() : BackboneElement() {
-    /**
-     * Service instance
-     */
-    var sequence: Int? = null
-
-    /**
-     * Group or type of product or service
-     */
-    var type: CodeableConcept = CodeableConcept()
-
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
+    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
+            mutableListOf<ExplanationOfBenefitItemAdjudication>()
 
     /**
      * Type of service or product
@@ -568,11 +556,18 @@ open class ExplanationOfBenefitItemDetail() : BackboneElement() {
     var category: CodeableConcept? = null
 
     /**
-     * Billing Code
+     * Price scaling factor
      */
-    var service: CodeableConcept? = null
+    var factor: Float? = null
 
     val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Total additional item cost
+     */
+    var net: Money? = null
+
+    val noteNumber: List<Int> = mutableListOf<Int>()
 
     val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -582,29 +577,34 @@ open class ExplanationOfBenefitItemDetail() : BackboneElement() {
     var quantity: Quantity? = null
 
     /**
-     * Fee, charge or cost per point
+     * Revenue or cost center code
      */
-    var unitPrice: Money? = null
+    var revenue: CodeableConcept? = null
 
     /**
-     * Price scaling factor
+     * Service instance
      */
-    var factor: Float? = null
+    var sequence: Int? = null
 
     /**
-     * Total additional item cost
+     * Billing Code
      */
-    var net: Money? = null
-
-    val udi: List<Reference> = mutableListOf<Reference>()
-
-    val noteNumber: List<Int> = mutableListOf<Int>()
-
-    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
-            mutableListOf<ExplanationOfBenefitItemAdjudication>()
+    var service: CodeableConcept? = null
 
     val subDetail: List<ExplanationOfBenefitItemDetailSubDetail> =
             mutableListOf<ExplanationOfBenefitItemDetailSubDetail>()
+
+    /**
+     * Group or type of product or service
+     */
+    var type: CodeableConcept = CodeableConcept()
+
+    val udi: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Fee, charge or cost per point
+     */
+    var unitPrice: Money? = null
 }
 
 /**
@@ -613,20 +613,8 @@ open class ExplanationOfBenefitItemDetail() : BackboneElement() {
  * Third tier of goods and services.
  */
 open class ExplanationOfBenefitItemDetailSubDetail() : BackboneElement() {
-    /**
-     * Service instance
-     */
-    var sequence: Int? = null
-
-    /**
-     * Type of product or service
-     */
-    var type: CodeableConcept = CodeableConcept()
-
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
+    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
+            mutableListOf<ExplanationOfBenefitItemAdjudication>()
 
     /**
      * Type of service or product
@@ -634,11 +622,18 @@ open class ExplanationOfBenefitItemDetailSubDetail() : BackboneElement() {
     var category: CodeableConcept? = null
 
     /**
-     * Billing Code
+     * Price scaling factor
      */
-    var service: CodeableConcept? = null
+    var factor: Float? = null
 
     val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Net additional item cost
+     */
+    var net: Money? = null
+
+    val noteNumber: List<Int> = mutableListOf<Int>()
 
     val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -648,26 +643,31 @@ open class ExplanationOfBenefitItemDetailSubDetail() : BackboneElement() {
     var quantity: Quantity? = null
 
     /**
-     * Fee, charge or cost per point
+     * Revenue or cost center code
      */
-    var unitPrice: Money? = null
+    var revenue: CodeableConcept? = null
 
     /**
-     * Price scaling factor
+     * Service instance
      */
-    var factor: Float? = null
+    var sequence: Int? = null
 
     /**
-     * Net additional item cost
+     * Billing Code
      */
-    var net: Money? = null
+    var service: CodeableConcept? = null
+
+    /**
+     * Type of product or service
+     */
+    var type: CodeableConcept = CodeableConcept()
 
     val udi: List<Reference> = mutableListOf<Reference>()
 
-    val noteNumber: List<Int> = mutableListOf<Int>()
-
-    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
-            mutableListOf<ExplanationOfBenefitItemAdjudication>()
+    /**
+     * Fee, charge or cost per point
+     */
+    var unitPrice: Money? = null
 }
 
 /**
@@ -676,37 +676,37 @@ open class ExplanationOfBenefitItemDetailSubDetail() : BackboneElement() {
  * The first tier service adjudications for payor added services.
  */
 open class ExplanationOfBenefitAddItem() : BackboneElement() {
-    val sequenceLinkId: List<Int> = mutableListOf<Int>()
-
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
+    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
+            mutableListOf<ExplanationOfBenefitItemAdjudication>()
 
     /**
      * Type of service or product
      */
     var category: CodeableConcept? = null
 
-    /**
-     * Billing Code
-     */
-    var service: CodeableConcept? = null
-
-    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val detail: List<ExplanationOfBenefitAddItemDetail> =
+            mutableListOf<ExplanationOfBenefitAddItemDetail>()
 
     /**
      * Professional fee or Product charge
      */
     var fee: Money? = null
 
+    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     val noteNumber: List<Int> = mutableListOf<Int>()
 
-    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
-            mutableListOf<ExplanationOfBenefitItemAdjudication>()
+    /**
+     * Revenue or cost center code
+     */
+    var revenue: CodeableConcept? = null
 
-    val detail: List<ExplanationOfBenefitAddItemDetail> =
-            mutableListOf<ExplanationOfBenefitAddItemDetail>()
+    val sequenceLinkId: List<Int> = mutableListOf<Int>()
+
+    /**
+     * Billing Code
+     */
+    var service: CodeableConcept? = null
 }
 
 /**
@@ -715,10 +715,8 @@ open class ExplanationOfBenefitAddItem() : BackboneElement() {
  * The second tier service adjudications for payor added services.
  */
 open class ExplanationOfBenefitAddItemDetail() : BackboneElement() {
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
+    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
+            mutableListOf<ExplanationOfBenefitItemAdjudication>()
 
     /**
      * Type of service or product
@@ -726,21 +724,23 @@ open class ExplanationOfBenefitAddItemDetail() : BackboneElement() {
     var category: CodeableConcept? = null
 
     /**
-     * Billing Code
-     */
-    var service: CodeableConcept? = null
-
-    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
      * Professional fee or Product charge
      */
     var fee: Money? = null
 
+    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     val noteNumber: List<Int> = mutableListOf<Int>()
 
-    val adjudication: List<ExplanationOfBenefitItemAdjudication> =
-            mutableListOf<ExplanationOfBenefitItemAdjudication>()
+    /**
+     * Revenue or cost center code
+     */
+    var revenue: CodeableConcept? = null
+
+    /**
+     * Billing Code
+     */
+    var service: CodeableConcept? = null
 }
 
 /**
@@ -749,11 +749,6 @@ open class ExplanationOfBenefitAddItemDetail() : BackboneElement() {
  * Payment details for the claim if the claim has been paid.
  */
 open class ExplanationOfBenefitPayment() : BackboneElement() {
-    /**
-     * Partial or Complete
-     */
-    var type: CodeableConcept? = null
-
     /**
      * Payment adjustment for non-Claim issues
      */
@@ -765,19 +760,24 @@ open class ExplanationOfBenefitPayment() : BackboneElement() {
     var adjustmentReason: CodeableConcept? = null
 
     /**
-     * Expected date of Payment
-     */
-    var date: String? = null
-
-    /**
      * Payable amount after adjustment
      */
     var amount: Money? = null
 
     /**
+     * Expected date of Payment
+     */
+    var date: String? = null
+
+    /**
      * Identifier of the payment instrument
      */
     var identifier: Identifier? = null
+
+    /**
+     * Partial or Complete
+     */
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -787,14 +787,14 @@ open class ExplanationOfBenefitPayment() : BackboneElement() {
  */
 open class ExplanationOfBenefitProcessNote() : BackboneElement() {
     /**
+     * Language if different from the resource
+     */
+    var language: CodeableConcept? = null
+
+    /**
      * Sequence number for this note
      */
     var number: Int? = null
-
-    /**
-     * display | print | printoper
-     */
-    var type: CodeableConcept? = null
 
     /**
      * Note explanitory text
@@ -802,9 +802,9 @@ open class ExplanationOfBenefitProcessNote() : BackboneElement() {
     var text: String? = null
 
     /**
-     * Language if different from the resource
+     * display | print | printoper
      */
-    var language: CodeableConcept? = null
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -819,14 +819,17 @@ open class ExplanationOfBenefitBenefitBalance() : BackboneElement() {
     var category: CodeableConcept = CodeableConcept()
 
     /**
-     * Detailed services covered within the type
+     * Description of the benefit or services covered
      */
-    var subCategory: CodeableConcept? = null
+    var description: String? = null
 
     /**
      * Excluded from the plan
      */
     var excluded: Boolean? = null
+
+    val financial: List<ExplanationOfBenefitBenefitBalanceFinancial> =
+            mutableListOf<ExplanationOfBenefitBenefitBalanceFinancial>()
 
     /**
      * Short name for the benefit
@@ -834,27 +837,24 @@ open class ExplanationOfBenefitBenefitBalance() : BackboneElement() {
     var name: String? = null
 
     /**
-     * Description of the benefit or services covered
-     */
-    var description: String? = null
-
-    /**
      * In or out of network
      */
     var network: CodeableConcept? = null
 
     /**
-     * Individual or family
+     * Detailed services covered within the type
      */
-    var unit: CodeableConcept? = null
+    var subCategory: CodeableConcept? = null
 
     /**
      * Annual or lifetime
      */
     var term: CodeableConcept? = null
 
-    val financial: List<ExplanationOfBenefitBenefitBalanceFinancial> =
-            mutableListOf<ExplanationOfBenefitBenefitBalanceFinancial>()
+    /**
+     * Individual or family
+     */
+    var unit: CodeableConcept? = null
 }
 
 /**
@@ -864,14 +864,9 @@ open class ExplanationOfBenefitBenefitBalance() : BackboneElement() {
  */
 open class ExplanationOfBenefitBenefitBalanceFinancial() : BackboneElement() {
     /**
-     * Deductable, visits, benefit amount
-     */
-    var type: CodeableConcept = CodeableConcept()
-
-    /**
      * Benefits allowed
      */
-    var allowedUnsignedInt: Int? = null
+    var allowedMoney: Money? = null
 
     /**
      * Benefits allowed
@@ -881,15 +876,20 @@ open class ExplanationOfBenefitBenefitBalanceFinancial() : BackboneElement() {
     /**
      * Benefits allowed
      */
-    var allowedMoney: Money? = null
+    var allowedUnsignedInt: Int? = null
 
     /**
-     * Benefits used
+     * Deductable, visits, benefit amount
      */
-    var usedUnsignedInt: Int? = null
+    var type: CodeableConcept = CodeableConcept()
 
     /**
      * Benefits used
      */
     var usedMoney: Money? = null
+
+    /**
+     * Benefits used
+     */
+    var usedUnsignedInt: Int? = null
 }

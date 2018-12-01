@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.604 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.985 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,28 +13,9 @@ import kotlin.collections.List
  * An action that is or was performed on a patient. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy.
  */
 open class Procedure() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    val definition: List<Reference> = mutableListOf<Reference>()
-
     val basedOn: List<Reference> = mutableListOf<Reference>()
 
-    val partOf: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * preparation | in-progress | suspended | aborted | completed | entered-in-error | unknown
-     */
-    var status: String? = null
-
-    /**
-     * True if procedure was not performed as scheduled
-     */
-    var notDone: Boolean? = null
-
-    /**
-     * Reason procedure was not performed
-     */
-    var notDoneReason: CodeableConcept? = null
+    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Classification of the procedure
@@ -46,15 +27,46 @@ open class Procedure() : DomainResource() {
      */
     var code: CodeableConcept? = null
 
-    /**
-     * Who the procedure was performed on
-     */
-    var subject: Reference = Reference()
+    val complication: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val complicationDetail: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Encounter or episode associated with the procedure
      */
     var context: Reference? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    val focalDevice: List<ProcedureFocalDevice> = mutableListOf<ProcedureFocalDevice>()
+
+    val followUp: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Where the procedure happened
+     */
+    var location: Reference? = null
+
+    /**
+     * True if procedure was not performed as scheduled
+     */
+    var notDone: Boolean? = null
+
+    /**
+     * Reason procedure was not performed
+     */
+    var notDoneReason: CodeableConcept? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    /**
+     * The result of procedure
+     */
+    var outcome: CodeableConcept? = null
+
+    val partOf: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Date/Period the procedure was performed
@@ -68,37 +80,25 @@ open class Procedure() : DomainResource() {
 
     val performer: List<ProcedurePerformer> = mutableListOf<ProcedurePerformer>()
 
-    /**
-     * Where the procedure happened
-     */
-    var location: Reference? = null
-
     val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     val reasonReference: List<Reference> = mutableListOf<Reference>()
 
-    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * The result of procedure
-     */
-    var outcome: CodeableConcept? = null
-
     val report: List<Reference> = mutableListOf<Reference>()
 
-    val complication: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    /**
+     * preparation | in-progress | suspended | aborted | completed | entered-in-error | unknown
+     */
+    var status: String? = null
 
-    val complicationDetail: List<Reference> = mutableListOf<Reference>()
-
-    val followUp: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val focalDevice: List<ProcedureFocalDevice> = mutableListOf<ProcedureFocalDevice>()
-
-    val usedReference: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Who the procedure was performed on
+     */
+    var subject: Reference = Reference()
 
     val usedCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val usedReference: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -108,11 +108,6 @@ open class Procedure() : DomainResource() {
  */
 open class ProcedurePerformer() : BackboneElement() {
     /**
-     * The role the actor was in
-     */
-    var role: CodeableConcept? = null
-
-    /**
      * The reference to the practitioner
      */
     var actor: Reference = Reference()
@@ -121,6 +116,11 @@ open class ProcedurePerformer() : BackboneElement() {
      * Organization the device or practitioner was acting for
      */
     var onBehalfOf: Reference? = null
+
+    /**
+     * The role the actor was in
+     */
+    var role: CodeableConcept? = null
 }
 
 /**

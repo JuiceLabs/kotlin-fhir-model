@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.820 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.121 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,29 +14,11 @@ import kotlin.collections.List
  */
 open class RiskAssessment() : DomainResource() {
     /**
-     * Unique identifier for the assessment
-     */
-    var identifier: Identifier? = null
-
-    /**
      * Request fulfilled by this assessment
      */
     var basedOn: Reference? = null
 
-    /**
-     * Part of this occurrence
-     */
-    var parent: Reference? = null
-
-    /**
-     * registered | preliminary | final | amended +
-     */
-    var status: String? = null
-
-    /**
-     * Evaluation mechanism
-     */
-    var method: CodeableConcept? = null
+    val basis: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Type of assessment
@@ -44,14 +26,34 @@ open class RiskAssessment() : DomainResource() {
     var code: CodeableConcept? = null
 
     /**
-     * Who/what does assessment apply to?
+     * Comments on the risk assessment
      */
-    var subject: Reference? = null
+    var comment: String? = null
+
+    /**
+     * Condition assessed
+     */
+    var condition: Reference? = null
 
     /**
      * Where was assessment performed?
      */
     var context: Reference? = null
+
+    /**
+     * Unique identifier for the assessment
+     */
+    var identifier: Identifier? = null
+
+    /**
+     * Evaluation mechanism
+     */
+    var method: CodeableConcept? = null
+
+    /**
+     * How to reduce risk
+     */
+    var mitigation: String? = null
 
     /**
      * When was assessment made?
@@ -64,14 +66,16 @@ open class RiskAssessment() : DomainResource() {
     var occurrencePeriod: Period? = null
 
     /**
-     * Condition assessed
+     * Part of this occurrence
      */
-    var condition: Reference? = null
+    var parent: Reference? = null
 
     /**
      * Who did assessment?
      */
     var performer: Reference? = null
+
+    val prediction: List<RiskAssessmentPrediction> = mutableListOf<RiskAssessmentPrediction>()
 
     /**
      * Why the assessment was necessary?
@@ -83,19 +87,15 @@ open class RiskAssessment() : DomainResource() {
      */
     var reasonReference: Reference? = null
 
-    val basis: List<Reference> = mutableListOf<Reference>()
-
-    val prediction: List<RiskAssessmentPrediction> = mutableListOf<RiskAssessmentPrediction>()
+    /**
+     * registered | preliminary | final | amended +
+     */
+    var status: String? = null
 
     /**
-     * How to reduce risk
+     * Who/what does assessment apply to?
      */
-    var mitigation: String? = null
-
-    /**
-     * Comments on the risk assessment
-     */
-    var comment: String? = null
+    var subject: Reference? = null
 }
 
 /**
@@ -125,6 +125,11 @@ open class RiskAssessmentPrediction() : BackboneElement() {
     var qualitativeRisk: CodeableConcept? = null
 
     /**
+     * Explanation of prediction
+     */
+    var rationale: String? = null
+
+    /**
      * Relative likelihood
      */
     var relativeRisk: Float? = null
@@ -138,9 +143,4 @@ open class RiskAssessmentPrediction() : BackboneElement() {
      * Timeframe or age range
      */
     var whenRange: Range? = null
-
-    /**
-     * Explanation of prediction
-     */
-    var rationale: String? = null
 }

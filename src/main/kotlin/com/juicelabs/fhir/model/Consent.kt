@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.690 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.049 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,17 +14,34 @@ import kotlin.collections.List
  * A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
  */
 open class Consent() : DomainResource() {
+    val action: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val actor: List<ConsentActor> = mutableListOf<ConsentActor>()
+
+    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val consentingParty: List<Reference> = mutableListOf<Reference>()
+
+    val data: List<ConsentData> = mutableListOf<ConsentData>()
+
+    /**
+     * Timeframe for data controlled by this consent
+     */
+    var dataPeriod: Period? = null
+
+    /**
+     * When this Consent was created or indexed
+     */
+    var dateTime: String? = null
+
+    val except: List<ConsentExcept> = mutableListOf<ConsentExcept>()
+
     /**
      * Identifier for this record (external references)
      */
     var identifier: Identifier? = null
 
-    /**
-     * draft | proposed | active | rejected | inactive | entered-in-error
-     */
-    var status: String? = null
-
-    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val organization: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Who the consent applies to
@@ -36,18 +53,16 @@ open class Consent() : DomainResource() {
      */
     var period: Period? = null
 
+    val policy: List<ConsentPolicy> = mutableListOf<ConsentPolicy>()
+
     /**
-     * When this Consent was created or indexed
+     * Policy that this consents to
      */
-    var dateTime: String? = null
+    var policyRule: String? = null
 
-    val consentingParty: List<Reference> = mutableListOf<Reference>()
+    val purpose: List<Coding> = mutableListOf<Coding>()
 
-    val actor: List<ConsentActor> = mutableListOf<ConsentActor>()
-
-    val action: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val organization: List<Reference> = mutableListOf<Reference>()
+    val securityLabel: List<Coding> = mutableListOf<Coding>()
 
     /**
      * Source from which this consent is taken
@@ -64,25 +79,10 @@ open class Consent() : DomainResource() {
      */
     var sourceReference: Reference? = null
 
-    val policy: List<ConsentPolicy> = mutableListOf<ConsentPolicy>()
-
     /**
-     * Policy that this consents to
+     * draft | proposed | active | rejected | inactive | entered-in-error
      */
-    var policyRule: String? = null
-
-    val securityLabel: List<Coding> = mutableListOf<Coding>()
-
-    val purpose: List<Coding> = mutableListOf<Coding>()
-
-    /**
-     * Timeframe for data controlled by this consent
-     */
-    var dataPeriod: Period? = null
-
-    val data: List<ConsentData> = mutableListOf<ConsentData>()
-
-    val except: List<ConsentExcept> = mutableListOf<ConsentExcept>()
+    var status: String? = null
 }
 
 /**
@@ -92,14 +92,14 @@ open class Consent() : DomainResource() {
  */
 open class ConsentActor() : BackboneElement() {
     /**
-     * How the actor is involved
-     */
-    var role: CodeableConcept = CodeableConcept()
-
-    /**
      * Resource for the actor (or group, by role)
      */
     var reference: Reference = Reference()
+
+    /**
+     * How the actor is involved
+     */
+    var role: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -142,35 +142,35 @@ open class ConsentData() : BackboneElement() {
  * An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
  */
 open class ConsentExcept() : BackboneElement() {
-    /**
-     * deny | permit
-     */
-    var type: String? = null
-
-    /**
-     * Timeframe for this exception
-     */
-    var period: Period? = null
-
-    val actor: List<ConsentExceptActor> = mutableListOf<ConsentExceptActor>()
-
     val action: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
-    val securityLabel: List<Coding> = mutableListOf<Coding>()
-
-    val purpose: List<Coding> = mutableListOf<Coding>()
+    val actor: List<ConsentExceptActor> = mutableListOf<ConsentExceptActor>()
 
     @SerializedName("class")
     val class_fhir: List<Coding> = mutableListOf<Coding>()
 
     val code: List<Coding> = mutableListOf<Coding>()
 
+    val data: List<ConsentExceptData> = mutableListOf<ConsentExceptData>()
+
     /**
      * Timeframe for data controlled by this exception
      */
     var dataPeriod: Period? = null
 
-    val data: List<ConsentExceptData> = mutableListOf<ConsentExceptData>()
+    /**
+     * Timeframe for this exception
+     */
+    var period: Period? = null
+
+    val purpose: List<Coding> = mutableListOf<Coding>()
+
+    val securityLabel: List<Coding> = mutableListOf<Coding>()
+
+    /**
+     * deny | permit
+     */
+    var type: String? = null
 }
 
 /**
@@ -180,14 +180,14 @@ open class ConsentExcept() : BackboneElement() {
  */
 open class ConsentExceptActor() : BackboneElement() {
     /**
-     * How the actor is involved
-     */
-    var role: CodeableConcept = CodeableConcept()
-
-    /**
      * Resource for the actor (or group, by role)
      */
     var reference: Reference = Reference()
+
+    /**
+     * How the actor is involved
+     */
+    var role: CodeableConcept = CodeableConcept()
 }
 
 /**

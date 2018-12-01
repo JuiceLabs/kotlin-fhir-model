@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.547 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.948 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,41 +14,22 @@ import kotlin.collections.List
  */
 open class Library() : DomainResource() {
     /**
-     * Logical URI to reference this library (globally unique)
+     * When the library was approved by publisher
      */
-    var url: String? = null
+    var approvalDate: String? = null
 
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 
-    /**
-     * Business version of the library
-     */
-    var version: String? = null
+    val content: List<Attachment> = mutableListOf<Attachment>()
 
-    /**
-     * Name for this library (computer friendly)
-     */
-    var name: String? = null
+    val contributor: List<Contributor> = mutableListOf<Contributor>()
 
     /**
-     * Name for this library (human friendly)
+     * Use and/or publishing restrictions
      */
-    var title: String? = null
+    var copyright: String? = null
 
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * logic-library | model-definition | asset-collection | module-definition
-     */
-    var type: CodeableConcept = CodeableConcept()
+    val dataRequirement: List<DataRequirement> = mutableListOf<DataRequirement>()
 
     /**
      * Date this was last changed
@@ -56,29 +37,23 @@ open class Library() : DomainResource() {
     var date: String? = null
 
     /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    /**
      * Natural language description of the library
      */
     var description: String? = null
 
     /**
-     * Why this library is defined
+     * When the library is expected to be used
      */
-    var purpose: String? = null
+    var effectivePeriod: Period? = null
 
     /**
-     * Describes the clinical usage of the library
+     * For testing purposes, not real usage
      */
-    var usage: String? = null
+    var experimental: Boolean? = null
 
-    /**
-     * When the library was approved by publisher
-     */
-    var approvalDate: String? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * When the library was last reviewed
@@ -86,30 +61,55 @@ open class Library() : DomainResource() {
     var lastReviewDate: String? = null
 
     /**
-     * When the library is expected to be used
+     * Name for this library (computer friendly)
      */
-    var effectivePeriod: Period? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val contributor: List<Contributor> = mutableListOf<Contributor>()
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Use and/or publishing restrictions
-     */
-    var copyright: String? = null
-
-    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+    var name: String? = null
 
     val parameter: List<ParameterDefinition> = mutableListOf<ParameterDefinition>()
 
-    val dataRequirement: List<DataRequirement> = mutableListOf<DataRequirement>()
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
 
-    val content: List<Attachment> = mutableListOf<Attachment>()
+    /**
+     * Why this library is defined
+     */
+    var purpose: String? = null
+
+    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Name for this library (human friendly)
+     */
+    var title: String? = null
+
+    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * logic-library | model-definition | asset-collection | module-definition
+     */
+    var type: CodeableConcept = CodeableConcept()
+
+    /**
+     * Logical URI to reference this library (globally unique)
+     */
+    var url: String? = null
+
+    /**
+     * Describes the clinical usage of the library
+     */
+    var usage: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the library
+     */
+    var version: String? = null
 }

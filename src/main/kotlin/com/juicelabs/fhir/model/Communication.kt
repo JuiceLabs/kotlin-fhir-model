@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.665 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.036 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,18 +13,20 @@ import kotlin.collections.List
  * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
  */
 open class Communication() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val basedOn: List<Reference> = mutableListOf<Reference>()
+
+    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Encounter or episode leading to message
+     */
+    var context: Reference? = null
 
     val definition: List<Reference> = mutableListOf<Reference>()
 
-    val basedOn: List<Reference> = mutableListOf<Reference>()
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
-    val partOf: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * preparation | in-progress | suspended | aborted | completed | entered-in-error
-     */
-    var status: String? = null
+    val medium: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Communication did not occur
@@ -36,23 +38,27 @@ open class Communication() : DomainResource() {
      */
     var notDoneReason: CodeableConcept? = null
 
-    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
-    val medium: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val partOf: List<Reference> = mutableListOf<Reference>()
+
+    val payload: List<CommunicationPayload> = mutableListOf<CommunicationPayload>()
+
+    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val reasonReference: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * Focus of message
+     * When received
      */
-    var subject: Reference? = null
+    var received: String? = null
 
     val recipient: List<Reference> = mutableListOf<Reference>()
 
-    val topic: List<Reference> = mutableListOf<Reference>()
-
     /**
-     * Encounter or episode leading to message
+     * Message sender
      */
-    var context: Reference? = null
+    var sender: Reference? = null
 
     /**
      * When sent
@@ -60,22 +66,16 @@ open class Communication() : DomainResource() {
     var sent: String? = null
 
     /**
-     * When received
+     * preparation | in-progress | suspended | aborted | completed | entered-in-error
      */
-    var received: String? = null
+    var status: String? = null
 
     /**
-     * Message sender
+     * Focus of message
      */
-    var sender: Reference? = null
+    var subject: Reference? = null
 
-    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val reasonReference: List<Reference> = mutableListOf<Reference>()
-
-    val payload: List<CommunicationPayload> = mutableListOf<CommunicationPayload>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    val topic: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -87,15 +87,15 @@ open class CommunicationPayload() : BackboneElement() {
     /**
      * Message part content
      */
-    var contentString: String? = null
-
-    /**
-     * Message part content
-     */
     var contentAttachment: Attachment = Attachment()
 
     /**
      * Message part content
      */
     var contentReference: Reference = Reference()
+
+    /**
+     * Message part content
+     */
+    var contentString: String? = null
 }

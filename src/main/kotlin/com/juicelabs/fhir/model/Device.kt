@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.434 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.890 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,53 @@ import kotlin.collections.List
  * This resource identifies an instance or a type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.  Medical devices include durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.  Non-medical devices may include items such as a machine, cellphone, computer, application, etc.
  */
 open class Device() : DomainResource() {
+    val contact: List<ContactPoint> = mutableListOf<ContactPoint>()
+
+    /**
+     * Date and time of expiry of this device (if applicable)
+     */
+    var expirationDate: String? = null
+
     val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
-     * Unique Device Identifier (UDI) Barcode string
+     * Where the resource is found
      */
-    var udi: DeviceUdi? = null
+    var location: Reference? = null
+
+    /**
+     * Lot number of manufacture
+     */
+    var lotNumber: String? = null
+
+    /**
+     * Date when the device was made
+     */
+    var manufactureDate: String? = null
+
+    /**
+     * Name of device manufacturer
+     */
+    var manufacturer: String? = null
+
+    /**
+     * Model id assigned by the manufacturer
+     */
+    var model: String? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    /**
+     * Organization responsible for device
+     */
+    var owner: Reference? = null
+
+    /**
+     * Patient to whom Device is affixed
+     */
+    var patient: Reference? = null
+
+    val safety: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * active | inactive | entered-in-error | unknown
@@ -31,60 +72,19 @@ open class Device() : DomainResource() {
     var type: CodeableConcept? = null
 
     /**
-     * Lot number of manufacture
+     * Unique Device Identifier (UDI) Barcode string
      */
-    var lotNumber: String? = null
-
-    /**
-     * Name of device manufacturer
-     */
-    var manufacturer: String? = null
-
-    /**
-     * Date when the device was made
-     */
-    var manufactureDate: String? = null
-
-    /**
-     * Date and time of expiry of this device (if applicable)
-     */
-    var expirationDate: String? = null
-
-    /**
-     * Model id assigned by the manufacturer
-     */
-    var model: String? = null
-
-    /**
-     * Version number (i.e. software)
-     */
-    var version: String? = null
-
-    /**
-     * Patient to whom Device is affixed
-     */
-    var patient: Reference? = null
-
-    /**
-     * Organization responsible for device
-     */
-    var owner: Reference? = null
-
-    val contact: List<ContactPoint> = mutableListOf<ContactPoint>()
-
-    /**
-     * Where the resource is found
-     */
-    var location: Reference? = null
+    var udi: DeviceUdi? = null
 
     /**
      * Network address to contact device
      */
     var url: String? = null
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val safety: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    /**
+     * Version number (i.e. software)
+     */
+    var version: String? = null
 }
 
 /**
@@ -94,19 +94,9 @@ open class Device() : DomainResource() {
  */
 open class DeviceUdi() : BackboneElement() {
     /**
-     * Mandatory fixed portion of UDI
+     * UDI Machine Readable Barcode String
      */
-    var deviceIdentifier: String? = null
-
-    /**
-     * Device Name as appears on UDI label
-     */
-    var name: String? = null
-
-    /**
-     * Regional UDI authority
-     */
-    var jurisdiction: String? = null
+    var carrierAIDC: String? = null
 
     /**
      * UDI Human Readable Barcode String
@@ -114,9 +104,14 @@ open class DeviceUdi() : BackboneElement() {
     var carrierHRF: String? = null
 
     /**
-     * UDI Machine Readable Barcode String
+     * Mandatory fixed portion of UDI
      */
-    var carrierAIDC: String? = null
+    var deviceIdentifier: String? = null
+
+    /**
+     * barcode | rfid | manual +
+     */
+    var entryType: String? = null
 
     /**
      * UDI Issuing Organization
@@ -124,7 +119,12 @@ open class DeviceUdi() : BackboneElement() {
     var issuer: String? = null
 
     /**
-     * barcode | rfid | manual +
+     * Regional UDI authority
      */
-    var entryType: String? = null
+    var jurisdiction: String? = null
+
+    /**
+     * Device Name as appears on UDI label
+     */
+    var name: String? = null
 }

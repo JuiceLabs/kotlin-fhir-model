@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.753 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.086 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,19 +12,9 @@ package com.juicelabs.fhir.model
  */
 open class ParameterDefinition() : Element() {
     /**
-     * Name used to access the parameter value
+     * A brief description of the parameter
      */
-    var name: String? = null
-
-    /**
-     * in | out
-     */
-    var use: String? = null
-
-    /**
-     * Minimum cardinality
-     */
-    var min: Int? = null
+    var documentation: String? = null
 
     /**
      * Maximum cardinality (a number of *)
@@ -32,9 +22,19 @@ open class ParameterDefinition() : Element() {
     var max: String? = null
 
     /**
-     * A brief description of the parameter
+     * Minimum cardinality
      */
-    var documentation: String? = null
+    var min: Int? = null
+
+    /**
+     * Name used to access the parameter value
+     */
+    var name: String? = null
+
+    /**
+     * What profile the value is expected to be
+     */
+    var profile: Reference? = null
 
     /**
      * What type of value
@@ -42,7 +42,7 @@ open class ParameterDefinition() : Element() {
     var type: String? = null
 
     /**
-     * What profile the value is expected to be
+     * in | out
      */
-    var profile: Reference? = null
+    var use: String? = null
 }

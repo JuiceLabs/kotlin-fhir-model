@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.522 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.924 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,21 +14,11 @@ import kotlin.collections.List
  */
 open class Subscription() : DomainResource() {
     /**
-     * requested | active | error | off
+     * The channel on which to report matches to the criteria
      */
-    var status: String? = null
+    var channel: SubscriptionChannel = SubscriptionChannel()
 
     val contact: List<ContactPoint> = mutableListOf<ContactPoint>()
-
-    /**
-     * When to automatically delete the subscription
-     */
-    var end: String? = null
-
-    /**
-     * Description of why this subscription was created
-     */
-    var reason: String? = null
 
     /**
      * Rule for server push criteria
@@ -36,14 +26,24 @@ open class Subscription() : DomainResource() {
     var criteria: String? = null
 
     /**
+     * When to automatically delete the subscription
+     */
+    var end: String? = null
+
+    /**
      * Latest error note
      */
     var error: String? = null
 
     /**
-     * The channel on which to report matches to the criteria
+     * Description of why this subscription was created
      */
-    var channel: SubscriptionChannel = SubscriptionChannel()
+    var reason: String? = null
+
+    /**
+     * requested | active | error | off
+     */
+    var status: String? = null
 
     val tag: List<Coding> = mutableListOf<Coding>()
 }
@@ -55,19 +55,19 @@ open class Subscription() : DomainResource() {
  */
 open class SubscriptionChannel() : BackboneElement() {
     /**
-     * rest-hook | websocket | email | sms | message
-     */
-    var type: String? = null
-
-    /**
      * Where the channel points to
      */
     var endpoint: String? = null
+
+    val header: List<String> = mutableListOf<String>()
 
     /**
      * Mimetype to send, or omit for no payload
      */
     var payload: String? = null
 
-    val header: List<String> = mutableListOf<String>()
+    /**
+     * rest-hook | websocket | email | sms | message
+     */
+    var type: String? = null
 }

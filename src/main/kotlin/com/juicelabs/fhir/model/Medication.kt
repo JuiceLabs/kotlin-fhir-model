@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.821 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.152 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -20,9 +20,13 @@ open class Medication() : DomainResource() {
     var code: CodeableConcept? = null
 
     /**
-     * active | inactive | entered-in-error
+     * powder | tablets | capsule +
      */
-    var status: String? = null
+    var form: CodeableConcept? = null
+
+    val image: List<Attachment> = mutableListOf<Attachment>()
+
+    val ingredient: List<MedicationIngredient> = mutableListOf<MedicationIngredient>()
 
     /**
      * True if a brand
@@ -40,19 +44,15 @@ open class Medication() : DomainResource() {
     var manufacturer: Reference? = null
 
     /**
-     * powder | tablets | capsule +
-     */
-    var form: CodeableConcept? = null
-
-    val ingredient: List<MedicationIngredient> = mutableListOf<MedicationIngredient>()
-
-    /**
      * Details about packaged medications
      */
     @SerializedName("package")
     var package_fhir: MedicationPackage? = null
 
-    val image: List<Attachment> = mutableListOf<Attachment>()
+    /**
+     * active | inactive | entered-in-error
+     */
+    var status: String? = null
 }
 
 /**
@@ -62,6 +62,16 @@ open class Medication() : DomainResource() {
  */
 open class MedicationIngredient() : BackboneElement() {
     /**
+     * Quantity of ingredient present
+     */
+    var amount: Ratio? = null
+
+    /**
+     * Active ingredient indicator
+     */
+    var isActive: Boolean? = null
+
+    /**
      * The product contained
      */
     var itemCodeableConcept: CodeableConcept = CodeableConcept()
@@ -70,16 +80,6 @@ open class MedicationIngredient() : BackboneElement() {
      * The product contained
      */
     var itemReference: Reference = Reference()
-
-    /**
-     * Active ingredient indicator
-     */
-    var isActive: Boolean? = null
-
-    /**
-     * Quantity of ingredient present
-     */
-    var amount: Ratio? = null
 }
 
 /**
@@ -88,14 +88,14 @@ open class MedicationIngredient() : BackboneElement() {
  * Information that only applies to packages (not products).
  */
 open class MedicationPackage() : BackboneElement() {
+    val batch: List<MedicationPackageBatch> = mutableListOf<MedicationPackageBatch>()
+
     /**
      * E.g. box, vial, blister-pack
      */
     var container: CodeableConcept? = null
 
     val content: List<MedicationPackageContent> = mutableListOf<MedicationPackageContent>()
-
-    val batch: List<MedicationPackageBatch> = mutableListOf<MedicationPackageBatch>()
 }
 
 /**
@@ -105,6 +105,11 @@ open class MedicationPackage() : BackboneElement() {
  */
 open class MedicationPackageContent() : BackboneElement() {
     /**
+     * Quantity present in the package
+     */
+    var amount: Quantity? = null
+
+    /**
      * The item in the package
      */
     var itemCodeableConcept: CodeableConcept = CodeableConcept()
@@ -113,11 +118,6 @@ open class MedicationPackageContent() : BackboneElement() {
      * The item in the package
      */
     var itemReference: Reference = Reference()
-
-    /**
-     * Quantity present in the package
-     */
-    var amount: Quantity? = null
 }
 
 /**
@@ -127,12 +127,12 @@ open class MedicationPackageContent() : BackboneElement() {
  */
 open class MedicationPackageBatch() : BackboneElement() {
     /**
-     * Identifier assigned to batch
-     */
-    var lotNumber: String? = null
-
-    /**
      * When batch will expire
      */
     var expirationDate: String? = null
+
+    /**
+     * Identifier assigned to batch
+     */
+    var lotNumber: String? = null
 }

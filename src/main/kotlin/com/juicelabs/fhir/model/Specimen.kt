@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.798 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.104 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,32 @@ import kotlin.collections.List
  * A sample to be used for analysis.
  */
 open class Specimen() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
      * Identifier assigned by the lab
      */
     var accessionIdentifier: Identifier? = null
+
+    /**
+     * Collection details
+     */
+    var collection: SpecimenCollection? = null
+
+    val container: List<SpecimenContainer> = mutableListOf<SpecimenContainer>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    val parent: List<Reference> = mutableListOf<Reference>()
+
+    val processing: List<SpecimenProcessing> = mutableListOf<SpecimenProcessing>()
+
+    /**
+     * The time when specimen was received for processing
+     */
+    var receivedTime: String? = null
+
+    val request: List<Reference> = mutableListOf<Reference>()
 
     /**
      * available | unavailable | unsatisfactory | entered-in-error
@@ -26,34 +46,14 @@ open class Specimen() : DomainResource() {
     var status: String? = null
 
     /**
-     * Kind of material that forms the specimen
-     */
-    var type: CodeableConcept? = null
-
-    /**
      * Where the specimen came from. This may be from the patient(s) or from the environment or a device
      */
     var subject: Reference = Reference()
 
     /**
-     * The time when specimen was received for processing
+     * Kind of material that forms the specimen
      */
-    var receivedTime: String? = null
-
-    val parent: List<Reference> = mutableListOf<Reference>()
-
-    val request: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Collection details
-     */
-    var collection: SpecimenCollection? = null
-
-    val processing: List<SpecimenProcessing> = mutableListOf<SpecimenProcessing>()
-
-    val container: List<SpecimenContainer> = mutableListOf<SpecimenContainer>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -63,9 +63,9 @@ open class Specimen() : DomainResource() {
  */
 open class SpecimenCollection() : BackboneElement() {
     /**
-     * Who collected the specimen
+     * Anatomical collection site
      */
-    var collector: Reference? = null
+    var bodySite: CodeableConcept? = null
 
     /**
      * Collection time
@@ -78,9 +78,9 @@ open class SpecimenCollection() : BackboneElement() {
     var collectedPeriod: Period? = null
 
     /**
-     * The quantity of specimen collected
+     * Who collected the specimen
      */
-    var quantity: Quantity? = null
+    var collector: Reference? = null
 
     /**
      * Technique used to perform collection
@@ -88,9 +88,9 @@ open class SpecimenCollection() : BackboneElement() {
     var method: CodeableConcept? = null
 
     /**
-     * Anatomical collection site
+     * The quantity of specimen collected
      */
-    var bodySite: CodeableConcept? = null
+    var quantity: Quantity? = null
 }
 
 /**
@@ -99,6 +99,8 @@ open class SpecimenCollection() : BackboneElement() {
  * Details concerning processing and processing steps for the specimen.
  */
 open class SpecimenProcessing() : BackboneElement() {
+    val additive: List<Reference> = mutableListOf<Reference>()
+
     /**
      * Textual description of procedure
      */
@@ -108,8 +110,6 @@ open class SpecimenProcessing() : BackboneElement() {
      * Indicates the treatment step  applied to the specimen
      */
     var procedure: CodeableConcept? = null
-
-    val additive: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Date and time of specimen processing
@@ -128,28 +128,6 @@ open class SpecimenProcessing() : BackboneElement() {
  * The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
  */
 open class SpecimenContainer() : BackboneElement() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * Textual description of the container
-     */
-    var description: String? = null
-
-    /**
-     * Kind of container directly associated with specimen
-     */
-    var type: CodeableConcept? = null
-
-    /**
-     * Container volume or size
-     */
-    var capacity: Quantity? = null
-
-    /**
-     * Quantity of specimen within container
-     */
-    var specimenQuantity: Quantity? = null
-
     /**
      * Additive associated with container
      */
@@ -159,4 +137,26 @@ open class SpecimenContainer() : BackboneElement() {
      * Additive associated with container
      */
     var additiveReference: Reference? = null
+
+    /**
+     * Container volume or size
+     */
+    var capacity: Quantity? = null
+
+    /**
+     * Textual description of the container
+     */
+    var description: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Quantity of specimen within container
+     */
+    var specimenQuantity: Quantity? = null
+
+    /**
+     * Kind of container directly associated with specimen
+     */
+    var type: CodeableConcept? = null
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.817 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.119 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,13 +13,6 @@ import kotlin.collections.List
  * A homogeneous material with a definite composition.
  */
 open class Substance() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * active | inactive | entered-in-error
-     */
-    var status: String? = null
-
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
@@ -32,9 +25,16 @@ open class Substance() : DomainResource() {
      */
     var description: String? = null
 
-    val instance: List<SubstanceInstance> = mutableListOf<SubstanceInstance>()
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     val ingredient: List<SubstanceIngredient> = mutableListOf<SubstanceIngredient>()
+
+    val instance: List<SubstanceInstance> = mutableListOf<SubstanceInstance>()
+
+    /**
+     * active | inactive | entered-in-error
+     */
+    var status: String? = null
 }
 
 /**
@@ -44,14 +44,14 @@ open class Substance() : DomainResource() {
  */
 open class SubstanceInstance() : BackboneElement() {
     /**
-     * Identifier of the package/container
-     */
-    var identifier: Identifier? = null
-
-    /**
      * When no longer valid to use
      */
     var expiry: String? = null
+
+    /**
+     * Identifier of the package/container
+     */
+    var identifier: Identifier? = null
 
     /**
      * Amount of substance in the package

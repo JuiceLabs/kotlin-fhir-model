@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.724 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.063 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,36 +13,30 @@ import kotlin.collections.List
  * A collection of documents compiled for a purpose together with metadata that applies to the collection.
  */
 open class DocumentManifest() : DomainResource() {
-    /**
-     * Unique Identifier for the set of documents
-     */
-    var masterIdentifier: Identifier? = null
+    val author: List<Reference> = mutableListOf<Reference>()
 
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * current | superseded | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * Kind of document set
-     */
-    var type: CodeableConcept? = null
-
-    /**
-     * The subject of the set of documents
-     */
-    var subject: Reference? = null
+    val content: List<DocumentManifestContent> = mutableListOf<DocumentManifestContent>()
 
     /**
      * When this document manifest created
      */
     var created: String? = null
 
-    val author: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Human-readable description (title)
+     */
+    var description: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Unique Identifier for the set of documents
+     */
+    var masterIdentifier: Identifier? = null
 
     val recipient: List<Reference> = mutableListOf<Reference>()
+
+    val related: List<DocumentManifestRelated> = mutableListOf<DocumentManifestRelated>()
 
     /**
      * The source system/application/software
@@ -50,13 +44,19 @@ open class DocumentManifest() : DomainResource() {
     var source: String? = null
 
     /**
-     * Human-readable description (title)
+     * current | superseded | entered-in-error
      */
-    var description: String? = null
+    var status: String? = null
 
-    val content: List<DocumentManifestContent> = mutableListOf<DocumentManifestContent>()
+    /**
+     * The subject of the set of documents
+     */
+    var subject: Reference? = null
 
-    val related: List<DocumentManifestRelated> = mutableListOf<DocumentManifestRelated>()
+    /**
+     * Kind of document set
+     */
+    var type: CodeableConcept? = null
 }
 
 /**

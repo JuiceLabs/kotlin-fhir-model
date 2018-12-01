@@ -76,7 +76,7 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
         val primaryCtor = FunSpec.constructorBuilder()
 
         classBuilder.addKdoc("%L\n\n%L\n", cls.short, cls.formal)
-        cls.properties.forEach { (propName, prop) ->
+        cls.properties.toSortedMap().forEach { (propName, prop) ->
             renderProperty(prop, prop.typeName, prop.origName, classBuilder)
         }
         classBuilder.primaryConstructor(primaryCtor.build())

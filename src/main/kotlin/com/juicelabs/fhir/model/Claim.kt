@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.657 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.030 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,111 +13,24 @@ import kotlin.collections.List
  * A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.
  */
 open class Claim() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
-     * active | cancelled | draft | entered-in-error
+     * Details about an accident
      */
-    var status: String? = null
-
-    /**
-     * Type or discipline
-     */
-    var type: CodeableConcept? = null
-
-    val subType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * complete | proposed | exploratory | other
-     */
-    var use: String? = null
-
-    /**
-     * The subject of the Products and Services
-     */
-    var patient: Reference? = null
+    var accident: ClaimAccident? = null
 
     /**
      * Period for charge submission
      */
     var billablePeriod: Period? = null
 
+    val careTeam: List<ClaimCareTeam> = mutableListOf<ClaimCareTeam>()
+
     /**
      * Creation date
      */
     var created: String? = null
 
-    /**
-     * Author
-     */
-    var enterer: Reference? = null
-
-    /**
-     * Target
-     */
-    var insurer: Reference? = null
-
-    /**
-     * Responsible provider
-     */
-    var provider: Reference? = null
-
-    /**
-     * Responsible organization
-     */
-    var organization: Reference? = null
-
-    /**
-     * Desired processing priority
-     */
-    var priority: CodeableConcept? = null
-
-    /**
-     * Funds requested to be reserved
-     */
-    var fundsReserve: CodeableConcept? = null
-
-    val related: List<ClaimRelated> = mutableListOf<ClaimRelated>()
-
-    /**
-     * Prescription authorizing services or products
-     */
-    var prescription: Reference? = null
-
-    /**
-     * Original prescription if superceded by fulfiller
-     */
-    var originalPrescription: Reference? = null
-
-    /**
-     * Party to be paid any benefits payable
-     */
-    var payee: ClaimPayee? = null
-
-    /**
-     * Treatment Referral
-     */
-    var referral: Reference? = null
-
-    /**
-     * Servicing Facility
-     */
-    var facility: Reference? = null
-
-    val careTeam: List<ClaimCareTeam> = mutableListOf<ClaimCareTeam>()
-
-    val information: List<ClaimInformation> = mutableListOf<ClaimInformation>()
-
     val diagnosis: List<ClaimDiagnosis> = mutableListOf<ClaimDiagnosis>()
-
-    val procedure: List<ClaimProcedure> = mutableListOf<ClaimProcedure>()
-
-    val insurance: List<ClaimInsurance> = mutableListOf<ClaimInsurance>()
-
-    /**
-     * Details about an accident
-     */
-    var accident: ClaimAccident? = null
 
     /**
      * Period unable to work
@@ -125,16 +38,103 @@ open class Claim() : DomainResource() {
     var employmentImpacted: Period? = null
 
     /**
+     * Author
+     */
+    var enterer: Reference? = null
+
+    /**
+     * Servicing Facility
+     */
+    var facility: Reference? = null
+
+    /**
+     * Funds requested to be reserved
+     */
+    var fundsReserve: CodeableConcept? = null
+
+    /**
      * Period in hospital
      */
     var hospitalization: Period? = null
 
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val information: List<ClaimInformation> = mutableListOf<ClaimInformation>()
+
+    val insurance: List<ClaimInsurance> = mutableListOf<ClaimInsurance>()
+
+    /**
+     * Target
+     */
+    var insurer: Reference? = null
+
     val item: List<ClaimItem> = mutableListOf<ClaimItem>()
+
+    /**
+     * Responsible organization
+     */
+    var organization: Reference? = null
+
+    /**
+     * Original prescription if superceded by fulfiller
+     */
+    var originalPrescription: Reference? = null
+
+    /**
+     * The subject of the Products and Services
+     */
+    var patient: Reference? = null
+
+    /**
+     * Party to be paid any benefits payable
+     */
+    var payee: ClaimPayee? = null
+
+    /**
+     * Prescription authorizing services or products
+     */
+    var prescription: Reference? = null
+
+    /**
+     * Desired processing priority
+     */
+    var priority: CodeableConcept? = null
+
+    val procedure: List<ClaimProcedure> = mutableListOf<ClaimProcedure>()
+
+    /**
+     * Responsible provider
+     */
+    var provider: Reference? = null
+
+    /**
+     * Treatment Referral
+     */
+    var referral: Reference? = null
+
+    val related: List<ClaimRelated> = mutableListOf<ClaimRelated>()
+
+    /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
+
+    val subType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Total claim cost
      */
     var total: Money? = null
+
+    /**
+     * Type or discipline
+     */
+    var type: CodeableConcept? = null
+
+    /**
+     * complete | proposed | exploratory | other
+     */
+    var use: String? = null
 }
 
 /**
@@ -149,14 +149,14 @@ open class ClaimRelated() : BackboneElement() {
     var claim: Reference? = null
 
     /**
-     * How the reference claim is related
-     */
-    var relationship: CodeableConcept? = null
-
-    /**
      * Related file or case reference
      */
     var reference: Identifier? = null
+
+    /**
+     * How the reference claim is related
+     */
+    var relationship: CodeableConcept? = null
 }
 
 /**
@@ -166,9 +166,9 @@ open class ClaimRelated() : BackboneElement() {
  */
 open class ClaimPayee() : BackboneElement() {
     /**
-     * Type of party: Subscriber, Provider, other
+     * Party to receive the payable
      */
-    var type: CodeableConcept = CodeableConcept()
+    var party: Reference? = null
 
     /**
      * organization | patient | practitioner | relatedperson
@@ -176,9 +176,9 @@ open class ClaimPayee() : BackboneElement() {
     var resourceType: Coding? = null
 
     /**
-     * Party to receive the payable
+     * Type of party: Subscriber, Provider, other
      */
-    var party: Reference? = null
+    var type: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -188,14 +188,14 @@ open class ClaimPayee() : BackboneElement() {
  */
 open class ClaimCareTeam() : BackboneElement() {
     /**
-     * Number to covey order of careTeam
-     */
-    var sequence: Int? = null
-
-    /**
      * Provider individual or organization
      */
     var provider: Reference = Reference()
+
+    /**
+     * Type, classification or Specialization
+     */
+    var qualification: CodeableConcept? = null
 
     /**
      * Billing provider
@@ -208,9 +208,9 @@ open class ClaimCareTeam() : BackboneElement() {
     var role: CodeableConcept? = null
 
     /**
-     * Type, classification or Specialization
+     * Number to covey order of careTeam
      */
-    var qualification: CodeableConcept? = null
+    var sequence: Int? = null
 }
 
 /**
@@ -220,11 +220,6 @@ open class ClaimCareTeam() : BackboneElement() {
  */
 open class ClaimInformation() : BackboneElement() {
     /**
-     * Information instance identifier
-     */
-    var sequence: Int? = null
-
-    /**
      * General class of information
      */
     var category: CodeableConcept = CodeableConcept()
@@ -233,6 +228,16 @@ open class ClaimInformation() : BackboneElement() {
      * Type of information
      */
     var code: CodeableConcept? = null
+
+    /**
+     * Reason associated with the information
+     */
+    var reason: CodeableConcept? = null
+
+    /**
+     * Information instance identifier
+     */
+    var sequence: Int? = null
 
     /**
      * When it occurred
@@ -247,7 +252,7 @@ open class ClaimInformation() : BackboneElement() {
     /**
      * Additional Data or supporting information
      */
-    var valueString: String? = null
+    var valueAttachment: Attachment? = null
 
     /**
      * Additional Data or supporting information
@@ -257,17 +262,12 @@ open class ClaimInformation() : BackboneElement() {
     /**
      * Additional Data or supporting information
      */
-    var valueAttachment: Attachment? = null
+    var valueReference: Reference? = null
 
     /**
      * Additional Data or supporting information
      */
-    var valueReference: Reference? = null
-
-    /**
-     * Reason associated with the information
-     */
-    var reason: CodeableConcept? = null
+    var valueString: String? = null
 }
 
 /**
@@ -276,11 +276,6 @@ open class ClaimInformation() : BackboneElement() {
  * List of patient diagnosis for which care is sought.
  */
 open class ClaimDiagnosis() : BackboneElement() {
-    /**
-     * Number to covey order of diagnosis
-     */
-    var sequence: Int? = null
-
     /**
      * Patient's diagnosis
      */
@@ -291,12 +286,17 @@ open class ClaimDiagnosis() : BackboneElement() {
      */
     var diagnosisReference: Reference = Reference()
 
-    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
     /**
      * Package billing code
      */
     var packageCode: CodeableConcept? = null
+
+    /**
+     * Number to covey order of diagnosis
+     */
+    var sequence: Int? = null
+
+    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 }
 
 /**
@@ -305,11 +305,6 @@ open class ClaimDiagnosis() : BackboneElement() {
  * Ordered list of patient procedures performed to support the adjudication.
  */
 open class ClaimProcedure() : BackboneElement() {
-    /**
-     * Procedure sequence for reference
-     */
-    var sequence: Int? = null
-
     /**
      * When the procedure was performed
      */
@@ -324,6 +319,11 @@ open class ClaimProcedure() : BackboneElement() {
      * Patient's list of procedures performed
      */
     var procedureReference: Reference = Reference()
+
+    /**
+     * Procedure sequence for reference
+     */
+    var sequence: Int? = null
 }
 
 /**
@@ -333,14 +333,14 @@ open class ClaimProcedure() : BackboneElement() {
  */
 open class ClaimInsurance() : BackboneElement() {
     /**
-     * Service instance identifier
+     * Business agreement
      */
-    var sequence: Int? = null
+    var businessArrangement: String? = null
 
     /**
-     * Is the focal Coverage
+     * Adjudication results
      */
-    var focal: Boolean? = null
+    var claimResponse: Reference? = null
 
     /**
      * Insurance information
@@ -348,16 +348,16 @@ open class ClaimInsurance() : BackboneElement() {
     var coverage: Reference = Reference()
 
     /**
-     * Business agreement
+     * Is the focal Coverage
      */
-    var businessArrangement: String? = null
+    var focal: Boolean? = null
 
     val preAuthRef: List<String> = mutableListOf<String>()
 
     /**
-     * Adjudication results
+     * Service instance identifier
      */
-    var claimResponse: Reference? = null
+    var sequence: Int? = null
 }
 
 /**
@@ -374,11 +374,6 @@ open class ClaimAccident() : BackboneElement() {
     var date: String? = null
 
     /**
-     * The nature of the accident
-     */
-    var type: CodeableConcept? = null
-
-    /**
      * Accident Place
      */
     var locationAddress: Address? = null
@@ -387,6 +382,11 @@ open class ClaimAccident() : BackboneElement() {
      * Accident Place
      */
     var locationReference: Reference? = null
+
+    /**
+     * The nature of the accident
+     */
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -396,17 +396,60 @@ open class ClaimAccident() : BackboneElement() {
  */
 open class ClaimItem() : BackboneElement() {
     /**
-     * Service instance
+     * Service Location
      */
-    var sequence: Int? = null
+    var bodySite: CodeableConcept? = null
 
     val careTeamLinkId: List<Int> = mutableListOf<Int>()
 
+    /**
+     * Type of service or product
+     */
+    var category: CodeableConcept? = null
+
+    val detail: List<ClaimItemDetail> = mutableListOf<ClaimItemDetail>()
+
     val diagnosisLinkId: List<Int> = mutableListOf<Int>()
+
+    val encounter: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Price scaling factor
+     */
+    var factor: Float? = null
+
+    val informationLinkId: List<Int> = mutableListOf<Int>()
+
+    /**
+     * Place of service
+     */
+    var locationAddress: Address? = null
+
+    /**
+     * Place of service
+     */
+    var locationCodeableConcept: CodeableConcept? = null
+
+    /**
+     * Place of service
+     */
+    var locationReference: Reference? = null
+
+    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Total item cost
+     */
+    var net: Money? = null
 
     val procedureLinkId: List<Int> = mutableListOf<Int>()
 
-    val informationLinkId: List<Int> = mutableListOf<Int>()
+    val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Count of Products or Services
+     */
+    var quantity: Quantity? = null
 
     /**
      * Revenue or cost center code
@@ -414,18 +457,14 @@ open class ClaimItem() : BackboneElement() {
     var revenue: CodeableConcept? = null
 
     /**
-     * Type of service or product
+     * Service instance
      */
-    var category: CodeableConcept? = null
+    var sequence: Int? = null
 
     /**
      * Billing Code
      */
     var service: CodeableConcept? = null
-
-    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Date or dates of Service
@@ -437,53 +476,14 @@ open class ClaimItem() : BackboneElement() {
      */
     var servicedPeriod: Period? = null
 
-    /**
-     * Place of service
-     */
-    var locationCodeableConcept: CodeableConcept? = null
+    val subSite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
-    /**
-     * Place of service
-     */
-    var locationAddress: Address? = null
-
-    /**
-     * Place of service
-     */
-    var locationReference: Reference? = null
-
-    /**
-     * Count of Products or Services
-     */
-    var quantity: Quantity? = null
+    val udi: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Fee, charge or cost per point
      */
     var unitPrice: Money? = null
-
-    /**
-     * Price scaling factor
-     */
-    var factor: Float? = null
-
-    /**
-     * Total item cost
-     */
-    var net: Money? = null
-
-    val udi: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Service Location
-     */
-    var bodySite: CodeableConcept? = null
-
-    val subSite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val encounter: List<Reference> = mutableListOf<Reference>()
-
-    val detail: List<ClaimItemDetail> = mutableListOf<ClaimItemDetail>()
 }
 
 /**
@@ -493,26 +493,21 @@ open class ClaimItem() : BackboneElement() {
  */
 open class ClaimItemDetail() : BackboneElement() {
     /**
-     * Service instance
-     */
-    var sequence: Int? = null
-
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
-
-    /**
      * Type of service or product
      */
     var category: CodeableConcept? = null
 
     /**
-     * Billing Code
+     * Price scaling factor
      */
-    var service: CodeableConcept? = null
+    var factor: Float? = null
 
     val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Total additional item cost
+     */
+    var net: Money? = null
 
     val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -522,23 +517,28 @@ open class ClaimItemDetail() : BackboneElement() {
     var quantity: Quantity? = null
 
     /**
-     * Fee, charge or cost per point
+     * Revenue or cost center code
      */
-    var unitPrice: Money? = null
+    var revenue: CodeableConcept? = null
 
     /**
-     * Price scaling factor
+     * Service instance
      */
-    var factor: Float? = null
+    var sequence: Int? = null
 
     /**
-     * Total additional item cost
+     * Billing Code
      */
-    var net: Money? = null
+    var service: CodeableConcept? = null
+
+    val subDetail: List<ClaimItemDetailSubDetail> = mutableListOf<ClaimItemDetailSubDetail>()
 
     val udi: List<Reference> = mutableListOf<Reference>()
 
-    val subDetail: List<ClaimItemDetailSubDetail> = mutableListOf<ClaimItemDetailSubDetail>()
+    /**
+     * Fee, charge or cost per point
+     */
+    var unitPrice: Money? = null
 }
 
 /**
@@ -548,26 +548,21 @@ open class ClaimItemDetail() : BackboneElement() {
  */
 open class ClaimItemDetailSubDetail() : BackboneElement() {
     /**
-     * Service instance
-     */
-    var sequence: Int? = null
-
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
-
-    /**
      * Type of service or product
      */
     var category: CodeableConcept? = null
 
     /**
-     * Billing Code
+     * Price scaling factor
      */
-    var service: CodeableConcept? = null
+    var factor: Float? = null
 
     val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Net additional item cost
+     */
+    var net: Money? = null
 
     val programCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -577,19 +572,24 @@ open class ClaimItemDetailSubDetail() : BackboneElement() {
     var quantity: Quantity? = null
 
     /**
+     * Revenue or cost center code
+     */
+    var revenue: CodeableConcept? = null
+
+    /**
+     * Service instance
+     */
+    var sequence: Int? = null
+
+    /**
+     * Billing Code
+     */
+    var service: CodeableConcept? = null
+
+    val udi: List<Reference> = mutableListOf<Reference>()
+
+    /**
      * Fee, charge or cost per point
      */
     var unitPrice: Money? = null
-
-    /**
-     * Price scaling factor
-     */
-    var factor: Float? = null
-
-    /**
-     * Net additional item cost
-     */
-    var net: Money? = null
-
-    val udi: List<Reference> = mutableListOf<Reference>()
 }

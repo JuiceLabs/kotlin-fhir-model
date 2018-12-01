@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.726 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.065 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,27 +13,15 @@ import kotlin.collections.List
  * Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
  */
 open class Immunization() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * Vaccination administration date
+     */
+    var date: String? = null
 
     /**
-     * completed | entered-in-error
+     * Amount of vaccine administered
      */
-    var status: String? = null
-
-    /**
-     * Flag for whether immunization was given
-     */
-    var notGiven: Boolean? = null
-
-    /**
-     * Vaccine product administered
-     */
-    var vaccineCode: CodeableConcept = CodeableConcept()
-
-    /**
-     * Who was immunized
-     */
-    var patient: Reference = Reference()
+    var doseQuantity: Quantity? = null
 
     /**
      * Encounter administered as part of
@@ -41,19 +29,16 @@ open class Immunization() : DomainResource() {
     var encounter: Reference? = null
 
     /**
-     * Vaccination administration date
+     * Vaccine expiration date
      */
-    var date: String? = null
+    var expirationDate: String? = null
 
     /**
-     * Indicates context the data was recorded in
+     * Administration/non-administration reasons
      */
-    var primarySource: Boolean? = null
+    var explanation: ImmunizationExplanation? = null
 
-    /**
-     * Indicates the source of a secondarily reported record
-     */
-    var reportOrigin: CodeableConcept? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * Where vaccination occurred
@@ -61,24 +46,40 @@ open class Immunization() : DomainResource() {
     var location: Reference? = null
 
     /**
-     * Vaccine manufacturer
-     */
-    var manufacturer: Reference? = null
-
-    /**
      * Vaccine lot number
      */
     var lotNumber: String? = null
 
     /**
-     * Vaccine expiration date
+     * Vaccine manufacturer
      */
-    var expirationDate: String? = null
+    var manufacturer: Reference? = null
 
     /**
-     * Body site vaccine  was administered
+     * Flag for whether immunization was given
      */
-    var site: CodeableConcept? = null
+    var notGiven: Boolean? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    /**
+     * Who was immunized
+     */
+    var patient: Reference = Reference()
+
+    val practitioner: List<ImmunizationPractitioner> = mutableListOf<ImmunizationPractitioner>()
+
+    /**
+     * Indicates context the data was recorded in
+     */
+    var primarySource: Boolean? = null
+
+    val reaction: List<ImmunizationReaction> = mutableListOf<ImmunizationReaction>()
+
+    /**
+     * Indicates the source of a secondarily reported record
+     */
+    var reportOrigin: CodeableConcept? = null
 
     /**
      * How vaccine entered body
@@ -86,23 +87,22 @@ open class Immunization() : DomainResource() {
     var route: CodeableConcept? = null
 
     /**
-     * Amount of vaccine administered
+     * Body site vaccine  was administered
      */
-    var doseQuantity: Quantity? = null
-
-    val practitioner: List<ImmunizationPractitioner> = mutableListOf<ImmunizationPractitioner>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    var site: CodeableConcept? = null
 
     /**
-     * Administration/non-administration reasons
+     * completed | entered-in-error
      */
-    var explanation: ImmunizationExplanation? = null
-
-    val reaction: List<ImmunizationReaction> = mutableListOf<ImmunizationReaction>()
+    var status: String? = null
 
     val vaccinationProtocol: List<ImmunizationVaccinationProtocol> =
             mutableListOf<ImmunizationVaccinationProtocol>()
+
+    /**
+     * Vaccine product administered
+     */
+    var vaccineCode: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -112,14 +112,14 @@ open class Immunization() : DomainResource() {
  */
 open class ImmunizationPractitioner() : BackboneElement() {
     /**
-     * What type of performance was done
-     */
-    var role: CodeableConcept? = null
-
-    /**
      * Individual who was performing
      */
     var actor: Reference = Reference()
+
+    /**
+     * What type of performance was done
+     */
+    var role: CodeableConcept? = null
 }
 
 /**
@@ -162,9 +162,9 @@ open class ImmunizationReaction() : BackboneElement() {
  */
 open class ImmunizationVaccinationProtocol() : BackboneElement() {
     /**
-     * Dose number within series
+     * Who is responsible for protocol
      */
-    var doseSequence: Int? = null
+    var authority: Reference? = null
 
     /**
      * Details of vaccine protocol
@@ -172,9 +172,19 @@ open class ImmunizationVaccinationProtocol() : BackboneElement() {
     var description: String? = null
 
     /**
-     * Who is responsible for protocol
+     * Dose number within series
      */
-    var authority: Reference? = null
+    var doseSequence: Int? = null
+
+    /**
+     * Indicates if dose counts towards immunity
+     */
+    var doseStatus: CodeableConcept = CodeableConcept()
+
+    /**
+     * Why dose does (not) count
+     */
+    var doseStatusReason: CodeableConcept? = null
 
     /**
      * Name of vaccine series
@@ -187,14 +197,4 @@ open class ImmunizationVaccinationProtocol() : BackboneElement() {
     var seriesDoses: Int? = null
 
     val targetDisease: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Indicates if dose counts towards immunity
-     */
-    var doseStatus: CodeableConcept = CodeableConcept()
-
-    /**
-     * Why dose does (not) count
-     */
-    var doseStatusReason: CodeableConcept? = null
 }

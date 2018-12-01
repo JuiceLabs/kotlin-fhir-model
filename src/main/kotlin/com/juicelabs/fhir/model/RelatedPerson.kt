@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.392 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.863 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,26 @@ import kotlin.collections.List
  * Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
  */
 open class RelatedPerson() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
      * Whether this related person's record is in active use
      */
     var active: Boolean? = null
+
+    val address: List<Address> = mutableListOf<Address>()
+
+    /**
+     * The date on which the related person was born
+     */
+    var birthDate: String? = null
+
+    /**
+     * male | female | other | unknown
+     */
+    var gender: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val name: List<HumanName> = mutableListOf<HumanName>()
 
     /**
      * The patient this person is related to
@@ -26,30 +40,16 @@ open class RelatedPerson() : DomainResource() {
     var patient: Reference = Reference()
 
     /**
-     * The nature of the relationship
+     * Period of time that this relationship is considered valid
      */
-    var relationship: CodeableConcept? = null
-
-    val name: List<HumanName> = mutableListOf<HumanName>()
-
-    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
-
-    /**
-     * male | female | other | unknown
-     */
-    var gender: String? = null
-
-    /**
-     * The date on which the related person was born
-     */
-    var birthDate: String? = null
-
-    val address: List<Address> = mutableListOf<Address>()
+    var period: Period? = null
 
     val photo: List<Attachment> = mutableListOf<Attachment>()
 
     /**
-     * Period of time that this relationship is considered valid
+     * The nature of the relationship
      */
-    var period: Period? = null
+    var relationship: CodeableConcept? = null
+
+    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
 }

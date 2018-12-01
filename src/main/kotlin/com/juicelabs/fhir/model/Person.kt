@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.730 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.067 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,40 +13,40 @@ import kotlin.collections.List
  * Demographics and administrative information about a person independent of a specific health-related context.
  */
 open class Person() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    val name: List<HumanName> = mutableListOf<HumanName>()
-
-    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
-
     /**
-     * male | female | other | unknown
+     * This person's record is in active use
      */
-    var gender: String? = null
+    var active: Boolean? = null
+
+    val address: List<Address> = mutableListOf<Address>()
 
     /**
      * The date on which the person was born
      */
     var birthDate: String? = null
 
-    val address: List<Address> = mutableListOf<Address>()
-
     /**
-     * Image of the person
+     * male | female | other | unknown
      */
-    var photo: Attachment? = null
+    var gender: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val link: List<PersonLink> = mutableListOf<PersonLink>()
 
     /**
      * The organization that is the custodian of the person record
      */
     var managingOrganization: Reference? = null
 
-    /**
-     * This person's record is in active use
-     */
-    var active: Boolean? = null
+    val name: List<HumanName> = mutableListOf<HumanName>()
 
-    val link: List<PersonLink> = mutableListOf<PersonLink>()
+    /**
+     * Image of the person
+     */
+    var photo: Attachment? = null
+
+    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
 }
 
 /**
@@ -56,12 +56,12 @@ open class Person() : DomainResource() {
  */
 open class PersonLink() : BackboneElement() {
     /**
-     * The resource to which this actual person is associated
-     */
-    var target: Reference = Reference()
-
-    /**
      * level1 | level2 | level3 | level4
      */
     var assurance: String? = null
+
+    /**
+     * The resource to which this actual person is associated
+     */
+    var target: Reference = Reference()
 }

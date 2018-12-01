@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.620 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.999 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,40 +14,12 @@ import kotlin.collections.List
  * A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
  */
 open class TestScript() : DomainResource() {
-    /**
-     * Logical URI to reference this test script (globally unique)
-     */
-    var url: String? = null
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 
     /**
-     * Additional identifier for the test script
+     * Use and/or publishing restrictions
      */
-    var identifier: Identifier? = null
-
-    /**
-     * Business version of the test script
-     */
-    var version: String? = null
-
-    /**
-     * Name for this test script (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * Name for this test script (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
+    var copyright: String? = null
 
     /**
      * Date this was last changed
@@ -55,45 +27,49 @@ open class TestScript() : DomainResource() {
     var date: String? = null
 
     /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
      * Natural language description of the test script
      */
     var description: String? = null
 
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+    val destination: List<TestScriptDestination> = mutableListOf<TestScriptDestination>()
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    val fixture: List<TestScriptFixture> = mutableListOf<TestScriptFixture>()
+
+    /**
+     * Additional identifier for the test script
+     */
+    var identifier: Identifier? = null
 
     val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Why this test script is defined
-     */
-    var purpose: String? = null
-
-    /**
-     * Use and/or publishing restrictions
-     */
-    var copyright: String? = null
-
-    val origin: List<TestScriptOrigin> = mutableListOf<TestScriptOrigin>()
-
-    val destination: List<TestScriptDestination> = mutableListOf<TestScriptDestination>()
 
     /**
      * Required capability that is assumed to function correctly on the FHIR server being tested
      */
     var metadata: TestScriptMetadata? = null
 
-    val fixture: List<TestScriptFixture> = mutableListOf<TestScriptFixture>()
+    /**
+     * Name for this test script (computer friendly)
+     */
+    var name: String? = null
+
+    val origin: List<TestScriptOrigin> = mutableListOf<TestScriptOrigin>()
 
     val profile: List<Reference> = mutableListOf<Reference>()
 
-    val variable: List<TestScriptVariable> = mutableListOf<TestScriptVariable>()
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this test script is defined
+     */
+    var purpose: String? = null
 
     val rule: List<TestScriptRule> = mutableListOf<TestScriptRule>()
 
@@ -104,12 +80,36 @@ open class TestScript() : DomainResource() {
      */
     var setup: TestScriptSetup? = null
 
-    val test: List<TestScriptTest> = mutableListOf<TestScriptTest>()
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
 
     /**
      * A series of required clean up steps
      */
     var teardown: TestScriptTeardown? = null
+
+    val test: List<TestScriptTest> = mutableListOf<TestScriptTest>()
+
+    /**
+     * Name for this test script (human friendly)
+     */
+    var title: String? = null
+
+    /**
+     * Logical URI to reference this test script (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    val variable: List<TestScriptVariable> = mutableListOf<TestScriptVariable>()
+
+    /**
+     * Business version of the test script
+     */
+    var version: String? = null
 }
 
 /**
@@ -152,10 +152,10 @@ open class TestScriptDestination() : BackboneElement() {
  * The required capability must exist and are assumed to function correctly on the FHIR server being tested.
  */
 open class TestScriptMetadata() : BackboneElement() {
-    val link: List<TestScriptMetadataLink> = mutableListOf<TestScriptMetadataLink>()
-
     val capability: List<TestScriptMetadataCapability> =
             mutableListOf<TestScriptMetadataCapability>()
+
+    val link: List<TestScriptMetadataLink> = mutableListOf<TestScriptMetadataLink>()
 }
 
 /**
@@ -165,14 +165,14 @@ open class TestScriptMetadata() : BackboneElement() {
  */
 open class TestScriptMetadataLink() : BackboneElement() {
     /**
-     * URL to the specification
-     */
-    var url: String? = null
-
-    /**
      * Short description
      */
     var description: String? = null
+
+    /**
+     * URL to the specification
+     */
+    var url: String? = null
 }
 
 /**
@@ -182,21 +182,14 @@ open class TestScriptMetadataLink() : BackboneElement() {
  */
 open class TestScriptMetadataCapability() : BackboneElement() {
     /**
-     * Are the capabilities required?
+     * Required Capability Statement
      */
-    var required: Boolean? = null
-
-    /**
-     * Are the capabilities validated?
-     */
-    var validated: Boolean? = null
+    var capabilities: Reference = Reference()
 
     /**
      * The expected capabilities of the server
      */
     var description: String? = null
-
-    val origin: List<Int> = mutableListOf<Int>()
 
     /**
      * Which server these requirements apply to
@@ -205,10 +198,17 @@ open class TestScriptMetadataCapability() : BackboneElement() {
 
     val link: List<String> = mutableListOf<String>()
 
+    val origin: List<Int> = mutableListOf<Int>()
+
     /**
-     * Required Capability Statement
+     * Are the capabilities required?
      */
-    var capabilities: Reference = Reference()
+    var required: Boolean? = null
+
+    /**
+     * Are the capabilities validated?
+     */
+    var validated: Boolean? = null
 }
 
 /**
@@ -240,11 +240,6 @@ open class TestScriptFixture() : BackboneElement() {
  */
 open class TestScriptVariable() : BackboneElement() {
     /**
-     * Descriptive name for this variable
-     */
-    var name: String? = null
-
-    /**
      * Default, hard-coded, or user-defined value for this variable
      */
     var defaultValue: String? = null
@@ -270,6 +265,11 @@ open class TestScriptVariable() : BackboneElement() {
     var hint: String? = null
 
     /**
+     * Descriptive name for this variable
+     */
+    var name: String? = null
+
+    /**
      * XPath or JSONPath against the fixture body
      */
     var path: String? = null
@@ -286,12 +286,12 @@ open class TestScriptVariable() : BackboneElement() {
  * Assert rule to be used in one or more asserts within the test script.
  */
 open class TestScriptRule() : BackboneElement() {
+    val param: List<TestScriptRuleParam> = mutableListOf<TestScriptRuleParam>()
+
     /**
      * Assert rule resource reference
      */
     var resource: Reference = Reference()
-
-    val param: List<TestScriptRuleParam> = mutableListOf<TestScriptRuleParam>()
 }
 
 /**
@@ -331,12 +331,12 @@ open class TestScriptRuleset() : BackboneElement() {
  * The referenced rule within the external ruleset template.
  */
 open class TestScriptRulesetRule() : BackboneElement() {
+    val param: List<TestScriptRulesetRuleParam> = mutableListOf<TestScriptRulesetRuleParam>()
+
     /**
      * Id of referenced rule within the ruleset
      */
     var ruleId: String? = null
-
-    val param: List<TestScriptRulesetRuleParam> = mutableListOf<TestScriptRulesetRuleParam>()
 }
 
 /**
@@ -372,15 +372,15 @@ open class TestScriptSetup() : BackboneElement() {
  */
 open class TestScriptSetupAction() : BackboneElement() {
     /**
-     * The setup operation to perform
-     */
-    var operation: TestScriptSetupActionOperation? = null
-
-    /**
      * The assertion to perform
      */
     @SerializedName("assert")
     var assert_fhir: TestScriptSetupActionAssert? = null
+
+    /**
+     * The setup operation to perform
+     */
+    var operation: TestScriptSetupActionOperation? = null
 }
 
 /**
@@ -389,26 +389,6 @@ open class TestScriptSetupAction() : BackboneElement() {
  * The operation to perform.
  */
 open class TestScriptSetupActionOperation() : BackboneElement() {
-    /**
-     * The operation code type that will be executed
-     */
-    var type: Coding? = null
-
-    /**
-     * Resource type
-     */
-    var resource: String? = null
-
-    /**
-     * Tracking/logging operation label
-     */
-    var label: String? = null
-
-    /**
-     * Tracking/reporting operation description
-     */
-    var description: String? = null
-
     /**
      * xml | json | ttl | none
      */
@@ -420,6 +400,11 @@ open class TestScriptSetupActionOperation() : BackboneElement() {
     var contentType: String? = null
 
     /**
+     * Tracking/reporting operation description
+     */
+    var description: String? = null
+
+    /**
      * Server responding to the request
      */
     var destination: Int? = null
@@ -428,6 +413,11 @@ open class TestScriptSetupActionOperation() : BackboneElement() {
      * Whether or not to send the request url in encoded format
      */
     var encodeRequestUrl: Boolean? = null
+
+    /**
+     * Tracking/logging operation label
+     */
+    var label: String? = null
 
     /**
      * Server initiating the request
@@ -448,6 +438,11 @@ open class TestScriptSetupActionOperation() : BackboneElement() {
     var requestId: String? = null
 
     /**
+     * Resource type
+     */
+    var resource: String? = null
+
+    /**
      * Fixture Id of mapped response
      */
     var responseId: String? = null
@@ -461,6 +456,11 @@ open class TestScriptSetupActionOperation() : BackboneElement() {
      * Id of fixture used for extracting the [id],  [type], and [vid] for GET requests
      */
     var targetId: String? = null
+
+    /**
+     * The operation code type that will be executed
+     */
+    var type: Coding? = null
 
     /**
      * Request URL
@@ -492,29 +492,14 @@ open class TestScriptSetupActionOperationRequestHeader() : BackboneElement() {
  */
 open class TestScriptSetupActionAssert() : BackboneElement() {
     /**
-     * Tracking/logging assertion label
+     * The fluentpath expression to evaluate against the source fixture
      */
-    var label: String? = null
-
-    /**
-     * Tracking/reporting assertion description
-     */
-    var description: String? = null
-
-    /**
-     * response | request
-     */
-    var direction: String? = null
+    var compareToSourceExpression: String? = null
 
     /**
      * Id of the source fixture to be evaluated
      */
     var compareToSourceId: String? = null
-
-    /**
-     * The fluentpath expression to evaluate against the source fixture
-     */
-    var compareToSourceExpression: String? = null
 
     /**
      * XPath or JSONPath expression to evaluate against the source fixture
@@ -527,6 +512,16 @@ open class TestScriptSetupActionAssert() : BackboneElement() {
     var contentType: String? = null
 
     /**
+     * Tracking/reporting assertion description
+     */
+    var description: String? = null
+
+    /**
+     * response | request
+     */
+    var direction: String? = null
+
+    /**
      * The fluentpath expression to be evaluated
      */
     var expression: String? = null
@@ -535,6 +530,11 @@ open class TestScriptSetupActionAssert() : BackboneElement() {
      * HTTP header field name
      */
     var headerField: String? = null
+
+    /**
+     * Tracking/logging assertion label
+     */
+    var label: String? = null
 
     /**
      * Fixture Id of minimum content resource
@@ -618,13 +618,13 @@ open class TestScriptSetupActionAssert() : BackboneElement() {
  * The TestScript.rule this assert will evaluate.
  */
 open class TestScriptSetupActionAssertRule() : BackboneElement() {
+    val param: List<TestScriptSetupActionAssertRuleParam> =
+            mutableListOf<TestScriptSetupActionAssertRuleParam>()
+
     /**
      * Id of the TestScript.rule
      */
     var ruleId: String? = null
-
-    val param: List<TestScriptSetupActionAssertRuleParam> =
-            mutableListOf<TestScriptSetupActionAssertRuleParam>()
 }
 
 /**
@@ -650,13 +650,13 @@ open class TestScriptSetupActionAssertRuleParam() : BackboneElement() {
  * The TestScript.ruleset this assert will evaluate.
  */
 open class TestScriptSetupActionAssertRuleset() : BackboneElement() {
+    val rule: List<TestScriptSetupActionAssertRulesetRule> =
+            mutableListOf<TestScriptSetupActionAssertRulesetRule>()
+
     /**
      * Id of the TestScript.ruleset
      */
     var rulesetId: String? = null
-
-    val rule: List<TestScriptSetupActionAssertRulesetRule> =
-            mutableListOf<TestScriptSetupActionAssertRulesetRule>()
 }
 
 /**
@@ -665,13 +665,13 @@ open class TestScriptSetupActionAssertRuleset() : BackboneElement() {
  * The referenced rule within the external ruleset template.
  */
 open class TestScriptSetupActionAssertRulesetRule() : BackboneElement() {
+    val param: List<TestScriptSetupActionAssertRulesetRuleParam> =
+            mutableListOf<TestScriptSetupActionAssertRulesetRuleParam>()
+
     /**
      * Id of referenced rule within the ruleset
      */
     var ruleId: String? = null
-
-    val param: List<TestScriptSetupActionAssertRulesetRuleParam> =
-            mutableListOf<TestScriptSetupActionAssertRulesetRuleParam>()
 }
 
 /**
@@ -697,17 +697,17 @@ open class TestScriptSetupActionAssertRulesetRuleParam() : BackboneElement() {
  * A test in this script.
  */
 open class TestScriptTest() : BackboneElement() {
-    /**
-     * Tracking/logging name of this test
-     */
-    var name: String? = null
+    val action: List<TestScriptTestAction> = mutableListOf<TestScriptTestAction>()
 
     /**
      * Tracking/reporting short description of the test
      */
     var description: String? = null
 
-    val action: List<TestScriptTestAction> = mutableListOf<TestScriptTestAction>()
+    /**
+     * Tracking/logging name of this test
+     */
+    var name: String? = null
 }
 
 /**
@@ -717,15 +717,15 @@ open class TestScriptTest() : BackboneElement() {
  */
 open class TestScriptTestAction() : BackboneElement() {
     /**
-     * The setup operation to perform
-     */
-    var operation: TestScriptSetupActionOperation? = null
-
-    /**
      * The setup assertion to perform
      */
     @SerializedName("assert")
     var assert_fhir: TestScriptSetupActionAssert? = null
+
+    /**
+     * The setup operation to perform
+     */
+    var operation: TestScriptSetupActionOperation? = null
 }
 
 /**

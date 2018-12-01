@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.367 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.848 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,15 +13,49 @@ import kotlin.collections.List
  * Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
  */
 open class CarePlan() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val activity: List<CarePlanActivity> = mutableListOf<CarePlanActivity>()
 
-    val definition: List<Reference> = mutableListOf<Reference>()
+    val addresses: List<Reference> = mutableListOf<Reference>()
+
+    val author: List<Reference> = mutableListOf<Reference>()
 
     val basedOn: List<Reference> = mutableListOf<Reference>()
 
-    val replaces: List<Reference> = mutableListOf<Reference>()
+    val careTeam: List<Reference> = mutableListOf<Reference>()
+
+    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Created in context of
+     */
+    var context: Reference? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Summary of nature of plan
+     */
+    var description: String? = null
+
+    val goal: List<Reference> = mutableListOf<Reference>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * proposal | plan | order | option
+     */
+    var intent: String? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     val partOf: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Time period plan covers
+     */
+    var period: Period? = null
+
+    val replaces: List<Reference> = mutableListOf<Reference>()
 
     /**
      * draft | active | suspended | completed | entered-in-error | cancelled | unknown
@@ -29,50 +63,16 @@ open class CarePlan() : DomainResource() {
     var status: String? = null
 
     /**
-     * proposal | plan | order | option
+     * Who care plan is for
      */
-    var intent: String? = null
+    var subject: Reference = Reference()
 
-    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val supportingInfo: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Human-friendly name for the CarePlan
      */
     var title: String? = null
-
-    /**
-     * Summary of nature of plan
-     */
-    var description: String? = null
-
-    /**
-     * Who care plan is for
-     */
-    var subject: Reference = Reference()
-
-    /**
-     * Created in context of
-     */
-    var context: Reference? = null
-
-    /**
-     * Time period plan covers
-     */
-    var period: Period? = null
-
-    val author: List<Reference> = mutableListOf<Reference>()
-
-    val careTeam: List<Reference> = mutableListOf<Reference>()
-
-    val addresses: List<Reference> = mutableListOf<Reference>()
-
-    val supportingInfo: List<Reference> = mutableListOf<Reference>()
-
-    val goal: List<Reference> = mutableListOf<Reference>()
-
-    val activity: List<CarePlanActivity> = mutableListOf<CarePlanActivity>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
 }
 
 /**
@@ -81,6 +81,11 @@ open class CarePlan() : DomainResource() {
  * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
  */
 open class CarePlanActivity() : BackboneElement() {
+    /**
+     * In-line definition of activity
+     */
+    var detail: CarePlanActivityDetail? = null
+
     val outcomeCodeableConcept: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     val outcomeReference: List<Reference> = mutableListOf<Reference>()
@@ -91,11 +96,6 @@ open class CarePlanActivity() : BackboneElement() {
      * Activity details defined in specific resource
      */
     var reference: Reference? = null
-
-    /**
-     * In-line definition of activity
-     */
-    var detail: CarePlanActivityDetail? = null
 }
 
 /**
@@ -110,50 +110,26 @@ open class CarePlanActivityDetail() : BackboneElement() {
     var category: CodeableConcept? = null
 
     /**
+     * Detail type of activity
+     */
+    var code: CodeableConcept? = null
+
+    /**
+     * How to consume/day?
+     */
+    var dailyAmount: Quantity? = null
+
+    /**
      * Protocol or definition
      */
     var definition: Reference? = null
 
     /**
-     * Detail type of activity
+     * Extra info describing activity to perform
      */
-    var code: CodeableConcept? = null
-
-    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val reasonReference: List<Reference> = mutableListOf<Reference>()
+    var description: String? = null
 
     val goal: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * not-started | scheduled | in-progress | on-hold | completed | cancelled | unknown
-     */
-    var status: String? = null
-
-    /**
-     * Reason for current status
-     */
-    var statusReason: String? = null
-
-    /**
-     * Do NOT do
-     */
-    var prohibited: Boolean? = null
-
-    /**
-     * When activity is to occur
-     */
-    var scheduledTiming: Timing? = null
-
-    /**
-     * When activity is to occur
-     */
-    var scheduledPeriod: Period? = null
-
-    /**
-     * When activity is to occur
-     */
-    var scheduledString: String? = null
 
     /**
      * Where it should happen
@@ -173,17 +149,41 @@ open class CarePlanActivityDetail() : BackboneElement() {
     var productReference: Reference? = null
 
     /**
-     * How to consume/day?
+     * Do NOT do
      */
-    var dailyAmount: Quantity? = null
+    var prohibited: Boolean? = null
 
     /**
      * How much to administer/supply/consume
      */
     var quantity: Quantity? = null
 
+    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val reasonReference: List<Reference> = mutableListOf<Reference>()
+
     /**
-     * Extra info describing activity to perform
+     * When activity is to occur
      */
-    var description: String? = null
+    var scheduledPeriod: Period? = null
+
+    /**
+     * When activity is to occur
+     */
+    var scheduledString: String? = null
+
+    /**
+     * When activity is to occur
+     */
+    var scheduledTiming: Timing? = null
+
+    /**
+     * not-started | scheduled | in-progress | on-hold | completed | cancelled | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Reason for current status
+     */
+    var statusReason: String? = null
 }

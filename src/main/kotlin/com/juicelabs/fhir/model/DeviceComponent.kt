@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.289 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.795 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -19,9 +19,9 @@ open class DeviceComponent() : DomainResource() {
     var identifier: Identifier = Identifier()
 
     /**
-     * What kind of component it is
+     * Language code for the human-readable text strings produced by the device
      */
-    var type: CodeableConcept = CodeableConcept()
+    var languageCode: CodeableConcept? = null
 
     /**
      * Recent system change timestamp
@@ -29,14 +29,9 @@ open class DeviceComponent() : DomainResource() {
     var lastSystemChange: String? = null
 
     /**
-     * Top-level device resource link
+     * other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+
      */
-    var source: Reference? = null
-
-    /**
-     * Parent resource link
-     */
-    var parent: Reference? = null
+    var measurementPrinciple: String? = null
 
     val operationalStatus: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -46,17 +41,22 @@ open class DeviceComponent() : DomainResource() {
     var parameterGroup: CodeableConcept? = null
 
     /**
-     * other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+
+     * Parent resource link
      */
-    var measurementPrinciple: String? = null
+    var parent: Reference? = null
 
     val productionSpecification: List<DeviceComponentProductionSpecification> =
             mutableListOf<DeviceComponentProductionSpecification>()
 
     /**
-     * Language code for the human-readable text strings produced by the device
+     * Top-level device resource link
      */
-    var languageCode: CodeableConcept? = null
+    var source: Reference? = null
+
+    /**
+     * What kind of component it is
+     */
+    var type: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -66,11 +66,6 @@ open class DeviceComponent() : DomainResource() {
  */
 open class DeviceComponentProductionSpecification() : BackboneElement() {
     /**
-     * Type or kind of production specification, for example serial number or software revision
-     */
-    var specType: CodeableConcept? = null
-
-    /**
      * Internal component unique identification
      */
     var componentId: Identifier? = null
@@ -79,4 +74,9 @@ open class DeviceComponentProductionSpecification() : BackboneElement() {
      * A printable string defining the component
      */
     var productionSpec: String? = null
+
+    /**
+     * Type or kind of production specification, for example serial number or software revision
+     */
+    var specType: CodeableConcept? = null
 }

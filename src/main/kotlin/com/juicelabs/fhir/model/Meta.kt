@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.399 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.868 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,11 +14,6 @@ import kotlin.collections.List
  */
 open class Meta() : Element() {
     /**
-     * Version specific identifier
-     */
-    var versionId: String? = null
-
-    /**
      * When the resource version last changed
      */
     var lastUpdated: String? = null
@@ -28,4 +23,9 @@ open class Meta() : Element() {
     val security: List<Coding> = mutableListOf<Coding>()
 
     val tag: List<Coding> = mutableListOf<Coding>()
+
+    /**
+     * Version specific identifier
+     */
+    var versionId: String? = null
 }

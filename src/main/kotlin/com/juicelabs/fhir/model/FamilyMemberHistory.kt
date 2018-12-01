@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.535 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.937 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,65 +13,6 @@ import kotlin.collections.List
  * Significant health events and conditions for a person related to the patient relevant in the context of care for the patient.
  */
 open class FamilyMemberHistory() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    val definition: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * partial | completed | entered-in-error | health-unknown
-     */
-    var status: String? = null
-
-    /**
-     * The taking of a family member's history did not occur
-     */
-    var notDone: Boolean? = null
-
-    /**
-     * subject-unknown | withheld | unable-to-obtain | deferred
-     */
-    var notDoneReason: CodeableConcept? = null
-
-    /**
-     * Patient history is about
-     */
-    var patient: Reference = Reference()
-
-    /**
-     * When history was captured/updated
-     */
-    var date: String? = null
-
-    /**
-     * The family member described
-     */
-    var name: String? = null
-
-    /**
-     * Relationship to the subject
-     */
-    var relationship: CodeableConcept = CodeableConcept()
-
-    /**
-     * male | female | other | unknown
-     */
-    var gender: String? = null
-
-    /**
-     * (approximate) date of birth
-     */
-    var bornPeriod: Period? = null
-
-    /**
-     * (approximate) date of birth
-     */
-    var bornDate: String? = null
-
-    /**
-     * (approximate) date of birth
-     */
-    var bornString: String? = null
-
     /**
      * (approximate) age
      */
@@ -88,14 +29,27 @@ open class FamilyMemberHistory() : DomainResource() {
     var ageString: String? = null
 
     /**
-     * Age is estimated?
+     * (approximate) date of birth
      */
-    var estimatedAge: Boolean? = null
+    var bornDate: String? = null
 
     /**
-     * Dead? How old/when?
+     * (approximate) date of birth
      */
-    var deceasedBoolean: Boolean? = null
+    var bornPeriod: Period? = null
+
+    /**
+     * (approximate) date of birth
+     */
+    var bornString: String? = null
+
+    val condition: List<FamilyMemberHistoryCondition> =
+            mutableListOf<FamilyMemberHistoryCondition>()
+
+    /**
+     * When history was captured/updated
+     */
+    var date: String? = null
 
     /**
      * Dead? How old/when?
@@ -105,7 +59,7 @@ open class FamilyMemberHistory() : DomainResource() {
     /**
      * Dead? How old/when?
      */
-    var deceasedRange: Range? = null
+    var deceasedBoolean: Boolean? = null
 
     /**
      * Dead? How old/when?
@@ -115,16 +69,62 @@ open class FamilyMemberHistory() : DomainResource() {
     /**
      * Dead? How old/when?
      */
+    var deceasedRange: Range? = null
+
+    /**
+     * Dead? How old/when?
+     */
     var deceasedString: String? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Age is estimated?
+     */
+    var estimatedAge: Boolean? = null
+
+    /**
+     * male | female | other | unknown
+     */
+    var gender: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * The family member described
+     */
+    var name: String? = null
+
+    /**
+     * The taking of a family member's history did not occur
+     */
+    var notDone: Boolean? = null
+
+    /**
+     * subject-unknown | withheld | unable-to-obtain | deferred
+     */
+    var notDoneReason: CodeableConcept? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    /**
+     * Patient history is about
+     */
+    var patient: Reference = Reference()
 
     val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     val reasonReference: List<Reference> = mutableListOf<Reference>()
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    /**
+     * Relationship to the subject
+     */
+    var relationship: CodeableConcept = CodeableConcept()
 
-    val condition: List<FamilyMemberHistoryCondition> =
-            mutableListOf<FamilyMemberHistoryCondition>()
+    /**
+     * partial | completed | entered-in-error | health-unknown
+     */
+    var status: String? = null
 }
 
 /**
@@ -138,10 +138,7 @@ open class FamilyMemberHistoryCondition() : BackboneElement() {
      */
     var code: CodeableConcept = CodeableConcept()
 
-    /**
-     * deceased | permanent disability | etc.
-     */
-    var outcome: CodeableConcept? = null
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * When condition first manifested
@@ -151,17 +148,20 @@ open class FamilyMemberHistoryCondition() : BackboneElement() {
     /**
      * When condition first manifested
      */
-    var onsetRange: Range? = null
+    var onsetPeriod: Period? = null
 
     /**
      * When condition first manifested
      */
-    var onsetPeriod: Period? = null
+    var onsetRange: Range? = null
 
     /**
      * When condition first manifested
      */
     var onsetString: String? = null
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    /**
+     * deceased | permanent disability | etc.
+     */
+    var outcome: CodeableConcept? = null
 }

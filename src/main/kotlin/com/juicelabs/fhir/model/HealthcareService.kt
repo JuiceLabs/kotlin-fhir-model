@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.245 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.780 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,54 +13,37 @@ import kotlin.collections.List
  * The details of a healthcare service available at a location.
  */
 open class HealthcareService() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
      * Whether this healthcareservice is in active use
      */
     var active: Boolean? = null
 
     /**
-     * Organization that provides this service
+     * If an appointment is required for access to this service
      */
-    var providedBy: Reference? = null
+    var appointmentRequired: Boolean? = null
+
+    /**
+     * Description of availability exceptions
+     */
+    var availabilityExceptions: String? = null
+
+    val availableTime: List<HealthcareServiceAvailableTime> =
+            mutableListOf<HealthcareServiceAvailableTime>()
 
     /**
      * Broad category of service being performed or delivered
      */
     var category: CodeableConcept? = null
 
-    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val specialty: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val location: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Description of service as presented to a consumer while searching
-     */
-    var name: String? = null
+    val characteristic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Additional description and/or any specific issues not covered elsewhere
      */
     var comment: String? = null
 
-    /**
-     * Extra details about the service that can't be placed in the other fields
-     */
-    var extraDetails: String? = null
-
-    /**
-     * Facilitates quick identification of the service
-     */
-    var photo: Attachment? = null
-
-    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
-
     val coverageArea: List<Reference> = mutableListOf<Reference>()
-
-    val serviceProvisionCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Specific eligibility requirements required to use the service
@@ -72,29 +55,46 @@ open class HealthcareService() : DomainResource() {
      */
     var eligibilityNote: String? = null
 
-    val programName: List<String> = mutableListOf<String>()
-
-    val characteristic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val referralMethod: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val endpoint: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * If an appointment is required for access to this service
+     * Extra details about the service that can't be placed in the other fields
      */
-    var appointmentRequired: Boolean? = null
+    var extraDetails: String? = null
 
-    val availableTime: List<HealthcareServiceAvailableTime> =
-            mutableListOf<HealthcareServiceAvailableTime>()
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val location: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Description of service as presented to a consumer while searching
+     */
+    var name: String? = null
 
     val notAvailable: List<HealthcareServiceNotAvailable> =
             mutableListOf<HealthcareServiceNotAvailable>()
 
     /**
-     * Description of availability exceptions
+     * Facilitates quick identification of the service
      */
-    var availabilityExceptions: String? = null
+    var photo: Attachment? = null
 
-    val endpoint: List<Reference> = mutableListOf<Reference>()
+    val programName: List<String> = mutableListOf<String>()
+
+    /**
+     * Organization that provides this service
+     */
+    var providedBy: Reference? = null
+
+    val referralMethod: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val serviceProvisionCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val specialty: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
+
+    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 }
 
 /**
@@ -103,22 +103,22 @@ open class HealthcareService() : DomainResource() {
  * A collection of times that the Service Site is available.
  */
 open class HealthcareServiceAvailableTime() : BackboneElement() {
-    val daysOfWeek: List<String> = mutableListOf<String>()
-
     /**
      * Always available? e.g. 24 hour service
      */
     var allDay: Boolean? = null
 
     /**
+     * Closing time of day (ignored if allDay = true)
+     */
+    var availableEndTime: String? = null
+
+    /**
      * Opening time of day (ignored if allDay = true)
      */
     var availableStartTime: String? = null
 
-    /**
-     * Closing time of day (ignored if allDay = true)
-     */
-    var availableEndTime: String? = null
+    val daysOfWeek: List<String> = mutableListOf<String>()
 }
 
 /**

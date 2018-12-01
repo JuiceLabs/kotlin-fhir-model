@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.631 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.006 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,26 +14,11 @@ import kotlin.collections.List
  */
 open class MessageHeader() : DomainResource() {
     /**
-     * Code for the event this message represents
+     * The source of the decision
      */
-    var event: Coding = Coding()
+    var author: Reference? = null
 
     val destination: List<MessageHeaderDestination> = mutableListOf<MessageHeaderDestination>()
-
-    /**
-     * Intended "real-world" recipient for the data
-     */
-    var receiver: Reference? = null
-
-    /**
-     * Real world sender of the message
-     */
-    var sender: Reference? = null
-
-    /**
-     * Time that the message was sent
-     */
-    var timestamp: String? = null
 
     /**
      * The source of the data entry
@@ -41,19 +26,11 @@ open class MessageHeader() : DomainResource() {
     var enterer: Reference? = null
 
     /**
-     * The source of the decision
+     * Code for the event this message represents
      */
-    var author: Reference? = null
+    var event: Coding = Coding()
 
-    /**
-     * Message source application
-     */
-    var source: MessageHeaderSource = MessageHeaderSource()
-
-    /**
-     * Final responsibility for event
-     */
-    var responsible: Reference? = null
+    val focus: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Cause of event
@@ -61,11 +38,34 @@ open class MessageHeader() : DomainResource() {
     var reason: CodeableConcept? = null
 
     /**
+     * Intended "real-world" recipient for the data
+     */
+    var receiver: Reference? = null
+
+    /**
      * If this is a reply to prior message
      */
     var response: MessageHeaderResponse? = null
 
-    val focus: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Final responsibility for event
+     */
+    var responsible: Reference? = null
+
+    /**
+     * Real world sender of the message
+     */
+    var sender: Reference? = null
+
+    /**
+     * Message source application
+     */
+    var source: MessageHeaderSource = MessageHeaderSource()
+
+    /**
+     * Time that the message was sent
+     */
+    var timestamp: String? = null
 }
 
 /**
@@ -75,6 +75,11 @@ open class MessageHeader() : DomainResource() {
  */
 open class MessageHeaderDestination() : BackboneElement() {
     /**
+     * Actual destination address or id
+     */
+    var endpoint: String? = null
+
+    /**
      * Name of system
      */
     var name: String? = null
@@ -83,11 +88,6 @@ open class MessageHeaderDestination() : BackboneElement() {
      * Particular delivery destination within the destination
      */
     var target: Reference? = null
-
-    /**
-     * Actual destination address or id
-     */
-    var endpoint: String? = null
 }
 
 /**
@@ -96,6 +96,16 @@ open class MessageHeaderDestination() : BackboneElement() {
  * The source application from which this message originated.
  */
 open class MessageHeaderSource() : BackboneElement() {
+    /**
+     * Human contact for problems
+     */
+    var contact: ContactPoint? = null
+
+    /**
+     * Actual message source address or id
+     */
+    var endpoint: String? = null
+
     /**
      * Name of system
      */
@@ -110,16 +120,6 @@ open class MessageHeaderSource() : BackboneElement() {
      * Version of software running
      */
     var version: String? = null
-
-    /**
-     * Human contact for problems
-     */
-    var contact: ContactPoint? = null
-
-    /**
-     * Actual message source address or id
-     */
-    var endpoint: String? = null
 }
 
 /**
@@ -129,11 +129,6 @@ open class MessageHeaderSource() : BackboneElement() {
  */
 open class MessageHeaderResponse() : BackboneElement() {
     /**
-     * Id of original message
-     */
-    var identifier: String? = null
-
-    /**
      * ok | transient-error | fatal-error
      */
     var code: String? = null
@@ -142,4 +137,9 @@ open class MessageHeaderResponse() : BackboneElement() {
      * Specific list of hints/warnings/errors
      */
     var details: Reference? = null
+
+    /**
+     * Id of original message
+     */
+    var identifier: String? = null
 }

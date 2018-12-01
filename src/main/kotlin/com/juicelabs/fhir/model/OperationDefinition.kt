@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.320 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.818 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,65 +14,9 @@ import kotlin.collections.List
  */
 open class OperationDefinition() : DomainResource() {
     /**
-     * Logical URI to reference this operation definition (globally unique)
+     * Marks this as a profile of the base
      */
-    var url: String? = null
-
-    /**
-     * Business version of the operation definition
-     */
-    var version: String? = null
-
-    /**
-     * Name for this operation definition (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * operation | query
-     */
-    var kind: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * Date this was last changed
-     */
-    var date: String? = null
-
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Natural language description of the operation definition
-     */
-    var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Why this operation definition is defined
-     */
-    var purpose: String? = null
-
-    /**
-     * Whether content is unchanged by the operation
-     */
-    var idempotent: Boolean? = null
+    var base: Reference? = null
 
     /**
      * Name used to invoke the operation
@@ -84,12 +28,66 @@ open class OperationDefinition() : DomainResource() {
      */
     var comment: String? = null
 
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
+
     /**
-     * Marks this as a profile of the base
+     * Date this was last changed
      */
-    var base: Reference? = null
+    var date: String? = null
+
+    /**
+     * Natural language description of the operation definition
+     */
+    var description: String? = null
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    /**
+     * Whether content is unchanged by the operation
+     */
+    var idempotent: Boolean? = null
+
+    /**
+     * Invoke on an instance?
+     */
+    var instance: Boolean? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * operation | query
+     */
+    var kind: String? = null
+
+    /**
+     * Name for this operation definition (computer friendly)
+     */
+    var name: String? = null
+
+    val overload: List<OperationDefinitionOverload> = mutableListOf<OperationDefinitionOverload>()
+
+    val parameter: List<OperationDefinitionParameter> =
+            mutableListOf<OperationDefinitionParameter>()
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this operation definition is defined
+     */
+    var purpose: String? = null
 
     val resource: List<String> = mutableListOf<String>()
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
 
     /**
      * Invoke at the system level?
@@ -102,14 +100,16 @@ open class OperationDefinition() : DomainResource() {
     var type: Boolean? = null
 
     /**
-     * Invoke on an instance?
+     * Logical URI to reference this operation definition (globally unique)
      */
-    var instance: Boolean? = null
+    var url: String? = null
 
-    val parameter: List<OperationDefinitionParameter> =
-            mutableListOf<OperationDefinitionParameter>()
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
 
-    val overload: List<OperationDefinitionOverload> = mutableListOf<OperationDefinitionOverload>()
+    /**
+     * Business version of the operation definition
+     */
+    var version: String? = null
 }
 
 /**
@@ -119,24 +119,9 @@ open class OperationDefinition() : DomainResource() {
  */
 open class OperationDefinitionParameter() : BackboneElement() {
     /**
-     * Name in Parameters.parameter.name or in URL
+     * ValueSet details if this is coded
      */
-    var name: String? = null
-
-    /**
-     * in | out
-     */
-    var use: String? = null
-
-    /**
-     * Minimum Cardinality
-     */
-    var min: Int? = null
-
-    /**
-     * Maximum Cardinality (a number or *)
-     */
-    var max: String? = null
+    var binding: OperationDefinitionParameterBinding? = null
 
     /**
      * Description of meaning/use
@@ -144,14 +129,21 @@ open class OperationDefinitionParameter() : BackboneElement() {
     var documentation: String? = null
 
     /**
-     * What type this parameter has
+     * Maximum Cardinality (a number or *)
      */
-    var type: String? = null
+    var max: String? = null
 
     /**
-     * number | date | string | token | reference | composite | quantity | uri
+     * Minimum Cardinality
      */
-    var searchType: String? = null
+    var min: Int? = null
+
+    /**
+     * Name in Parameters.parameter.name or in URL
+     */
+    var name: String? = null
+
+    val part: List<OperationDefinitionParameter> = mutableListOf<OperationDefinitionParameter>()
 
     /**
      * Profile on the type
@@ -159,11 +151,19 @@ open class OperationDefinitionParameter() : BackboneElement() {
     var profile: Reference? = null
 
     /**
-     * ValueSet details if this is coded
+     * number | date | string | token | reference | composite | quantity | uri
      */
-    var binding: OperationDefinitionParameterBinding? = null
+    var searchType: String? = null
 
-    val part: List<OperationDefinitionParameter> = mutableListOf<OperationDefinitionParameter>()
+    /**
+     * What type this parameter has
+     */
+    var type: String? = null
+
+    /**
+     * in | out
+     */
+    var use: String? = null
 }
 
 /**
@@ -180,12 +180,12 @@ open class OperationDefinitionParameterBinding() : BackboneElement() {
     /**
      * Source of value set
      */
-    var valueSetUri: String? = null
+    var valueSetReference: Reference = Reference()
 
     /**
      * Source of value set
      */
-    var valueSetReference: Reference = Reference()
+    var valueSetUri: String? = null
 }
 
 /**
@@ -194,10 +194,10 @@ open class OperationDefinitionParameterBinding() : BackboneElement() {
  * Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation.
  */
 open class OperationDefinitionOverload() : BackboneElement() {
-    val parameterName: List<String> = mutableListOf<String>()
-
     /**
      * Comments to go on overload
      */
     var comment: String? = null
+
+    val parameterName: List<String> = mutableListOf<String>()
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.444 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.895 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,28 +14,16 @@ import kotlin.collections.List
  */
 open class ImagingStudy() : DomainResource() {
     /**
-     * Formal DICOM identifier for the study
-     */
-    var uid: String? = null
-
-    /**
      * Related workflow identifier ("Accession Number")
      */
     var accession: Identifier? = null
-
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * ONLINE | OFFLINE | NEARLINE | UNAVAILABLE
      */
     var availability: String? = null
 
-    val modalityList: List<Coding> = mutableListOf<Coding>()
-
-    /**
-     * Who the images are of
-     */
-    var patient: Reference = Reference()
+    val basedOn: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Originating context
@@ -43,20 +31,22 @@ open class ImagingStudy() : DomainResource() {
     var context: Reference? = null
 
     /**
-     * When the study was started
+     * Institution-generated description
      */
-    var started: String? = null
+    var description: String? = null
 
-    val basedOn: List<Reference> = mutableListOf<Reference>()
+    val endpoint: List<Reference> = mutableListOf<Reference>()
 
-    /**
-     * Referring physician
-     */
-    var referrer: Reference? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     val interpreter: List<Reference> = mutableListOf<Reference>()
 
-    val endpoint: List<Reference> = mutableListOf<Reference>()
+    val modalityList: List<Coding> = mutableListOf<Coding>()
+
+    /**
+     * Number of Study Related Instances
+     */
+    var numberOfInstances: Int? = null
 
     /**
      * Number of Study Related Series
@@ -64,13 +54,13 @@ open class ImagingStudy() : DomainResource() {
     var numberOfSeries: Int? = null
 
     /**
-     * Number of Study Related Instances
+     * Who the images are of
      */
-    var numberOfInstances: Int? = null
-
-    val procedureReference: List<Reference> = mutableListOf<Reference>()
+    var patient: Reference = Reference()
 
     val procedureCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val procedureReference: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Why the study was requested
@@ -78,11 +68,21 @@ open class ImagingStudy() : DomainResource() {
     var reason: CodeableConcept? = null
 
     /**
-     * Institution-generated description
+     * Referring physician
      */
-    var description: String? = null
+    var referrer: Reference? = null
 
     val series: List<ImagingStudySeries> = mutableListOf<ImagingStudySeries>()
+
+    /**
+     * When the study was started
+     */
+    var started: String? = null
+
+    /**
+     * Formal DICOM identifier for the study
+     */
+    var uid: String? = null
 }
 
 /**
@@ -92,36 +92,9 @@ open class ImagingStudy() : DomainResource() {
  */
 open class ImagingStudySeries() : BackboneElement() {
     /**
-     * Formal DICOM identifier for this series
-     */
-    var uid: String? = null
-
-    /**
-     * Numeric identifier of this series
-     */
-    var number: Int? = null
-
-    /**
-     * The modality of the instances in the series
-     */
-    var modality: Coding = Coding()
-
-    /**
-     * A short human readable summary of the series
-     */
-    var description: String? = null
-
-    /**
-     * Number of Series Related Instances
-     */
-    var numberOfInstances: Int? = null
-
-    /**
      * ONLINE | OFFLINE | NEARLINE | UNAVAILABLE
      */
     var availability: String? = null
-
-    val endpoint: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Body part examined
@@ -129,18 +102,45 @@ open class ImagingStudySeries() : BackboneElement() {
     var bodySite: Coding? = null
 
     /**
+     * A short human readable summary of the series
+     */
+    var description: String? = null
+
+    val endpoint: List<Reference> = mutableListOf<Reference>()
+
+    val instance: List<ImagingStudySeriesInstance> = mutableListOf<ImagingStudySeriesInstance>()
+
+    /**
      * Body part laterality
      */
     var laterality: Coding? = null
+
+    /**
+     * The modality of the instances in the series
+     */
+    var modality: Coding = Coding()
+
+    /**
+     * Numeric identifier of this series
+     */
+    var number: Int? = null
+
+    /**
+     * Number of Series Related Instances
+     */
+    var numberOfInstances: Int? = null
+
+    val performer: List<Reference> = mutableListOf<Reference>()
 
     /**
      * When the series started
      */
     var started: String? = null
 
-    val performer: List<Reference> = mutableListOf<Reference>()
-
-    val instance: List<ImagingStudySeriesInstance> = mutableListOf<ImagingStudySeriesInstance>()
+    /**
+     * Formal DICOM identifier for this series
+     */
+    var uid: String? = null
 }
 
 /**
@@ -149,11 +149,6 @@ open class ImagingStudySeries() : BackboneElement() {
  * A single SOP instance within the series, e.g. an image, or presentation state.
  */
 open class ImagingStudySeriesInstance() : BackboneElement() {
-    /**
-     * Formal DICOM identifier for this instance
-     */
-    var uid: String? = null
-
     /**
      * The number of this instance in the series
      */
@@ -168,4 +163,9 @@ open class ImagingStudySeriesInstance() : BackboneElement() {
      * Description of instance
      */
     var title: String? = null
+
+    /**
+     * Formal DICOM identifier for this instance
+     */
+    var uid: String? = null
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.755 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.087 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,29 +13,26 @@ import kotlin.collections.List
  * An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
  */
 open class EpisodeOfCare() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val account: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * planned | waitlist | active | onhold | finished | cancelled | entered-in-error
+     * Care manager/care co-ordinator for the patient
      */
-    var status: String? = null
-
-    val statusHistory: List<EpisodeOfCareStatusHistory> =
-            mutableListOf<EpisodeOfCareStatusHistory>()
-
-    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    var careManager: Reference? = null
 
     val diagnosis: List<EpisodeOfCareDiagnosis> = mutableListOf<EpisodeOfCareDiagnosis>()
 
-    /**
-     * The patient who is the focus of this episode of care
-     */
-    var patient: Reference = Reference()
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * Organization that assumes care
      */
     var managingOrganization: Reference? = null
+
+    /**
+     * The patient who is the focus of this episode of care
+     */
+    var patient: Reference = Reference()
 
     /**
      * Interval during responsibility is assumed
@@ -45,13 +42,16 @@ open class EpisodeOfCare() : DomainResource() {
     val referralRequest: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * Care manager/care co-ordinator for the patient
+     * planned | waitlist | active | onhold | finished | cancelled | entered-in-error
      */
-    var careManager: Reference? = null
+    var status: String? = null
+
+    val statusHistory: List<EpisodeOfCareStatusHistory> =
+            mutableListOf<EpisodeOfCareStatusHistory>()
 
     val team: List<Reference> = mutableListOf<Reference>()
 
-    val account: List<Reference> = mutableListOf<Reference>()
+    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 }
 
 /**
@@ -61,14 +61,14 @@ open class EpisodeOfCare() : DomainResource() {
  */
 open class EpisodeOfCareStatusHistory() : BackboneElement() {
     /**
-     * planned | waitlist | active | onhold | finished | cancelled | entered-in-error
-     */
-    var status: String? = null
-
-    /**
      * Duration the EpisodeOfCare was in the specified status
      */
     var period: Period = Period()
+
+    /**
+     * planned | waitlist | active | onhold | finished | cancelled | entered-in-error
+     */
+    var status: String? = null
 }
 
 /**
@@ -83,12 +83,12 @@ open class EpisodeOfCareDiagnosis() : BackboneElement() {
     var condition: Reference = Reference()
 
     /**
-     * Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …)
-     */
-    var role: CodeableConcept? = null
-
-    /**
      * Ranking of the diagnosis (for each role type)
      */
     var rank: Int? = null
+
+    /**
+     * Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …)
+     */
+    var role: CodeableConcept? = null
 }

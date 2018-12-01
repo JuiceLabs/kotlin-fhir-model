@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.790 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.100 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,9 +17,9 @@ open class Attachment() : Element() {
     var contentType: String? = null
 
     /**
-     * Human language of the content (BCP-47)
+     * Date attachment was first created
      */
-    var language: String? = null
+    var creation: String? = null
 
     /**
      * Data inline, base64ed
@@ -27,9 +27,14 @@ open class Attachment() : Element() {
     var data: String? = null
 
     /**
-     * Uri where the data can be found
+     * Hash of the data (sha-1, base64ed)
      */
-    var url: String? = null
+    var hash: String? = null
+
+    /**
+     * Human language of the content (BCP-47)
+     */
+    var language: String? = null
 
     /**
      * Number of bytes of content (if url provided)
@@ -37,17 +42,12 @@ open class Attachment() : Element() {
     var size: Int? = null
 
     /**
-     * Hash of the data (sha-1, base64ed)
-     */
-    var hash: String? = null
-
-    /**
      * Label to display in place of the data
      */
     var title: String? = null
 
     /**
-     * Date attachment was first created
+     * Uri where the data can be found
      */
-    var creation: String? = null
+    var url: String? = null
 }

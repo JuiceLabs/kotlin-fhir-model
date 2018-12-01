@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.469 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.906 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,10 @@ import kotlin.collections.List
  * Prospective warnings of potential issues when providing care to the patient.
  */
 open class Flag() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
-     * active | inactive | entered-in-error
+     * Flag creator
      */
-    var status: String? = null
+    var author: Reference? = null
 
     /**
      * Clinical, administrative, etc.
@@ -31,9 +29,11 @@ open class Flag() : DomainResource() {
     var code: CodeableConcept = CodeableConcept()
 
     /**
-     * Who/What is flag about?
+     * Alert relevant during encounter
      */
-    var subject: Reference = Reference()
+    var encounter: Reference? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * Time period when flag is active
@@ -41,12 +41,12 @@ open class Flag() : DomainResource() {
     var period: Period? = null
 
     /**
-     * Alert relevant during encounter
+     * active | inactive | entered-in-error
      */
-    var encounter: Reference? = null
+    var status: String? = null
 
     /**
-     * Flag creator
+     * Who/What is flag about?
      */
-    var author: Reference? = null
+    var subject: Reference = Reference()
 }

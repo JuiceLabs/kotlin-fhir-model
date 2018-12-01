@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.304 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.806 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,14 +14,9 @@ import kotlin.collections.List
  */
 open class SupplyRequest() : DomainResource() {
     /**
-     * Unique identifier
+     * When the request was made
      */
-    var identifier: Identifier? = null
-
-    /**
-     * draft | active | suspended +
-     */
-    var status: String? = null
+    var authoredOn: String? = null
 
     /**
      * The kind of supply (central, non-stock, etc.)
@@ -29,14 +24,19 @@ open class SupplyRequest() : DomainResource() {
     var category: CodeableConcept? = null
 
     /**
-     * routine | urgent | asap | stat
+     * The origin of the supply
      */
-    var priority: String? = null
+    var deliverFrom: Reference? = null
 
     /**
-     * The item being requested
+     * The destination of the supply
      */
-    var orderedItem: SupplyRequestOrderedItem? = null
+    var deliverTo: Reference? = null
+
+    /**
+     * Unique identifier
+     */
+    var identifier: Identifier? = null
 
     /**
      * When the request should be fulfilled
@@ -54,16 +54,14 @@ open class SupplyRequest() : DomainResource() {
     var occurrenceTiming: Timing? = null
 
     /**
-     * When the request was made
+     * The item being requested
      */
-    var authoredOn: String? = null
+    var orderedItem: SupplyRequestOrderedItem? = null
 
     /**
-     * Who/what is requesting service
+     * routine | urgent | asap | stat
      */
-    var requester: SupplyRequestRequester? = null
-
-    val supplier: List<Reference> = mutableListOf<Reference>()
+    var priority: String? = null
 
     /**
      * Why the supply item was requested
@@ -76,14 +74,16 @@ open class SupplyRequest() : DomainResource() {
     var reasonReference: Reference? = null
 
     /**
-     * The origin of the supply
+     * Who/what is requesting service
      */
-    var deliverFrom: Reference? = null
+    var requester: SupplyRequestRequester? = null
 
     /**
-     * The destination of the supply
+     * draft | active | suspended +
      */
-    var deliverTo: Reference? = null
+    var status: String? = null
+
+    val supplier: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -93,11 +93,6 @@ open class SupplyRequest() : DomainResource() {
  */
 open class SupplyRequestOrderedItem() : BackboneElement() {
     /**
-     * The requested amount of the item indicated
-     */
-    var quantity: Quantity = Quantity()
-
-    /**
      * Medication, Substance, or Device requested to be supplied
      */
     var itemCodeableConcept: CodeableConcept? = null
@@ -106,6 +101,11 @@ open class SupplyRequestOrderedItem() : BackboneElement() {
      * Medication, Substance, or Device requested to be supplied
      */
     var itemReference: Reference? = null
+
+    /**
+     * The requested amount of the item indicated
+     */
+    var quantity: Quantity = Quantity()
 }
 
 /**

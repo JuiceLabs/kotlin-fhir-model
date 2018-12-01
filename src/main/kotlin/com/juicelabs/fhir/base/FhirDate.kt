@@ -1,19 +1,11 @@
 package com.juicelabs.fhir.base
 
-import com.google.gson.ExclusionStrategy
-import com.google.gson.FieldAttributes
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
-import com.google.gson.JsonParseException
 import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
-import com.google.gson.typeadapters.RuntimeTypeAdapterFactory
-import com.juicelabs.fhir.model.Resource
 import java.lang.reflect.Type
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -58,7 +50,6 @@ class FhirDate(private val input: String) {
         )
 
         private val dateTimeFormats = listOf(
-//                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ssz")
                 DateTimeFormatter.ISO_OFFSET_DATE_TIME,
                 DateTimeFormatter.ISO_INSTANT,
                 DateTimeFormatter.RFC_1123_DATE_TIME,
@@ -105,24 +96,6 @@ class FhirDate(private val input: String) {
 }
 
 
-fun getFhirGson(): Gson {
-    val runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
-            .of(Resource::class.java, "resourceType", true);
-//            .registerSubtype(Parameters::class.java, "Parameters")
-//            .registerSubtype(Binary::class.java, "Binary")
-//            .registerSubtype(ActivityDefinition::class.java, "ActivityDefinition")
-//            .registerSubtype(Questionnaire::class.java, "Questionaire");
-
-    return GsonBuilder()
-            .registerTypeAdapter(FhirDate::class.java, FhirDateSerializer())
-            .registerTypeAdapter(FhirDate::class.java, FhirDateDeSerializer())
-            .registerTypeHierarchyAdapter(Collection::class.java, CollectionAdapter())
-            .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
-//            .addDeserializationExclusionStrategy(FhirPrimitiveExclusionStrategy())
-            .registerTypeAdapter(List::class.java, RemoveNullListSerializer())
-            .create()
-}
-
 class FhirDateSerializer : JsonSerializer<FhirDate> {
     override fun serialize(p0: FhirDate?, p1: Type?, p2: JsonSerializationContext?): JsonElement {
         return JsonPrimitive(p0.toString())
@@ -136,109 +109,4 @@ class FhirDateDeSerializer : JsonDeserializer<FhirDate> {
 }
 
 
-class ClassDeserializerAdapter<T> internal constructor(private val typeName: String) : JsonDeserializer<T> {
-    private val gson: Gson
-
-    init {
-        gson = GsonBuilder()
-                .registerTypeAdapter(FhirDate::class.java, FhirDateSerializer())
-                .registerTypeAdapter(FhirDate::class.java, FhirDateDeSerializer())
-                .create()
-    }
-
-    @Throws(JsonParseException::class)
-    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): T {
-        val jsonObject = json.asJsonObject
-        val typeElement = jsonObject.get(typeName)
-        val method = typeElement.asString
-        val classType = Class.forName("com.juicelabs.fhir.model.$method") as Class<out T>
-        return gson.fromJson(json, classType)
-    }
-}
-
-internal class CollectionAdapter : JsonSerializer<Collection<*>> {
-
-    override fun serialize(src: Collection<*>?, typeOfSrc: Type, context: JsonSerializationContext): JsonElement? {
-        if (src == null || src.isEmpty())
-        // exclusion is made here
-            return null
-
-        val array = JsonArray()
-
-        for (child in src) {
-            val element = context.serialize(child)
-            array.add(element)
-        }
-
-        if (array.count() == 0) {
-            return null
-        }
-        return array
-    }
-}
-
-class RemoveNullListSerializer : JsonSerializer<List<*>> {
-    override fun serialize(src: List<*>?, typeOfSrc: Type, context: JsonSerializationContext?): JsonElement? {
-
-        val lst = src?.toMutableList() ?: mutableListOf()
-
-        // remove all null values
-        lst.removeAll(Collections.singleton(null))
-
-        // create json Result
-        val result = JsonArray()
-        for (item in lst) {
-            result.add(context!!.serialize(item))
-        }
-
-        if (result.count() == 0) {
-            return null
-        }
-
-        return result
-    }
-
-}
-
-//class EmptyCheckTypeAdapterFactory : TypeAdapterFactory {
-//
-//    fun <T> create(gson: Gson, type: TypeToken<T>): TypeAdapter<T>? {
-//        // We filter out the EmptyCheckTypeAdapter as we need to check this for emptiness!
-//        if (InnerObject::class.java!!.isAssignableFrom(type.getRawType())) {
-//            val delegate = gson.getDelegateAdapter<T>(this, type)
-//            val elementAdapter = gson.getAdapter(JsonElement::class.java)
-//            return EmptyCheckTypeAdapter(delegate, elementAdapter).nullSafe()
-//        }
-//        return null
-//    }
-//
-//    class EmptyCheckTypeAdapter<T>(private val delegate: TypeAdapter<T>,
-//                                   private val elementAdapter: TypeAdapter<JsonElement>) : TypeAdapter<T>() {
-//
-//        @Throws(IOException::class)
-//        override fun write(out: JsonWriter, value: T) {
-//            this.delegate.write(out, value)
-//        }
-//
-//        @Throws(IOException::class)
-//        override fun read(`in`: JsonReader): T? {
-//            val asJsonObject = elementAdapter.read(`in`).asJsonObject
-//            return if (asJsonObject.entrySet().isEmpty()) null else this.delegate.fromJsonTree(asJsonObject)
-//        }
-//    }
-//
-//}
-
-class FhirPrimitiveExclusionStrategy() : ExclusionStrategy {
-
-    override fun shouldSkipField(f: FieldAttributes): Boolean {
-        return false //  !f.name.startsWith("_")
-
-    }
-
-    override fun shouldSkipClass(clazz: Class<*>): Boolean {
-        return true
-    }
-
-}
 

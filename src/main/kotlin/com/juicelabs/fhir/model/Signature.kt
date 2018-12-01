@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.471 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.907 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,6 +14,26 @@ import kotlin.collections.List
  * A digital signature along with supporting context. The signature may be electronic/cryptographic in nature, or a graphical image representing a hand-written signature, or a signature process. Different signature approaches have different utilities.
  */
 open class Signature() : Element() {
+    /**
+     * The actual signature content (XML DigSig. JWT, picture, etc.)
+     */
+    var blob: String? = null
+
+    /**
+     * The technical format of the signature
+     */
+    var contentType: String? = null
+
+    /**
+     * The party represented
+     */
+    var onBehalfOfReference: Reference? = null
+
+    /**
+     * The party represented
+     */
+    var onBehalfOfUri: String? = null
+
     val type: List<Coding> = mutableListOf<Coding>()
 
     /**
@@ -25,30 +45,10 @@ open class Signature() : Element() {
     /**
      * Who signed
      */
-    var whoUri: String? = null
+    var whoReference: Reference = Reference()
 
     /**
      * Who signed
      */
-    var whoReference: Reference = Reference()
-
-    /**
-     * The party represented
-     */
-    var onBehalfOfUri: String? = null
-
-    /**
-     * The party represented
-     */
-    var onBehalfOfReference: Reference? = null
-
-    /**
-     * The technical format of the signature
-     */
-    var contentType: String? = null
-
-    /**
-     * The actual signature content (XML DigSig. JWT, picture, etc.)
-     */
-    var blob: String? = null
+    var whoUri: String? = null
 }

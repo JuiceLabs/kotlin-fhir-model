@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.529 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.930 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,53 +13,45 @@ import kotlin.collections.List
  * A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one".
  */
 open class RequestGroup() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    val definition: List<Reference> = mutableListOf<Reference>()
-
-    val basedOn: List<Reference> = mutableListOf<Reference>()
-
-    val replaces: List<Reference> = mutableListOf<Reference>()
+    val action: List<RequestGroupAction> = mutableListOf<RequestGroupAction>()
 
     /**
-     * Composite request this is part of
+     * Device or practitioner that authored the request group
      */
-    var groupIdentifier: Identifier? = null
-
-    /**
-     * draft | active | suspended | cancelled | completed | entered-in-error | unknown
-     */
-    var status: String? = null
-
-    /**
-     * proposal | plan | order
-     */
-    var intent: String? = null
-
-    /**
-     * routine | urgent | asap | stat
-     */
-    var priority: String? = null
-
-    /**
-     * Who the request group is about
-     */
-    var subject: Reference? = null
-
-    /**
-     * Encounter or Episode for the request group
-     */
-    var context: Reference? = null
+    var author: Reference? = null
 
     /**
      * When the request group was authored
      */
     var authoredOn: String? = null
 
+    val basedOn: List<Reference> = mutableListOf<Reference>()
+
     /**
-     * Device or practitioner that authored the request group
+     * Encounter or Episode for the request group
      */
-    var author: Reference? = null
+    var context: Reference? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Composite request this is part of
+     */
+    var groupIdentifier: Identifier? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * proposal | plan | order
+     */
+    var intent: String? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    /**
+     * routine | urgent | asap | stat
+     */
+    var priority: String? = null
 
     /**
      * Reason for the request group
@@ -71,9 +63,17 @@ open class RequestGroup() : DomainResource() {
      */
     var reasonReference: Reference? = null
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    val replaces: List<Reference> = mutableListOf<Reference>()
 
-    val action: List<RequestGroupAction> = mutableListOf<RequestGroupAction>()
+    /**
+     * draft | active | suspended | cancelled | completed | entered-in-error | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Who the request group is about
+     */
+    var subject: Reference? = null
 }
 
 /**
@@ -82,34 +82,63 @@ open class RequestGroup() : DomainResource() {
  * The actions, if any, produced by the evaluation of the artifact.
  */
 open class RequestGroupAction() : BackboneElement() {
-    /**
-     * User-visible label for the action (e.g. 1. or A.)
-     */
-    var label: String? = null
+    val action: List<RequestGroupAction> = mutableListOf<RequestGroupAction>()
 
     /**
-     * User-visible title
+     * single | multiple
      */
-    var title: String? = null
+    var cardinalityBehavior: String? = null
+
+    val code: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val condition: List<RequestGroupActionCondition> = mutableListOf<RequestGroupActionCondition>()
 
     /**
      * Short description of the action
      */
     var description: String? = null
 
+    val documentation: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+
+    /**
+     * visual-group | logical-group | sentence-group
+     */
+    var groupingBehavior: String? = null
+
+    /**
+     * User-visible label for the action (e.g. 1. or A.)
+     */
+    var label: String? = null
+
+    val participant: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * yes | no
+     */
+    var precheckBehavior: String? = null
+
+    val relatedAction: List<RequestGroupActionRelatedAction> =
+            mutableListOf<RequestGroupActionRelatedAction>()
+
+    /**
+     * must | could | must-unless-documented
+     */
+    var requiredBehavior: String? = null
+
+    /**
+     * The target of the action
+     */
+    var resource: Reference? = null
+
+    /**
+     * any | all | all-or-none | exactly-one | at-most-one | one-or-more
+     */
+    var selectionBehavior: String? = null
+
     /**
      * Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
      */
     var textEquivalent: String? = null
-
-    val code: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val documentation: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
-
-    val condition: List<RequestGroupActionCondition> = mutableListOf<RequestGroupActionCondition>()
-
-    val relatedAction: List<RequestGroupActionRelatedAction> =
-            mutableListOf<RequestGroupActionRelatedAction>()
 
     /**
      * When the action should take place
@@ -119,12 +148,12 @@ open class RequestGroupAction() : BackboneElement() {
     /**
      * When the action should take place
      */
-    var timingPeriod: Period? = null
+    var timingDuration: Duration? = null
 
     /**
      * When the action should take place
      */
-    var timingDuration: Duration? = null
+    var timingPeriod: Period? = null
 
     /**
      * When the action should take place
@@ -136,44 +165,15 @@ open class RequestGroupAction() : BackboneElement() {
      */
     var timingTiming: Timing? = null
 
-    val participant: List<Reference> = mutableListOf<Reference>()
+    /**
+     * User-visible title
+     */
+    var title: String? = null
 
     /**
      * create | update | remove | fire-event
      */
     var type: Coding? = null
-
-    /**
-     * visual-group | logical-group | sentence-group
-     */
-    var groupingBehavior: String? = null
-
-    /**
-     * any | all | all-or-none | exactly-one | at-most-one | one-or-more
-     */
-    var selectionBehavior: String? = null
-
-    /**
-     * must | could | must-unless-documented
-     */
-    var requiredBehavior: String? = null
-
-    /**
-     * yes | no
-     */
-    var precheckBehavior: String? = null
-
-    /**
-     * single | multiple
-     */
-    var cardinalityBehavior: String? = null
-
-    /**
-     * The target of the action
-     */
-    var resource: Reference? = null
-
-    val action: List<RequestGroupAction> = mutableListOf<RequestGroupAction>()
 }
 
 /**
@@ -183,24 +183,24 @@ open class RequestGroupAction() : BackboneElement() {
  */
 open class RequestGroupActionCondition() : BackboneElement() {
     /**
-     * applicability | start | stop
-     */
-    var kind: String? = null
-
-    /**
      * Natural language description of the condition
      */
     var description: String? = null
 
     /**
-     * Language of the expression
-     */
-    var language: String? = null
-
-    /**
      * Boolean-valued expression
      */
     var expression: String? = null
+
+    /**
+     * applicability | start | stop
+     */
+    var kind: String? = null
+
+    /**
+     * Language of the expression
+     */
+    var language: String? = null
 }
 
 /**
@@ -215,11 +215,6 @@ open class RequestGroupActionRelatedAction() : BackboneElement() {
     var actionId: String? = null
 
     /**
-     * before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-     */
-    var relationship: String? = null
-
-    /**
      * Time offset for the relationship
      */
     var offsetDuration: Duration? = null
@@ -228,4 +223,9 @@ open class RequestGroupActionRelatedAction() : BackboneElement() {
      * Time offset for the relationship
      */
     var offsetRange: Range? = null
+
+    /**
+     * before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
+     */
+    var relationship: String? = null
 }

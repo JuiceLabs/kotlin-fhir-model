@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.802 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.107 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,9 +12,9 @@ package com.juicelabs.fhir.model
  */
 open class Quantity() : Element() {
     /**
-     * Numerical value (with implicit precision)
+     * Coded form of the unit
      */
-    var value: Float? = null
+    var code: String? = null
 
     /**
      * < | <= | >= | > - how to understand the value
@@ -22,17 +22,17 @@ open class Quantity() : Element() {
     var comparator: String? = null
 
     /**
-     * Unit representation
-     */
-    var unit: String? = null
-
-    /**
      * System that defines coded unit form
      */
     var system: String? = null
 
     /**
-     * Coded form of the unit
+     * Unit representation
      */
-    var code: String? = null
+    var unit: String? = null
+
+    /**
+     * Numerical value (with implicit precision)
+     */
+    var value: Float? = null
 }

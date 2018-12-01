@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.404 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.871 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,36 +14,20 @@ import kotlin.collections.List
  */
 open class ServiceDefinition() : DomainResource() {
     /**
-     * Logical URI to reference this service definition (globally unique)
+     * When the service definition was approved by publisher
      */
-    var url: String? = null
+    var approvalDate: String? = null
 
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 
-    /**
-     * Business version of the service definition
-     */
-    var version: String? = null
+    val contributor: List<Contributor> = mutableListOf<Contributor>()
 
     /**
-     * Name for this service definition (computer friendly)
+     * Use and/or publishing restrictions
      */
-    var name: String? = null
+    var copyright: String? = null
 
-    /**
-     * Name for this service definition (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
+    val dataRequirement: List<DataRequirement> = mutableListOf<DataRequirement>()
 
     /**
      * Date this was last changed
@@ -51,29 +35,23 @@ open class ServiceDefinition() : DomainResource() {
     var date: String? = null
 
     /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    /**
      * Natural language description of the service definition
      */
     var description: String? = null
 
     /**
-     * Why this service definition is defined
+     * When the service definition is expected to be used
      */
-    var purpose: String? = null
+    var effectivePeriod: Period? = null
 
     /**
-     * Describes the clinical usage of the module
+     * For testing purposes, not real usage
      */
-    var usage: String? = null
+    var experimental: Boolean? = null
 
-    /**
-     * When the service definition was approved by publisher
-     */
-    var approvalDate: String? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * When the service definition was last reviewed
@@ -81,33 +59,55 @@ open class ServiceDefinition() : DomainResource() {
     var lastReviewDate: String? = null
 
     /**
-     * When the service definition is expected to be used
+     * Name for this service definition (computer friendly)
      */
-    var effectivePeriod: Period? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val contributor: List<Contributor> = mutableListOf<Contributor>()
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Use and/or publishing restrictions
-     */
-    var copyright: String? = null
-
-    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
-
-    val trigger: List<TriggerDefinition> = mutableListOf<TriggerDefinition>()
-
-    val dataRequirement: List<DataRequirement> = mutableListOf<DataRequirement>()
+    var name: String? = null
 
     /**
      * Operation to invoke
      */
     var operationDefinition: Reference? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this service definition is defined
+     */
+    var purpose: String? = null
+
+    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Name for this service definition (human friendly)
+     */
+    var title: String? = null
+
+    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val trigger: List<TriggerDefinition> = mutableListOf<TriggerDefinition>()
+
+    /**
+     * Logical URI to reference this service definition (globally unique)
+     */
+    var url: String? = null
+
+    /**
+     * Describes the clinical usage of the module
+     */
+    var usage: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the service definition
+     */
+    var version: String? = null
 }

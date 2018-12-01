@@ -15,7 +15,7 @@ class FhirClassProperty(element: FhirStructureDefinitionElement, type: FhirEleme
     val origName: String
     val parentName: String
     val className: String
-    var moduleName: Nothing?
+    //var moduleName: Nothing
     var jsonClass: String
     val shortDesc: String = element.definition.short
     val formalDesc: String = element.definition.formal
@@ -48,7 +48,7 @@ class FhirClassProperty(element: FhirStructureDefinitionElement, type: FhirEleme
         parentName = element.parentName
         className = spec.classNameForTypeIfProperty(this.typeName) ?: ""
         enum = if (this.typeName == "code") element.enum else null
-        moduleName = null // should only be set if it's an external module (think Python)
+       // moduleName = null // should only be set if it's an external module (think Python)
         jsonClass = spec.jsonClassForClassName(className)
         isNative = if (enum == null) false else spec.classNameIsNative(className)
 //        isArray = "*" == element.n_max todo

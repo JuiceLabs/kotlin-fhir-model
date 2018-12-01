@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.344 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.833 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,19 +14,21 @@ import kotlin.collections.List
  */
 open class MeasureReport() : DomainResource() {
     /**
+     * When the report was generated
+     */
+    var date: String? = null
+
+    /**
+     * What data was evaluated to produce the measure score
+     */
+    var evaluatedResources: Reference? = null
+
+    val group: List<MeasureReportGroup> = mutableListOf<MeasureReportGroup>()
+
+    /**
      * Additional identifier for the Report
      */
     var identifier: Identifier? = null
-
-    /**
-     * complete | pending | error
-     */
-    var status: String? = null
-
-    /**
-     * individual | patient-list | summary
-     */
-    var type: String? = null
 
     /**
      * What measure was evaluated
@@ -39,9 +41,9 @@ open class MeasureReport() : DomainResource() {
     var patient: Reference? = null
 
     /**
-     * When the report was generated
+     * What period the report covers
      */
-    var date: String? = null
+    var period: Period = Period()
 
     /**
      * Who is reporting the data
@@ -49,16 +51,14 @@ open class MeasureReport() : DomainResource() {
     var reportingOrganization: Reference? = null
 
     /**
-     * What period the report covers
+     * complete | pending | error
      */
-    var period: Period = Period()
-
-    val group: List<MeasureReportGroup> = mutableListOf<MeasureReportGroup>()
+    var status: String? = null
 
     /**
-     * What data was evaluated to produce the measure score
+     * individual | patient-list | summary
      */
-    var evaluatedResources: Reference? = null
+    var type: String? = null
 }
 
 /**
@@ -72,13 +72,13 @@ open class MeasureReportGroup() : BackboneElement() {
      */
     var identifier: Identifier = Identifier()
 
-    val population: List<MeasureReportGroupPopulation> =
-            mutableListOf<MeasureReportGroupPopulation>()
-
     /**
      * What score this group achieved
      */
     var measureScore: Float? = null
+
+    val population: List<MeasureReportGroupPopulation> =
+            mutableListOf<MeasureReportGroupPopulation>()
 
     val stratifier: List<MeasureReportGroupStratifier> =
             mutableListOf<MeasureReportGroupStratifier>()
@@ -91,11 +91,6 @@ open class MeasureReportGroup() : BackboneElement() {
  */
 open class MeasureReportGroupPopulation() : BackboneElement() {
     /**
-     * Population identifier as defined in the measure
-     */
-    var identifier: Identifier? = null
-
-    /**
      * initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-score
      */
     var code: CodeableConcept? = null
@@ -104,6 +99,11 @@ open class MeasureReportGroupPopulation() : BackboneElement() {
      * Size of the population
      */
     var count: Int? = null
+
+    /**
+     * Population identifier as defined in the measure
+     */
+    var identifier: Identifier? = null
 
     /**
      * For patient-list reports, the patients in this population
@@ -133,17 +133,17 @@ open class MeasureReportGroupStratifier() : BackboneElement() {
  */
 open class MeasureReportGroupStratifierStratum() : BackboneElement() {
     /**
-     * The stratum value, e.g. male
+     * What score this stratum achieved
      */
-    var value: String? = null
+    var measureScore: Float? = null
 
     val population: List<MeasureReportGroupStratifierStratumPopulation> =
             mutableListOf<MeasureReportGroupStratifierStratumPopulation>()
 
     /**
-     * What score this stratum achieved
+     * The stratum value, e.g. male
      */
-    var measureScore: Float? = null
+    var value: String? = null
 }
 
 /**
@@ -153,11 +153,6 @@ open class MeasureReportGroupStratifierStratum() : BackboneElement() {
  */
 open class MeasureReportGroupStratifierStratumPopulation() : BackboneElement() {
     /**
-     * Population identifier as defined in the measure
-     */
-    var identifier: Identifier? = null
-
-    /**
      * initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-score
      */
     var code: CodeableConcept? = null
@@ -166,6 +161,11 @@ open class MeasureReportGroupStratifierStratumPopulation() : BackboneElement() {
      * Size of the population
      */
     var count: Int? = null
+
+    /**
+     * Population identifier as defined in the measure
+     */
+    var identifier: Identifier? = null
 
     /**
      * For patient-list reports, the patients in this population

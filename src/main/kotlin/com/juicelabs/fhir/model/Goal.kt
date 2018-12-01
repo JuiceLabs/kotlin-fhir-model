@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.356 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.842 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,19 +13,9 @@ import kotlin.collections.List
  * Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
  */
 open class Goal() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * proposed | accepted | planned | in-progress | on-target | ahead-of-target | behind-target | sustaining | achieved | on-hold | cancelled | entered-in-error | rejected
-     */
-    var status: String? = null
+    val addresses: List<Reference> = mutableListOf<Reference>()
 
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * high-priority | medium-priority | low-priority
-     */
-    var priority: CodeableConcept? = null
 
     /**
      * Code or text describing goal
@@ -33,14 +23,22 @@ open class Goal() : DomainResource() {
     var description: CodeableConcept = CodeableConcept()
 
     /**
-     * Who this goal is intended for
+     * Who's responsible for creating Goal?
      */
-    var subject: Reference? = null
+    var expressedBy: Reference? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    val outcomeCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val outcomeReference: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * When goal pursuit begins
+     * high-priority | medium-priority | low-priority
      */
-    var startDate: String? = null
+    var priority: CodeableConcept? = null
 
     /**
      * When goal pursuit begins
@@ -48,9 +46,14 @@ open class Goal() : DomainResource() {
     var startCodeableConcept: CodeableConcept? = null
 
     /**
-     * Target outcome for the goal
+     * When goal pursuit begins
      */
-    var target: GoalTarget? = null
+    var startDate: String? = null
+
+    /**
+     * proposed | accepted | planned | in-progress | on-target | ahead-of-target | behind-target | sustaining | achieved | on-hold | cancelled | entered-in-error | rejected
+     */
+    var status: String? = null
 
     /**
      * When goal status took effect
@@ -63,17 +66,14 @@ open class Goal() : DomainResource() {
     var statusReason: String? = null
 
     /**
-     * Who's responsible for creating Goal?
+     * Who this goal is intended for
      */
-    var expressedBy: Reference? = null
+    var subject: Reference? = null
 
-    val addresses: List<Reference> = mutableListOf<Reference>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val outcomeCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val outcomeReference: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Target outcome for the goal
+     */
+    var target: GoalTarget? = null
 }
 
 /**
@@ -83,9 +83,9 @@ open class Goal() : DomainResource() {
  */
 open class GoalTarget() : BackboneElement() {
     /**
-     * The parameter whose value is being tracked
+     * The target value to be achieved
      */
-    var measure: CodeableConcept? = null
+    var detailCodeableConcept: CodeableConcept? = null
 
     /**
      * The target value to be achieved
@@ -98,11 +98,6 @@ open class GoalTarget() : BackboneElement() {
     var detailRange: Range? = null
 
     /**
-     * The target value to be achieved
-     */
-    var detailCodeableConcept: CodeableConcept? = null
-
-    /**
      * Reach goal on or before
      */
     var dueDate: String? = null
@@ -111,4 +106,9 @@ open class GoalTarget() : BackboneElement() {
      * Reach goal on or before
      */
     var dueDuration: Duration? = null
+
+    /**
+     * The parameter whose value is being tracked
+     */
+    var measure: CodeableConcept? = null
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.573 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.968 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,41 +14,9 @@ import kotlin.collections.List
  */
 open class Address() : Element() {
     /**
-     * home | work | temp | old - purpose of this address
-     */
-    var use: String? = null
-
-    /**
-     * postal | physical | both
-     */
-    var type: String? = null
-
-    /**
-     * Text representation of the address
-     */
-    var text: String? = null
-
-    val line: List<String> = mutableListOf<String>()
-
-    /**
      * Name of city, town etc.
      */
     var city: String? = null
-
-    /**
-     * District name (aka county)
-     */
-    var district: String? = null
-
-    /**
-     * Sub-unit of country (abbreviations ok)
-     */
-    var state: String? = null
-
-    /**
-     * Postal code for area
-     */
-    var postalCode: String? = null
 
     /**
      * Country (e.g. can be ISO 3166 2 or 3 letter code)
@@ -56,7 +24,39 @@ open class Address() : Element() {
     var country: String? = null
 
     /**
+     * District name (aka county)
+     */
+    var district: String? = null
+
+    val line: List<String> = mutableListOf<String>()
+
+    /**
      * Time period when address was/is in use
      */
     var period: Period? = null
+
+    /**
+     * Postal code for area
+     */
+    var postalCode: String? = null
+
+    /**
+     * Sub-unit of country (abbreviations ok)
+     */
+    var state: String? = null
+
+    /**
+     * Text representation of the address
+     */
+    var text: String? = null
+
+    /**
+     * postal | physical | both
+     */
+    var type: String? = null
+
+    /**
+     * home | work | temp | old - purpose of this address
+     */
+    var use: String? = null
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.578 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.971 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,66 +13,7 @@ import kotlin.collections.List
  * A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.
  */
 open class ConceptMap() : DomainResource() {
-    /**
-     * Logical URI to reference this concept map (globally unique)
-     */
-    var url: String? = null
-
-    /**
-     * Additional identifier for the concept map
-     */
-    var identifier: Identifier? = null
-
-    /**
-     * Business version of the concept map
-     */
-    var version: String? = null
-
-    /**
-     * Name for this concept map (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * Name for this concept map (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * Date this was last changed
-     */
-    var date: String? = null
-
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
     val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Natural language description of the concept map
-     */
-    var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Why this concept map is defined
-     */
-    var purpose: String? = null
 
     /**
      * Use and/or publishing restrictions
@@ -80,9 +21,43 @@ open class ConceptMap() : DomainResource() {
     var copyright: String? = null
 
     /**
-     * Identifies the source of the concepts which are being mapped
+     * Date this was last changed
      */
-    var sourceUri: String? = null
+    var date: String? = null
+
+    /**
+     * Natural language description of the concept map
+     */
+    var description: String? = null
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    val group: List<ConceptMapGroup> = mutableListOf<ConceptMapGroup>()
+
+    /**
+     * Additional identifier for the concept map
+     */
+    var identifier: Identifier? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Name for this concept map (computer friendly)
+     */
+    var name: String? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this concept map is defined
+     */
+    var purpose: String? = null
 
     /**
      * Identifies the source of the concepts which are being mapped
@@ -90,16 +65,41 @@ open class ConceptMap() : DomainResource() {
     var sourceReference: Reference? = null
 
     /**
-     * Provides context to the mappings
+     * Identifies the source of the concepts which are being mapped
      */
-    var targetUri: String? = null
+    var sourceUri: String? = null
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
 
     /**
      * Provides context to the mappings
      */
     var targetReference: Reference? = null
 
-    val group: List<ConceptMapGroup> = mutableListOf<ConceptMapGroup>()
+    /**
+     * Provides context to the mappings
+     */
+    var targetUri: String? = null
+
+    /**
+     * Name for this concept map (human friendly)
+     */
+    var title: String? = null
+
+    /**
+     * Logical URI to reference this concept map (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the concept map
+     */
+    var version: String? = null
 }
 
 /**
@@ -108,6 +108,8 @@ open class ConceptMap() : DomainResource() {
  * A group of mappings that all have the same source and target system.
  */
 open class ConceptMapGroup() : BackboneElement() {
+    val element: List<ConceptMapGroupElement> = mutableListOf<ConceptMapGroupElement>()
+
     /**
      * Code System (if value set crosses code systems)
      */
@@ -127,8 +129,6 @@ open class ConceptMapGroup() : BackboneElement() {
      * Specific version of the  code system
      */
     var targetVersion: String? = null
-
-    val element: List<ConceptMapGroupElement> = mutableListOf<ConceptMapGroupElement>()
 
     /**
      * When no match in the mappings
@@ -167,6 +167,14 @@ open class ConceptMapGroupElementTarget() : BackboneElement() {
     var code: String? = null
 
     /**
+     * Description of status/issues in mapping
+     */
+    var comment: String? = null
+
+    val dependsOn: List<ConceptMapGroupElementTargetDependsOn> =
+            mutableListOf<ConceptMapGroupElementTargetDependsOn>()
+
+    /**
      * Display for the code
      */
     var display: String? = null
@@ -175,14 +183,6 @@ open class ConceptMapGroupElementTarget() : BackboneElement() {
      * relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint
      */
     var equivalence: String? = null
-
-    /**
-     * Description of status/issues in mapping
-     */
-    var comment: String? = null
-
-    val dependsOn: List<ConceptMapGroupElementTargetDependsOn> =
-            mutableListOf<ConceptMapGroupElementTargetDependsOn>()
 
     val product: List<ConceptMapGroupElementTargetDependsOn> =
             mutableListOf<ConceptMapGroupElementTargetDependsOn>()
@@ -195,16 +195,6 @@ open class ConceptMapGroupElementTarget() : BackboneElement() {
  */
 open class ConceptMapGroupElementTargetDependsOn() : BackboneElement() {
     /**
-     * Reference to property mapping depends on
-     */
-    var property: String? = null
-
-    /**
-     * Code System (if necessary)
-     */
-    var system: String? = null
-
-    /**
      * Value of the referenced element
      */
     var code: String? = null
@@ -213,6 +203,16 @@ open class ConceptMapGroupElementTargetDependsOn() : BackboneElement() {
      * Display for the code
      */
     var display: String? = null
+
+    /**
+     * Reference to property mapping depends on
+     */
+    var property: String? = null
+
+    /**
+     * Code System (if necessary)
+     */
+    var system: String? = null
 }
 
 /**
@@ -222,11 +222,6 @@ open class ConceptMapGroupElementTargetDependsOn() : BackboneElement() {
  */
 open class ConceptMapGroupUnmapped() : BackboneElement() {
     /**
-     * provided | fixed | other-map
-     */
-    var mode: String? = null
-
-    /**
      * Fixed code when mode = fixed
      */
     var code: String? = null
@@ -235,6 +230,11 @@ open class ConceptMapGroupUnmapped() : BackboneElement() {
      * Display for the code
      */
     var display: String? = null
+
+    /**
+     * provided | fixed | other-map
+     */
+    var mode: String? = null
 
     /**
      * Canonical URL for other concept map

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.818 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.120 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,17 +13,17 @@ import kotlin.collections.List
  * This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
  */
 open class EnrollmentRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
-     * active | cancelled | draft | entered-in-error
+     * Insurance information
      */
-    var status: String? = null
+    var coverage: Reference? = null
 
     /**
      * Creation date
      */
     var created: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * Target
@@ -31,22 +31,22 @@ open class EnrollmentRequest() : DomainResource() {
     var insurer: Reference? = null
 
     /**
-     * Responsible practitioner
-     */
-    var provider: Reference? = null
-
-    /**
      * Responsible organization
      */
     var organization: Reference? = null
 
     /**
+     * Responsible practitioner
+     */
+    var provider: Reference? = null
+
+    /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
+
+    /**
      * The subject of the Products and Services
      */
     var subject: Reference? = null
-
-    /**
-     * Insurance information
-     */
-    var coverage: Reference? = null
 }

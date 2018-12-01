@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.524 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.926 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -20,19 +20,16 @@ open class TestReport() : DomainResource() {
     var identifier: Identifier? = null
 
     /**
+     * When the TestScript was executed and this TestReport was generated
+     */
+    var issued: String? = null
+
+    /**
      * Informal name of the executed TestScript
      */
     var name: String? = null
 
-    /**
-     * completed | in-progress | waiting | stopped | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * Reference to the  version-specific TestScript that was executed to produce this TestReport
-     */
-    var testScript: Reference = Reference()
+    val participant: List<TestReportParticipant> = mutableListOf<TestReportParticipant>()
 
     /**
      * pass | fail | pending
@@ -45,28 +42,31 @@ open class TestReport() : DomainResource() {
     var score: Float? = null
 
     /**
-     * Name of the tester producing this report (Organization or individual)
-     */
-    var tester: String? = null
-
-    /**
-     * When the TestScript was executed and this TestReport was generated
-     */
-    var issued: String? = null
-
-    val participant: List<TestReportParticipant> = mutableListOf<TestReportParticipant>()
-
-    /**
      * The results of the series of required setup operations before the tests were executed
      */
     var setup: TestReportSetup? = null
 
-    val test: List<TestReportTest> = mutableListOf<TestReportTest>()
+    /**
+     * completed | in-progress | waiting | stopped | entered-in-error
+     */
+    var status: String? = null
 
     /**
      * The results of running the series of required clean up steps
      */
     var teardown: TestReportTeardown? = null
+
+    val test: List<TestReportTest> = mutableListOf<TestReportTest>()
+
+    /**
+     * Reference to the  version-specific TestScript that was executed to produce this TestReport
+     */
+    var testScript: Reference = Reference()
+
+    /**
+     * Name of the tester producing this report (Organization or individual)
+     */
+    var tester: String? = null
 }
 
 /**
@@ -76,6 +76,11 @@ open class TestReport() : DomainResource() {
  */
 open class TestReportParticipant() : BackboneElement() {
     /**
+     * The display name of the participant
+     */
+    var display: String? = null
+
+    /**
      * test-engine | client | server
      */
     var type: String? = null
@@ -84,11 +89,6 @@ open class TestReportParticipant() : BackboneElement() {
      * The uri of the participant. An absolute URL is preferred
      */
     var uri: String? = null
-
-    /**
-     * The display name of the participant
-     */
-    var display: String? = null
 }
 
 /**
@@ -107,15 +107,15 @@ open class TestReportSetup() : BackboneElement() {
  */
 open class TestReportSetupAction() : BackboneElement() {
     /**
-     * The operation to perform
-     */
-    var operation: TestReportSetupActionOperation? = null
-
-    /**
      * The assertion to perform
      */
     @SerializedName("assert")
     var assert_fhir: TestReportSetupActionAssert? = null
+
+    /**
+     * The operation to perform
+     */
+    var operation: TestReportSetupActionOperation? = null
 }
 
 /**
@@ -125,9 +125,9 @@ open class TestReportSetupAction() : BackboneElement() {
  */
 open class TestReportSetupActionOperation() : BackboneElement() {
     /**
-     * pass | skip | fail | warning | error
+     * A link to further details on the result
      */
-    var result: String? = null
+    var detail: String? = null
 
     /**
      * A message associated with the result
@@ -135,9 +135,9 @@ open class TestReportSetupActionOperation() : BackboneElement() {
     var message: String? = null
 
     /**
-     * A link to further details on the result
+     * pass | skip | fail | warning | error
      */
-    var detail: String? = null
+    var result: String? = null
 }
 
 /**
@@ -147,9 +147,9 @@ open class TestReportSetupActionOperation() : BackboneElement() {
  */
 open class TestReportSetupActionAssert() : BackboneElement() {
     /**
-     * pass | skip | fail | warning | error
+     * A link to further details on the result
      */
-    var result: String? = null
+    var detail: String? = null
 
     /**
      * A message associated with the result
@@ -157,9 +157,9 @@ open class TestReportSetupActionAssert() : BackboneElement() {
     var message: String? = null
 
     /**
-     * A link to further details on the result
+     * pass | skip | fail | warning | error
      */
-    var detail: String? = null
+    var result: String? = null
 }
 
 /**
@@ -168,17 +168,17 @@ open class TestReportSetupActionAssert() : BackboneElement() {
  * A test executed from the test script.
  */
 open class TestReportTest() : BackboneElement() {
-    /**
-     * Tracking/logging name of this test
-     */
-    var name: String? = null
+    val action: List<TestReportTestAction> = mutableListOf<TestReportTestAction>()
 
     /**
      * Tracking/reporting short description of the test
      */
     var description: String? = null
 
-    val action: List<TestReportTestAction> = mutableListOf<TestReportTestAction>()
+    /**
+     * Tracking/logging name of this test
+     */
+    var name: String? = null
 }
 
 /**
@@ -188,15 +188,15 @@ open class TestReportTest() : BackboneElement() {
  */
 open class TestReportTestAction() : BackboneElement() {
     /**
-     * The operation performed
-     */
-    var operation: TestReportSetupActionOperation? = null
-
-    /**
      * The assertion performed
      */
     @SerializedName("assert")
     var assert_fhir: TestReportSetupActionAssert? = null
+
+    /**
+     * The operation performed
+     */
+    var operation: TestReportSetupActionOperation? = null
 }
 
 /**

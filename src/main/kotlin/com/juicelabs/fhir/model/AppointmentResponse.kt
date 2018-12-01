@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.352 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.840 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,7 +13,10 @@ import kotlin.collections.List
  * A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
  */
 open class AppointmentResponse() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * Person, Location/HealthcareService or Device
+     */
+    var actor: Reference? = null
 
     /**
      * Appointment this response relates to
@@ -21,29 +24,26 @@ open class AppointmentResponse() : DomainResource() {
     var appointment: Reference = Reference()
 
     /**
-     * Time from appointment, or requested new start time
+     * Additional comments
      */
-    var start: String? = null
+    var comment: String? = null
 
     /**
      * Time from appointment, or requested new end time
      */
     var end: String? = null
 
-    val participantType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Person, Location/HealthcareService or Device
-     */
-    var actor: Reference? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * accepted | declined | tentative | in-process | completed | needs-action | entered-in-error
      */
     var participantStatus: String? = null
 
+    val participantType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     /**
-     * Additional comments
+     * Time from appointment, or requested new start time
      */
-    var comment: String? = null
+    var start: String? = null
 }

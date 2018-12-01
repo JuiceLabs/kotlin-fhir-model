@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.280 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.789 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,38 +13,12 @@ import kotlin.collections.List
  * Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
  */
 open class DeviceRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    val definition: List<Reference> = mutableListOf<Reference>()
+    /**
+     * When recorded
+     */
+    var authoredOn: String? = null
 
     val basedOn: List<Reference> = mutableListOf<Reference>()
-
-    val priorRequest: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Identifier of composite request
-     */
-    var groupIdentifier: Identifier? = null
-
-    /**
-     * draft | active | suspended | completed | entered-in-error | cancelled
-     */
-    var status: String? = null
-
-    /**
-     * proposal | plan | original-order | encoded | reflex-order
-     */
-    var intent: CodeableConcept = CodeableConcept()
-
-    /**
-     * Indicates how quickly the {{title}} should be addressed with respect to other requests
-     */
-    var priority: String? = null
-
-    /**
-     * Device requested
-     */
-    var codeReference: Reference = Reference()
 
     /**
      * Device requested
@@ -52,14 +26,30 @@ open class DeviceRequest() : DomainResource() {
     var codeCodeableConcept: CodeableConcept = CodeableConcept()
 
     /**
-     * Focus of request
+     * Device requested
      */
-    var subject: Reference = Reference()
+    var codeReference: Reference = Reference()
 
     /**
      * Encounter or Episode motivating request
      */
     var context: Reference? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Identifier of composite request
+     */
+    var groupIdentifier: Identifier? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * proposal | plan | original-order | encoded | reflex-order
+     */
+    var intent: CodeableConcept = CodeableConcept()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * Desired time or schedule for use
@@ -77,9 +67,27 @@ open class DeviceRequest() : DomainResource() {
     var occurrenceTiming: Timing? = null
 
     /**
-     * When recorded
+     * Requested Filler
      */
-    var authoredOn: String? = null
+    var performer: Reference? = null
+
+    /**
+     * Fille role
+     */
+    var performerType: CodeableConcept? = null
+
+    val priorRequest: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Indicates how quickly the {{title}} should be addressed with respect to other requests
+     */
+    var priority: String? = null
+
+    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val reasonReference: List<Reference> = mutableListOf<Reference>()
+
+    val relevantHistory: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Who/what is requesting diagnostics
@@ -87,24 +95,16 @@ open class DeviceRequest() : DomainResource() {
     var requester: DeviceRequestRequester? = null
 
     /**
-     * Fille role
+     * draft | active | suspended | completed | entered-in-error | cancelled
      */
-    var performerType: CodeableConcept? = null
+    var status: String? = null
 
     /**
-     * Requested Filler
+     * Focus of request
      */
-    var performer: Reference? = null
-
-    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val reasonReference: List<Reference> = mutableListOf<Reference>()
+    var subject: Reference = Reference()
 
     val supportingInfo: List<Reference> = mutableListOf<Reference>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val relevantHistory: List<Reference> = mutableListOf<Reference>()
 }
 
 /**

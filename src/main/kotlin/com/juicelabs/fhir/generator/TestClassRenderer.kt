@@ -1,13 +1,11 @@
 package com.juicelabs.fhir.generator
 
-import com.github.fge.jsonpatch.diff.JsonDiff
-import com.google.common.collect.Maps
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import com.google.gson.reflect.TypeToken
-import com.juicelabs.fhir.base.getFhirGson
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
@@ -17,7 +15,6 @@ import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asTypeName
 import java.io.File
-import kotlin.system.exitProcess
 
 
 class TestClassRenderer(val spec: FhirSpec) {
@@ -33,8 +30,7 @@ class TestClassRenderer(val spec: FhirSpec) {
                     buildClassList(it)
                 }
 
-//        CreateTestMethod(spec, c)
-        MappingDiff(spec, c)
+        CreateTestMethods(spec, c)
     }
 
 
@@ -195,7 +191,7 @@ class TestValues {
 }
 
 
-class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableMap<FhirClass, MutableList<Pair<String, JsonObject>>>) {
+class CreateTestMethods(private var spec: FhirSpec, private val rawData: MutableMap<FhirClass, MutableList<Pair<String, JsonObject>>>) {
 
     private lateinit var fspec: FunSpec.Builder
     private var testCount = 0
@@ -231,7 +227,7 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
         // skip bundle until GSON and Kotlin bugs are resolved.
         val bundleClassName = ClassName("com.juicelabs.fhir.model", "Bundle")
         rawData
-                .filter { it.key.name == "Bundle" }
+//                .filter { it.key.name == "Bundle" }
 //                .filter { it.key.name == "PlanDefinition" }
                 .forEach { fhirClass, dataList ->
                     currentClass = fhirClass
@@ -269,8 +265,12 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
         fspec = FunSpec.builder(testName)
                 .addStatement("val json = %T(\"${Settings.samplesDir}/$filename\").readTextAndClose()", ClassName("java.io", "File"))
                 .addStatement("val obj = mapper.fromJson(json, %T::class.java)", className)
-                .addStatement("`$valInitFunName`(obj)")
                 .addAnnotation(testClass)
+
+        if (currentClass.name == "Bundle") {
+            fspec.addStatement("`$valInitFunName`(obj)")
+        }
+
     }
 
     private var bundleFileCount: Int = 0
@@ -317,7 +317,9 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
         val nullable = if (testValue.nullable) "!!" else ""
 
         var propPath = (path ?: "obj.") + del + testValue.fieldName + nullable + testValue.castVal
-        if (testValue.castRequired) {
+
+        // cut down on the over 19k casts that were in the bundle tests
+        if (testValue.castRequired && currentClass.name == "Bundle") {
             varCount++
             fValSpec.addStatement("v${varCount} = (${propPath}")
 
@@ -330,6 +332,8 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
 
             classBuilder.addProperty(java)
             propPath = "v${varCount}"
+        } else if (testValue.castRequired) {
+            propPath = "($propPath"
         }
         return propPath
     }
@@ -385,6 +389,17 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
                 """.trimIndent())
                 .build())
 
+        out.addFunction(FunSpec.builder("gsonFhirBuilder")
+                .returns(GsonBuilder::class.java)
+                .addCode("""
+                    val runtimeTypeAdapterFactory = %T
+                        .of(Resource::class.java, "resourceType", true);
+                    return com.juicelabs.fhir.base.gsonFhirGeneratorBuilder()
+                        .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
+
+                """.trimIndent(), RuntimeTypeAdapterFactory::class.java)
+                .build())
+
         out.build().writeTo(File(Settings.destinationTestDir))
     }
 
@@ -393,49 +408,8 @@ class CreateTestMethod(private var spec: FhirSpec, private val rawData: MutableM
         classBuilder.addProperty("mapper", Gson::class.java)
         classBuilder.addInitializerBlock(CodeBlock.of(
                 """
-            mapper = com.juicelabs.fhir.base.getFhirGson()
+            mapper = gsonFhirBuilder().create()
 
             """.trimIndent()))
-    }
-}
-
-class MappingDiff(private var spec: FhirSpec, private val rawData: MutableMap<FhirClass, MutableList<Pair<String, JsonObject>>>) {
-
-
-    init {
-        createTestClasses()
-    }
-
-    // iterate over every example
-    private fun createTestClasses() {
-        rawData
-                .filter { it.key.name == "Bundle" }
-//                .filter { it.key.name == "PlanDefinition" }
-                .forEach { fhirClass, dataList ->
-                    var cls = Class.forName("com.juicelabs.fhir.model.${fhirClass.name}")
-                    dataList.forEach { (filename, jsonObject) ->
-
-                        val parser = JsonParser()
-                        val jsonObject = File("download/$filename").readTextAndClose()
-                        val gson = getFhirGson()
-
-                        val type = object : TypeToken<Map<String, String>>() {}.type
-                        val mapType = object : TypeToken<Map<String, Any>>() {}.type
-                        val myMap: Map<String, Any> = gson.fromJson(jsonObject, mapType)
-
-                        val res = gson.fromJson(jsonObject, cls)
-                        print(1)
-
-                        val obj = gson.toJson(res)
-                        val myMap2: Map<String, Any> = gson.fromJson(obj, mapType)
-                        val diff = Maps.difference(myMap, myMap2)
-                        print("\n\n\n")
-
-                        println(diff)
-                        exitProcess(0)
-//                        val d = JsonDiff.asJsonPatch(jsonObject, obj)
-                    }
-
-                }
     }
 }

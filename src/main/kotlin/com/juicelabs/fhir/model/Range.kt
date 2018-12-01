@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.484 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.915 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,12 +12,12 @@ package com.juicelabs.fhir.model
  */
 open class Range() : Element() {
     /**
-     * Low limit
-     */
-    var low: Quantity? = null
-
-    /**
      * High limit
      */
     var high: Quantity? = null
+
+    /**
+     * Low limit
+     */
+    var low: Quantity? = null
 }

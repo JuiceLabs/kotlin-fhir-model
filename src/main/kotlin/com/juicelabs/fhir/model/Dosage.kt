@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.439 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.892 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,27 +13,7 @@ import kotlin.collections.List
  * Indicates how the medication is/was taken or should be taken by the patient.
  */
 open class Dosage() : Element() {
-    /**
-     * The order of the dosage instructions
-     */
-    var sequence: Int? = null
-
-    /**
-     * Free text dosage instructions e.g. SIG
-     */
-    var text: String? = null
-
     val additionalInstruction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Patient or consumer oriented instructions
-     */
-    var patientInstruction: String? = null
-
-    /**
-     * When medication should be administered
-     */
-    var timing: Timing? = null
 
     /**
      * Take "as needed" (for x)
@@ -46,34 +26,14 @@ open class Dosage() : Element() {
     var asNeededCodeableConcept: CodeableConcept? = null
 
     /**
-     * Body site to administer to
-     */
-    var site: CodeableConcept? = null
-
-    /**
-     * How drug should enter body
-     */
-    var route: CodeableConcept? = null
-
-    /**
-     * Technique for administering medication
-     */
-    var method: CodeableConcept? = null
-
-    /**
-     * Amount of medication per dose
-     */
-    var doseRange: Range? = null
-
-    /**
      * Amount of medication per dose
      */
     var doseQuantity: Quantity? = null
 
     /**
-     * Upper limit on medication per unit of time
+     * Amount of medication per dose
      */
-    var maxDosePerPeriod: Ratio? = null
+    var doseRange: Range? = null
 
     /**
      * Upper limit on medication per administration
@@ -86,9 +46,24 @@ open class Dosage() : Element() {
     var maxDosePerLifetime: Quantity? = null
 
     /**
+     * Upper limit on medication per unit of time
+     */
+    var maxDosePerPeriod: Ratio? = null
+
+    /**
+     * Technique for administering medication
+     */
+    var method: CodeableConcept? = null
+
+    /**
+     * Patient or consumer oriented instructions
+     */
+    var patientInstruction: String? = null
+
+    /**
      * Amount of medication per unit of time
      */
-    var rateRatio: Ratio? = null
+    var rateQuantity: Quantity? = null
 
     /**
      * Amount of medication per unit of time
@@ -98,5 +73,30 @@ open class Dosage() : Element() {
     /**
      * Amount of medication per unit of time
      */
-    var rateQuantity: Quantity? = null
+    var rateRatio: Ratio? = null
+
+    /**
+     * How drug should enter body
+     */
+    var route: CodeableConcept? = null
+
+    /**
+     * The order of the dosage instructions
+     */
+    var sequence: Int? = null
+
+    /**
+     * Body site to administer to
+     */
+    var site: CodeableConcept? = null
+
+    /**
+     * Free text dosage instructions e.g. SIG
+     */
+    var text: String? = null
+
+    /**
+     * When medication should be administered
+     */
+    var timing: Timing? = null
 }

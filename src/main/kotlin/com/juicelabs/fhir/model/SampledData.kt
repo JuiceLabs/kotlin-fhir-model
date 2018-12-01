@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.765 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.092 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,14 +12,14 @@ package com.juicelabs.fhir.model
  */
 open class SampledData() : Element() {
     /**
-     * Zero value and units
+     * Decimal values with spaces, or "E" | "U" | "L"
      */
-    var origin: Quantity = Quantity()
+    var data: String? = null
 
     /**
-     * Number of milliseconds between samples
+     * Number of sample points at each time point
      */
-    var period: Float? = null
+    var dimensions: Int? = null
 
     /**
      * Multiply data by this before adding to origin
@@ -32,17 +32,17 @@ open class SampledData() : Element() {
     var lowerLimit: Float? = null
 
     /**
+     * Zero value and units
+     */
+    var origin: Quantity = Quantity()
+
+    /**
+     * Number of milliseconds between samples
+     */
+    var period: Float? = null
+
+    /**
      * Upper limit of detection
      */
     var upperLimit: Float? = null
-
-    /**
-     * Number of sample points at each time point
-     */
-    var dimensions: Int? = null
-
-    /**
-     * Decimal values with spaces, or "E" | "U" | "L"
-     */
-    var data: String? = null
 }

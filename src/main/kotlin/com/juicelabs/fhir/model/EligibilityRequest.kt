@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.766 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.092 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,32 +13,25 @@ import kotlin.collections.List
  * The EligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an EligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.
  */
 open class EligibilityRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * Type of services covered
+     */
+    var benefitCategory: CodeableConcept? = null
 
     /**
-     * active | cancelled | draft | entered-in-error
+     * Detailed services covered within the type
      */
-    var status: String? = null
+    var benefitSubCategory: CodeableConcept? = null
 
     /**
-     * Desired processing priority
+     * Business agreement
      */
-    var priority: CodeableConcept? = null
+    var businessArrangement: String? = null
 
     /**
-     * The subject of the Products and Services
+     * Insurance or medical plan
      */
-    var patient: Reference? = null
-
-    /**
-     * Estimated date or dates of Service
-     */
-    var servicedDate: String? = null
-
-    /**
-     * Estimated date or dates of Service
-     */
-    var servicedPeriod: Period? = null
+    var coverage: Reference? = null
 
     /**
      * Creation date
@@ -51,14 +44,11 @@ open class EligibilityRequest() : DomainResource() {
     var enterer: Reference? = null
 
     /**
-     * Responsible practitioner
+     * Servicing Facility
      */
-    var provider: Reference? = null
+    var facility: Reference? = null
 
-    /**
-     * Responsible organization
-     */
-    var organization: Reference? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * Target
@@ -66,27 +56,37 @@ open class EligibilityRequest() : DomainResource() {
     var insurer: Reference? = null
 
     /**
-     * Servicing Facility
+     * Responsible organization
      */
-    var facility: Reference? = null
+    var organization: Reference? = null
 
     /**
-     * Insurance or medical plan
+     * The subject of the Products and Services
      */
-    var coverage: Reference? = null
+    var patient: Reference? = null
 
     /**
-     * Business agreement
+     * Desired processing priority
      */
-    var businessArrangement: String? = null
+    var priority: CodeableConcept? = null
 
     /**
-     * Type of services covered
+     * Responsible practitioner
      */
-    var benefitCategory: CodeableConcept? = null
+    var provider: Reference? = null
 
     /**
-     * Detailed services covered within the type
+     * Estimated date or dates of Service
      */
-    var benefitSubCategory: CodeableConcept? = null
+    var servicedDate: String? = null
+
+    /**
+     * Estimated date or dates of Service
+     */
+    var servicedPeriod: Period? = null
+
+    /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
 }

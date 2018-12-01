@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.675 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.042 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -17,11 +17,6 @@ open class Resource() : FhirAbstractResource() {
     var id: String? = null
 
     /**
-     * Metadata about the resource
-     */
-    var meta: Meta? = null
-
-    /**
      * A set of rules under which this content was created
      */
     var implicitRules: String? = null
@@ -30,4 +25,9 @@ open class Resource() : FhirAbstractResource() {
      * Language of the resource content
      */
     var language: String? = null
+
+    /**
+     * Metadata about the resource
+     */
+    var meta: Meta? = null
 }

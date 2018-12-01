@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.673 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.040 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,38 +13,24 @@ import kotlin.collections.List
  * A record of a request for diagnostic investigations, treatments, or operations to be performed.
  */
 open class ProcedureRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * Preconditions for procedure or diagnostic
+     */
+    var asNeededBoolean: Boolean? = null
 
-    val definition: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Preconditions for procedure or diagnostic
+     */
+    var asNeededCodeableConcept: CodeableConcept? = null
+
+    /**
+     * Date request signed
+     */
+    var authoredOn: String? = null
 
     val basedOn: List<Reference> = mutableListOf<Reference>()
 
-    val replaces: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Composite Request ID
-     */
-    var requisition: Identifier? = null
-
-    /**
-     * draft | active | suspended | completed | entered-in-error | cancelled
-     */
-    var status: String? = null
-
-    /**
-     * proposal | plan | order +
-     */
-    var intent: String? = null
-
-    /**
-     * routine | urgent | asap | stat
-     */
-    var priority: String? = null
-
-    /**
-     * True if procedure should not be performed
-     */
-    var doNotPerform: Boolean? = null
+    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
@@ -54,14 +40,25 @@ open class ProcedureRequest() : DomainResource() {
     var code: CodeableConcept = CodeableConcept()
 
     /**
-     * Individual the service is ordered for
-     */
-    var subject: Reference = Reference()
-
-    /**
      * Encounter or Episode during which request was created
      */
     var context: Reference? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * True if procedure should not be performed
+     */
+    var doNotPerform: Boolean? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * proposal | plan | order +
+     */
+    var intent: String? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * When procedure should occur
@@ -79,24 +76,9 @@ open class ProcedureRequest() : DomainResource() {
     var occurrenceTiming: Timing? = null
 
     /**
-     * Preconditions for procedure or diagnostic
+     * Requested perfomer
      */
-    var asNeededBoolean: Boolean? = null
-
-    /**
-     * Preconditions for procedure or diagnostic
-     */
-    var asNeededCodeableConcept: CodeableConcept? = null
-
-    /**
-     * Date request signed
-     */
-    var authoredOn: String? = null
-
-    /**
-     * Who/what is requesting procedure or diagnostic
-     */
-    var requester: ProcedureRequestRequester? = null
+    var performer: Reference? = null
 
     /**
      * Performer role
@@ -104,23 +86,41 @@ open class ProcedureRequest() : DomainResource() {
     var performerType: CodeableConcept? = null
 
     /**
-     * Requested perfomer
+     * routine | urgent | asap | stat
      */
-    var performer: Reference? = null
+    var priority: String? = null
 
     val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     val reasonReference: List<Reference> = mutableListOf<Reference>()
 
-    val supportingInfo: List<Reference> = mutableListOf<Reference>()
+    val relevantHistory: List<Reference> = mutableListOf<Reference>()
+
+    val replaces: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Who/what is requesting procedure or diagnostic
+     */
+    var requester: ProcedureRequestRequester? = null
+
+    /**
+     * Composite Request ID
+     */
+    var requisition: Identifier? = null
 
     val specimen: List<Reference> = mutableListOf<Reference>()
 
-    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    /**
+     * draft | active | suspended | completed | entered-in-error | cancelled
+     */
+    var status: String? = null
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    /**
+     * Individual the service is ordered for
+     */
+    var subject: Reference = Reference()
 
-    val relevantHistory: List<Reference> = mutableListOf<Reference>()
+    val supportingInfo: List<Reference> = mutableListOf<Reference>()
 }
 
 /**

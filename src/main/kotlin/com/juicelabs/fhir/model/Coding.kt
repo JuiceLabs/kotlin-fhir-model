@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.543 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.945 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,16 +12,6 @@ package com.juicelabs.fhir.model
  */
 open class Coding() : Element() {
     /**
-     * Identity of the terminology system
-     */
-    var system: String? = null
-
-    /**
-     * Version of the system - if relevant
-     */
-    var version: String? = null
-
-    /**
      * Symbol in syntax defined by the system
      */
     var code: String? = null
@@ -32,7 +22,17 @@ open class Coding() : Element() {
     var display: String? = null
 
     /**
+     * Identity of the terminology system
+     */
+    var system: String? = null
+
+    /**
      * If this coding was chosen directly by the user
      */
     var userSelected: Boolean? = null
+
+    /**
+     * Version of the system - if relevant
+     */
+    var version: String? = null
 }

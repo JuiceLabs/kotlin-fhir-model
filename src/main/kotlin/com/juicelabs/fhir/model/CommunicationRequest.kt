@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.699 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.052 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,46 +13,30 @@ import kotlin.collections.List
  * A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.
  */
 open class CommunicationRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * When request transitioned to being actionable
+     */
+    var authoredOn: String? = null
 
     val basedOn: List<Reference> = mutableListOf<Reference>()
 
-    val replaces: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Composite request this is part of
-     */
-    var groupIdentifier: Identifier? = null
-
-    /**
-     * draft | active | suspended | cancelled | completed | entered-in-error | unknown
-     */
-    var status: String? = null
-
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Message urgency
-     */
-    var priority: String? = null
-
-    val medium: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Focus of message
-     */
-    var subject: Reference? = null
-
-    val recipient: List<Reference> = mutableListOf<Reference>()
-
-    val topic: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Encounter or episode leading to message
      */
     var context: Reference? = null
 
-    val payload: List<CommunicationRequestPayload> = mutableListOf<CommunicationRequestPayload>()
+    /**
+     * Composite request this is part of
+     */
+    var groupIdentifier: Identifier? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val medium: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * When scheduled
@@ -64,10 +48,25 @@ open class CommunicationRequest() : DomainResource() {
      */
     var occurrencePeriod: Period? = null
 
+    val payload: List<CommunicationRequestPayload> = mutableListOf<CommunicationRequestPayload>()
+
     /**
-     * When request transitioned to being actionable
+     * Message urgency
      */
-    var authoredOn: String? = null
+    var priority: String? = null
+
+    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val reasonReference: List<Reference> = mutableListOf<Reference>()
+
+    val recipient: List<Reference> = mutableListOf<Reference>()
+
+    val replaces: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Who/what is requesting service
+     */
+    var requester: CommunicationRequestRequester? = null
 
     /**
      * Message sender
@@ -75,15 +74,16 @@ open class CommunicationRequest() : DomainResource() {
     var sender: Reference? = null
 
     /**
-     * Who/what is requesting service
+     * draft | active | suspended | cancelled | completed | entered-in-error | unknown
      */
-    var requester: CommunicationRequestRequester? = null
+    var status: String? = null
 
-    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    /**
+     * Focus of message
+     */
+    var subject: Reference? = null
 
-    val reasonReference: List<Reference> = mutableListOf<Reference>()
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    val topic: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -95,17 +95,17 @@ open class CommunicationRequestPayload() : BackboneElement() {
     /**
      * Message part content
      */
-    var contentString: String? = null
-
-    /**
-     * Message part content
-     */
     var contentAttachment: Attachment = Attachment()
 
     /**
      * Message part content
      */
     var contentReference: Reference = Reference()
+
+    /**
+     * Message part content
+     */
+    var contentString: String? = null
 }
 
 /**

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.667 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.037 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,27 +13,26 @@ import kotlin.collections.List
  * Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
  */
 open class Group() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
      * Whether this group's record is in active use
      */
     var active: Boolean? = null
 
     /**
-     * person | animal | practitioner | device | medication | substance
-     */
-    var type: String? = null
-
-    /**
      * Descriptive or actual
      */
     var actual: Boolean? = null
+
+    val characteristic: List<GroupCharacteristic> = mutableListOf<GroupCharacteristic>()
 
     /**
      * Kind of Group members
      */
     var code: CodeableConcept? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val member: List<GroupMember> = mutableListOf<GroupMember>()
 
     /**
      * Label for Group
@@ -45,9 +44,10 @@ open class Group() : DomainResource() {
      */
     var quantity: Int? = null
 
-    val characteristic: List<GroupCharacteristic> = mutableListOf<GroupCharacteristic>()
-
-    val member: List<GroupMember> = mutableListOf<GroupMember>()
+    /**
+     * person | animal | practitioner | device | medication | substance
+     */
+    var type: String? = null
 }
 
 /**
@@ -62,14 +62,24 @@ open class GroupCharacteristic() : BackboneElement() {
     var code: CodeableConcept = CodeableConcept()
 
     /**
-     * Value held by characteristic
+     * Group includes or excludes
      */
-    var valueCodeableConcept: CodeableConcept = CodeableConcept()
+    var exclude: Boolean? = null
+
+    /**
+     * Period over which characteristic is tested
+     */
+    var period: Period? = null
 
     /**
      * Value held by characteristic
      */
     var valueBoolean: Boolean? = null
+
+    /**
+     * Value held by characteristic
+     */
+    var valueCodeableConcept: CodeableConcept = CodeableConcept()
 
     /**
      * Value held by characteristic
@@ -80,16 +90,6 @@ open class GroupCharacteristic() : BackboneElement() {
      * Value held by characteristic
      */
     var valueRange: Range = Range()
-
-    /**
-     * Group includes or excludes
-     */
-    var exclude: Boolean? = null
-
-    /**
-     * Period over which characteristic is tested
-     */
-    var period: Period? = null
 }
 
 /**
@@ -104,12 +104,12 @@ open class GroupMember() : BackboneElement() {
     var entity: Reference = Reference()
 
     /**
-     * Period member belonged to the group
-     */
-    var period: Period? = null
-
-    /**
      * If member is no longer in group
      */
     var inactive: Boolean? = null
+
+    /**
+     * Period member belonged to the group
+     */
+    var period: Period? = null
 }

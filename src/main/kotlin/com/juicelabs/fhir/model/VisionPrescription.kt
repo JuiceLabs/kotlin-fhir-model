@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.550 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.950 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,27 +13,24 @@ import kotlin.collections.List
  * An authorization for the supply of glasses and/or contact lenses to a patient.
  */
 open class VisionPrescription() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
-     * active | cancelled | draft | entered-in-error
+     * When prescription was authorized
      */
-    var status: String? = null
+    var dateWritten: String? = null
 
-    /**
-     * Who prescription is for
-     */
-    var patient: Reference? = null
+    val dispense: List<VisionPrescriptionDispense> = mutableListOf<VisionPrescriptionDispense>()
 
     /**
      * Created during encounter / admission / stay
      */
     var encounter: Reference? = null
 
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
     /**
-     * When prescription was authorized
+     * Who prescription is for
      */
-    var dateWritten: String? = null
+    var patient: Reference? = null
 
     /**
      * Who authorizes the vision product
@@ -50,7 +47,10 @@ open class VisionPrescription() : DomainResource() {
      */
     var reasonReference: Reference? = null
 
-    val dispense: List<VisionPrescriptionDispense> = mutableListOf<VisionPrescriptionDispense>()
+    /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
 }
 
 /**
@@ -60,24 +60,9 @@ open class VisionPrescription() : DomainResource() {
  */
 open class VisionPrescriptionDispense() : BackboneElement() {
     /**
-     * Product to be supplied
+     * Lens add
      */
-    var product: CodeableConcept? = null
-
-    /**
-     * right | left
-     */
-    var eye: String? = null
-
-    /**
-     * Lens sphere
-     */
-    var sphere: Float? = null
-
-    /**
-     * Lens cylinder
-     */
-    var cylinder: Float? = null
+    var add: Float? = null
 
     /**
      * Lens axis
@@ -85,9 +70,9 @@ open class VisionPrescriptionDispense() : BackboneElement() {
     var axis: Int? = null
 
     /**
-     * Lens prism
+     * Contact lens back curvature
      */
-    var prism: Float? = null
+    var backCurve: Float? = null
 
     /**
      * up | down | in | out
@@ -95,19 +80,19 @@ open class VisionPrescriptionDispense() : BackboneElement() {
     var base: String? = null
 
     /**
-     * Lens add
+     * Brand required
      */
-    var add: Float? = null
+    var brand: String? = null
 
     /**
-     * Contact lens power
+     * Color required
      */
-    var power: Float? = null
+    var color: String? = null
 
     /**
-     * Contact lens back curvature
+     * Lens cylinder
      */
-    var backCurve: Float? = null
+    var cylinder: Float? = null
 
     /**
      * Contact lens diameter
@@ -120,14 +105,29 @@ open class VisionPrescriptionDispense() : BackboneElement() {
     var duration: Quantity? = null
 
     /**
-     * Color required
+     * right | left
      */
-    var color: String? = null
-
-    /**
-     * Brand required
-     */
-    var brand: String? = null
+    var eye: String? = null
 
     val note: List<Annotation> = mutableListOf<Annotation>()
+
+    /**
+     * Contact lens power
+     */
+    var power: Float? = null
+
+    /**
+     * Lens prism
+     */
+    var prism: Float? = null
+
+    /**
+     * Product to be supplied
+     */
+    var product: CodeableConcept? = null
+
+    /**
+     * Lens sphere
+     */
+    var sphere: Float? = null
 }

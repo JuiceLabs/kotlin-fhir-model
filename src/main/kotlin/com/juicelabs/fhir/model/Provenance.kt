@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.788 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.098 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,27 +13,6 @@ import kotlin.collections.List
  * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
  */
 open class Provenance() : DomainResource() {
-    val target: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * When the activity occurred
-     */
-    var period: Period? = null
-
-    /**
-     * When the activity was recorded / updated
-     */
-    var recorded: String? = null
-
-    val policy: List<String> = mutableListOf<String>()
-
-    /**
-     * Where the activity occurred, if relevant
-     */
-    var location: Reference? = null
-
-    val reason: List<Coding> = mutableListOf<Coding>()
-
     /**
      * Activity that occurred
      */
@@ -43,7 +22,28 @@ open class Provenance() : DomainResource() {
 
     val entity: List<ProvenanceEntity> = mutableListOf<ProvenanceEntity>()
 
+    /**
+     * Where the activity occurred, if relevant
+     */
+    var location: Reference? = null
+
+    /**
+     * When the activity occurred
+     */
+    var period: Period? = null
+
+    val policy: List<String> = mutableListOf<String>()
+
+    val reason: List<Coding> = mutableListOf<Coding>()
+
+    /**
+     * When the activity was recorded / updated
+     */
+    var recorded: String? = null
+
     val signature: List<Signature> = mutableListOf<Signature>()
+
+    val target: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -52,17 +52,10 @@ open class Provenance() : DomainResource() {
  * An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.
  */
 open class ProvenanceAgent() : BackboneElement() {
-    val role: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
     /**
-     * Who participated
+     * Who the agent is representing
      */
-    var whoUri: String? = null
-
-    /**
-     * Who participated
-     */
-    var whoReference: Reference = Reference()
+    var onBehalfOfReference: Reference? = null
 
     /**
      * Who the agent is representing
@@ -70,14 +63,21 @@ open class ProvenanceAgent() : BackboneElement() {
     var onBehalfOfUri: String? = null
 
     /**
-     * Who the agent is representing
-     */
-    var onBehalfOfReference: Reference? = null
-
-    /**
      * Type of relationship between agents
      */
     var relatedAgentType: CodeableConcept? = null
+
+    val role: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Who participated
+     */
+    var whoReference: Reference = Reference()
+
+    /**
+     * Who participated
+     */
+    var whoUri: String? = null
 }
 
 /**
@@ -86,6 +86,8 @@ open class ProvenanceAgent() : BackboneElement() {
  * An entity used in this activity.
  */
 open class ProvenanceEntity() : BackboneElement() {
+    val agent: List<ProvenanceAgent> = mutableListOf<ProvenanceAgent>()
+
     /**
      * derivation | revision | quotation | source | removal
      */
@@ -94,7 +96,7 @@ open class ProvenanceEntity() : BackboneElement() {
     /**
      * Identity of entity
      */
-    var whatUri: String? = null
+    var whatIdentifier: Identifier = Identifier()
 
     /**
      * Identity of entity
@@ -104,7 +106,5 @@ open class ProvenanceEntity() : BackboneElement() {
     /**
      * Identity of entity
      */
-    var whatIdentifier: Identifier = Identifier()
-
-    val agent: List<ProvenanceAgent> = mutableListOf<ProvenanceAgent>()
+    var whatUri: String? = null
 }

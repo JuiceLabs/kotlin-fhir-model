@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.584 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.974 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,7 +13,17 @@ import kotlin.collections.List
  * Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
  */
 open class AllergyIntolerance() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * Date record was believed accurate
+     */
+    var assertedDate: String? = null
+
+    /**
+     * Source of the information about the allergy
+     */
+    var asserter: Reference? = null
+
+    val category: List<String> = mutableListOf<String>()
 
     /**
      * active | inactive | resolved
@@ -21,41 +31,33 @@ open class AllergyIntolerance() : DomainResource() {
     var clinicalStatus: String? = null
 
     /**
-     * unconfirmed | confirmed | refuted | entered-in-error
+     * Code that identifies the allergy or intolerance
      */
-    var verificationStatus: String? = null
-
-    /**
-     * allergy | intolerance - Underlying mechanism (if known)
-     */
-    var type: String? = null
-
-    val category: List<String> = mutableListOf<String>()
+    var code: CodeableConcept? = null
 
     /**
      * low | high | unable-to-assess
      */
     var criticality: String? = null
 
-    /**
-     * Code that identifies the allergy or intolerance
-     */
-    var code: CodeableConcept? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
-     * Who the sensitivity is for
+     * Date(/time) of last known occurrence of a reaction
      */
-    var patient: Reference = Reference()
+    var lastOccurrence: String? = null
 
-    /**
-     * When allergy or intolerance was identified
-     */
-    var onsetDateTime: String? = null
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * When allergy or intolerance was identified
      */
     var onsetAge: Age? = null
+
+    /**
+     * When allergy or intolerance was identified
+     */
+    var onsetDateTime: String? = null
 
     /**
      * When allergy or intolerance was identified
@@ -73,9 +75,11 @@ open class AllergyIntolerance() : DomainResource() {
     var onsetString: String? = null
 
     /**
-     * Date record was believed accurate
+     * Who the sensitivity is for
      */
-    var assertedDate: String? = null
+    var patient: Reference = Reference()
+
+    val reaction: List<AllergyIntoleranceReaction> = mutableListOf<AllergyIntoleranceReaction>()
 
     /**
      * Who recorded the sensitivity
@@ -83,18 +87,14 @@ open class AllergyIntolerance() : DomainResource() {
     var recorder: Reference? = null
 
     /**
-     * Source of the information about the allergy
+     * allergy | intolerance - Underlying mechanism (if known)
      */
-    var asserter: Reference? = null
+    var type: String? = null
 
     /**
-     * Date(/time) of last known occurrence of a reaction
+     * unconfirmed | confirmed | refuted | entered-in-error
      */
-    var lastOccurrence: String? = null
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val reaction: List<AllergyIntoleranceReaction> = mutableListOf<AllergyIntoleranceReaction>()
+    var verificationStatus: String? = null
 }
 
 /**
@@ -104,16 +104,18 @@ open class AllergyIntolerance() : DomainResource() {
  */
 open class AllergyIntoleranceReaction() : BackboneElement() {
     /**
-     * Specific substance or pharmaceutical product considered to be responsible for event
-     */
-    var substance: CodeableConcept? = null
-
-    val manifestation: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
      * Description of the event as a whole
      */
     var description: String? = null
+
+    /**
+     * How the subject was exposed to the substance
+     */
+    var exposureRoute: CodeableConcept? = null
+
+    val manifestation: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * Date(/time) when manifestations showed
@@ -126,9 +128,7 @@ open class AllergyIntoleranceReaction() : BackboneElement() {
     var severity: String? = null
 
     /**
-     * How the subject was exposed to the substance
+     * Specific substance or pharmaceutical product considered to be responsible for event
      */
-    var exposureRoute: CodeableConcept? = null
-
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    var substance: CodeableConcept? = null
 }

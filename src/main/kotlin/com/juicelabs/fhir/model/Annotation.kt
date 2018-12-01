@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.572 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.967 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -22,12 +22,12 @@ open class Annotation() : Element() {
     var authorString: String? = null
 
     /**
-     * When the annotation was made
-     */
-    var time: String? = null
-
-    /**
      * The annotation  - text content
      */
     var text: String? = null
+
+    /**
+     * When the annotation was made
+     */
+    var time: String? = null
 }

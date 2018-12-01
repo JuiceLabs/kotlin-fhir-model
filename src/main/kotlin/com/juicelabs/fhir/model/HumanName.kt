@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.742 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.074 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,9 +14,20 @@ import kotlin.collections.List
  */
 open class HumanName() : Element() {
     /**
-     * usual | official | temp | nickname | anonymous | old | maiden
+     * Family name (often called 'Surname')
      */
-    var use: String? = null
+    var family: String? = null
+
+    val given: List<String> = mutableListOf<String>()
+
+    /**
+     * Time period when name was/is in use
+     */
+    var period: Period? = null
+
+    val prefix: List<String> = mutableListOf<String>()
+
+    val suffix: List<String> = mutableListOf<String>()
 
     /**
      * Text representation of the full name
@@ -24,18 +35,7 @@ open class HumanName() : Element() {
     var text: String? = null
 
     /**
-     * Family name (often called 'Surname')
+     * usual | official | temp | nickname | anonymous | old | maiden
      */
-    var family: String? = null
-
-    val given: List<String> = mutableListOf<String>()
-
-    val prefix: List<String> = mutableListOf<String>()
-
-    val suffix: List<String> = mutableListOf<String>()
-
-    /**
-     * Time period when name was/is in use
-     */
-    var period: Period? = null
+    var use: String? = null
 }

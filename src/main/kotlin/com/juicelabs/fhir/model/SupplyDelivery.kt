@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.541 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.943 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,34 +13,17 @@ import kotlin.collections.List
  * Record of delivery of what is supplied.
  */
 open class SupplyDelivery() : DomainResource() {
+    val basedOn: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Where the Supply was sent
+     */
+    var destination: Reference? = null
+
     /**
      * External identifier
      */
     var identifier: Identifier? = null
-
-    val basedOn: List<Reference> = mutableListOf<Reference>()
-
-    val partOf: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * in-progress | completed | abandoned | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * Patient for whom the item is supplied
-     */
-    var patient: Reference? = null
-
-    /**
-     * Category of dispense event
-     */
-    var type: CodeableConcept? = null
-
-    /**
-     * The item that is delivered or supplied
-     */
-    var suppliedItem: SupplyDeliverySuppliedItem? = null
 
     /**
      * When event occurred
@@ -57,17 +40,34 @@ open class SupplyDelivery() : DomainResource() {
      */
     var occurrenceTiming: Timing? = null
 
+    val partOf: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Patient for whom the item is supplied
+     */
+    var patient: Reference? = null
+
+    val receiver: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * in-progress | completed | abandoned | entered-in-error
+     */
+    var status: String? = null
+
+    /**
+     * The item that is delivered or supplied
+     */
+    var suppliedItem: SupplyDeliverySuppliedItem? = null
+
     /**
      * Dispenser
      */
     var supplier: Reference? = null
 
     /**
-     * Where the Supply was sent
+     * Category of dispense event
      */
-    var destination: Reference? = null
-
-    val receiver: List<Reference> = mutableListOf<Reference>()
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -77,11 +77,6 @@ open class SupplyDelivery() : DomainResource() {
  */
 open class SupplyDeliverySuppliedItem() : BackboneElement() {
     /**
-     * Amount dispensed
-     */
-    var quantity: Quantity? = null
-
-    /**
      * Medication, Substance, or Device supplied
      */
     var itemCodeableConcept: CodeableConcept? = null
@@ -90,4 +85,9 @@ open class SupplyDeliverySuppliedItem() : BackboneElement() {
      * Medication, Substance, or Device supplied
      */
     var itemReference: Reference? = null
+
+    /**
+     * Amount dispensed
+     */
+    var quantity: Quantity? = null
 }

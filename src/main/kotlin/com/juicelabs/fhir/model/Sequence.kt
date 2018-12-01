@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.703 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.053 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,17 +13,22 @@ import kotlin.collections.List
  * Raw data describing a biological sequence.
  */
 open class Sequence() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * aa | dna | rna
-     */
-    var type: String? = null
-
     /**
      * Base number of coordinate system (0 for 0-based numbering or coordinates, inclusive start, exclusive end, 1 for 1-based numbering, inclusive start, inclusive end)
      */
     var coordinateSystem: Int? = null
+
+    /**
+     * The method for sequencing
+     */
+    var device: Reference? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Sequence that was observed
+     */
+    var observedSeq: String? = null
 
     /**
      * Who and/or what this is about
@@ -31,19 +36,13 @@ open class Sequence() : DomainResource() {
     var patient: Reference? = null
 
     /**
-     * Specimen used for sequencing
-     */
-    var specimen: Reference? = null
-
-    /**
-     * The method for sequencing
-     */
-    var device: Reference? = null
-
-    /**
      * Who should be responsible for test result
      */
     var performer: Reference? = null
+
+    val pointer: List<Reference> = mutableListOf<Reference>()
+
+    val quality: List<SequenceQuality> = mutableListOf<SequenceQuality>()
 
     /**
      * The number of copies of the seqeunce of interest.  (RNASeq)
@@ -51,27 +50,28 @@ open class Sequence() : DomainResource() {
     var quantity: Quantity? = null
 
     /**
-     * A sequence used as reference
-     */
-    var referenceSeq: SequenceReferenceSeq? = null
-
-    val variant: List<SequenceVariant> = mutableListOf<SequenceVariant>()
-
-    /**
-     * Sequence that was observed
-     */
-    var observedSeq: String? = null
-
-    val quality: List<SequenceQuality> = mutableListOf<SequenceQuality>()
-
-    /**
      * Average number of reads representing a given nucleotide in the reconstructed sequence
      */
     var readCoverage: Int? = null
 
+    /**
+     * A sequence used as reference
+     */
+    var referenceSeq: SequenceReferenceSeq? = null
+
     val repository: List<SequenceRepository> = mutableListOf<SequenceRepository>()
 
-    val pointer: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Specimen used for sequencing
+     */
+    var specimen: Reference? = null
+
+    /**
+     * aa | dna | rna
+     */
+    var type: String? = null
+
+    val variant: List<SequenceVariant> = mutableListOf<SequenceVariant>()
 }
 
 /**
@@ -111,14 +111,14 @@ open class SequenceReferenceSeq() : BackboneElement() {
     var strand: Int? = null
 
     /**
-     * Start position of the window on the  reference sequence
-     */
-    var windowStart: Int? = null
-
-    /**
      * End position of the window on the reference sequence
      */
     var windowEnd: Int? = null
+
+    /**
+     * Start position of the window on the  reference sequence
+     */
+    var windowStart: Int? = null
 }
 
 /**
@@ -128,9 +128,9 @@ open class SequenceReferenceSeq() : BackboneElement() {
  */
 open class SequenceVariant() : BackboneElement() {
     /**
-     * Start position of the variant on the  reference sequence
+     * Extended CIGAR string for aligning the sequence with reference bases
      */
-    var start: Int? = null
+    var cigar: String? = null
 
     /**
      * End position of the variant on the reference sequence
@@ -148,9 +148,9 @@ open class SequenceVariant() : BackboneElement() {
     var referenceAllele: String? = null
 
     /**
-     * Extended CIGAR string for aligning the sequence with reference bases
+     * Start position of the variant on the  reference sequence
      */
-    var cigar: String? = null
+    var start: Int? = null
 
     /**
      * Pointer to observed variant information
@@ -165,9 +165,49 @@ open class SequenceVariant() : BackboneElement() {
  */
 open class SequenceQuality() : BackboneElement() {
     /**
-     * indel | snp | unknown
+     * End position of the sequence
      */
-    var type: String? = null
+    var end: Int? = null
+
+    /**
+     * F-score
+     */
+    var fScore: Float? = null
+
+    /**
+     * False positives where the non-REF alleles in the Truth and Query Call Sets match
+     */
+    var gtFP: Float? = null
+
+    /**
+     * Method to get quality
+     */
+    var method: CodeableConcept? = null
+
+    /**
+     * Precision of comparison
+     */
+    var precision: Float? = null
+
+    /**
+     * False positives
+     */
+    var queryFP: Float? = null
+
+    /**
+     * True positives from the perspective of the query data
+     */
+    var queryTP: Float? = null
+
+    /**
+     * Recall of comparison
+     */
+    var recall: Float? = null
+
+    /**
+     * Quality score for the comparison
+     */
+    var score: Quantity? = null
 
     /**
      * Standard sequence for comparison
@@ -180,19 +220,9 @@ open class SequenceQuality() : BackboneElement() {
     var start: Int? = null
 
     /**
-     * End position of the sequence
+     * False negatives
      */
-    var end: Int? = null
-
-    /**
-     * Quality score for the comparison
-     */
-    var score: Quantity? = null
-
-    /**
-     * Method to get quality
-     */
-    var method: CodeableConcept? = null
+    var truthFN: Float? = null
 
     /**
      * True positives from the perspective of the truth data
@@ -200,39 +230,9 @@ open class SequenceQuality() : BackboneElement() {
     var truthTP: Float? = null
 
     /**
-     * True positives from the perspective of the query data
+     * indel | snp | unknown
      */
-    var queryTP: Float? = null
-
-    /**
-     * False negatives
-     */
-    var truthFN: Float? = null
-
-    /**
-     * False positives
-     */
-    var queryFP: Float? = null
-
-    /**
-     * False positives where the non-REF alleles in the Truth and Query Call Sets match
-     */
-    var gtFP: Float? = null
-
-    /**
-     * Precision of comparison
-     */
-    var precision: Float? = null
-
-    /**
-     * Recall of comparison
-     */
-    var recall: Float? = null
-
-    /**
-     * F-score
-     */
-    var fScore: Float? = null
+    var type: String? = null
 }
 
 /**
@@ -241,6 +241,21 @@ open class SequenceQuality() : BackboneElement() {
  * Configurations of the external repository. The repository shall store target's observedSeq or records related with target's observedSeq.
  */
 open class SequenceRepository() : BackboneElement() {
+    /**
+     * Id of the dataset that used to call for dataset in repository
+     */
+    var datasetId: String? = null
+
+    /**
+     * Repository's name
+     */
+    var name: String? = null
+
+    /**
+     * Id of the read
+     */
+    var readsetId: String? = null
+
     /**
      * directlink | openapi | login | oauth | other
      */
@@ -252,22 +267,7 @@ open class SequenceRepository() : BackboneElement() {
     var url: String? = null
 
     /**
-     * Repository's name
-     */
-    var name: String? = null
-
-    /**
-     * Id of the dataset that used to call for dataset in repository
-     */
-    var datasetId: String? = null
-
-    /**
      * Id of the variantset that used to call for variantset in repository
      */
     var variantsetId: String? = null
-
-    /**
-     * Id of the read
-     */
-    var readsetId: String? = null
 }

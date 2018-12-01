@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.441 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.894 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,14 +14,9 @@ import kotlin.collections.List
  */
 open class DetectedIssue() : DomainResource() {
     /**
-     * Unique id for the detected issue
+     * The provider or device that identified the issue
      */
-    var identifier: Identifier? = null
-
-    /**
-     * registered | preliminary | final | amended +
-     */
-    var status: String? = null
+    var author: Reference? = null
 
     /**
      * Issue Category, e.g. drug-drug, duplicate therapy, etc.
@@ -29,26 +24,9 @@ open class DetectedIssue() : DomainResource() {
     var category: CodeableConcept? = null
 
     /**
-     * high | moderate | low
-     */
-    var severity: String? = null
-
-    /**
-     * Associated patient
-     */
-    var patient: Reference? = null
-
-    /**
      * When identified
      */
     var date: String? = null
-
-    /**
-     * The provider or device that identified the issue
-     */
-    var author: Reference? = null
-
-    val implicated: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Description and context
@@ -56,11 +34,33 @@ open class DetectedIssue() : DomainResource() {
     var detail: String? = null
 
     /**
+     * Unique id for the detected issue
+     */
+    var identifier: Identifier? = null
+
+    val implicated: List<Reference> = mutableListOf<Reference>()
+
+    val mitigation: List<DetectedIssueMitigation> = mutableListOf<DetectedIssueMitigation>()
+
+    /**
+     * Associated patient
+     */
+    var patient: Reference? = null
+
+    /**
      * Authority for issue
      */
     var reference: String? = null
 
-    val mitigation: List<DetectedIssueMitigation> = mutableListOf<DetectedIssueMitigation>()
+    /**
+     * high | moderate | low
+     */
+    var severity: String? = null
+
+    /**
+     * registered | preliminary | final | amended +
+     */
+    var status: String? = null
 }
 
 /**
@@ -75,12 +75,12 @@ open class DetectedIssueMitigation() : BackboneElement() {
     var action: CodeableConcept = CodeableConcept()
 
     /**
-     * Date committed
-     */
-    var date: String? = null
-
-    /**
      * Who is committing?
      */
     var author: Reference? = null
+
+    /**
+     * Date committed
+     */
+    var date: String? = null
 }

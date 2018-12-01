@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.568 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.963 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,24 +12,14 @@ package com.juicelabs.fhir.model
  */
 open class TriggerDefinition() : Element() {
     /**
-     * named-event | periodic | data-added | data-modified | data-removed | data-accessed | data-access-ended
+     * Triggering data of the event
      */
-    var type: String? = null
+    var eventData: DataRequirement? = null
 
     /**
      * Triggering event name
      */
     var eventName: String? = null
-
-    /**
-     * Timing of the event
-     */
-    var eventTimingTiming: Timing? = null
-
-    /**
-     * Timing of the event
-     */
-    var eventTimingReference: Reference? = null
 
     /**
      * Timing of the event
@@ -42,7 +32,17 @@ open class TriggerDefinition() : Element() {
     var eventTimingDateTime: String? = null
 
     /**
-     * Triggering data of the event
+     * Timing of the event
      */
-    var eventData: DataRequirement? = null
+    var eventTimingReference: Reference? = null
+
+    /**
+     * Timing of the event
+     */
+    var eventTimingTiming: Timing? = null
+
+    /**
+     * named-event | periodic | data-added | data-modified | data-removed | data-accessed | data-access-ended
+     */
+    var type: String? = null
 }

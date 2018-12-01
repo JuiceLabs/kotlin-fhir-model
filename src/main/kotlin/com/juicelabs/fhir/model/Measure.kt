@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.711 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.057 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,46 +14,35 @@ import kotlin.collections.List
  */
 open class Measure() : DomainResource() {
     /**
-     * Logical URI to reference this measure (globally unique)
+     * When the measure was approved by publisher
      */
-    var url: String? = null
-
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    var approvalDate: String? = null
 
     /**
-     * Business version of the measure
+     * Summary of clinical guidelines
      */
-    var version: String? = null
+    var clinicalRecommendationStatement: String? = null
 
     /**
-     * Name for this measure (computer friendly)
+     * opportunity | all-or-nothing | linear | weighted
      */
-    var name: String? = null
+    var compositeScoring: CodeableConcept? = null
+
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
+
+    val contributor: List<Contributor> = mutableListOf<Contributor>()
 
     /**
-     * Name for this measure (human friendly)
+     * Use and/or publishing restrictions
      */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
+    var copyright: String? = null
 
     /**
      * Date this was last changed
      */
     var date: String? = null
 
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
+    val definition: List<String> = mutableListOf<String>()
 
     /**
      * Natural language description of the measure
@@ -61,70 +50,57 @@ open class Measure() : DomainResource() {
     var description: String? = null
 
     /**
-     * Why this measure is defined
+     * Disclaimer for use of the measure or its referenced content
      */
-    var purpose: String? = null
-
-    /**
-     * Describes the clinical usage of the measure
-     */
-    var usage: String? = null
-
-    /**
-     * When the measure was approved by publisher
-     */
-    var approvalDate: String? = null
-
-    /**
-     * When the measure was last reviewed
-     */
-    var lastReviewDate: String? = null
+    var disclaimer: String? = null
 
     /**
      * When the measure is expected to be used
      */
     var effectivePeriod: Period? = null
 
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    val group: List<MeasureGroup> = mutableListOf<MeasureGroup>()
+
+    /**
+     * Additional guidance for implementers
+     */
+    var guidance: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Improvement notation for the measure, e.g. higher score indicates better quality
+     */
+    var improvementNotation: String? = null
 
     val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
-    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val contributor: List<Contributor> = mutableListOf<Contributor>()
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
     /**
-     * Use and/or publishing restrictions
+     * When the measure was last reviewed
      */
-    var copyright: String? = null
-
-    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+    var lastReviewDate: String? = null
 
     val library: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * Disclaimer for use of the measure or its referenced content
+     * Name for this measure (computer friendly)
      */
-    var disclaimer: String? = null
+    var name: String? = null
 
     /**
-     * proportion | ratio | continuous-variable | cohort
+     * Name of the publisher (organization or individual)
      */
-    var scoring: CodeableConcept? = null
+    var publisher: String? = null
 
     /**
-     * opportunity | all-or-nothing | linear | weighted
+     * Why this measure is defined
      */
-    var compositeScoring: CodeableConcept? = null
-
-    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * How is risk adjustment applied for this measure
-     */
-    var riskAdjustment: String? = null
+    var purpose: String? = null
 
     /**
      * How is rate aggregation performed for this measure
@@ -136,31 +112,55 @@ open class Measure() : DomainResource() {
      */
     var rationale: String? = null
 
-    /**
-     * Summary of clinical guidelines
-     */
-    var clinicalRecommendationStatement: String? = null
+    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
 
     /**
-     * Improvement notation for the measure, e.g. higher score indicates better quality
+     * How is risk adjustment applied for this measure
      */
-    var improvementNotation: String? = null
-
-    val definition: List<String> = mutableListOf<String>()
+    var riskAdjustment: String? = null
 
     /**
-     * Additional guidance for implementers
+     * proportion | ratio | continuous-variable | cohort
      */
-    var guidance: String? = null
+    var scoring: CodeableConcept? = null
 
     /**
      * The measure set, e.g. Preventive Care and Screening
      */
     var set: String? = null
 
-    val group: List<MeasureGroup> = mutableListOf<MeasureGroup>()
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
 
     val supplementalData: List<MeasureSupplementalData> = mutableListOf<MeasureSupplementalData>()
+
+    /**
+     * Name for this measure (human friendly)
+     */
+    var title: String? = null
+
+    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Logical URI to reference this measure (globally unique)
+     */
+    var url: String? = null
+
+    /**
+     * Describes the clinical usage of the measure
+     */
+    var usage: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the measure
+     */
+    var version: String? = null
 }
 
 /**
@@ -170,6 +170,11 @@ open class Measure() : DomainResource() {
  */
 open class MeasureGroup() : BackboneElement() {
     /**
+     * Summary description
+     */
+    var description: String? = null
+
+    /**
      * Unique identifier
      */
     var identifier: Identifier = Identifier()
@@ -178,11 +183,6 @@ open class MeasureGroup() : BackboneElement() {
      * Short name
      */
     var name: String? = null
-
-    /**
-     * Summary description
-     */
-    var description: String? = null
 
     val population: List<MeasureGroupPopulation> = mutableListOf<MeasureGroupPopulation>()
 
@@ -196,19 +196,14 @@ open class MeasureGroup() : BackboneElement() {
  */
 open class MeasureGroupPopulation() : BackboneElement() {
     /**
-     * Unique identifier
-     */
-    var identifier: Identifier? = null
-
-    /**
      * initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
      */
     var code: CodeableConcept? = null
 
     /**
-     * Short name
+     * The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria
      */
-    var name: String? = null
+    var criteria: String? = null
 
     /**
      * The human readable description of this population criteria
@@ -216,9 +211,14 @@ open class MeasureGroupPopulation() : BackboneElement() {
     var description: String? = null
 
     /**
-     * The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria
+     * Unique identifier
      */
-    var criteria: String? = null
+    var identifier: Identifier? = null
+
+    /**
+     * Short name
+     */
+    var name: String? = null
 }
 
 /**
@@ -228,14 +228,14 @@ open class MeasureGroupPopulation() : BackboneElement() {
  */
 open class MeasureGroupStratifier() : BackboneElement() {
     /**
-     * The identifier for the stratifier used to coordinate the reported data back to this stratifier
-     */
-    var identifier: Identifier? = null
-
-    /**
      * How the measure should be stratified
      */
     var criteria: String? = null
+
+    /**
+     * The identifier for the stratifier used to coordinate the reported data back to this stratifier
+     */
+    var identifier: Identifier? = null
 
     /**
      * Path to the stratifier
@@ -250,19 +250,19 @@ open class MeasureGroupStratifier() : BackboneElement() {
  */
 open class MeasureSupplementalData() : BackboneElement() {
     /**
-     * Identifier, unique within the measure
-     */
-    var identifier: Identifier? = null
-
-    val usage: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
      * Expression describing additional data to be reported
      */
     var criteria: String? = null
 
     /**
+     * Identifier, unique within the measure
+     */
+    var identifier: Identifier? = null
+
+    /**
      * Path to the supplemental data element
      */
     var path: String? = null
+
+    val usage: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 }

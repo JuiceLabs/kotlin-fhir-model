@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.512 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.917 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,9 +14,13 @@ import kotlin.collections.List
  */
 open class GuidanceResponse() : DomainResource() {
     /**
-     * The id of the request associated with this response, if any
+     * Encounter or Episode during which the response was returned
      */
-    var requestId: String? = null
+    var context: Reference? = null
+
+    val dataRequirement: List<DataRequirement> = mutableListOf<DataRequirement>()
+
+    val evaluationMessage: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Business identifier
@@ -28,25 +32,17 @@ open class GuidanceResponse() : DomainResource() {
      */
     var module: Reference = Reference()
 
-    /**
-     * success | data-requested | data-required | in-progress | failure | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * Patient the request was performed for
-     */
-    var subject: Reference? = null
-
-    /**
-     * Encounter or Episode during which the response was returned
-     */
-    var context: Reference? = null
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * When the guidance response was processed
      */
     var occurrenceDateTime: String? = null
+
+    /**
+     * The output parameters of the evaluation, if any
+     */
+    var outputParameters: Reference? = null
 
     /**
      * Device returning the guidance
@@ -63,19 +59,23 @@ open class GuidanceResponse() : DomainResource() {
      */
     var reasonReference: Reference? = null
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val evaluationMessage: List<Reference> = mutableListOf<Reference>()
-
     /**
-     * The output parameters of the evaluation, if any
+     * The id of the request associated with this response, if any
      */
-    var outputParameters: Reference? = null
+    var requestId: String? = null
 
     /**
      * Proposed actions, if any
      */
     var result: Reference? = null
 
-    val dataRequirement: List<DataRequirement> = mutableListOf<DataRequirement>()
+    /**
+     * success | data-requested | data-required | in-progress | failure | entered-in-error
+     */
+    var status: String? = null
+
+    /**
+     * Patient the request was performed for
+     */
+    var subject: Reference? = null
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.709 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.056 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,72 +13,6 @@ import kotlin.collections.List
  * A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
  */
 open class Condition() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * active | recurrence | inactive | remission | resolved
-     */
-    var clinicalStatus: String? = null
-
-    /**
-     * provisional | differential | confirmed | refuted | entered-in-error | unknown
-     */
-    var verificationStatus: String? = null
-
-    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Subjective severity of condition
-     */
-    var severity: CodeableConcept? = null
-
-    /**
-     * Identification of the condition, problem or diagnosis
-     */
-    var code: CodeableConcept? = null
-
-    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Who has the condition?
-     */
-    var subject: Reference = Reference()
-
-    /**
-     * Encounter or episode when condition first asserted
-     */
-    var context: Reference? = null
-
-    /**
-     * Estimated or actual date,  date-time, or age
-     */
-    var onsetDateTime: String? = null
-
-    /**
-     * Estimated or actual date,  date-time, or age
-     */
-    var onsetAge: Age? = null
-
-    /**
-     * Estimated or actual date,  date-time, or age
-     */
-    var onsetPeriod: Period? = null
-
-    /**
-     * Estimated or actual date,  date-time, or age
-     */
-    var onsetRange: Range? = null
-
-    /**
-     * Estimated or actual date,  date-time, or age
-     */
-    var onsetString: String? = null
-
-    /**
-     * If/when in resolution/remission
-     */
-    var abatementDateTime: String? = null
-
     /**
      * If/when in resolution/remission
      */
@@ -88,6 +22,11 @@ open class Condition() : DomainResource() {
      * If/when in resolution/remission
      */
     var abatementBoolean: Boolean? = null
+
+    /**
+     * If/when in resolution/remission
+     */
+    var abatementDateTime: String? = null
 
     /**
      * If/when in resolution/remission
@@ -114,14 +53,75 @@ open class Condition() : DomainResource() {
      */
     var asserter: Reference? = null
 
+    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * active | recurrence | inactive | remission | resolved
+     */
+    var clinicalStatus: String? = null
+
+    /**
+     * Identification of the condition, problem or diagnosis
+     */
+    var code: CodeableConcept? = null
+
+    /**
+     * Encounter or episode when condition first asserted
+     */
+    var context: Reference? = null
+
+    val evidence: List<ConditionEvidence> = mutableListOf<ConditionEvidence>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    /**
+     * Estimated or actual date,  date-time, or age
+     */
+    var onsetAge: Age? = null
+
+    /**
+     * Estimated or actual date,  date-time, or age
+     */
+    var onsetDateTime: String? = null
+
+    /**
+     * Estimated or actual date,  date-time, or age
+     */
+    var onsetPeriod: Period? = null
+
+    /**
+     * Estimated or actual date,  date-time, or age
+     */
+    var onsetRange: Range? = null
+
+    /**
+     * Estimated or actual date,  date-time, or age
+     */
+    var onsetString: String? = null
+
+    /**
+     * Subjective severity of condition
+     */
+    var severity: CodeableConcept? = null
+
     /**
      * Stage/grade, usually assessed formally
      */
     var stage: ConditionStage? = null
 
-    val evidence: List<ConditionEvidence> = mutableListOf<ConditionEvidence>()
+    /**
+     * Who has the condition?
+     */
+    var subject: Reference = Reference()
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    /**
+     * provisional | differential | confirmed | refuted | entered-in-error | unknown
+     */
+    var verificationStatus: String? = null
 }
 
 /**
@@ -130,12 +130,12 @@ open class Condition() : DomainResource() {
  * Clinical stage or grade of a condition. May include formal severity assessments.
  */
 open class ConditionStage() : BackboneElement() {
+    val assessment: List<Reference> = mutableListOf<Reference>()
+
     /**
      * Simple summary (disease specific)
      */
     var summary: CodeableConcept? = null
-
-    val assessment: List<Reference> = mutableListOf<Reference>()
 }
 
 /**

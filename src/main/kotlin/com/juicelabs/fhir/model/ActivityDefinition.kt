@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.634 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.009 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,36 +14,25 @@ import kotlin.collections.List
  */
 open class ActivityDefinition() : DomainResource() {
     /**
-     * Logical URI to reference this activity definition (globally unique)
+     * When the activity definition was approved by publisher
      */
-    var url: String? = null
+    var approvalDate: String? = null
 
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * Business version of the activity definition
-     */
-    var version: String? = null
+    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
-     * Name for this activity definition (computer friendly)
+     * Detail type of activity
      */
-    var name: String? = null
+    var code: CodeableConcept? = null
+
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
+
+    val contributor: List<Contributor> = mutableListOf<Contributor>()
 
     /**
-     * Name for this activity definition (human friendly)
+     * Use and/or publishing restrictions
      */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
+    var copyright: String? = null
 
     /**
      * Date this was last changed
@@ -51,58 +40,28 @@ open class ActivityDefinition() : DomainResource() {
     var date: String? = null
 
     /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    /**
      * Natural language description of the activity definition
      */
     var description: String? = null
 
-    /**
-     * Why this activity definition is defined
-     */
-    var purpose: String? = null
+    val dosage: List<Dosage> = mutableListOf<Dosage>()
 
-    /**
-     * Describes the clinical usage of the asset
-     */
-    var usage: String? = null
-
-    /**
-     * When the activity definition was approved by publisher
-     */
-    var approvalDate: String? = null
-
-    /**
-     * When the activity definition was last reviewed
-     */
-    var lastReviewDate: String? = null
+    val dynamicValue: List<ActivityDefinitionDynamicValue> =
+            mutableListOf<ActivityDefinitionDynamicValue>()
 
     /**
      * When the activity definition is expected to be used
      */
     var effectivePeriod: Period? = null
 
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val contributor: List<Contributor> = mutableListOf<Contributor>()
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Use and/or publishing restrictions
-     */
-    var copyright: String? = null
-
-    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
-
-    val library: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Kind of resource
@@ -110,14 +69,56 @@ open class ActivityDefinition() : DomainResource() {
     var kind: String? = null
 
     /**
-     * Detail type of activity
+     * When the activity definition was last reviewed
      */
-    var code: CodeableConcept? = null
+    var lastReviewDate: String? = null
+
+    val library: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * When activity is to occur
+     * Where it should happen
      */
-    var timingTiming: Timing? = null
+    var location: Reference? = null
+
+    /**
+     * Name for this activity definition (computer friendly)
+     */
+    var name: String? = null
+
+    val participant: List<ActivityDefinitionParticipant> =
+            mutableListOf<ActivityDefinitionParticipant>()
+
+    /**
+     * What's administered/supplied
+     */
+    var productCodeableConcept: CodeableConcept? = null
+
+    /**
+     * What's administered/supplied
+     */
+    var productReference: Reference? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this activity definition is defined
+     */
+    var purpose: String? = null
+
+    /**
+     * How much is administered/consumed/supplied
+     */
+    var quantity: Quantity? = null
+
+    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
 
     /**
      * When activity is to occur
@@ -135,39 +136,38 @@ open class ActivityDefinition() : DomainResource() {
     var timingRange: Range? = null
 
     /**
-     * Where it should happen
+     * When activity is to occur
      */
-    var location: Reference? = null
-
-    val participant: List<ActivityDefinitionParticipant> =
-            mutableListOf<ActivityDefinitionParticipant>()
+    var timingTiming: Timing? = null
 
     /**
-     * What's administered/supplied
+     * Name for this activity definition (human friendly)
      */
-    var productReference: Reference? = null
+    var title: String? = null
 
-    /**
-     * What's administered/supplied
-     */
-    var productCodeableConcept: CodeableConcept? = null
-
-    /**
-     * How much is administered/consumed/supplied
-     */
-    var quantity: Quantity? = null
-
-    val dosage: List<Dosage> = mutableListOf<Dosage>()
-
-    val bodySite: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Transform to apply the template
      */
     var transform: Reference? = null
 
-    val dynamicValue: List<ActivityDefinitionDynamicValue> =
-            mutableListOf<ActivityDefinitionDynamicValue>()
+    /**
+     * Logical URI to reference this activity definition (globally unique)
+     */
+    var url: String? = null
+
+    /**
+     * Describes the clinical usage of the asset
+     */
+    var usage: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the activity definition
+     */
+    var version: String? = null
 }
 
 /**
@@ -177,14 +177,14 @@ open class ActivityDefinition() : DomainResource() {
  */
 open class ActivityDefinitionParticipant() : BackboneElement() {
     /**
-     * patient | practitioner | related-person
-     */
-    var type: String? = null
-
-    /**
      * E.g. Nurse, Surgeon, Parent, etc
      */
     var role: CodeableConcept? = null
+
+    /**
+     * patient | practitioner | related-person
+     */
+    var type: String? = null
 }
 
 /**
@@ -199,9 +199,9 @@ open class ActivityDefinitionDynamicValue() : BackboneElement() {
     var description: String? = null
 
     /**
-     * The path to the element to be set dynamically
+     * An expression that provides the dynamic value for the customization
      */
-    var path: String? = null
+    var expression: String? = null
 
     /**
      * Language of the expression
@@ -209,7 +209,7 @@ open class ActivityDefinitionDynamicValue() : BackboneElement() {
     var language: String? = null
 
     /**
-     * An expression that provides the dynamic value for the customization
+     * The path to the element to be set dynamically
      */
-    var expression: String? = null
+    var path: String? = null
 }

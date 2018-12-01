@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.663 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.034 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,63 +13,25 @@ import kotlin.collections.List
  * A search parameter that defines a named search item that can be used to search/filter on a resource.
  */
 open class SearchParameter() : DomainResource() {
-    /**
-     * Logical URI to reference this search parameter (globally unique)
-     */
-    var url: String? = null
+    val base: List<String> = mutableListOf<String>()
 
-    /**
-     * Business version of the search parameter
-     */
-    var version: String? = null
-
-    /**
-     * Name for this search parameter (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * Date this was last changed
-     */
-    var date: String? = null
-
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Why this search parameter is defined
-     */
-    var purpose: String? = null
+    val chain: List<String> = mutableListOf<String>()
 
     /**
      * Code used in URL
      */
     var code: String? = null
 
-    val base: List<String> = mutableListOf<String>()
+    val comparator: List<String> = mutableListOf<String>()
+
+    val component: List<SearchParameterComponent> = mutableListOf<SearchParameterComponent>()
+
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 
     /**
-     * number | date | string | token | reference | composite | quantity | uri
+     * Date this was last changed
      */
-    var type: String? = null
+    var date: String? = null
 
     /**
      * Original Definition for the search parameter
@@ -82,9 +44,57 @@ open class SearchParameter() : DomainResource() {
     var description: String? = null
 
     /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    /**
      * FHIRPath expression that extracts the values
      */
     var expression: String? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val modifier: List<String> = mutableListOf<String>()
+
+    /**
+     * Name for this search parameter (computer friendly)
+     */
+    var name: String? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this search parameter is defined
+     */
+    var purpose: String? = null
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    val target: List<String> = mutableListOf<String>()
+
+    /**
+     * number | date | string | token | reference | composite | quantity | uri
+     */
+    var type: String? = null
+
+    /**
+     * Logical URI to reference this search parameter (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the search parameter
+     */
+    var version: String? = null
 
     /**
      * XPath that extracts the values
@@ -95,16 +105,6 @@ open class SearchParameter() : DomainResource() {
      * normal | phonetic | nearby | distance | other
      */
     var xpathUsage: String? = null
-
-    val target: List<String> = mutableListOf<String>()
-
-    val comparator: List<String> = mutableListOf<String>()
-
-    val modifier: List<String> = mutableListOf<String>()
-
-    val chain: List<String> = mutableListOf<String>()
-
-    val component: List<SearchParameterComponent> = mutableListOf<SearchParameterComponent>()
 }
 
 /**

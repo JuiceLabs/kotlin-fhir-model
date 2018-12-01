@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.614 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.994 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,14 +13,7 @@ import kotlin.collections.List
  * The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
  */
 open class DiagnosticReport() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     val basedOn: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * registered | partial | preliminary | final +
-     */
-    var status: String? = null
 
     /**
      * Service category
@@ -32,10 +25,12 @@ open class DiagnosticReport() : DomainResource() {
      */
     var code: CodeableConcept = CodeableConcept()
 
+    val codedDiagnosis: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     /**
-     * The subject of the report - usually, but not always, the patient
+     * Clinical Interpretation of test results
      */
-    var subject: Reference? = null
+    var conclusion: String? = null
 
     /**
      * Health care event when test ordered
@@ -52,6 +47,12 @@ open class DiagnosticReport() : DomainResource() {
      */
     var effectivePeriod: Period? = null
 
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val image: List<DiagnosticReportImage> = mutableListOf<DiagnosticReportImage>()
+
+    val imagingStudy: List<Reference> = mutableListOf<Reference>()
+
     /**
      * DateTime this version was released
      */
@@ -59,22 +60,21 @@ open class DiagnosticReport() : DomainResource() {
 
     val performer: List<DiagnosticReportPerformer> = mutableListOf<DiagnosticReportPerformer>()
 
-    val specimen: List<Reference> = mutableListOf<Reference>()
+    val presentedForm: List<Attachment> = mutableListOf<Attachment>()
 
     val result: List<Reference> = mutableListOf<Reference>()
 
-    val imagingStudy: List<Reference> = mutableListOf<Reference>()
-
-    val image: List<DiagnosticReportImage> = mutableListOf<DiagnosticReportImage>()
+    val specimen: List<Reference> = mutableListOf<Reference>()
 
     /**
-     * Clinical Interpretation of test results
+     * registered | partial | preliminary | final +
      */
-    var conclusion: String? = null
+    var status: String? = null
 
-    val codedDiagnosis: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val presentedForm: List<Attachment> = mutableListOf<Attachment>()
+    /**
+     * The subject of the report - usually, but not always, the patient
+     */
+    var subject: Reference? = null
 }
 
 /**
@@ -84,14 +84,14 @@ open class DiagnosticReport() : DomainResource() {
  */
 open class DiagnosticReportPerformer() : BackboneElement() {
     /**
-     * Type of performer
-     */
-    var role: CodeableConcept? = null
-
-    /**
      * Practitioner or Organization  participant
      */
     var actor: Reference = Reference()
+
+    /**
+     * Type of performer
+     */
+    var role: CodeableConcept? = null
 }
 
 /**

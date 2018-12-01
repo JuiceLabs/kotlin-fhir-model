@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.629 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.005 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,12 +12,12 @@ package com.juicelabs.fhir.model
  */
 open class Ratio() : Element() {
     /**
-     * Numerator value
-     */
-    var numerator: Quantity? = null
-
-    /**
      * Denominator value
      */
     var denominator: Quantity? = null
+
+    /**
+     * Numerator value
+     */
+    var numerator: Quantity? = null
 }

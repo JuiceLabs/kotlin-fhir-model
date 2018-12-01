@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.586 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.976 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,20 +13,7 @@ import kotlin.collections.List
  * A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
  */
 open class NamingSystem() : DomainResource() {
-    /**
-     * Name for this naming system (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * codesystem | identifier | root
-     */
-    var kind: String? = null
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 
     /**
      * Date this was last changed
@@ -34,11 +21,31 @@ open class NamingSystem() : DomainResource() {
     var date: String? = null
 
     /**
+     * Natural language description of the naming system
+     */
+    var description: String? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * codesystem | identifier | root
+     */
+    var kind: String? = null
+
+    /**
+     * Name for this naming system (computer friendly)
+     */
+    var name: String? = null
+
+    /**
      * Name of the publisher (organization or individual)
      */
     var publisher: String? = null
 
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
+    /**
+     * Use this instead
+     */
+    var replacedBy: Reference? = null
 
     /**
      * Who maintains system namespace?
@@ -46,30 +53,23 @@ open class NamingSystem() : DomainResource() {
     var responsible: String? = null
 
     /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
      * e.g. driver,  provider,  patient, bank etc.
      */
     var type: CodeableConcept? = null
 
-    /**
-     * Natural language description of the naming system
-     */
-    var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val uniqueId: List<NamingSystemUniqueId> = mutableListOf<NamingSystemUniqueId>()
 
     /**
      * How/where is it used
      */
     var usage: String? = null
 
-    val uniqueId: List<NamingSystemUniqueId> = mutableListOf<NamingSystemUniqueId>()
-
-    /**
-     * Use this instead
-     */
-    var replacedBy: Reference? = null
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
 }
 
 /**
@@ -79,21 +79,6 @@ open class NamingSystem() : DomainResource() {
  */
 open class NamingSystemUniqueId() : BackboneElement() {
     /**
-     * oid | uuid | uri | other
-     */
-    var type: String? = null
-
-    /**
-     * The unique identifier
-     */
-    var value: String? = null
-
-    /**
-     * Is this the id that should be used for this type
-     */
-    var preferred: Boolean? = null
-
-    /**
      * Notes about identifier usage
      */
     var comment: String? = null
@@ -102,4 +87,19 @@ open class NamingSystemUniqueId() : BackboneElement() {
      * When is identifier valid?
      */
     var period: Period? = null
+
+    /**
+     * Is this the id that should be used for this type
+     */
+    var preferred: Boolean? = null
+
+    /**
+     * oid | uuid | uri | other
+     */
+    var type: String? = null
+
+    /**
+     * The unique identifier
+     */
+    var value: String? = null
 }

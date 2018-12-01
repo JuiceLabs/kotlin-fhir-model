@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.861 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.166 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,22 +13,10 @@ import kotlin.collections.List
  * Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated.
  */
 open class Location() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
-     * active | suspended | inactive
+     * Physical location
      */
-    var status: String? = null
-
-    /**
-     * The Operational status of the location (typically only for a bed/room)
-     */
-    var operationalStatus: Coding? = null
-
-    /**
-     * Name of the location as used by humans
-     */
-    var name: String? = null
+    var address: Address? = null
 
     val alias: List<String> = mutableListOf<String>()
 
@@ -37,22 +25,34 @@ open class Location() : DomainResource() {
      */
     var description: String? = null
 
+    val endpoint: List<Reference> = mutableListOf<Reference>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Organization responsible for provisioning and upkeep
+     */
+    var managingOrganization: Reference? = null
+
     /**
      * instance | kind
      */
     var mode: String? = null
 
     /**
-     * Type of function performed
+     * Name of the location as used by humans
      */
-    var type: CodeableConcept? = null
-
-    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
+    var name: String? = null
 
     /**
-     * Physical location
+     * The Operational status of the location (typically only for a bed/room)
      */
-    var address: Address? = null
+    var operationalStatus: Coding? = null
+
+    /**
+     * Another Location this one is physically part of
+     */
+    var partOf: Reference? = null
 
     /**
      * Physical form of the location
@@ -65,16 +65,16 @@ open class Location() : DomainResource() {
     var position: LocationPosition? = null
 
     /**
-     * Organization responsible for provisioning and upkeep
+     * active | suspended | inactive
      */
-    var managingOrganization: Reference? = null
+    var status: String? = null
+
+    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
 
     /**
-     * Another Location this one is physically part of
+     * Type of function performed
      */
-    var partOf: Reference? = null
-
-    val endpoint: List<Reference> = mutableListOf<Reference>()
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -84,9 +84,9 @@ open class Location() : DomainResource() {
  */
 open class LocationPosition() : BackboneElement() {
     /**
-     * Longitude with WGS84 datum
+     * Altitude with WGS84 datum
      */
-    var longitude: Float? = null
+    var altitude: Float? = null
 
     /**
      * Latitude with WGS84 datum
@@ -94,7 +94,7 @@ open class LocationPosition() : BackboneElement() {
     var latitude: Float? = null
 
     /**
-     * Altitude with WGS84 datum
+     * Longitude with WGS84 datum
      */
-    var altitude: Float? = null
+    var longitude: Float? = null
 }

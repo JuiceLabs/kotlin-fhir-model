@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.458 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.900 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,17 +13,9 @@ import kotlin.collections.List
  * This resource provides the adjudication details from the processing of a Claim resource.
  */
 open class ClaimResponse() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val addItem: List<ClaimResponseAddItem> = mutableListOf<ClaimResponseAddItem>()
 
-    /**
-     * active | cancelled | draft | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * The subject of the Products and Services
-     */
-    var patient: Reference? = null
+    val communicationRequest: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Creation date
@@ -31,24 +23,27 @@ open class ClaimResponse() : DomainResource() {
     var created: String? = null
 
     /**
+     * Disposition Message
+     */
+    var disposition: String? = null
+
+    val error: List<ClaimResponseError> = mutableListOf<ClaimResponseError>()
+
+    /**
+     * Printed Form Identifier
+     */
+    var form: CodeableConcept? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val insurance: List<ClaimResponseInsurance> = mutableListOf<ClaimResponseInsurance>()
+
+    /**
      * Insurance issuing organization
      */
     var insurer: Reference? = null
 
-    /**
-     * Responsible practitioner
-     */
-    var requestProvider: Reference? = null
-
-    /**
-     * Responsible organization
-     */
-    var requestOrganization: Reference? = null
-
-    /**
-     * Id of resource triggering adjudication
-     */
-    var request: Reference? = null
+    val item: List<ClaimResponseItem> = mutableListOf<ClaimResponseItem>()
 
     /**
      * complete | error | partial
@@ -56,20 +51,51 @@ open class ClaimResponse() : DomainResource() {
     var outcome: CodeableConcept? = null
 
     /**
-     * Disposition Message
+     * The subject of the Products and Services
      */
-    var disposition: String? = null
+    var patient: Reference? = null
 
     /**
      * Party to be paid any benefits payable
      */
     var payeeType: CodeableConcept? = null
 
-    val item: List<ClaimResponseItem> = mutableListOf<ClaimResponseItem>()
+    /**
+     * Payment details, if paid
+     */
+    var payment: ClaimResponsePayment? = null
 
-    val addItem: List<ClaimResponseAddItem> = mutableListOf<ClaimResponseAddItem>()
+    val processNote: List<ClaimResponseProcessNote> = mutableListOf<ClaimResponseProcessNote>()
 
-    val error: List<ClaimResponseError> = mutableListOf<ClaimResponseError>()
+    /**
+     * Id of resource triggering adjudication
+     */
+    var request: Reference? = null
+
+    /**
+     * Responsible organization
+     */
+    var requestOrganization: Reference? = null
+
+    /**
+     * Responsible practitioner
+     */
+    var requestProvider: Reference? = null
+
+    /**
+     * Funds reserved status
+     */
+    var reserved: Coding? = null
+
+    /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
+
+    /**
+     * Total benefit payable for the Claim
+     */
+    var totalBenefit: Money? = null
 
     /**
      * Total Cost of service from the Claim
@@ -80,32 +106,6 @@ open class ClaimResponse() : DomainResource() {
      * Unallocated deductible
      */
     var unallocDeductable: Money? = null
-
-    /**
-     * Total benefit payable for the Claim
-     */
-    var totalBenefit: Money? = null
-
-    /**
-     * Payment details, if paid
-     */
-    var payment: ClaimResponsePayment? = null
-
-    /**
-     * Funds reserved status
-     */
-    var reserved: Coding? = null
-
-    /**
-     * Printed Form Identifier
-     */
-    var form: CodeableConcept? = null
-
-    val processNote: List<ClaimResponseProcessNote> = mutableListOf<ClaimResponseProcessNote>()
-
-    val communicationRequest: List<Reference> = mutableListOf<Reference>()
-
-    val insurance: List<ClaimResponseInsurance> = mutableListOf<ClaimResponseInsurance>()
 }
 
 /**
@@ -114,17 +114,17 @@ open class ClaimResponse() : DomainResource() {
  * The first tier service adjudications for submitted services.
  */
 open class ClaimResponseItem() : BackboneElement() {
-    /**
-     * Service instance
-     */
-    var sequenceLinkId: Int? = null
-
-    val noteNumber: List<Int> = mutableListOf<Int>()
-
     val adjudication: List<ClaimResponseItemAdjudication> =
             mutableListOf<ClaimResponseItemAdjudication>()
 
     val detail: List<ClaimResponseItemDetail> = mutableListOf<ClaimResponseItemDetail>()
+
+    val noteNumber: List<Int> = mutableListOf<Int>()
+
+    /**
+     * Service instance
+     */
+    var sequenceLinkId: Int? = null
 }
 
 /**
@@ -134,6 +134,11 @@ open class ClaimResponseItem() : BackboneElement() {
  */
 open class ClaimResponseItemAdjudication() : BackboneElement() {
     /**
+     * Monetary amount
+     */
+    var amount: Money? = null
+
+    /**
      * Adjudication category such as co-pay, eligible, benefit, etc.
      */
     var category: CodeableConcept = CodeableConcept()
@@ -142,11 +147,6 @@ open class ClaimResponseItemAdjudication() : BackboneElement() {
      * Explanation of Adjudication outcome
      */
     var reason: CodeableConcept? = null
-
-    /**
-     * Monetary amount
-     */
-    var amount: Money? = null
 
     /**
      * Non-monetary value
@@ -160,15 +160,15 @@ open class ClaimResponseItemAdjudication() : BackboneElement() {
  * The second tier service adjudications for submitted services.
  */
 open class ClaimResponseItemDetail() : BackboneElement() {
+    val adjudication: List<ClaimResponseItemAdjudication> =
+            mutableListOf<ClaimResponseItemAdjudication>()
+
+    val noteNumber: List<Int> = mutableListOf<Int>()
+
     /**
      * Service instance
      */
     var sequenceLinkId: Int? = null
-
-    val noteNumber: List<Int> = mutableListOf<Int>()
-
-    val adjudication: List<ClaimResponseItemAdjudication> =
-            mutableListOf<ClaimResponseItemAdjudication>()
 
     val subDetail: List<ClaimResponseItemDetailSubDetail> =
             mutableListOf<ClaimResponseItemDetailSubDetail>()
@@ -180,15 +180,15 @@ open class ClaimResponseItemDetail() : BackboneElement() {
  * The third tier service adjudications for submitted services.
  */
 open class ClaimResponseItemDetailSubDetail() : BackboneElement() {
+    val adjudication: List<ClaimResponseItemAdjudication> =
+            mutableListOf<ClaimResponseItemAdjudication>()
+
+    val noteNumber: List<Int> = mutableListOf<Int>()
+
     /**
      * Service instance
      */
     var sequenceLinkId: Int? = null
-
-    val noteNumber: List<Int> = mutableListOf<Int>()
-
-    val adjudication: List<ClaimResponseItemAdjudication> =
-            mutableListOf<ClaimResponseItemAdjudication>()
 }
 
 /**
@@ -197,36 +197,36 @@ open class ClaimResponseItemDetailSubDetail() : BackboneElement() {
  * The first tier service adjudications for payor added services.
  */
 open class ClaimResponseAddItem() : BackboneElement() {
-    val sequenceLinkId: List<Int> = mutableListOf<Int>()
-
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
+    val adjudication: List<ClaimResponseItemAdjudication> =
+            mutableListOf<ClaimResponseItemAdjudication>()
 
     /**
      * Type of service or product
      */
     var category: CodeableConcept? = null
 
-    /**
-     * Group, Service or Product
-     */
-    var service: CodeableConcept? = null
-
-    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    val detail: List<ClaimResponseAddItemDetail> = mutableListOf<ClaimResponseAddItemDetail>()
 
     /**
      * Professional fee or Product charge
      */
     var fee: Money? = null
 
+    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     val noteNumber: List<Int> = mutableListOf<Int>()
 
-    val adjudication: List<ClaimResponseItemAdjudication> =
-            mutableListOf<ClaimResponseItemAdjudication>()
+    /**
+     * Revenue or cost center code
+     */
+    var revenue: CodeableConcept? = null
 
-    val detail: List<ClaimResponseAddItemDetail> = mutableListOf<ClaimResponseAddItemDetail>()
+    val sequenceLinkId: List<Int> = mutableListOf<Int>()
+
+    /**
+     * Group, Service or Product
+     */
+    var service: CodeableConcept? = null
 }
 
 /**
@@ -235,10 +235,8 @@ open class ClaimResponseAddItem() : BackboneElement() {
  * The second tier service adjudications for payor added services.
  */
 open class ClaimResponseAddItemDetail() : BackboneElement() {
-    /**
-     * Revenue or cost center code
-     */
-    var revenue: CodeableConcept? = null
+    val adjudication: List<ClaimResponseItemAdjudication> =
+            mutableListOf<ClaimResponseItemAdjudication>()
 
     /**
      * Type of service or product
@@ -246,21 +244,23 @@ open class ClaimResponseAddItemDetail() : BackboneElement() {
     var category: CodeableConcept? = null
 
     /**
-     * Service or Product
-     */
-    var service: CodeableConcept? = null
-
-    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
      * Professional fee or Product charge
      */
     var fee: Money? = null
 
+    val modifier: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     val noteNumber: List<Int> = mutableListOf<Int>()
 
-    val adjudication: List<ClaimResponseItemAdjudication> =
-            mutableListOf<ClaimResponseItemAdjudication>()
+    /**
+     * Revenue or cost center code
+     */
+    var revenue: CodeableConcept? = null
+
+    /**
+     * Service or Product
+     */
+    var service: CodeableConcept? = null
 }
 
 /**
@@ -270,9 +270,9 @@ open class ClaimResponseAddItemDetail() : BackboneElement() {
  */
 open class ClaimResponseError() : BackboneElement() {
     /**
-     * Item sequence number
+     * Error code detailing processing issues
      */
-    var sequenceLinkId: Int? = null
+    var code: CodeableConcept = CodeableConcept()
 
     /**
      * Detail sequence number
@@ -280,14 +280,14 @@ open class ClaimResponseError() : BackboneElement() {
     var detailSequenceLinkId: Int? = null
 
     /**
+     * Item sequence number
+     */
+    var sequenceLinkId: Int? = null
+
+    /**
      * Subdetail sequence number
      */
     var subdetailSequenceLinkId: Int? = null
-
-    /**
-     * Error code detailing processing issues
-     */
-    var code: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -296,11 +296,6 @@ open class ClaimResponseError() : BackboneElement() {
  * Payment details for the claim if the claim has been paid.
  */
 open class ClaimResponsePayment() : BackboneElement() {
-    /**
-     * Partial or Complete
-     */
-    var type: CodeableConcept? = null
-
     /**
      * Payment adjustment for non-Claim issues
      */
@@ -312,19 +307,24 @@ open class ClaimResponsePayment() : BackboneElement() {
     var adjustmentReason: CodeableConcept? = null
 
     /**
-     * Expected data of Payment
-     */
-    var date: String? = null
-
-    /**
      * Payable amount after adjustment
      */
     var amount: Money? = null
 
     /**
+     * Expected data of Payment
+     */
+    var date: String? = null
+
+    /**
      * Identifier of the payment instrument
      */
     var identifier: Identifier? = null
+
+    /**
+     * Partial or Complete
+     */
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -334,14 +334,14 @@ open class ClaimResponsePayment() : BackboneElement() {
  */
 open class ClaimResponseProcessNote() : BackboneElement() {
     /**
+     * Language if different from the resource
+     */
+    var language: CodeableConcept? = null
+
+    /**
      * Sequence Number for this note
      */
     var number: Int? = null
-
-    /**
-     * display | print | printoper
-     */
-    var type: CodeableConcept? = null
 
     /**
      * Note explanatory text
@@ -349,9 +349,9 @@ open class ClaimResponseProcessNote() : BackboneElement() {
     var text: String? = null
 
     /**
-     * Language if different from the resource
+     * display | print | printoper
      */
-    var language: CodeableConcept? = null
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -361,14 +361,14 @@ open class ClaimResponseProcessNote() : BackboneElement() {
  */
 open class ClaimResponseInsurance() : BackboneElement() {
     /**
-     * Service instance identifier
+     * Business agreement
      */
-    var sequence: Int? = null
+    var businessArrangement: String? = null
 
     /**
-     * Is the focal Coverage
+     * Adjudication results
      */
-    var focal: Boolean? = null
+    var claimResponse: Reference? = null
 
     /**
      * Insurance information
@@ -376,14 +376,14 @@ open class ClaimResponseInsurance() : BackboneElement() {
     var coverage: Reference = Reference()
 
     /**
-     * Business agreement
+     * Is the focal Coverage
      */
-    var businessArrangement: String? = null
+    var focal: Boolean? = null
 
     val preAuthRef: List<String> = mutableListOf<String>()
 
     /**
-     * Adjudication results
+     * Service instance identifier
      */
-    var claimResponse: Reference? = null
+    var sequence: Int? = null
 }

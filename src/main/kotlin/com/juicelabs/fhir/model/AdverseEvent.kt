@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.733 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.069 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,51 +14,19 @@ import kotlin.collections.List
  */
 open class AdverseEvent() : DomainResource() {
     /**
-     * Business identifier for the event
-     */
-    var identifier: Identifier? = null
-
-    /**
      * AE | PAE An adverse event is an event that caused harm to a patient,  an adverse reaction is a something that is a subject-specific event that is a result of an exposure to a medication, food, device or environmental substance, a potential adverse event is something that occurred and that could have caused harm to a patient but did not
      */
     var category: String? = null
-
-    /**
-     * actual | potential
-     */
-    var type: CodeableConcept? = null
-
-    /**
-     * Subject or group impacted by event
-     */
-    var subject: Reference? = null
 
     /**
      * When the event occurred
      */
     var date: String? = null
 
-    val reaction: List<Reference> = mutableListOf<Reference>()
-
     /**
-     * Location where adverse event occurred
+     * Description of the adverse event
      */
-    var location: Reference? = null
-
-    /**
-     * Mild | Moderate | Severe
-     */
-    var seriousness: CodeableConcept? = null
-
-    /**
-     * resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown
-     */
-    var outcome: CodeableConcept? = null
-
-    /**
-     * Who recorded the adverse event
-     */
-    var recorder: Reference? = null
+    var description: String? = null
 
     /**
      * Who  was involved in the adverse event or the potential adverse event
@@ -66,17 +34,49 @@ open class AdverseEvent() : DomainResource() {
     var eventParticipant: Reference? = null
 
     /**
-     * Description of the adverse event
+     * Business identifier for the event
      */
-    var description: String? = null
+    var identifier: Identifier? = null
 
-    val suspectEntity: List<AdverseEventSuspectEntity> = mutableListOf<AdverseEventSuspectEntity>()
+    /**
+     * Location where adverse event occurred
+     */
+    var location: Reference? = null
 
-    val subjectMedicalHistory: List<Reference> = mutableListOf<Reference>()
+    /**
+     * resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown
+     */
+    var outcome: CodeableConcept? = null
+
+    val reaction: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Who recorded the adverse event
+     */
+    var recorder: Reference? = null
 
     val referenceDocument: List<Reference> = mutableListOf<Reference>()
 
+    /**
+     * Mild | Moderate | Severe
+     */
+    var seriousness: CodeableConcept? = null
+
     val study: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Subject or group impacted by event
+     */
+    var subject: Reference? = null
+
+    val subjectMedicalHistory: List<Reference> = mutableListOf<Reference>()
+
+    val suspectEntity: List<AdverseEventSuspectEntity> = mutableListOf<AdverseEventSuspectEntity>()
+
+    /**
+     * actual | potential
+     */
+    var type: CodeableConcept? = null
 }
 
 /**
@@ -85,11 +85,6 @@ open class AdverseEvent() : DomainResource() {
  * Describes the entity that is suspected to have caused the adverse event.
  */
 open class AdverseEventSuspectEntity() : BackboneElement() {
-    /**
-     * Refers to the specific entity that caused the adverse event
-     */
-    var instance: Reference = Reference()
-
     /**
      * causality1 | causality2
      */
@@ -101,9 +96,9 @@ open class AdverseEventSuspectEntity() : BackboneElement() {
     var causalityAssessment: CodeableConcept? = null
 
     /**
-     * AdverseEvent.suspectEntity.causalityProductRelatedness
+     * AdverseEvent.suspectEntity.causalityAuthor
      */
-    var causalityProductRelatedness: String? = null
+    var causalityAuthor: Reference? = null
 
     /**
      * method1 | method2
@@ -111,12 +106,17 @@ open class AdverseEventSuspectEntity() : BackboneElement() {
     var causalityMethod: CodeableConcept? = null
 
     /**
-     * AdverseEvent.suspectEntity.causalityAuthor
+     * AdverseEvent.suspectEntity.causalityProductRelatedness
      */
-    var causalityAuthor: Reference? = null
+    var causalityProductRelatedness: String? = null
 
     /**
      * result1 | result2
      */
     var causalityResult: CodeableConcept? = null
+
+    /**
+     * Refers to the specific entity that caused the adverse event
+     */
+    var instance: Reference = Reference()
 }

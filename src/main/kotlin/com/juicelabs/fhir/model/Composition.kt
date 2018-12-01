@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.552 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.952 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,20 +14,9 @@ import kotlin.collections.List
  * A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
  */
 open class Composition() : DomainResource() {
-    /**
-     * Logical identifier of composition (version-independent)
-     */
-    var identifier: Identifier? = null
+    val attester: List<CompositionAttester> = mutableListOf<CompositionAttester>()
 
-    /**
-     * preliminary | final | amended | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * Kind of composition (LOINC if possible)
-     */
-    var type: CodeableConcept = CodeableConcept()
+    val author: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Categorization of Composition
@@ -36,21 +25,45 @@ open class Composition() : DomainResource() {
     var class_fhir: CodeableConcept? = null
 
     /**
-     * Who and/or what the composition is about
+     * As defined by affinity domain
      */
-    var subject: Reference = Reference()
+    var confidentiality: String? = null
 
     /**
-     * Context of the Composition
+     * Organization which maintains the composition
      */
-    var encounter: Reference? = null
+    var custodian: Reference? = null
 
     /**
      * Composition editing time
      */
     var date: String? = null
 
-    val author: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Context of the Composition
+     */
+    var encounter: Reference? = null
+
+    val event: List<CompositionEvent> = mutableListOf<CompositionEvent>()
+
+    /**
+     * Logical identifier of composition (version-independent)
+     */
+    var identifier: Identifier? = null
+
+    val relatesTo: List<CompositionRelatesTo> = mutableListOf<CompositionRelatesTo>()
+
+    val section: List<CompositionSection> = mutableListOf<CompositionSection>()
+
+    /**
+     * preliminary | final | amended | entered-in-error
+     */
+    var status: String? = null
+
+    /**
+     * Who and/or what the composition is about
+     */
+    var subject: Reference = Reference()
 
     /**
      * Human Readable name/title
@@ -58,22 +71,9 @@ open class Composition() : DomainResource() {
     var title: String? = null
 
     /**
-     * As defined by affinity domain
+     * Kind of composition (LOINC if possible)
      */
-    var confidentiality: String? = null
-
-    val attester: List<CompositionAttester> = mutableListOf<CompositionAttester>()
-
-    /**
-     * Organization which maintains the composition
-     */
-    var custodian: Reference? = null
-
-    val relatesTo: List<CompositionRelatesTo> = mutableListOf<CompositionRelatesTo>()
-
-    val event: List<CompositionEvent> = mutableListOf<CompositionEvent>()
-
-    val section: List<CompositionSection> = mutableListOf<CompositionSection>()
+    var type: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -85,14 +85,14 @@ open class CompositionAttester() : BackboneElement() {
     val mode: List<String> = mutableListOf<String>()
 
     /**
-     * When the composition was attested
-     */
-    var time: String? = null
-
-    /**
      * Who attested the composition
      */
     var party: Reference? = null
+
+    /**
+     * When the composition was attested
+     */
+    var time: String? = null
 }
 
 /**
@@ -125,12 +125,12 @@ open class CompositionRelatesTo() : BackboneElement() {
 open class CompositionEvent() : BackboneElement() {
     val code: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
+    val detail: List<Reference> = mutableListOf<Reference>()
+
     /**
      * The period covered by the documentation
      */
     var period: Period? = null
-
-    val detail: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -140,19 +140,16 @@ open class CompositionEvent() : BackboneElement() {
  */
 open class CompositionSection() : BackboneElement() {
     /**
-     * Label for section (e.g. for ToC)
-     */
-    var title: String? = null
-
-    /**
      * Classification of section (recommended)
      */
     var code: CodeableConcept? = null
 
     /**
-     * Text summary of the section, for human interpretation
+     * Why the section is empty
      */
-    var text: Narrative? = null
+    var emptyReason: CodeableConcept? = null
+
+    val entry: List<Reference> = mutableListOf<Reference>()
 
     /**
      * working | snapshot | changes
@@ -164,12 +161,15 @@ open class CompositionSection() : BackboneElement() {
      */
     var orderedBy: CodeableConcept? = null
 
-    val entry: List<Reference> = mutableListOf<Reference>()
+    val section: List<CompositionSection> = mutableListOf<CompositionSection>()
 
     /**
-     * Why the section is empty
+     * Text summary of the section, for human interpretation
      */
-    var emptyReason: CodeableConcept? = null
+    var text: Narrative? = null
 
-    val section: List<CompositionSection> = mutableListOf<CompositionSection>()
+    /**
+     * Label for section (e.g. for ToC)
+     */
+    var title: String? = null
 }

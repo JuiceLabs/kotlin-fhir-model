@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.402 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.870 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,6 +12,11 @@ package com.juicelabs.fhir.model
  */
 open class Binary() : Resource() {
     /**
+     * The actual content
+     */
+    var content: String? = null
+
+    /**
      * MimeType of the binary content
      */
     var contentType: String? = null
@@ -20,9 +25,4 @@ open class Binary() : Resource() {
      * Access Control Management
      */
     var securityContext: Reference? = null
-
-    /**
-     * The actual content
-     */
-    var content: String? = null
 }

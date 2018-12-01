@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.814 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.117 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,37 +13,12 @@ import kotlin.collections.List
  * This resource provides payment details and claim references supporting a bulk payment.
  */
 open class PaymentReconciliation() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * active | cancelled | draft | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * Period covered
-     */
-    var period: Period? = null
-
     /**
      * Creation date
      */
     var created: String? = null
 
-    /**
-     * Insurer
-     */
-    var organization: Reference? = null
-
-    /**
-     * Claim reference
-     */
-    var request: Reference? = null
-
-    /**
-     * complete | error | partial
-     */
-    var outcome: CodeableConcept? = null
+    val detail: List<PaymentReconciliationDetail> = mutableListOf<PaymentReconciliationDetail>()
 
     /**
      * Disposition Message
@@ -51,29 +26,54 @@ open class PaymentReconciliation() : DomainResource() {
     var disposition: String? = null
 
     /**
-     * Responsible practitioner
+     * Printed Form Identifier
      */
-    var requestProvider: Reference? = null
+    var form: CodeableConcept? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Insurer
+     */
+    var organization: Reference? = null
+
+    /**
+     * complete | error | partial
+     */
+    var outcome: CodeableConcept? = null
+
+    /**
+     * Period covered
+     */
+    var period: Period? = null
+
+    val processNote: List<PaymentReconciliationProcessNote> =
+            mutableListOf<PaymentReconciliationProcessNote>()
+
+    /**
+     * Claim reference
+     */
+    var request: Reference? = null
 
     /**
      * Responsible organization
      */
     var requestOrganization: Reference? = null
 
-    val detail: List<PaymentReconciliationDetail> = mutableListOf<PaymentReconciliationDetail>()
+    /**
+     * Responsible practitioner
+     */
+    var requestProvider: Reference? = null
 
     /**
-     * Printed Form Identifier
+     * active | cancelled | draft | entered-in-error
      */
-    var form: CodeableConcept? = null
+    var status: String? = null
 
     /**
      * Total amount of Payment
      */
     var total: Money? = null
-
-    val processNote: List<PaymentReconciliationProcessNote> =
-            mutableListOf<PaymentReconciliationProcessNote>()
 }
 
 /**
@@ -83,9 +83,19 @@ open class PaymentReconciliation() : DomainResource() {
  */
 open class PaymentReconciliationDetail() : BackboneElement() {
     /**
-     * Type code
+     * Amount being paid
      */
-    var type: CodeableConcept = CodeableConcept()
+    var amount: Money? = null
+
+    /**
+     * Invoice date
+     */
+    var date: String? = null
+
+    /**
+     * Organization which is receiving the payment
+     */
+    var payee: Reference? = null
 
     /**
      * Claim
@@ -103,19 +113,9 @@ open class PaymentReconciliationDetail() : BackboneElement() {
     var submitter: Reference? = null
 
     /**
-     * Organization which is receiving the payment
+     * Type code
      */
-    var payee: Reference? = null
-
-    /**
-     * Invoice date
-     */
-    var date: String? = null
-
-    /**
-     * Amount being paid
-     */
-    var amount: Money? = null
+    var type: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -125,12 +125,12 @@ open class PaymentReconciliationDetail() : BackboneElement() {
  */
 open class PaymentReconciliationProcessNote() : BackboneElement() {
     /**
-     * display | print | printoper
-     */
-    var type: CodeableConcept? = null
-
-    /**
      * Comment on the processing
      */
     var text: String? = null
+
+    /**
+     * display | print | printoper
+     */
+    var type: CodeableConcept? = null
 }

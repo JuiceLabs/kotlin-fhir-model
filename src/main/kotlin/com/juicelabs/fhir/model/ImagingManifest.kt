@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.743 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.075 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,6 +14,21 @@ import kotlin.collections.List
  */
 open class ImagingManifest() : DomainResource() {
     /**
+     * Author (human or machine)
+     */
+    var author: Reference? = null
+
+    /**
+     * Time when the selection of instances was made
+     */
+    var authoringTime: String? = null
+
+    /**
+     * Description text
+     */
+    var description: String? = null
+
+    /**
      * SOP Instance UID
      */
     var identifier: Identifier? = null
@@ -22,21 +37,6 @@ open class ImagingManifest() : DomainResource() {
      * Patient of the selected objects
      */
     var patient: Reference = Reference()
-
-    /**
-     * Time when the selection of instances was made
-     */
-    var authoringTime: String? = null
-
-    /**
-     * Author (human or machine)
-     */
-    var author: Reference? = null
-
-    /**
-     * Description text
-     */
-    var description: String? = null
 
     val study: List<ImagingManifestStudy> = mutableListOf<ImagingManifestStudy>()
 }
@@ -47,19 +47,19 @@ open class ImagingManifest() : DomainResource() {
  * Study identity and locating information of the DICOM SOP instances in the selection.
  */
 open class ImagingManifestStudy() : BackboneElement() {
-    /**
-     * Study instance UID
-     */
-    var uid: String? = null
+    val endpoint: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Reference to ImagingStudy
      */
     var imagingStudy: Reference? = null
 
-    val endpoint: List<Reference> = mutableListOf<Reference>()
-
     val series: List<ImagingManifestStudySeries> = mutableListOf<ImagingManifestStudySeries>()
+
+    /**
+     * Study instance UID
+     */
+    var uid: String? = null
 }
 
 /**
@@ -68,15 +68,15 @@ open class ImagingManifestStudy() : BackboneElement() {
  * Series identity and locating information of the DICOM SOP instances in the selection.
  */
 open class ImagingManifestStudySeries() : BackboneElement() {
-    /**
-     * Series instance UID
-     */
-    var uid: String? = null
-
     val endpoint: List<Reference> = mutableListOf<Reference>()
 
     val instance: List<ImagingManifestStudySeriesInstance> =
             mutableListOf<ImagingManifestStudySeriesInstance>()
+
+    /**
+     * Series instance UID
+     */
+    var uid: String? = null
 }
 
 /**

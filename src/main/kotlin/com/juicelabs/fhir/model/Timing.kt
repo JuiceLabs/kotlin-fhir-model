@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.676 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.042 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,17 +14,17 @@ import kotlin.collections.List
  * Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.
  */
 open class Timing() : Element() {
+    /**
+     * BID | TID | QID | AM | PM | QD | QOD | Q4H | Q6H +
+     */
+    var code: CodeableConcept? = null
+
     val event: List<String> = mutableListOf<String>()
 
     /**
      * When the event is to occur
      */
     var repeat: TimingRepeat? = null
-
-    /**
-     * BID | TID | QID | AM | PM | QD | QOD | Q4H | Q6H +
-     */
-    var code: CodeableConcept? = null
 }
 
 /**
@@ -41,12 +41,12 @@ open class TimingRepeat() : Element() {
     /**
      * Length/Range of lengths, or (Start and/or end) limits
      */
-    var boundsRange: Range? = null
+    var boundsPeriod: Period? = null
 
     /**
      * Length/Range of lengths, or (Start and/or end) limits
      */
-    var boundsPeriod: Period? = null
+    var boundsRange: Range? = null
 
     /**
      * Number of times to repeat
@@ -57,6 +57,8 @@ open class TimingRepeat() : Element() {
      * Maximum number of times to repeat
      */
     var countMax: Int? = null
+
+    val dayOfWeek: List<String> = mutableListOf<String>()
 
     /**
      * How long when it happens
@@ -84,6 +86,11 @@ open class TimingRepeat() : Element() {
     var frequencyMax: Int? = null
 
     /**
+     * Minutes from event (before or after)
+     */
+    var offset: Int? = null
+
+    /**
      * Event occurs frequency times per period
      */
     var period: Float? = null
@@ -98,15 +105,8 @@ open class TimingRepeat() : Element() {
      */
     var periodUnit: String? = null
 
-    val dayOfWeek: List<String> = mutableListOf<String>()
-
     val timeOfDay: List<String> = mutableListOf<String>()
 
     @SerializedName("when")
     val when_fhir: List<String> = mutableListOf<String>()
-
-    /**
-     * Minutes from event (before or after)
-     */
-    var offset: Int? = null
 }

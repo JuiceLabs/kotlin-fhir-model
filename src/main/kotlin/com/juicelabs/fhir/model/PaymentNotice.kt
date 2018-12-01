@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.477 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.911 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,27 @@ import kotlin.collections.List
  * This resource provides the status of the payment for goods and services rendered, and the request and response resource references.
  */
 open class PaymentNotice() : DomainResource() {
+    /**
+     * Creation date
+     */
+    var created: String? = null
+
     val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
-     * active | cancelled | draft | entered-in-error
+     * Responsible organization
      */
-    var status: String? = null
+    var organization: Reference? = null
+
+    /**
+     * Whether payment has been sent or cleared
+     */
+    var paymentStatus: CodeableConcept? = null
+
+    /**
+     * Responsible practitioner
+     */
+    var provider: Reference? = null
 
     /**
      * Request reference
@@ -31,32 +46,17 @@ open class PaymentNotice() : DomainResource() {
     var response: Reference? = null
 
     /**
+     * active | cancelled | draft | entered-in-error
+     */
+    var status: String? = null
+
+    /**
      * Payment or clearing date
      */
     var statusDate: String? = null
 
     /**
-     * Creation date
-     */
-    var created: String? = null
-
-    /**
      * Insurer or Regulatory body
      */
     var target: Reference? = null
-
-    /**
-     * Responsible practitioner
-     */
-    var provider: Reference? = null
-
-    /**
-     * Responsible organization
-     */
-    var organization: Reference? = null
-
-    /**
-     * Whether payment has been sent or cleared
-     */
-    var paymentStatus: CodeableConcept? = null
 }

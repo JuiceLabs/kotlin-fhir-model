@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.480 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.913 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,27 +13,38 @@ import kotlin.collections.List
  * This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.
  */
 open class ProcessRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * active | cancelled | draft | entered-in-error
-     */
-    var status: String? = null
-
     /**
      * cancel | poll | reprocess | status
      */
     var action: String? = null
 
     /**
-     * Party which is the target of the request
-     */
-    var target: Reference? = null
-
-    /**
      * Creation date
      */
     var created: String? = null
+
+    val exclude: List<String> = mutableListOf<String>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val include: List<String> = mutableListOf<String>()
+
+    val item: List<ProcessRequestItem> = mutableListOf<ProcessRequestItem>()
+
+    /**
+     * Remove history
+     */
+    var nullify: Boolean? = null
+
+    /**
+     * Responsible organization
+     */
+    var organization: Reference? = null
+
+    /**
+     * Selection period
+     */
+    var period: Period? = null
 
     /**
      * Responsible practitioner
@@ -41,9 +52,9 @@ open class ProcessRequest() : DomainResource() {
     var provider: Reference? = null
 
     /**
-     * Responsible organization
+     * Reference number/string
      */
-    var organization: Reference? = null
+    var reference: String? = null
 
     /**
      * Reference to the Request resource
@@ -56,25 +67,14 @@ open class ProcessRequest() : DomainResource() {
     var response: Reference? = null
 
     /**
-     * Remove history
+     * active | cancelled | draft | entered-in-error
      */
-    var nullify: Boolean? = null
+    var status: String? = null
 
     /**
-     * Reference number/string
+     * Party which is the target of the request
      */
-    var reference: String? = null
-
-    val item: List<ProcessRequestItem> = mutableListOf<ProcessRequestItem>()
-
-    val include: List<String> = mutableListOf<String>()
-
-    val exclude: List<String> = mutableListOf<String>()
-
-    /**
-     * Selection period
-     */
-    var period: Period? = null
+    var target: Reference? = null
 }
 
 /**

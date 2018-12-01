@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.599 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.981 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,19 +12,9 @@ package com.juicelabs.fhir.model
  */
 open class ContactPoint() : Element() {
     /**
-     * phone | fax | email | pager | url | sms | other
+     * Time period when the contact point was/is in use
      */
-    var system: String? = null
-
-    /**
-     * The actual contact point details
-     */
-    var value: String? = null
-
-    /**
-     * home | work | temp | old | mobile - purpose of this contact point
-     */
-    var use: String? = null
+    var period: Period? = null
 
     /**
      * Specify preferred order of use (1 = highest)
@@ -32,7 +22,17 @@ open class ContactPoint() : Element() {
     var rank: Int? = null
 
     /**
-     * Time period when the contact point was/is in use
+     * phone | fax | email | pager | url | sms | other
      */
-    var period: Period? = null
+    var system: String? = null
+
+    /**
+     * home | work | temp | old | mobile - purpose of this contact point
+     */
+    var use: String? = null
+
+    /**
+     * The actual contact point details
+     */
+    var value: String? = null
 }

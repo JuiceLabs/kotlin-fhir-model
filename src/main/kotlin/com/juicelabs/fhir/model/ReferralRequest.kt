@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.311 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.813 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,50 +13,38 @@ import kotlin.collections.List
  * Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.
  */
 open class ReferralRequest() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    val definition: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Date of creation/activation
+     */
+    var authoredOn: String? = null
 
     val basedOn: List<Reference> = mutableListOf<Reference>()
 
-    val replaces: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Originating encounter
+     */
+    var context: Reference? = null
+
+    val definition: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * A textual description of the referral
+     */
+    var description: String? = null
 
     /**
      * Composite request this is part of
      */
     var groupIdentifier: Identifier? = null
 
-    /**
-     * draft | active | suspended | cancelled | completed | entered-in-error | unknown
-     */
-    var status: String? = null
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
      * proposal | plan | order
      */
     var intent: String? = null
 
-    /**
-     * Referral/Transition of care request type
-     */
-    var type: CodeableConcept? = null
-
-    /**
-     * Urgency of referral / transfer of care request
-     */
-    var priority: String? = null
-
-    val serviceRequested: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Patient referred to care or transfer
-     */
-    var subject: Reference = Reference()
-
-    /**
-     * Originating encounter
-     */
-    var context: Reference? = null
+    val note: List<Annotation> = mutableListOf<Annotation>()
 
     /**
      * When the service(s) requested in the referral should occur
@@ -69,36 +57,48 @@ open class ReferralRequest() : DomainResource() {
     var occurrencePeriod: Period? = null
 
     /**
-     * Date of creation/activation
+     * Urgency of referral / transfer of care request
      */
-    var authoredOn: String? = null
+    var priority: String? = null
+
+    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val reasonReference: List<Reference> = mutableListOf<Reference>()
+
+    val recipient: List<Reference> = mutableListOf<Reference>()
+
+    val relevantHistory: List<Reference> = mutableListOf<Reference>()
+
+    val replaces: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Who/what is requesting service
      */
     var requester: ReferralRequestRequester? = null
 
+    val serviceRequested: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     /**
      * The clinical specialty (discipline) that the referral is requested for
      */
     var specialty: CodeableConcept? = null
 
-    val recipient: List<Reference> = mutableListOf<Reference>()
-
-    val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val reasonReference: List<Reference> = mutableListOf<Reference>()
+    /**
+     * draft | active | suspended | cancelled | completed | entered-in-error | unknown
+     */
+    var status: String? = null
 
     /**
-     * A textual description of the referral
+     * Patient referred to care or transfer
      */
-    var description: String? = null
+    var subject: Reference = Reference()
 
     val supportingInfo: List<Reference> = mutableListOf<Reference>()
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
-
-    val relevantHistory: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Referral/Transition of care request type
+     */
+    var type: CodeableConcept? = null
 }
 
 /**

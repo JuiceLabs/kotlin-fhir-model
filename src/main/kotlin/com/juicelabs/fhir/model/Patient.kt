@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.793 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.102 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,26 +13,26 @@ import kotlin.collections.List
  * Demographics and other administrative information about an individual or animal receiving care or other health-related services.
  */
 open class Patient() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
     /**
      * Whether this patient's record is in active use
      */
     var active: Boolean? = null
 
-    val name: List<HumanName> = mutableListOf<HumanName>()
-
-    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
+    val address: List<Address> = mutableListOf<Address>()
 
     /**
-     * male | female | other | unknown
+     * This patient is known to be an animal (non-human)
      */
-    var gender: String? = null
+    var animal: PatientAnimal? = null
 
     /**
      * The date of birth for the individual
      */
     var birthDate: String? = null
+
+    val communication: List<PatientCommunication> = mutableListOf<PatientCommunication>()
+
+    val contact: List<PatientContact> = mutableListOf<PatientContact>()
 
     /**
      * Indicates if the individual is deceased or not
@@ -44,7 +44,21 @@ open class Patient() : DomainResource() {
      */
     var deceasedDateTime: String? = null
 
-    val address: List<Address> = mutableListOf<Address>()
+    /**
+     * male | female | other | unknown
+     */
+    var gender: String? = null
+
+    val generalPractitioner: List<Reference> = mutableListOf<Reference>()
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val link: List<PatientLink> = mutableListOf<PatientLink>()
+
+    /**
+     * Organization that is the custodian of the patient record
+     */
+    var managingOrganization: Reference? = null
 
     /**
      * Marital (civil) status of a patient
@@ -61,25 +75,11 @@ open class Patient() : DomainResource() {
      */
     var multipleBirthInteger: Int? = null
 
+    val name: List<HumanName> = mutableListOf<HumanName>()
+
     val photo: List<Attachment> = mutableListOf<Attachment>()
 
-    val contact: List<PatientContact> = mutableListOf<PatientContact>()
-
-    /**
-     * This patient is known to be an animal (non-human)
-     */
-    var animal: PatientAnimal? = null
-
-    val communication: List<PatientCommunication> = mutableListOf<PatientCommunication>()
-
-    val generalPractitioner: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Organization that is the custodian of the patient record
-     */
-    var managingOrganization: Reference? = null
-
-    val link: List<PatientLink> = mutableListOf<PatientLink>()
+    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
 }
 
 /**
@@ -88,15 +88,6 @@ open class Patient() : DomainResource() {
  * A contact party (e.g. guardian, partner, friend) for the patient.
  */
 open class PatientContact() : BackboneElement() {
-    val relationship: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * A name associated with the contact person
-     */
-    var name: HumanName? = null
-
-    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
-
     /**
      * Address for the contact person
      */
@@ -108,6 +99,11 @@ open class PatientContact() : BackboneElement() {
     var gender: String? = null
 
     /**
+     * A name associated with the contact person
+     */
+    var name: HumanName? = null
+
+    /**
      * Organization that is associated with the contact
      */
     var organization: Reference? = null
@@ -116,6 +112,10 @@ open class PatientContact() : BackboneElement() {
      * The period during which this contact person or organization is valid to be contacted relating to this patient
      */
     var period: Period? = null
+
+    val relationship: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val telecom: List<ContactPoint> = mutableListOf<ContactPoint>()
 }
 
 /**
@@ -125,11 +125,6 @@ open class PatientContact() : BackboneElement() {
  */
 open class PatientAnimal() : BackboneElement() {
     /**
-     * E.g. Dog, Cow
-     */
-    var species: CodeableConcept = CodeableConcept()
-
-    /**
      * E.g. Poodle, Angus
      */
     var breed: CodeableConcept? = null
@@ -138,6 +133,11 @@ open class PatientAnimal() : BackboneElement() {
      * E.g. Neutered, Intact
      */
     var genderStatus: CodeableConcept? = null
+
+    /**
+     * E.g. Dog, Cow
+     */
+    var species: CodeableConcept = CodeableConcept()
 }
 
 /**

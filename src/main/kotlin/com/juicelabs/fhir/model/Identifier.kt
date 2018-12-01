@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.342 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.832 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -12,24 +12,9 @@ package com.juicelabs.fhir.model
  */
 open class Identifier() : Element() {
     /**
-     * usual | official | temp | secondary (If known)
+     * Organization that issued id (may be just text)
      */
-    var use: String? = null
-
-    /**
-     * Description of identifier
-     */
-    var type: CodeableConcept? = null
-
-    /**
-     * The namespace for the identifier value
-     */
-    var system: String? = null
-
-    /**
-     * The value that is unique
-     */
-    var value: String? = null
+    var assigner: Reference? = null
 
     /**
      * Time period when id is/was valid for use
@@ -37,7 +22,22 @@ open class Identifier() : Element() {
     var period: Period? = null
 
     /**
-     * Organization that issued id (may be just text)
+     * The namespace for the identifier value
      */
-    var assigner: Reference? = null
+    var system: String? = null
+
+    /**
+     * Description of identifier
+     */
+    var type: CodeableConcept? = null
+
+    /**
+     * usual | official | temp | secondary (If known)
+     */
+    var use: String? = null
+
+    /**
+     * The value that is unique
+     */
+    var value: String? = null
 }

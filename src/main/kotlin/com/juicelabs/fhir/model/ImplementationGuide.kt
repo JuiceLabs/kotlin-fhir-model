@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.653 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.026 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,51 +14,9 @@ import kotlin.collections.List
  * A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
  */
 open class ImplementationGuide() : DomainResource() {
-    /**
-     * Logical URI to reference this implementation guide (globally unique)
-     */
-    var url: String? = null
-
-    /**
-     * Business version of the implementation guide
-     */
-    var version: String? = null
-
-    /**
-     * Name for this implementation guide (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * Date this was last changed
-     */
-    var date: String? = null
-
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
+    val binary: List<String> = mutableListOf<String>()
 
     val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Natural language description of the implementation guide
-     */
-    var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * Use and/or publishing restrictions
@@ -66,25 +24,67 @@ open class ImplementationGuide() : DomainResource() {
     var copyright: String? = null
 
     /**
-     * FHIR Version this Implementation Guide targets
+     * Date this was last changed
      */
-    var fhirVersion: String? = null
+    var date: String? = null
 
     val dependency: List<ImplementationGuideDependency> =
             mutableListOf<ImplementationGuideDependency>()
 
-    @SerializedName("package")
-    val package_fhir: List<ImplementationGuidePackage> = mutableListOf<ImplementationGuidePackage>()
+    /**
+     * Natural language description of the implementation guide
+     */
+    var description: String? = null
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    /**
+     * FHIR Version this Implementation Guide targets
+     */
+    var fhirVersion: String? = null
 
     @SerializedName("global")
     val global_fhir: List<ImplementationGuideGlobal> = mutableListOf<ImplementationGuideGlobal>()
 
-    val binary: List<String> = mutableListOf<String>()
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Name for this implementation guide (computer friendly)
+     */
+    var name: String? = null
+
+    @SerializedName("package")
+    val package_fhir: List<ImplementationGuidePackage> = mutableListOf<ImplementationGuidePackage>()
 
     /**
      * Page/Section in the Guide
      */
     var page: ImplementationGuidePage? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Logical URI to reference this implementation guide (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the implementation guide
+     */
+    var version: String? = null
 }
 
 /**
@@ -111,14 +111,14 @@ open class ImplementationGuideDependency() : BackboneElement() {
  */
 open class ImplementationGuidePackage() : BackboneElement() {
     /**
-     * Name used .page.package
-     */
-    var name: String? = null
-
-    /**
      * Human readable text describing the package
      */
     var description: String? = null
+
+    /**
+     * Name used .page.package
+     */
+    var name: String? = null
 
     val resource: List<ImplementationGuidePackageResource> =
             mutableListOf<ImplementationGuidePackageResource>()
@@ -131,14 +131,9 @@ open class ImplementationGuidePackage() : BackboneElement() {
  */
 open class ImplementationGuidePackageResource() : BackboneElement() {
     /**
-     * If not an example, has its normal meaning
+     * Short code to identify the resource
      */
-    var example: Boolean? = null
-
-    /**
-     * Human Name for the resource
-     */
-    var name: String? = null
+    var acronym: String? = null
 
     /**
      * Reason why included in guide
@@ -146,14 +141,19 @@ open class ImplementationGuidePackageResource() : BackboneElement() {
     var description: String? = null
 
     /**
-     * Short code to identify the resource
+     * If not an example, has its normal meaning
      */
-    var acronym: String? = null
+    var example: Boolean? = null
 
     /**
-     * Location of the resource
+     * Resource this is an example of (if applicable)
      */
-    var sourceUri: String? = null
+    var exampleFor: Reference? = null
+
+    /**
+     * Human Name for the resource
+     */
+    var name: String? = null
 
     /**
      * Location of the resource
@@ -161,9 +161,9 @@ open class ImplementationGuidePackageResource() : BackboneElement() {
     var sourceReference: Reference = Reference()
 
     /**
-     * Resource this is an example of (if applicable)
+     * Location of the resource
      */
-    var exampleFor: Reference? = null
+    var sourceUri: String? = null
 }
 
 /**
@@ -173,14 +173,14 @@ open class ImplementationGuidePackageResource() : BackboneElement() {
  */
 open class ImplementationGuideGlobal() : BackboneElement() {
     /**
-     * Type this profiles applies to
-     */
-    var type: String? = null
-
-    /**
      * Profile that all resources must conform to
      */
     var profile: Reference = Reference()
+
+    /**
+     * Type this profiles applies to
+     */
+    var type: String? = null
 }
 
 /**
@@ -189,6 +189,21 @@ open class ImplementationGuideGlobal() : BackboneElement() {
  * A page / section in the implementation guide. The root page is the implementation guide home page.
  */
 open class ImplementationGuidePage() : BackboneElement() {
+    /**
+     * Format of the page (e.g. html, markdown, etc.)
+     */
+    var format: String? = null
+
+    /**
+     * page | example | list | include | directory | dictionary | toc | resource
+     */
+    var kind: String? = null
+
+    @SerializedName("package")
+    val package_fhir: List<String> = mutableListOf<String>()
+
+    val page: List<ImplementationGuidePage> = mutableListOf<ImplementationGuidePage>()
+
     /**
      * Where to find that page
      */
@@ -199,20 +214,5 @@ open class ImplementationGuidePage() : BackboneElement() {
      */
     var title: String? = null
 
-    /**
-     * page | example | list | include | directory | dictionary | toc | resource
-     */
-    var kind: String? = null
-
     val type: List<String> = mutableListOf<String>()
-
-    @SerializedName("package")
-    val package_fhir: List<String> = mutableListOf<String>()
-
-    /**
-     * Format of the page (e.g. html, markdown, etc.)
-     */
-    var format: String? = null
-
-    val page: List<ImplementationGuidePage> = mutableListOf<ImplementationGuidePage>()
 }

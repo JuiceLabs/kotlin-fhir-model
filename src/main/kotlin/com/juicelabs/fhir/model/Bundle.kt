@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.569 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.964 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,29 +13,29 @@ import kotlin.collections.List
  * A container for a collection of resources.
  */
 open class Bundle() : Resource() {
+    val entry: List<BundleEntry> = mutableListOf<BundleEntry>()
+
     /**
      * Persistent identifier for the bundle
      */
     var identifier: Identifier? = null
 
+    val link: List<BundleLink> = mutableListOf<BundleLink>()
+
     /**
-     * document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
+     * Digital Signature
      */
-    var type: String? = null
+    var signature: Signature? = null
 
     /**
      * If search, the total number of matches
      */
     var total: Int? = null
 
-    val link: List<BundleLink> = mutableListOf<BundleLink>()
-
-    val entry: List<BundleEntry> = mutableListOf<BundleEntry>()
-
     /**
-     * Digital Signature
+     * document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
      */
-    var signature: Signature? = null
+    var type: String? = null
 }
 
 /**
@@ -61,22 +61,12 @@ open class BundleLink() : BackboneElement() {
  * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
  */
 open class BundleEntry() : BackboneElement() {
-    val link: List<BundleLink> = mutableListOf<BundleLink>()
-
     /**
      * Absolute URL for resource (server address, or UUID/OID)
      */
     var fullUrl: String? = null
 
-    /**
-     * A resource in the bundle
-     */
-    var resource: Resource? = null
-
-    /**
-     * Search related information
-     */
-    var search: BundleEntrySearch? = null
+    val link: List<BundleLink> = mutableListOf<BundleLink>()
 
     /**
      * Transaction Related Information
@@ -84,9 +74,19 @@ open class BundleEntry() : BackboneElement() {
     var request: BundleEntryRequest? = null
 
     /**
+     * A resource in the bundle
+     */
+    var resource: Resource? = null
+
+    /**
      * Transaction Related Information
      */
     var response: BundleEntryResponse? = null
+
+    /**
+     * Search related information
+     */
+    var search: BundleEntrySearch? = null
 }
 
 /**
@@ -113,6 +113,26 @@ open class BundleEntrySearch() : BackboneElement() {
  */
 open class BundleEntryRequest() : BackboneElement() {
     /**
+     * For managing update contention
+     */
+    var ifMatch: String? = null
+
+    /**
+     * For managing update contention
+     */
+    var ifModifiedSince: String? = null
+
+    /**
+     * For conditional creates
+     */
+    var ifNoneExist: String? = null
+
+    /**
+     * For managing cache currency
+     */
+    var ifNoneMatch: String? = null
+
+    /**
      * GET | POST | PUT | DELETE
      */
     var method: String? = null
@@ -121,26 +141,6 @@ open class BundleEntryRequest() : BackboneElement() {
      * URL for HTTP equivalent of this entry
      */
     var url: String? = null
-
-    /**
-     * For managing cache currency
-     */
-    var ifNoneMatch: String? = null
-
-    /**
-     * For managing update contention
-     */
-    var ifModifiedSince: String? = null
-
-    /**
-     * For managing update contention
-     */
-    var ifMatch: String? = null
-
-    /**
-     * For conditional creates
-     */
-    var ifNoneExist: String? = null
 }
 
 /**
@@ -149,16 +149,6 @@ open class BundleEntryRequest() : BackboneElement() {
  * Additional information about how this entry should be processed as part of a transaction.
  */
 open class BundleEntryResponse() : BackboneElement() {
-    /**
-     * Status response code (text optional)
-     */
-    var status: String? = null
-
-    /**
-     * The location, if the operation returns a location
-     */
-    var location: String? = null
-
     /**
      * The etag for the resource (if relevant)
      */
@@ -170,7 +160,17 @@ open class BundleEntryResponse() : BackboneElement() {
     var lastModified: String? = null
 
     /**
+     * The location, if the operation returns a location
+     */
+    var location: String? = null
+
+    /**
      * OperationOutcome with hints and warnings (for batch/transaction)
      */
     var outcome: Resource? = null
+
+    /**
+     * Status response code (text optional)
+     */
+    var status: String? = null
 }

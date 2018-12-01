@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.640 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.016 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,12 +13,52 @@ import kotlin.collections.List
  * A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
  */
 open class Appointment() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * The style of appointment or patient that has been booked in the slot (not service type)
+     */
+    var appointmentType: CodeableConcept? = null
 
     /**
-     * proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error
+     * Additional comments
      */
-    var status: String? = null
+    var comment: String? = null
+
+    /**
+     * The date that this appointment was initially created
+     */
+    var created: String? = null
+
+    /**
+     * Shown on a subject line in a meeting request, or appointment list
+     */
+    var description: String? = null
+
+    /**
+     * When appointment is to conclude
+     */
+    var end: String? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val incomingReferral: List<Reference> = mutableListOf<Reference>()
+
+    val indication: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Can be less than start/end (e.g. estimate)
+     */
+    var minutesDuration: Int? = null
+
+    val participant: List<AppointmentParticipant> = mutableListOf<AppointmentParticipant>()
+
+    /**
+     * Used to make informed decisions if needing to re-prioritize
+     */
+    var priority: Int? = null
+
+    val reason: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val requestedPeriod: List<Period> = mutableListOf<Period>()
 
     /**
      * A broad categorisation of the service that is to be performed during this appointment
@@ -27,28 +67,9 @@ open class Appointment() : DomainResource() {
 
     val serviceType: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
+    val slot: List<Reference> = mutableListOf<Reference>()
+
     val specialty: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * The style of appointment or patient that has been booked in the slot (not service type)
-     */
-    var appointmentType: CodeableConcept? = null
-
-    val reason: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val indication: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Used to make informed decisions if needing to re-prioritize
-     */
-    var priority: Int? = null
-
-    /**
-     * Shown on a subject line in a meeting request, or appointment list
-     */
-    var description: String? = null
-
-    val supportingInformation: List<Reference> = mutableListOf<Reference>()
 
     /**
      * When appointment is to take place
@@ -56,32 +77,11 @@ open class Appointment() : DomainResource() {
     var start: String? = null
 
     /**
-     * When appointment is to conclude
+     * proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error
      */
-    var end: String? = null
+    var status: String? = null
 
-    /**
-     * Can be less than start/end (e.g. estimate)
-     */
-    var minutesDuration: Int? = null
-
-    val slot: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * The date that this appointment was initially created
-     */
-    var created: String? = null
-
-    /**
-     * Additional comments
-     */
-    var comment: String? = null
-
-    val incomingReferral: List<Reference> = mutableListOf<Reference>()
-
-    val participant: List<AppointmentParticipant> = mutableListOf<AppointmentParticipant>()
-
-    val requestedPeriod: List<Period> = mutableListOf<Period>()
+    val supportingInformation: List<Reference> = mutableListOf<Reference>()
 }
 
 /**
@@ -90,8 +90,6 @@ open class Appointment() : DomainResource() {
  * List of participants involved in the appointment.
  */
 open class AppointmentParticipant() : BackboneElement() {
-    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
     /**
      * Person, Location/HealthcareService or Device
      */
@@ -106,4 +104,6 @@ open class AppointmentParticipant() : BackboneElement() {
      * accepted | declined | tentative | needs-action
      */
     var status: String? = null
+
+    val type: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 }

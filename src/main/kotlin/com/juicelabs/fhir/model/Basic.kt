@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.738 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.072 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,7 +13,10 @@ import kotlin.collections.List
  * Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
  */
 open class Basic() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    /**
+     * Who created
+     */
+    var author: Reference? = null
 
     /**
      * Kind of Resource
@@ -21,17 +24,14 @@ open class Basic() : DomainResource() {
     var code: CodeableConcept = CodeableConcept()
 
     /**
-     * Identifies the focus of this resource
-     */
-    var subject: Reference? = null
-
-    /**
      * When created
      */
     var created: String? = null
 
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
     /**
-     * Who created
+     * Identifies the focus of this resource
      */
-    var author: Reference? = null
+    var subject: Reference? = null
 }

@@ -26,7 +26,6 @@ import com.google.gson.internal.Streams;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.juicelabs.fhir.model.Resource;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -251,14 +250,8 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
             @Override
             public void write(JsonWriter out, R value) throws IOException {
 
-                String label = ((Resource) value).getResourceType(); // todo used the passed in class
-
-                Class<?> classType = null;
-                try {
-                    classType = Class.forName("com.juicelabs.fhir.model." + label);
-                } catch (ClassNotFoundException e) {
-                    throw new JsonParseException("cannot serialize " + baseType + " subtype named " + label + " class not found.");
-                }
+                Class<?> classType = value.getClass();
+                System.out.println("value.getClass().getName() = " + value.getClass().getName());
 
                 @SuppressWarnings("unchecked") // registration requires that subtype extends T
                         TypeAdapter<R> delegate = (TypeAdapter<R>) gson.getDelegateAdapter(null, TypeToken.get(classType));
@@ -281,7 +274,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
                     throw new JsonParseException("cannot serialize " + value.getClass().getName()
                                                          + " because it already defines a field named " + typeFieldName);
                 }
-                clone.add(typeFieldName, new JsonPrimitive(label));
+                clone.add(typeFieldName, new JsonPrimitive(classType.getSimpleName()));
 
                 for (Map.Entry<String, JsonElement> e : jsonObject.entrySet()) {
                     clone.add(e.getKey(), e.getValue());

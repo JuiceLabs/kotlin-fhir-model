@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.747 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.081 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,60 +14,11 @@ import kotlin.collections.List
  */
 open class CapabilityStatement() : DomainResource() {
     /**
-     * Logical URI to reference this capability statement (globally unique)
+     * no | extensions | elements | both
      */
-    var url: String? = null
-
-    /**
-     * Business version of the capability statement
-     */
-    var version: String? = null
-
-    /**
-     * Name for this capability statement (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * Name for this capability statement (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * Date this was last changed
-     */
-    var date: String? = null
-
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
+    var acceptUnknown: String? = null
 
     val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Natural language description of the capability statement
-     */
-    var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Why this capability statement is defined
-     */
-    var purpose: String? = null
 
     /**
      * Use and/or publishing restrictions
@@ -75,11 +26,68 @@ open class CapabilityStatement() : DomainResource() {
     var copyright: String? = null
 
     /**
+     * Date this was last changed
+     */
+    var date: String? = null
+
+    /**
+     * Natural language description of the capability statement
+     */
+    var description: String? = null
+
+    val document: List<CapabilityStatementDocument> = mutableListOf<CapabilityStatementDocument>()
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    /**
+     * FHIR Version the system uses
+     */
+    var fhirVersion: String? = null
+
+    val format: List<String> = mutableListOf<String>()
+
+    /**
+     * If this describes a specific instance
+     */
+    var implementation: CapabilityStatementImplementation? = null
+
+    val implementationGuide: List<String> = mutableListOf<String>()
+
+    val instantiates: List<String> = mutableListOf<String>()
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
      * instance | capability | requirements
      */
     var kind: String? = null
 
-    val instantiates: List<String> = mutableListOf<String>()
+    val messaging: List<CapabilityStatementMessaging> =
+            mutableListOf<CapabilityStatementMessaging>()
+
+    /**
+     * Name for this capability statement (computer friendly)
+     */
+    var name: String? = null
+
+    val patchFormat: List<String> = mutableListOf<String>()
+
+    val profile: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this capability statement is defined
+     */
+    var purpose: String? = null
+
+    val rest: List<CapabilityStatementRest> = mutableListOf<CapabilityStatementRest>()
 
     /**
      * Software that is covered by this capability statement
@@ -87,34 +95,26 @@ open class CapabilityStatement() : DomainResource() {
     var software: CapabilityStatementSoftware? = null
 
     /**
-     * If this describes a specific instance
+     * draft | active | retired | unknown
      */
-    var implementation: CapabilityStatementImplementation? = null
+    var status: String? = null
 
     /**
-     * FHIR Version the system uses
+     * Name for this capability statement (human friendly)
      */
-    var fhirVersion: String? = null
+    var title: String? = null
 
     /**
-     * no | extensions | elements | both
+     * Logical URI to reference this capability statement (globally unique)
      */
-    var acceptUnknown: String? = null
+    var url: String? = null
 
-    val format: List<String> = mutableListOf<String>()
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
 
-    val patchFormat: List<String> = mutableListOf<String>()
-
-    val implementationGuide: List<String> = mutableListOf<String>()
-
-    val profile: List<Reference> = mutableListOf<Reference>()
-
-    val rest: List<CapabilityStatementRest> = mutableListOf<CapabilityStatementRest>()
-
-    val messaging: List<CapabilityStatementMessaging> =
-            mutableListOf<CapabilityStatementMessaging>()
-
-    val document: List<CapabilityStatementDocument> = mutableListOf<CapabilityStatementDocument>()
+    /**
+     * Business version of the capability statement
+     */
+    var version: String? = null
 }
 
 /**
@@ -129,14 +129,14 @@ open class CapabilityStatementSoftware() : BackboneElement() {
     var name: String? = null
 
     /**
-     * Version covered by this statement
-     */
-    var version: String? = null
-
-    /**
      * Date this version released
      */
     var releaseDate: String? = null
+
+    /**
+     * Version covered by this statement
+     */
+    var version: String? = null
 }
 
 /**
@@ -162,34 +162,34 @@ open class CapabilityStatementImplementation() : BackboneElement() {
  * A definition of the restful capabilities of the solution, if any.
  */
 open class CapabilityStatementRest() : BackboneElement() {
-    /**
-     * client | server
-     */
-    var mode: String? = null
+    val compartment: List<String> = mutableListOf<String>()
 
     /**
      * General description of implementation
      */
     var documentation: String? = null
 
-    /**
-     * Information about security of implementation
-     */
-    var security: CapabilityStatementRestSecurity? = null
-
-    val resource: List<CapabilityStatementRestResource> =
-            mutableListOf<CapabilityStatementRestResource>()
-
     val interaction: List<CapabilityStatementRestInteraction> =
             mutableListOf<CapabilityStatementRestInteraction>()
 
-    val searchParam: List<CapabilityStatementRestResourceSearchParam> =
-            mutableListOf<CapabilityStatementRestResourceSearchParam>()
+    /**
+     * client | server
+     */
+    var mode: String? = null
 
     val operation: List<CapabilityStatementRestOperation> =
             mutableListOf<CapabilityStatementRestOperation>()
 
-    val compartment: List<String> = mutableListOf<String>()
+    val resource: List<CapabilityStatementRestResource> =
+            mutableListOf<CapabilityStatementRestResource>()
+
+    val searchParam: List<CapabilityStatementRestResourceSearchParam> =
+            mutableListOf<CapabilityStatementRestResourceSearchParam>()
+
+    /**
+     * Information about security of implementation
+     */
+    var security: CapabilityStatementRestSecurity? = null
 }
 
 /**
@@ -198,20 +198,20 @@ open class CapabilityStatementRest() : BackboneElement() {
  * Information about security implementation from an interface perspective - what a client needs to know.
  */
 open class CapabilityStatementRestSecurity() : BackboneElement() {
+    val certificate: List<CapabilityStatementRestSecurityCertificate> =
+            mutableListOf<CapabilityStatementRestSecurityCertificate>()
+
     /**
      * Adds CORS Headers (http://enable-cors.org/)
      */
     var cors: Boolean? = null
-
-    val service: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
      * General description of how security works
      */
     var description: String? = null
 
-    val certificate: List<CapabilityStatementRestSecurityCertificate> =
-            mutableListOf<CapabilityStatementRestSecurityCertificate>()
+    val service: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 }
 
 /**
@@ -221,14 +221,14 @@ open class CapabilityStatementRestSecurity() : BackboneElement() {
  */
 open class CapabilityStatementRestSecurityCertificate() : BackboneElement() {
     /**
-     * Mime type for certificates
-     */
-    var type: String? = null
-
-    /**
      * Actual certificate
      */
     var blob: String? = null
+
+    /**
+     * Mime type for certificates
+     */
+    var type: String? = null
 }
 
 /**
@@ -238,42 +238,14 @@ open class CapabilityStatementRestSecurityCertificate() : BackboneElement() {
  */
 open class CapabilityStatementRestResource() : BackboneElement() {
     /**
-     * A resource type that is supported
-     */
-    var type: String? = null
-
-    /**
-     * Base System profile for all uses of resource
-     */
-    var profile: Reference? = null
-
-    /**
-     * Additional information about the use of the resource type
-     */
-    var documentation: String? = null
-
-    val interaction: List<CapabilityStatementRestResourceInteraction> =
-            mutableListOf<CapabilityStatementRestResourceInteraction>()
-
-    /**
-     * no-version | versioned | versioned-update
-     */
-    var versioning: String? = null
-
-    /**
-     * Whether vRead can return past versions
-     */
-    var readHistory: Boolean? = null
-
-    /**
-     * If update can commit to a new identity
-     */
-    var updateCreate: Boolean? = null
-
-    /**
      * If allows/uses conditional create
      */
     var conditionalCreate: Boolean? = null
+
+    /**
+     * not-supported | single | multiple - how conditional delete is supported
+     */
+    var conditionalDelete: String? = null
 
     /**
      * not-supported | modified-since | not-match | full-support
@@ -286,18 +258,46 @@ open class CapabilityStatementRestResource() : BackboneElement() {
     var conditionalUpdate: Boolean? = null
 
     /**
-     * not-supported | single | multiple - how conditional delete is supported
+     * Additional information about the use of the resource type
      */
-    var conditionalDelete: String? = null
+    var documentation: String? = null
+
+    val interaction: List<CapabilityStatementRestResourceInteraction> =
+            mutableListOf<CapabilityStatementRestResourceInteraction>()
+
+    /**
+     * Base System profile for all uses of resource
+     */
+    var profile: Reference? = null
+
+    /**
+     * Whether vRead can return past versions
+     */
+    var readHistory: Boolean? = null
 
     val referencePolicy: List<String> = mutableListOf<String>()
 
     val searchInclude: List<String> = mutableListOf<String>()
 
-    val searchRevInclude: List<String> = mutableListOf<String>()
-
     val searchParam: List<CapabilityStatementRestResourceSearchParam> =
             mutableListOf<CapabilityStatementRestResourceSearchParam>()
+
+    val searchRevInclude: List<String> = mutableListOf<String>()
+
+    /**
+     * A resource type that is supported
+     */
+    var type: String? = null
+
+    /**
+     * If update can commit to a new identity
+     */
+    var updateCreate: Boolean? = null
+
+    /**
+     * no-version | versioned | versioned-update
+     */
+    var versioning: String? = null
 }
 
 /**
@@ -324,24 +324,24 @@ open class CapabilityStatementRestResourceInteraction() : BackboneElement() {
  */
 open class CapabilityStatementRestResourceSearchParam() : BackboneElement() {
     /**
-     * Name of search parameter
-     */
-    var name: String? = null
-
-    /**
      * Source of definition for parameter
      */
     var definition: String? = null
 
     /**
-     * number | date | string | token | reference | composite | quantity | uri
-     */
-    var type: String? = null
-
-    /**
      * Server-specific usage
      */
     var documentation: String? = null
+
+    /**
+     * Name of search parameter
+     */
+    var name: String? = null
+
+    /**
+     * number | date | string | token | reference | composite | quantity | uri
+     */
+    var type: String? = null
 }
 
 /**
@@ -368,14 +368,14 @@ open class CapabilityStatementRestInteraction() : BackboneElement() {
  */
 open class CapabilityStatementRestOperation() : BackboneElement() {
     /**
-     * Name by which the operation/query is invoked
-     */
-    var name: String? = null
-
-    /**
      * The defined operation/query
      */
     var definition: Reference = Reference()
+
+    /**
+     * Name by which the operation/query is invoked
+     */
+    var name: String? = null
 }
 
 /**
@@ -384,24 +384,24 @@ open class CapabilityStatementRestOperation() : BackboneElement() {
  * A description of the messaging capabilities of the solution.
  */
 open class CapabilityStatementMessaging() : BackboneElement() {
+    /**
+     * Messaging interface behavior details
+     */
+    var documentation: String? = null
+
     val endpoint: List<CapabilityStatementMessagingEndpoint> =
             mutableListOf<CapabilityStatementMessagingEndpoint>()
+
+    val event: List<CapabilityStatementMessagingEvent> =
+            mutableListOf<CapabilityStatementMessagingEvent>()
 
     /**
      * Reliable Message Cache Length (min)
      */
     var reliableCache: Int? = null
 
-    /**
-     * Messaging interface behavior details
-     */
-    var documentation: String? = null
-
     val supportedMessage: List<CapabilityStatementMessagingSupportedMessage> =
             mutableListOf<CapabilityStatementMessagingSupportedMessage>()
-
-    val event: List<CapabilityStatementMessagingEvent> =
-            mutableListOf<CapabilityStatementMessagingEvent>()
 }
 
 /**
@@ -411,14 +411,14 @@ open class CapabilityStatementMessaging() : BackboneElement() {
  */
 open class CapabilityStatementMessagingEndpoint() : BackboneElement() {
     /**
-     * http | ftp | mllp +
-     */
-    var protocol: Coding = Coding()
-
-    /**
      * Network address or identifier of the end-point
      */
     var address: String? = null
+
+    /**
+     * http | ftp | mllp +
+     */
+    var protocol: Coding = Coding()
 }
 
 /**
@@ -428,14 +428,14 @@ open class CapabilityStatementMessagingEndpoint() : BackboneElement() {
  */
 open class CapabilityStatementMessagingSupportedMessage() : BackboneElement() {
     /**
-     * sender | receiver
-     */
-    var mode: String? = null
-
-    /**
      * Message supported by this system
      */
     var definition: Reference = Reference()
+
+    /**
+     * sender | receiver
+     */
+    var mode: String? = null
 }
 
 /**
@@ -445,24 +445,29 @@ open class CapabilityStatementMessagingSupportedMessage() : BackboneElement() {
  */
 open class CapabilityStatementMessagingEvent() : BackboneElement() {
     /**
-     * Event type
-     */
-    var code: Coding = Coding()
-
-    /**
      * Consequence | Currency | Notification
      */
     var category: String? = null
 
     /**
-     * sender | receiver
+     * Event type
      */
-    var mode: String? = null
+    var code: Coding = Coding()
+
+    /**
+     * Endpoint-specific event documentation
+     */
+    var documentation: String? = null
 
     /**
      * Resource that's focus of message
      */
     var focus: String? = null
+
+    /**
+     * sender | receiver
+     */
+    var mode: String? = null
 
     /**
      * Profile that describes the request
@@ -473,11 +478,6 @@ open class CapabilityStatementMessagingEvent() : BackboneElement() {
      * Profile that describes the response
      */
     var response: Reference = Reference()
-
-    /**
-     * Endpoint-specific event documentation
-     */
-    var documentation: String? = null
 }
 
 /**
@@ -487,14 +487,14 @@ open class CapabilityStatementMessagingEvent() : BackboneElement() {
  */
 open class CapabilityStatementDocument() : BackboneElement() {
     /**
-     * producer | consumer
-     */
-    var mode: String? = null
-
-    /**
      * Description of document support
      */
     var documentation: String? = null
+
+    /**
+     * producer | consumer
+     */
+    var mode: String? = null
 
     /**
      * Constraint on a resource used in the document

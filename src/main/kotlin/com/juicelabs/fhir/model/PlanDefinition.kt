@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.536 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.939 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,42 +13,21 @@ import kotlin.collections.List
  * This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.
  */
 open class PlanDefinition() : DomainResource() {
-    /**
-     * Logical URI to reference this plan definition (globally unique)
-     */
-    var url: String? = null
-
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
+    val action: List<PlanDefinitionAction> = mutableListOf<PlanDefinitionAction>()
 
     /**
-     * Business version of the plan definition
+     * When the plan definition was approved by publisher
      */
-    var version: String? = null
+    var approvalDate: String? = null
+
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
+
+    val contributor: List<Contributor> = mutableListOf<Contributor>()
 
     /**
-     * Name for this plan definition (computer friendly)
+     * Use and/or publishing restrictions
      */
-    var name: String? = null
-
-    /**
-     * Name for this plan definition (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * order-set | protocol | eca-rule
-     */
-    var type: CodeableConcept? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
+    var copyright: String? = null
 
     /**
      * Date this was last changed
@@ -56,62 +35,83 @@ open class PlanDefinition() : DomainResource() {
     var date: String? = null
 
     /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    /**
      * Natural language description of the plan definition
      */
     var description: String? = null
-
-    /**
-     * Why this plan definition is defined
-     */
-    var purpose: String? = null
-
-    /**
-     * Describes the clinical usage of the asset
-     */
-    var usage: String? = null
-
-    /**
-     * When the plan definition was approved by publisher
-     */
-    var approvalDate: String? = null
-
-    /**
-     * When the plan definition was last reviewed
-     */
-    var lastReviewDate: String? = null
 
     /**
      * When the plan definition is expected to be used
      */
     var effectivePeriod: Period? = null
 
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val contributor: List<Contributor> = mutableListOf<Contributor>()
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
     /**
-     * Use and/or publishing restrictions
+     * For testing purposes, not real usage
      */
-    var copyright: String? = null
-
-    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
-
-    val library: List<Reference> = mutableListOf<Reference>()
+    var experimental: Boolean? = null
 
     val goal: List<PlanDefinitionGoal> = mutableListOf<PlanDefinitionGoal>()
 
-    val action: List<PlanDefinitionAction> = mutableListOf<PlanDefinitionAction>()
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * When the plan definition was last reviewed
+     */
+    var lastReviewDate: String? = null
+
+    val library: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Name for this plan definition (computer friendly)
+     */
+    var name: String? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this plan definition is defined
+     */
+    var purpose: String? = null
+
+    val relatedArtifact: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Name for this plan definition (human friendly)
+     */
+    var title: String? = null
+
+    val topic: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * order-set | protocol | eca-rule
+     */
+    var type: CodeableConcept? = null
+
+    /**
+     * Logical URI to reference this plan definition (globally unique)
+     */
+    var url: String? = null
+
+    /**
+     * Describes the clinical usage of the asset
+     */
+    var usage: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the plan definition
+     */
+    var version: String? = null
 }
 
 /**
@@ -120,6 +120,8 @@ open class PlanDefinition() : DomainResource() {
  * Goals that describe what the activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
  */
 open class PlanDefinitionGoal() : BackboneElement() {
+    val addresses: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
     /**
      * E.g. Treatment, dietary, behavioral, etc
      */
@@ -129,6 +131,8 @@ open class PlanDefinitionGoal() : BackboneElement() {
      * Code or text describing the goal
      */
     var description: CodeableConcept = CodeableConcept()
+
+    val documentation: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
 
     /**
      * high-priority | medium-priority | low-priority
@@ -140,10 +144,6 @@ open class PlanDefinitionGoal() : BackboneElement() {
      */
     var start: CodeableConcept? = null
 
-    val addresses: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val documentation: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
-
     val target: List<PlanDefinitionGoalTarget> = mutableListOf<PlanDefinitionGoalTarget>()
 }
 
@@ -154,9 +154,9 @@ open class PlanDefinitionGoal() : BackboneElement() {
  */
 open class PlanDefinitionGoalTarget() : BackboneElement() {
     /**
-     * The parameter whose value is to be tracked
+     * The target value to be achieved
      */
-    var measure: CodeableConcept? = null
+    var detailCodeableConcept: CodeableConcept? = null
 
     /**
      * The target value to be achieved
@@ -169,14 +169,14 @@ open class PlanDefinitionGoalTarget() : BackboneElement() {
     var detailRange: Range? = null
 
     /**
-     * The target value to be achieved
-     */
-    var detailCodeableConcept: CodeableConcept? = null
-
-    /**
      * Reach goal within
      */
     var due: Duration? = null
+
+    /**
+     * The parameter whose value is to be tracked
+     */
+    var measure: CodeableConcept? = null
 }
 
 /**
@@ -185,45 +185,76 @@ open class PlanDefinitionGoalTarget() : BackboneElement() {
  * An action to be taken as part of the plan.
  */
 open class PlanDefinitionAction() : BackboneElement() {
-    /**
-     * User-visible label for the action (e.g. 1. or A.)
-     */
-    var label: String? = null
+    val action: List<PlanDefinitionAction> = mutableListOf<PlanDefinitionAction>()
 
     /**
-     * User-visible title
+     * single | multiple
      */
-    var title: String? = null
+    var cardinalityBehavior: String? = null
+
+    val code: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val condition: List<PlanDefinitionActionCondition> =
+            mutableListOf<PlanDefinitionActionCondition>()
+
+    /**
+     * Description of the activity to be performed
+     */
+    var definition: Reference? = null
 
     /**
      * Short description of the action
      */
     var description: String? = null
 
+    val documentation: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
+
+    val dynamicValue: List<PlanDefinitionActionDynamicValue> =
+            mutableListOf<PlanDefinitionActionDynamicValue>()
+
+    val goalId: List<String> = mutableListOf<String>()
+
+    /**
+     * visual-group | logical-group | sentence-group
+     */
+    var groupingBehavior: String? = null
+
+    val input: List<DataRequirement> = mutableListOf<DataRequirement>()
+
+    /**
+     * User-visible label for the action (e.g. 1. or A.)
+     */
+    var label: String? = null
+
+    val output: List<DataRequirement> = mutableListOf<DataRequirement>()
+
+    val participant: List<PlanDefinitionActionParticipant> =
+            mutableListOf<PlanDefinitionActionParticipant>()
+
+    /**
+     * yes | no
+     */
+    var precheckBehavior: String? = null
+
+    val reason: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val relatedAction: List<PlanDefinitionActionRelatedAction> =
+            mutableListOf<PlanDefinitionActionRelatedAction>()
+
+    /**
+     * must | could | must-unless-documented
+     */
+    var requiredBehavior: String? = null
+
+    /**
+     * any | all | all-or-none | exactly-one | at-most-one | one-or-more
+     */
+    var selectionBehavior: String? = null
+
     /**
      * Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
      */
     var textEquivalent: String? = null
-
-    val code: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val reason: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    val documentation: List<RelatedArtifact> = mutableListOf<RelatedArtifact>()
-
-    val goalId: List<String> = mutableListOf<String>()
-
-    val triggerDefinition: List<TriggerDefinition> = mutableListOf<TriggerDefinition>()
-
-    val condition: List<PlanDefinitionActionCondition> =
-            mutableListOf<PlanDefinitionActionCondition>()
-
-    val input: List<DataRequirement> = mutableListOf<DataRequirement>()
-
-    val output: List<DataRequirement> = mutableListOf<DataRequirement>()
-
-    val relatedAction: List<PlanDefinitionActionRelatedAction> =
-            mutableListOf<PlanDefinitionActionRelatedAction>()
 
     /**
      * When the action should take place
@@ -233,12 +264,12 @@ open class PlanDefinitionAction() : BackboneElement() {
     /**
      * When the action should take place
      */
-    var timingPeriod: Period? = null
+    var timingDuration: Duration? = null
 
     /**
      * When the action should take place
      */
-    var timingDuration: Duration? = null
+    var timingPeriod: Period? = null
 
     /**
      * When the action should take place
@@ -250,53 +281,22 @@ open class PlanDefinitionAction() : BackboneElement() {
      */
     var timingTiming: Timing? = null
 
-    val participant: List<PlanDefinitionActionParticipant> =
-            mutableListOf<PlanDefinitionActionParticipant>()
-
     /**
-     * create | update | remove | fire-event
+     * User-visible title
      */
-    var type: Coding? = null
-
-    /**
-     * visual-group | logical-group | sentence-group
-     */
-    var groupingBehavior: String? = null
-
-    /**
-     * any | all | all-or-none | exactly-one | at-most-one | one-or-more
-     */
-    var selectionBehavior: String? = null
-
-    /**
-     * must | could | must-unless-documented
-     */
-    var requiredBehavior: String? = null
-
-    /**
-     * yes | no
-     */
-    var precheckBehavior: String? = null
-
-    /**
-     * single | multiple
-     */
-    var cardinalityBehavior: String? = null
-
-    /**
-     * Description of the activity to be performed
-     */
-    var definition: Reference? = null
+    var title: String? = null
 
     /**
      * Transform to apply the template
      */
     var transform: Reference? = null
 
-    val dynamicValue: List<PlanDefinitionActionDynamicValue> =
-            mutableListOf<PlanDefinitionActionDynamicValue>()
+    val triggerDefinition: List<TriggerDefinition> = mutableListOf<TriggerDefinition>()
 
-    val action: List<PlanDefinitionAction> = mutableListOf<PlanDefinitionAction>()
+    /**
+     * create | update | remove | fire-event
+     */
+    var type: Coding? = null
 }
 
 /**
@@ -306,24 +306,24 @@ open class PlanDefinitionAction() : BackboneElement() {
  */
 open class PlanDefinitionActionCondition() : BackboneElement() {
     /**
-     * applicability | start | stop
-     */
-    var kind: String? = null
-
-    /**
      * Natural language description of the condition
      */
     var description: String? = null
 
     /**
-     * Language of the expression
-     */
-    var language: String? = null
-
-    /**
      * Boolean-valued expression
      */
     var expression: String? = null
+
+    /**
+     * applicability | start | stop
+     */
+    var kind: String? = null
+
+    /**
+     * Language of the expression
+     */
+    var language: String? = null
 }
 
 /**
@@ -338,11 +338,6 @@ open class PlanDefinitionActionRelatedAction() : BackboneElement() {
     var actionId: String? = null
 
     /**
-     * before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-     */
-    var relationship: String? = null
-
-    /**
      * Time offset for the relationship
      */
     var offsetDuration: Duration? = null
@@ -351,6 +346,11 @@ open class PlanDefinitionActionRelatedAction() : BackboneElement() {
      * Time offset for the relationship
      */
     var offsetRange: Range? = null
+
+    /**
+     * before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
+     */
+    var relationship: String? = null
 }
 
 /**
@@ -360,14 +360,14 @@ open class PlanDefinitionActionRelatedAction() : BackboneElement() {
  */
 open class PlanDefinitionActionParticipant() : BackboneElement() {
     /**
-     * patient | practitioner | related-person
-     */
-    var type: String? = null
-
-    /**
      * E.g. Nurse, Surgeon, Parent, etc
      */
     var role: CodeableConcept? = null
+
+    /**
+     * patient | practitioner | related-person
+     */
+    var type: String? = null
 }
 
 /**
@@ -382,9 +382,9 @@ open class PlanDefinitionActionDynamicValue() : BackboneElement() {
     var description: String? = null
 
     /**
-     * The path to the element to be set dynamically
+     * An expression that provides the dynamic value for the customization
      */
-    var path: String? = null
+    var expression: String? = null
 
     /**
      * Language of the expression
@@ -392,7 +392,7 @@ open class PlanDefinitionActionDynamicValue() : BackboneElement() {
     var language: String? = null
 
     /**
-     * An expression that provides the dynamic value for the customization
+     * The path to the element to be set dynamically
      */
-    var expression: String? = null
+    var path: String? = null
 }

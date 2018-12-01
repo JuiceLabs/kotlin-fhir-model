@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.521 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.923 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -33,12 +33,12 @@ open class Linkage() : DomainResource() {
  */
 open class LinkageItem() : BackboneElement() {
     /**
-     * source | alternate | historical
-     */
-    var type: String? = null
-
-    /**
      * Resource being linked
      */
     var resource: Reference = Reference()
+
+    /**
+     * source | alternate | historical
+     */
+    var type: String? = null
 }

@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.533 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.934 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,18 +13,18 @@ import kotlin.collections.List
  * Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data.
  */
 open class DataRequirement() : Element() {
+    val codeFilter: List<DataRequirementCodeFilter> = mutableListOf<DataRequirementCodeFilter>()
+
+    val dateFilter: List<DataRequirementDateFilter> = mutableListOf<DataRequirementDateFilter>()
+
+    val mustSupport: List<String> = mutableListOf<String>()
+
+    val profile: List<String> = mutableListOf<String>()
+
     /**
      * The type of the required data
      */
     var type: String? = null
-
-    val profile: List<String> = mutableListOf<String>()
-
-    val mustSupport: List<String> = mutableListOf<String>()
-
-    val codeFilter: List<DataRequirementCodeFilter> = mutableListOf<DataRequirementCodeFilter>()
-
-    val dateFilter: List<DataRequirementDateFilter> = mutableListOf<DataRequirementDateFilter>()
 }
 
 /**
@@ -38,21 +38,21 @@ open class DataRequirementCodeFilter() : Element() {
      */
     var path: String? = null
 
-    /**
-     * Valueset for the filter
-     */
-    var valueSetString: String? = null
+    val valueCode: List<String> = mutableListOf<String>()
+
+    val valueCodeableConcept: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    val valueCoding: List<Coding> = mutableListOf<Coding>()
 
     /**
      * Valueset for the filter
      */
     var valueSetReference: Reference? = null
 
-    val valueCode: List<String> = mutableListOf<String>()
-
-    val valueCoding: List<Coding> = mutableListOf<Coding>()
-
-    val valueCodeableConcept: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    /**
+     * Valueset for the filter
+     */
+    var valueSetString: String? = null
 }
 
 /**
@@ -74,10 +74,10 @@ open class DataRequirementDateFilter() : Element() {
     /**
      * The value of the filter, as a Period, DateTime, or Duration value
      */
-    var valuePeriod: Period? = null
+    var valueDuration: Duration? = null
 
     /**
      * The value of the filter, as a Period, DateTime, or Duration value
      */
-    var valueDuration: Duration? = null
+    var valuePeriod: Period? = null
 }

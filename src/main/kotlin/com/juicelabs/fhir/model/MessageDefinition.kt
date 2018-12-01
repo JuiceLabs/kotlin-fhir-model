@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.609 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.991 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,66 +13,20 @@ import kotlin.collections.List
  * Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.
  */
 open class MessageDefinition() : DomainResource() {
-    /**
-     * Logical URI to reference this message definition (globally unique)
-     */
-    var url: String? = null
+    val allowedResponse: List<MessageDefinitionAllowedResponse> =
+            mutableListOf<MessageDefinitionAllowedResponse>()
 
     /**
-     * Additional identifier for the message definition
+     * Definition this one is based on
      */
-    var identifier: Identifier? = null
+    var base: Reference? = null
 
     /**
-     * Business version of the message definition
+     * Consequence | Currency | Notification
      */
-    var version: String? = null
-
-    /**
-     * Name for this message definition (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * Name for this message definition (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * Date this was last changed
-     */
-    var date: String? = null
-
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
+    var category: String? = null
 
     val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Natural language description of the message definition
-     */
-    var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Why this message definition is defined
-     */
-    var purpose: String? = null
 
     /**
      * Use and/or publishing restrictions
@@ -80,13 +34,14 @@ open class MessageDefinition() : DomainResource() {
     var copyright: String? = null
 
     /**
-     * Definition this one is based on
+     * Date this was last changed
      */
-    var base: Reference? = null
+    var date: String? = null
 
-    val parent: List<Reference> = mutableListOf<Reference>()
-
-    val replaces: List<Reference> = mutableListOf<Reference>()
+    /**
+     * Natural language description of the message definition
+     */
+    var description: String? = null
 
     /**
      * Event type
@@ -94,19 +49,64 @@ open class MessageDefinition() : DomainResource() {
     var event: Coding = Coding()
 
     /**
-     * Consequence | Currency | Notification
+     * For testing purposes, not real usage
      */
-    var category: String? = null
+    var experimental: Boolean? = null
 
     val focus: List<MessageDefinitionFocus> = mutableListOf<MessageDefinitionFocus>()
+
+    /**
+     * Additional identifier for the message definition
+     */
+    var identifier: Identifier? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Name for this message definition (computer friendly)
+     */
+    var name: String? = null
+
+    val parent: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this message definition is defined
+     */
+    var purpose: String? = null
+
+    val replaces: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Is a response required?
      */
     var responseRequired: Boolean? = null
 
-    val allowedResponse: List<MessageDefinitionAllowedResponse> =
-            mutableListOf<MessageDefinitionAllowedResponse>()
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Name for this message definition (human friendly)
+     */
+    var title: String? = null
+
+    /**
+     * Logical URI to reference this message definition (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the message definition
+     */
+    var version: String? = null
 }
 
 /**
@@ -121,9 +121,9 @@ open class MessageDefinitionFocus() : BackboneElement() {
     var code: String? = null
 
     /**
-     * Profile that must be adhered to by focus
+     * Maximum number of focuses of this type
      */
-    var profile: Reference? = null
+    var max: String? = null
 
     /**
      * Minimum number of focuses of this type
@@ -131,9 +131,9 @@ open class MessageDefinitionFocus() : BackboneElement() {
     var min: Int? = null
 
     /**
-     * Maximum number of focuses of this type
+     * Profile that must be adhered to by focus
      */
-    var max: String? = null
+    var profile: Reference? = null
 }
 
 /**

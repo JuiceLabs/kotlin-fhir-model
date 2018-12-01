@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.771 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.095 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,7 +13,32 @@ import kotlin.collections.List
  * A slot of time on a schedule that may be available for booking appointments.
  */
 open class Slot() : DomainResource() {
+    /**
+     * The style of appointment or patient that may be booked in the slot (not service type)
+     */
+    var appointmentType: CodeableConcept? = null
+
+    /**
+     * Comments on the slot to describe any extended information. Such as custom constraints on the slot
+     */
+    var comment: String? = null
+
+    /**
+     * Date/Time that the slot is to conclude
+     */
+    var end: String? = null
+
     val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * This slot has already been overbooked, appointments are unlikely to be accepted for this time
+     */
+    var overbooked: Boolean? = null
+
+    /**
+     * The schedule resource that this slot defines an interval of status information
+     */
+    var schedule: Reference = Reference()
 
     /**
      * A broad categorisation of the service that is to be performed during this appointment
@@ -25,37 +50,12 @@ open class Slot() : DomainResource() {
     val specialty: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
-     * The style of appointment or patient that may be booked in the slot (not service type)
-     */
-    var appointmentType: CodeableConcept? = null
-
-    /**
-     * The schedule resource that this slot defines an interval of status information
-     */
-    var schedule: Reference = Reference()
-
-    /**
-     * busy | free | busy-unavailable | busy-tentative | entered-in-error
-     */
-    var status: String? = null
-
-    /**
      * Date/Time that the slot is to begin
      */
     var start: String? = null
 
     /**
-     * Date/Time that the slot is to conclude
+     * busy | free | busy-unavailable | busy-tentative | entered-in-error
      */
-    var end: String? = null
-
-    /**
-     * This slot has already been overbooked, appointments are unlikely to be accepted for this time
-     */
-    var overbooked: Boolean? = null
-
-    /**
-     * Comments on the slot to describe any extended information. Such as custom constraints on the slot
-     */
-    var comment: String? = null
+    var status: String? = null
 }

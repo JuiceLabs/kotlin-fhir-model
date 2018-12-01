@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.612 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.993 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -13,44 +13,44 @@ import kotlin.collections.List
  * The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient.
  */
 open class CareTeam() : DomainResource() {
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * proposed | active | suspended | inactive | entered-in-error
-     */
-    var status: String? = null
-
     val category: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Name of the team, such as crisis assessment team
-     */
-    var name: String? = null
-
-    /**
-     * Who care team is for
-     */
-    var subject: Reference? = null
 
     /**
      * Encounter or episode associated with CareTeam
      */
     var context: Reference? = null
 
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    val managingOrganization: List<Reference> = mutableListOf<Reference>()
+
+    /**
+     * Name of the team, such as crisis assessment team
+     */
+    var name: String? = null
+
+    val note: List<Annotation> = mutableListOf<Annotation>()
+
+    val participant: List<CareTeamParticipant> = mutableListOf<CareTeamParticipant>()
+
     /**
      * Time period team covers
      */
     var period: Period? = null
 
-    val participant: List<CareTeamParticipant> = mutableListOf<CareTeamParticipant>()
-
     val reasonCode: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     val reasonReference: List<Reference> = mutableListOf<Reference>()
 
-    val managingOrganization: List<Reference> = mutableListOf<Reference>()
+    /**
+     * proposed | active | suspended | inactive | entered-in-error
+     */
+    var status: String? = null
 
-    val note: List<Annotation> = mutableListOf<Annotation>()
+    /**
+     * Who care team is for
+     */
+    var subject: Reference? = null
 }
 
 /**
@@ -59,11 +59,6 @@ open class CareTeam() : DomainResource() {
  * Identifies all people and organizations who are expected to be involved in the care team.
  */
 open class CareTeamParticipant() : BackboneElement() {
-    /**
-     * Type of involvement
-     */
-    var role: CodeableConcept? = null
-
     /**
      * Who is involved
      */
@@ -78,4 +73,9 @@ open class CareTeamParticipant() : BackboneElement() {
      * Time period of participant
      */
     var period: Period? = null
+
+    /**
+     * Type of involvement
+     */
+    var role: CodeableConcept? = null
 }

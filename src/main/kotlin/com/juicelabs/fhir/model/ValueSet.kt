@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.669 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.038 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,67 +14,11 @@ import kotlin.collections.List
  */
 open class ValueSet() : DomainResource() {
     /**
-     * Logical URI to reference this value set (globally unique)
+     * Definition of the content of the value set (CLD)
      */
-    var url: String? = null
-
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * Business version of the value set
-     */
-    var version: String? = null
-
-    /**
-     * Name for this value set (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * Name for this value set (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
-
-    /**
-     * Date this was last changed
-     */
-    var date: String? = null
-
-    /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
+    var compose: ValueSetCompose? = null
 
     val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
-     * Natural language description of the value set
-     */
-    var description: String? = null
-
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Indicates whether or not any change to the content logical definition may occur
-     */
-    var immutable: Boolean? = null
-
-    /**
-     * Why this value set is defined
-     */
-    var purpose: String? = null
 
     /**
      * Use and/or publishing restrictions
@@ -82,19 +26,75 @@ open class ValueSet() : DomainResource() {
     var copyright: String? = null
 
     /**
-     * Whether this is intended to be used with an extensible binding
+     * Date this was last changed
      */
-    var extensible: Boolean? = null
+    var date: String? = null
 
     /**
-     * Definition of the content of the value set (CLD)
+     * Natural language description of the value set
      */
-    var compose: ValueSetCompose? = null
+    var description: String? = null
 
     /**
      * Used when the value set is "expanded"
      */
     var expansion: ValueSetExpansion? = null
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    /**
+     * Whether this is intended to be used with an extensible binding
+     */
+    var extensible: Boolean? = null
+
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
+
+    /**
+     * Indicates whether or not any change to the content logical definition may occur
+     */
+    var immutable: Boolean? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Name for this value set (computer friendly)
+     */
+    var name: String? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
+
+    /**
+     * Why this value set is defined
+     */
+    var purpose: String? = null
+
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Name for this value set (human friendly)
+     */
+    var title: String? = null
+
+    /**
+     * Logical URI to reference this value set (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
+
+    /**
+     * Business version of the value set
+     */
+    var version: String? = null
 }
 
 /**
@@ -103,10 +103,7 @@ open class ValueSet() : DomainResource() {
  * A set of criteria that define the content logical definition of the value set by including or excluding codes from outside this value set. This I also known as the "Content Logical Definition" (CLD).
  */
 open class ValueSetCompose() : BackboneElement() {
-    /**
-     * Fixed date for version-less references (transitive)
-     */
-    var lockedDate: String? = null
+    val exclude: List<ValueSetComposeInclude> = mutableListOf<ValueSetComposeInclude>()
 
     /**
      * Whether inactive codes are in the value set
@@ -115,7 +112,10 @@ open class ValueSetCompose() : BackboneElement() {
 
     val include: List<ValueSetComposeInclude> = mutableListOf<ValueSetComposeInclude>()
 
-    val exclude: List<ValueSetComposeInclude> = mutableListOf<ValueSetComposeInclude>()
+    /**
+     * Fixed date for version-less references (transitive)
+     */
+    var lockedDate: String? = null
 }
 
 /**
@@ -124,22 +124,22 @@ open class ValueSetCompose() : BackboneElement() {
  * Include one or more codes from a code system or other value set(s).
  */
 open class ValueSetComposeInclude() : BackboneElement() {
-    /**
-     * The system the codes come from
-     */
-    var system: String? = null
-
-    /**
-     * Specific version of the code system referred to
-     */
-    var version: String? = null
-
     val concept: List<ValueSetComposeIncludeConcept> =
             mutableListOf<ValueSetComposeIncludeConcept>()
 
     val filter: List<ValueSetComposeIncludeFilter> = mutableListOf<ValueSetComposeIncludeFilter>()
 
+    /**
+     * The system the codes come from
+     */
+    var system: String? = null
+
     val valueSet: List<String> = mutableListOf<String>()
+
+    /**
+     * Specific version of the code system referred to
+     */
+    var version: String? = null
 }
 
 /**
@@ -153,13 +153,13 @@ open class ValueSetComposeIncludeConcept() : BackboneElement() {
      */
     var code: String? = null
 
+    val designation: List<ValueSetComposeIncludeConceptDesignation> =
+            mutableListOf<ValueSetComposeIncludeConceptDesignation>()
+
     /**
      * Text to display for this code for this value set in this valueset
      */
     var display: String? = null
-
-    val designation: List<ValueSetComposeIncludeConceptDesignation> =
-            mutableListOf<ValueSetComposeIncludeConceptDesignation>()
 }
 
 /**
@@ -191,14 +191,14 @@ open class ValueSetComposeIncludeConceptDesignation() : BackboneElement() {
  */
 open class ValueSetComposeIncludeFilter() : BackboneElement() {
     /**
-     * A property defined by the code system
-     */
-    var property: String? = null
-
-    /**
      * = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
      */
     var op: String? = null
+
+    /**
+     * A property defined by the code system
+     */
+    var property: String? = null
 
     /**
      * Code from the system, or regex criteria, or boolean value for exists
@@ -212,10 +212,19 @@ open class ValueSetComposeIncludeFilter() : BackboneElement() {
  * A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
  */
 open class ValueSetExpansion() : BackboneElement() {
+    val contains: List<ValueSetExpansionContains> = mutableListOf<ValueSetExpansionContains>()
+
     /**
      * Uniquely identifies this expansion
      */
     var identifier: String? = null
+
+    /**
+     * Offset at which this resource starts
+     */
+    var offset: Int? = null
+
+    val parameter: List<ValueSetExpansionParameter> = mutableListOf<ValueSetExpansionParameter>()
 
     /**
      * Time ValueSet expansion happened
@@ -226,15 +235,6 @@ open class ValueSetExpansion() : BackboneElement() {
      * Total number of codes in the expansion
      */
     var total: Int? = null
-
-    /**
-     * Offset at which this resource starts
-     */
-    var offset: Int? = null
-
-    val parameter: List<ValueSetExpansionParameter> = mutableListOf<ValueSetExpansionParameter>()
-
-    val contains: List<ValueSetExpansionContains> = mutableListOf<ValueSetExpansionContains>()
 }
 
 /**
@@ -251,17 +251,12 @@ open class ValueSetExpansionParameter() : BackboneElement() {
     /**
      * Value of the named parameter
      */
-    var valueString: String? = null
-
-    /**
-     * Value of the named parameter
-     */
     var valueBoolean: Boolean? = null
 
     /**
      * Value of the named parameter
      */
-    var valueInteger: Int? = null
+    var valueCode: String? = null
 
     /**
      * Value of the named parameter
@@ -271,12 +266,17 @@ open class ValueSetExpansionParameter() : BackboneElement() {
     /**
      * Value of the named parameter
      */
-    var valueUri: String? = null
+    var valueInteger: Int? = null
 
     /**
      * Value of the named parameter
      */
-    var valueCode: String? = null
+    var valueString: String? = null
+
+    /**
+     * Value of the named parameter
+     */
+    var valueUri: String? = null
 }
 
 /**
@@ -286,14 +286,24 @@ open class ValueSetExpansionParameter() : BackboneElement() {
  */
 open class ValueSetExpansionContains() : BackboneElement() {
     /**
-     * System value for the code
-     */
-    var system: String? = null
-
-    /**
      * If user cannot select this entry
      */
     var abstract: Boolean? = null
+
+    /**
+     * Code - if blank, this is not a selectable code
+     */
+    var code: String? = null
+
+    val contains: List<ValueSetExpansionContains> = mutableListOf<ValueSetExpansionContains>()
+
+    val designation: List<ValueSetComposeIncludeConceptDesignation> =
+            mutableListOf<ValueSetComposeIncludeConceptDesignation>()
+
+    /**
+     * User display for the concept
+     */
+    var display: String? = null
 
     /**
      * If concept is inactive in the code system
@@ -301,22 +311,12 @@ open class ValueSetExpansionContains() : BackboneElement() {
     var inactive: Boolean? = null
 
     /**
+     * System value for the code
+     */
+    var system: String? = null
+
+    /**
      * Version in which this code/display is defined
      */
     var version: String? = null
-
-    /**
-     * Code - if blank, this is not a selectable code
-     */
-    var code: String? = null
-
-    /**
-     * User display for the concept
-     */
-    var display: String? = null
-
-    val designation: List<ValueSetComposeIncludeConceptDesignation> =
-            mutableListOf<ValueSetComposeIncludeConceptDesignation>()
-
-    val contains: List<ValueSetExpansionContains> = mutableListOf<ValueSetExpansionContains>()
 }

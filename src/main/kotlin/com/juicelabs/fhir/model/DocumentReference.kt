@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.637 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.012 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -15,26 +15,11 @@ import kotlin.collections.List
  */
 open class DocumentReference() : DomainResource() {
     /**
-     * Master Version Specific Identifier
+     * Who/what authenticated the document
      */
-    var masterIdentifier: Identifier? = null
+    var authenticator: Reference? = null
 
-    val identifier: List<Identifier> = mutableListOf<Identifier>()
-
-    /**
-     * current | superseded | entered-in-error
-     */
-    var status: String? = null
-
-    /**
-     * preliminary | final | appended | amended | entered-in-error
-     */
-    var docStatus: String? = null
-
-    /**
-     * Kind of document (LOINC if possible)
-     */
-    var type: CodeableConcept = CodeableConcept()
+    val author: List<Reference> = mutableListOf<Reference>()
 
     /**
      * Categorization of document
@@ -42,10 +27,12 @@ open class DocumentReference() : DomainResource() {
     @SerializedName("class")
     var class_fhir: CodeableConcept? = null
 
+    val content: List<DocumentReferenceContent> = mutableListOf<DocumentReferenceContent>()
+
     /**
-     * Who/what is the subject of the document
+     * Clinical context of document
      */
-    var subject: Reference? = null
+    var context: DocumentReferenceContext? = null
 
     /**
      * Document creation time
@@ -53,37 +40,50 @@ open class DocumentReference() : DomainResource() {
     var created: String? = null
 
     /**
-     * When this document reference was created
-     */
-    var indexed: String? = null
-
-    val author: List<Reference> = mutableListOf<Reference>()
-
-    /**
-     * Who/what authenticated the document
-     */
-    var authenticator: Reference? = null
-
-    /**
      * Organization which maintains the document
      */
     var custodian: Reference? = null
-
-    val relatesTo: List<DocumentReferenceRelatesTo> = mutableListOf<DocumentReferenceRelatesTo>()
 
     /**
      * Human-readable description (title)
      */
     var description: String? = null
 
-    val securityLabel: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+    /**
+     * preliminary | final | appended | amended | entered-in-error
+     */
+    var docStatus: String? = null
 
-    val content: List<DocumentReferenceContent> = mutableListOf<DocumentReferenceContent>()
+    val identifier: List<Identifier> = mutableListOf<Identifier>()
 
     /**
-     * Clinical context of document
+     * When this document reference was created
      */
-    var context: DocumentReferenceContext? = null
+    var indexed: String? = null
+
+    /**
+     * Master Version Specific Identifier
+     */
+    var masterIdentifier: Identifier? = null
+
+    val relatesTo: List<DocumentReferenceRelatesTo> = mutableListOf<DocumentReferenceRelatesTo>()
+
+    val securityLabel: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * current | superseded | entered-in-error
+     */
+    var status: String? = null
+
+    /**
+     * Who/what is the subject of the document
+     */
+    var subject: Reference? = null
+
+    /**
+     * Kind of document (LOINC if possible)
+     */
+    var type: CodeableConcept = CodeableConcept()
 }
 
 /**
@@ -134,27 +134,27 @@ open class DocumentReferenceContext() : BackboneElement() {
     val event: List<CodeableConcept> = mutableListOf<CodeableConcept>()
 
     /**
-     * Time of service that is being documented
-     */
-    var period: Period? = null
-
-    /**
      * Kind of facility where patient was seen
      */
     var facilityType: CodeableConcept? = null
+
+    /**
+     * Time of service that is being documented
+     */
+    var period: Period? = null
 
     /**
      * Additional details about where the content was created (e.g. clinical specialty)
      */
     var practiceSetting: CodeableConcept? = null
 
+    val related: List<DocumentReferenceContextRelated> =
+            mutableListOf<DocumentReferenceContextRelated>()
+
     /**
      * Patient demographics from source
      */
     var sourcePatientInfo: Reference? = null
-
-    val related: List<DocumentReferenceContextRelated> =
-            mutableListOf<DocumentReferenceContextRelated>()
 }
 
 /**

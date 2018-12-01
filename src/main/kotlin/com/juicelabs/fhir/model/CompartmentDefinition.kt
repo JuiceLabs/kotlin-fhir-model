@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.388 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:54.860 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -14,29 +14,11 @@ import kotlin.collections.List
  */
 open class CompartmentDefinition() : DomainResource() {
     /**
-     * Logical URI to reference this compartment definition (globally unique)
+     * Patient | Encounter | RelatedPerson | Practitioner | Device
      */
-    var url: String? = null
+    var code: String? = null
 
-    /**
-     * Name for this compartment definition (computer friendly)
-     */
-    var name: String? = null
-
-    /**
-     * Name for this compartment definition (human friendly)
-     */
-    var title: String? = null
-
-    /**
-     * draft | active | retired | unknown
-     */
-    var status: String? = null
-
-    /**
-     * For testing purposes, not real usage
-     */
-    var experimental: Boolean? = null
+    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
 
     /**
      * Date this was last changed
@@ -44,38 +26,56 @@ open class CompartmentDefinition() : DomainResource() {
     var date: String? = null
 
     /**
-     * Name of the publisher (organization or individual)
-     */
-    var publisher: String? = null
-
-    val contact: List<ContactDetail> = mutableListOf<ContactDetail>()
-
-    /**
      * Natural language description of the compartment definition
      */
     var description: String? = null
+
+    /**
+     * For testing purposes, not real usage
+     */
+    var experimental: Boolean? = null
+
+    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
+
+    /**
+     * Name for this compartment definition (computer friendly)
+     */
+    var name: String? = null
+
+    /**
+     * Name of the publisher (organization or individual)
+     */
+    var publisher: String? = null
 
     /**
      * Why this compartment definition is defined
      */
     var purpose: String? = null
 
-    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
-
-    val jurisdiction: List<CodeableConcept> = mutableListOf<CodeableConcept>()
-
-    /**
-     * Patient | Encounter | RelatedPerson | Practitioner | Device
-     */
-    var code: String? = null
+    val resource: List<CompartmentDefinitionResource> =
+            mutableListOf<CompartmentDefinitionResource>()
 
     /**
      * Whether the search syntax is supported
      */
     var search: Boolean? = null
 
-    val resource: List<CompartmentDefinitionResource> =
-            mutableListOf<CompartmentDefinitionResource>()
+    /**
+     * draft | active | retired | unknown
+     */
+    var status: String? = null
+
+    /**
+     * Name for this compartment definition (human friendly)
+     */
+    var title: String? = null
+
+    /**
+     * Logical URI to reference this compartment definition (globally unique)
+     */
+    var url: String? = null
+
+    val useContext: List<UsageContext> = mutableListOf<UsageContext>()
 }
 
 /**
@@ -89,10 +89,10 @@ open class CompartmentDefinitionResource() : BackboneElement() {
      */
     var code: String? = null
 
-    val param: List<String> = mutableListOf<String>()
-
     /**
      * Additional documentation about the resource and compartment
      */
     var documentation: String? = null
+
+    val param: List<String> = mutableListOf<String>()
 }

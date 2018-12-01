@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-11-29T14:32:35.744 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.076 
 //
 //   2018, JuiceLab, LLC
 //  
@@ -27,85 +27,12 @@ open class ParametersParameter() : BackboneElement() {
      */
     var name: String? = null
 
-    /**
-     * If parameter is a data type
-     */
-    var valueBase64Binary: String? = null
+    val part: List<ParametersParameter> = mutableListOf<ParametersParameter>()
 
     /**
-     * If parameter is a data type
+     * If parameter is a whole resource
      */
-    var valueBoolean: Boolean? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueCode: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueDate: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueDateTime: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueDecimal: Float? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueId: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueInstant: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueInteger: Int? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueMarkdown: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueOid: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valuePositiveInt: Int? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueString: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueTime: String? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueUnsignedInt: Int? = null
-
-    /**
-     * If parameter is a data type
-     */
-    var valueUri: String? = null
+    var resource: Resource? = null
 
     /**
      * If parameter is a data type
@@ -130,6 +57,21 @@ open class ParametersParameter() : BackboneElement() {
     /**
      * If parameter is a data type
      */
+    var valueBase64Binary: String? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueBoolean: Boolean? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueCode: String? = null
+
+    /**
+     * If parameter is a data type
+     */
     var valueCodeableConcept: CodeableConcept? = null
 
     /**
@@ -150,6 +92,21 @@ open class ParametersParameter() : BackboneElement() {
     /**
      * If parameter is a data type
      */
+    var valueDate: String? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueDateTime: String? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueDecimal: Float? = null
+
+    /**
+     * If parameter is a data type
+     */
     var valueDistance: Distance? = null
 
     /**
@@ -165,7 +122,32 @@ open class ParametersParameter() : BackboneElement() {
     /**
      * If parameter is a data type
      */
+    var valueId: String? = null
+
+    /**
+     * If parameter is a data type
+     */
     var valueIdentifier: Identifier? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueInstant: String? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueInteger: Int? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueMarkdown: String? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueMeta: Meta? = null
 
     /**
      * If parameter is a data type
@@ -175,7 +157,17 @@ open class ParametersParameter() : BackboneElement() {
     /**
      * If parameter is a data type
      */
+    var valueOid: String? = null
+
+    /**
+     * If parameter is a data type
+     */
     var valuePeriod: Period? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valuePositiveInt: Int? = null
 
     /**
      * If parameter is a data type
@@ -210,17 +202,25 @@ open class ParametersParameter() : BackboneElement() {
     /**
      * If parameter is a data type
      */
+    var valueString: String? = null
+
+    /**
+     * If parameter is a data type
+     */
+    var valueTime: String? = null
+
+    /**
+     * If parameter is a data type
+     */
     var valueTiming: Timing? = null
 
     /**
      * If parameter is a data type
      */
-    var valueMeta: Meta? = null
+    var valueUnsignedInt: Int? = null
 
     /**
-     * If parameter is a whole resource
+     * If parameter is a data type
      */
-    var resource: Resource? = null
-
-    val part: List<ParametersParameter> = mutableListOf<ParametersParameter>()
+    var valueUri: String? = null
 }
