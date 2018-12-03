@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -56,6 +57,7 @@ class ImplementationGuideDataTest : DataTests() {
         assertTrue(stringMatch("text/html", obj.page!!.page[0].format))
     }
 
-    fun `implementationguide-example Init`(obj: Bundle) {
+    fun `implementationguide-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -38,7 +39,8 @@ class AccountDataTest : DataTests() {
         assertTrue(stringMatch("Hospital charges", obj.description))
     }
 
-    fun `account-example Init`(obj: Bundle) {
+    fun `account-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -80,6 +82,7 @@ class AccountDataTest : DataTests() {
         assertTrue(stringMatch("2016-01-01", obj.guarantor[0].period!!.start))
     }
 
-    fun `account-example-with-guarantor Init`(obj: Bundle) {
+    fun `account-example-with-guarantor Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

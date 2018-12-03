@@ -79,20 +79,23 @@ fun main(args: Array<String>) {
     val gson = getGson()
 
     val test1 = gson.fromJson(json1, Resources::class.java)
-    if (!(test1.myList[0] is ClassA)) {
+    if (test1.myList[0] !is ClassA) {
         println("Test1 Error: first array entry should be ClassA but is ${test1.myList[0]::class.java}")
     }
 
-    if (!(test1.myList[1] is ClassB)) {
+    if (test1.myList[1] !is ClassB) {
         println("Test1 Error: first array entry should be ClassB but is ${test1.myList[1]::class.java}")
     }
 
     val test2 = gson.fromJson(json2, BaseClass::class.java)
     if (!(test2.myList[0] is ClassA)) {
-        println("Test3 Error: first array entry should be ClassA but is ${test2.myList[0]::class.java}")
+        println("Test2 Error: first array entry should be ClassA but is ${test2.myList[0]::class.java}")
     }
 
     val test3 = gson.fromJson(json3, BaseClass::class.java)
+    if (test3.myList[0] !is ClassB) {
+        println("test3 error")
+    }
 
 }
 

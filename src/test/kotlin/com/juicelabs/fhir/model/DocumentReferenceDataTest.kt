@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -69,6 +70,7 @@ class DocumentReferenceDataTest : DataTests() {
         assertTrue(stringMatch("Patient/xcda", obj.context!!.related[0].ref!!.reference))
     }
 
-    fun `documentreference-example Init`(obj: Bundle) {
+    fun `documentreference-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

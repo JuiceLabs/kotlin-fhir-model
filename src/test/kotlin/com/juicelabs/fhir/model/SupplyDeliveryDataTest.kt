@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -28,7 +29,8 @@ class SupplyDeliveryDataTest : DataTests() {
         assertTrue(stringMatch("Location 1", obj.destination!!.display))
     }
 
-    fun `supplydelivery-example Init`(obj: Bundle) {
+    fun `supplydelivery-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -54,6 +56,7 @@ class SupplyDeliveryDataTest : DataTests() {
         assertTrue(stringMatch("Nurse Smith", obj.receiver[0].display))
     }
 
-    fun `supplydelivery-example-pumpdelivery Init`(obj: Bundle) {
+    fun `supplydelivery-example-pumpdelivery Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

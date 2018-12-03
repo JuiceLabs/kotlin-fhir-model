@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -29,7 +30,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("Sequence/graphic-example-2", obj.pointer[0].reference))
     }
 
-    fun `sequence-graphic-example-1 Init`(obj: Bundle) {
+    fun `sequence-graphic-example-1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -90,7 +92,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("FDA", obj.repository[0].name))
     }
 
-    fun `sequence-example-fda-vcfeval Init`(obj: Bundle) {
+    fun `sequence-example-fda-vcfeval Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -116,7 +119,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("T-C-C-C-A-C-C-C", obj.observedSeq))
     }
 
-    fun `sequence-example-TPMT-one Init`(obj: Bundle) {
+    fun `sequence-example-TPMT-one Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -143,7 +147,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("Target Haplotype Observation", obj.variant[0].variantPointer!!.display))
     }
 
-    fun `sequence-example-pgx-2 Init`(obj: Bundle) {
+    fun `sequence-example-pgx-2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -172,7 +177,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("3:rs1333049", obj.repository[0].variantsetId))
     }
 
-    fun `sequence-example Init`(obj: Bundle) {
+    fun `sequence-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -217,7 +223,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("file-Bx37ZK009P4bX5g3qjkFZV38", obj.repository[0].variantsetId))
     }
 
-    fun `sequence-example-fda Init`(obj: Bundle) {
+    fun `sequence-example-fda Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -252,7 +259,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("ACATGGTAGC", obj.observedSeq))
     }
 
-    fun `coord-1base-example Init`(obj: Bundle) {
+    fun `coord-1base-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -274,7 +282,8 @@ class SequenceDataTest : DataTests() {
         assertEquals(128273740, obj.referenceSeq!!.windowEnd)
     }
 
-    fun `sequence-graphic-example-4 Init`(obj: Bundle) {
+    fun `sequence-graphic-example-4 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -294,7 +303,8 @@ class SequenceDataTest : DataTests() {
         assertEquals(128273736, obj.referenceSeq!!.windowEnd)
     }
 
-    fun `sequence-graphic-example-5 Init`(obj: Bundle) {
+    fun `sequence-graphic-example-5 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -320,7 +330,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("T-C-T-C-G-C-C-C", obj.observedSeq))
     }
 
-    fun `sequence-example-TPMT-two Init`(obj: Bundle) {
+    fun `sequence-example-TPMT-two Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -347,7 +358,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("Target Haplotype Observation", obj.variant[0].variantPointer!!.display))
     }
 
-    fun `sequence-example-pgx-1 Init`(obj: Bundle) {
+    fun `sequence-example-pgx-1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -389,7 +401,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("FDA", obj.repository[0].name))
     }
 
-    fun `sequence-example-fda-comparisons Init`(obj: Bundle) {
+    fun `sequence-example-fda-comparisons Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -424,7 +437,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("ACATGGTAGC", obj.observedSeq))
     }
 
-    fun `coord-0base-example Init`(obj: Bundle) {
+    fun `coord-0base-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -444,7 +458,8 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("Sequence/graphic-example-3", obj.pointer[0].reference))
     }
 
-    fun `sequence-graphic-example-2 Init`(obj: Bundle) {
+    fun `sequence-graphic-example-2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -469,6 +484,7 @@ class SequenceDataTest : DataTests() {
         assertTrue(stringMatch("Sequence/graphic-example-4", obj.pointer[0].reference))
     }
 
-    fun `sequence-graphic-example-3 Init`(obj: Bundle) {
+    fun `sequence-graphic-example-3 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

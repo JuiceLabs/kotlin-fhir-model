@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -48,6 +49,7 @@ class EpisodeOfCareDataTest : DataTests() {
         assertTrue(stringMatch("example account", obj.account[0].display))
     }
 
-    fun `episodeofcare-example Init`(obj: Bundle) {
+    fun `episodeofcare-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

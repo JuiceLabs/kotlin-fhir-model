@@ -14,7 +14,7 @@ open class DataTests {
         mapper = gsonFhirBuilder().create()
     }
 
-    fun stringMatch(str: String, actual: String?): Boolean = if (actual.isNullOrBlank()) true else actual!!.startsWith(str) 
+    fun stringMatch(str: String, actual: String?): Boolean = if (actual.isNullOrBlank()) true else actual.startsWith(str) 
 }
 
 fun File.readTextAndClose(): String {

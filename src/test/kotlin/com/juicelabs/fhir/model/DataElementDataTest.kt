@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -87,7 +88,8 @@ class DataElementDataTest : DataTests() {
         assertTrue(stringMatch("return f:/Patient/f:gender", obj.element[0].mapping[0].map))
     }
 
-    fun `dataelement-example Init`(obj: Bundle) {
+    fun `dataelement-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -128,6 +130,7 @@ class DataElementDataTest : DataTests() {
         assertTrue(stringMatch("5964-2", obj.element[0].mapping[0].map))
     }
 
-    fun `dataelement-labtestmaster-example Init`(obj: Bundle) {
+    fun `dataelement-labtestmaster-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

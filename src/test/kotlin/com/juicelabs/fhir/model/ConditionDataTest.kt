@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -39,7 +40,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("CT of neck", obj.evidence[0].code[0].coding[0].display))
     }
 
-    fun `condition-example-f003-abscess Init`(obj: Bundle) {
+    fun `condition-example-f003-abscess Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -83,7 +85,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("Diagnostic report for Roel's ", obj.evidence[0].detail[0].display))
     }
 
-    fun `condition-example-f203-sepsis Init`(obj: Bundle) {
+    fun `condition-example-f203-sepsis Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -107,7 +110,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("2010-07-18", obj.onsetDateTime))
     }
 
-    fun `condition-example-stroke Init`(obj: Bundle) {
+    fun `condition-example-stroke Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -128,7 +132,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.subject.reference))
     }
 
-    fun `condition-example-family-history Init`(obj: Bundle) {
+    fun `condition-example-family-history Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -168,7 +173,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("CT of thorax", obj.evidence[0].code[0].coding[0].display))
     }
 
-    fun `condition-example-f002-lung Init`(obj: Bundle) {
+    fun `condition-example-f002-lung Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -190,7 +196,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("Practitioner/f201", obj.asserter!!.reference))
     }
 
-    fun `condition-example-f205-infection Init`(obj: Bundle) {
+    fun `condition-example-f205-infection Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -232,7 +239,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("The patient is anuric.", obj.note[0].text))
     }
 
-    fun `condition-example-f204-renal Init`(obj: Bundle) {
+    fun `condition-example-f204-renal Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -256,7 +264,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("approximately November 2012", obj.onsetString))
     }
 
-    fun `condition-example2 Init`(obj: Bundle) {
+    fun `condition-example2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -298,7 +307,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("Erasmus' diagnostic report of", obj.evidence[0].detail[0].display))
     }
 
-    fun `condition-example-f202-malignancy Init`(obj: Bundle) {
+    fun `condition-example-f202-malignancy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -340,7 +350,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("Temperature", obj.evidence[0].detail[0].display))
     }
 
-    fun `condition-example-f201-fever Init`(obj: Bundle) {
+    fun `condition-example-f201-fever Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -374,7 +385,8 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("2012-05-24", obj.onsetDateTime))
     }
 
-    fun `condition-example Init`(obj: Bundle) {
+    fun `condition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -412,6 +424,7 @@ class ConditionDataTest : DataTests() {
         assertTrue(stringMatch("Cardiac chest pain", obj.evidence[0].code[0].coding[0].display))
     }
 
-    fun `condition-example-f001-heart Init`(obj: Bundle) {
+    fun `condition-example-f001-heart Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

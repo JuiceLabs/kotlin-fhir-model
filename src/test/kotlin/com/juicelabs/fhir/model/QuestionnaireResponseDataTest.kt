@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -60,7 +61,8 @@ class QuestionnaireResponseDataTest : DataTests() {
         assertTrue(stringMatch("0", obj.item[0].item[0].answer[0].item[0].item[2].answer[0].valueCoding!!.code))
     }
 
-    fun `questionnaireresponse-example Init`(obj: Bundle) {
+    fun `questionnaireresponse-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1003,7 +1005,8 @@ class QuestionnaireResponseDataTest : DataTests() {
         assertTrue(stringMatch("No", obj.item[2].item[16].item[0].item[5].answer[0].valueCoding!!.display))
     }
 
-    fun `questionnaireresponse-example-ussg-fht-answers Init`(obj: Bundle) {
+    fun `questionnaireresponse-example-ussg-fht-answers Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1048,7 +1051,8 @@ class QuestionnaireResponseDataTest : DataTests() {
         assertTrue(stringMatch("No, but I used to drink", obj.item[2].item[1].answer[0].valueString))
     }
 
-    fun `questionnaireresponse-example-f201-lifelines Init`(obj: Bundle) {
+    fun `questionnaireresponse-example-f201-lifelines Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1101,7 +1105,8 @@ class QuestionnaireResponseDataTest : DataTests() {
         assertTrue(stringMatch("Already able to speak Chinese", obj.item[0].item[1].item[4].answer[0].valueString))
     }
 
-    fun `questionnaireresponse-example-bluebook Init`(obj: Bundle) {
+    fun `questionnaireresponse-example-bluebook Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1138,6 +1143,7 @@ class QuestionnaireResponseDataTest : DataTests() {
         assertTrue(stringMatch("Eyes open spontaneously", obj.item[2].answer[0].valueCoding!!.display))
     }
 
-    fun `questionnaireresponse-example-gcs Init`(obj: Bundle) {
+    fun `questionnaireresponse-example-gcs Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -26,7 +27,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("Task/f201", obj.except[0].data[0].reference.reference))
     }
 
-    fun `consent-example-notThis Init`(obj: Bundle) {
+    fun `consent-example-notThis Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -52,7 +54,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("MedicationRequest", obj.except[0].class_fhir[0].code))
     }
 
-    fun `consent-example-smartonfhir Init`(obj: Bundle) {
+    fun `consent-example-smartonfhir Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -78,7 +81,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("Good Health Clinic", obj.except[0].actor[0].reference.display))
     }
 
-    fun `consent-example-notAuthor Init`(obj: Bundle) {
+    fun `consent-example-notAuthor Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -102,7 +106,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("2015-02-01", obj.except[0].period!!.end))
     }
 
-    fun `consent-example-notTime Init`(obj: Bundle) {
+    fun `consent-example-notTime Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -140,7 +145,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("18842-5", obj.except[0].code[1].code))
     }
 
-    fun `consent-example-signature Init`(obj: Bundle) {
+    fun `consent-example-signature Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -170,7 +176,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("correct", obj.except[0].action[1].coding[0].code))
     }
 
-    fun `consent-example-notThem Init`(obj: Bundle) {
+    fun `consent-example-notThem Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -202,7 +209,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("access", obj.except[0].action[0].coding[0].code))
     }
 
-    fun `consent-example-grantor Init`(obj: Bundle) {
+    fun `consent-example-grantor Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -232,7 +240,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("correct", obj.except[0].action[1].coding[0].code))
     }
 
-    fun `consent-example-notOrg Init`(obj: Bundle) {
+    fun `consent-example-notOrg Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -360,7 +369,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("N", obj.except[11].securityLabel[0].code))
     }
 
-    fun `consent-example-pkb Init`(obj: Bundle) {
+    fun `consent-example-pkb Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -383,7 +393,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("http://goodhealth.org/consent", obj.policyRule))
     }
 
-    fun `consent-example Init`(obj: Bundle) {
+    fun `consent-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -422,7 +433,8 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("Good Health Psychiatric Hospi", obj.except[1].actor[0].reference.display))
     }
 
-    fun `consent-example-Emergency Init`(obj: Bundle) {
+    fun `consent-example-Emergency Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -447,6 +459,7 @@ class ConsentDataTest : DataTests() {
         assertTrue(stringMatch("http://hl7.org/fhir/ConsentPo", obj.policyRule))
     }
 
-    fun `consent-example-Out Init`(obj: Bundle) {
+    fun `consent-example-Out Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

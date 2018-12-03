@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -97,7 +98,8 @@ class ActivityDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("practitioner", obj.participant[0].type))
     }
 
-    fun `activitydefinition-predecessor-example Init`(obj: Bundle) {
+    fun `activitydefinition-predecessor-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -140,7 +142,8 @@ class ActivityDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("Heart valve structure", obj.bodySite[0].coding[0].display))
     }
 
-    fun `activitydefinition-procedurerequest-example Init`(obj: Bundle) {
+    fun `activitydefinition-procedurerequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -267,7 +270,8 @@ class ActivityDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("30 '{tbl}'", obj.dynamicValue[1].expression))
     }
 
-    fun `activitydefinition-medicationorder-example Init`(obj: Bundle) {
+    fun `activitydefinition-medicationorder-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -361,7 +365,8 @@ class ActivityDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("practitioner", obj.participant[0].type))
     }
 
-    fun `activitydefinition-example Init`(obj: Bundle) {
+    fun `activitydefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -383,6 +388,7 @@ class ActivityDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("StructureMap/supplyrequest-tr", obj.transform!!.reference))
     }
 
-    fun `activitydefinition-supplyrequest-example Init`(obj: Bundle) {
+    fun `activitydefinition-supplyrequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -1618,7 +1619,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("Binary", obj.entry[4].request!!.url))
     }
 
-    fun `xds-example Init`(obj: Bundle) {
+    fun `xds-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v1 = (obj.entry[0].resource!! as DocumentReference)
         v2 = (obj.entry[1].resource!! as Patient)
         v3 = (obj.entry[2].resource!! as Practitioner)
@@ -2762,7 +2764,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("female", v64.gender))
     }
 
-    fun `practitioner-examples-general Init`(obj: Bundle) {
+    fun `practitioner-examples-general Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v6 = (obj.entry[0].resource!! as Practitioner)
         v7 = (obj.entry[1].resource!! as Practitioner)
         v8 = (obj.entry[2].resource!! as Practitioner)
@@ -3407,7 +3410,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("Observation", obj.entry[21].request!!.url))
     }
 
-    fun `diagnosticreport-hla-genetics-results-example Init`(obj: Bundle) {
+    fun `diagnosticreport-hla-genetics-results-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v65 = (obj.entry[0].resource!! as DiagnosticReport)
         v66 = (obj.entry[1].resource!! as Sequence)
         v67 = (obj.entry[2].resource!! as Sequence)
@@ -3687,7 +3691,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("Nursing procedure", v101.specialty[0].coding[0].display))
     }
 
-    fun `practitionerrole-examples-general Init`(obj: Bundle) {
+    fun `practitionerrole-examples-general Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v87 = (obj.entry[0].resource!! as PractitionerRole)
         v88 = (obj.entry[1].resource!! as PractitionerRole)
         v89 = (obj.entry[2].resource!! as PractitionerRole)
@@ -3877,7 +3882,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("/9j/4AAQSkZJRgABAQAAAQABAAD/2", obj.signature!!.blob))
     }
 
-    fun `document-example-dischargesummary Init`(obj: Bundle) {
+    fun `document-example-dischargesummary Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v102 = (obj.entry[0].resource!! as Composition)
         v103 = (obj.entry[1].resource!! as Practitioner)
         v104 = (obj.entry[2].resource!! as Patient)
@@ -3916,7 +3922,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("USS Enterprise", v111.partOf!!.display))
     }
 
-    fun `location-examples-general Init`(obj: Bundle) {
+    fun `location-examples-general Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v110 = (obj.entry[0].resource!! as Location)
         v111 = (obj.entry[1].resource!! as Location)
     }
@@ -4886,7 +4893,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("http://hl7.org/fhir/us/sdc/Va", obj.entry[11].request!!.url))
     }
 
-    fun `questionnaire-profile-example-ussg-fht Init`(obj: Bundle) {
+    fun `questionnaire-profile-example-ussg-fht Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v112 = (obj.entry[0].resource!! as ConceptMap)
         v113 = (obj.entry[1].resource!! as Questionnaire)
         v114 = (v113.contained[0] as ValueSet)
@@ -5096,7 +5104,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("https://pacs.hospital.org/IHE", v139.address))
     }
 
-    fun `endpoint-examples-general-template Init`(obj: Bundle) {
+    fun `endpoint-examples-general-template Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v126 = (obj.entry[0].resource!! as Endpoint)
         v127 = (obj.entry[1].resource!! as Endpoint)
         v128 = (obj.entry[2].resource!! as Endpoint)
@@ -9005,7 +9014,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("Organization/1", v364.managingOrganization!!.reference))
     }
 
-    fun `patient-examples-cypress-template Init`(obj: Bundle) {
+    fun `patient-examples-cypress-template Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v140 = (obj.entry[0].resource!! as Patient)
         v141 = (obj.entry[1].resource!! as Patient)
         v142 = (obj.entry[2].resource!! as Patient)
@@ -9265,7 +9275,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("include", obj.entry[1].search!!.mode))
     }
 
-    fun `bundle-example Init`(obj: Bundle) {
+    fun `bundle-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v365 = (obj.entry[0].resource!! as MedicationRequest)
         v366 = (obj.entry[1].resource!! as Medication)
     }
@@ -16311,7 +16322,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("#o1", v747.result[0].reference))
     }
 
-    fun `diagnosticreport-examples-general Init`(obj: Bundle) {
+    fun `diagnosticreport-examples-general Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v367 = (obj.entry[0].resource!! as DiagnosticReport)
         v368 = (v367.contained[0] as Observation)
         v369 = (v367.contained[1] as Observation)
@@ -16961,7 +16973,8 @@ class BundleDataTest : DataTests() {
         assertTrue(stringMatch("Organization/hl7", v760.managingOrganization!!.reference))
     }
 
-    fun `patient-examples-general Init`(obj: Bundle) {
+    fun `patient-examples-general Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
         v749 = (obj.entry[0].resource!! as Patient)
         v750 = (obj.entry[1].resource!! as Patient)
         v751 = (obj.entry[2].resource!! as Patient)

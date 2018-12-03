@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -30,7 +31,8 @@ class MedicationStatementDataTest : DataTests() {
         assertTrue(stringMatch("Patient indicated that they t", obj.note[0].text))
     }
 
-    fun `medicationstatementexample5 Init`(obj: Bundle) {
+    fun `medicationstatementexample5 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -74,7 +76,8 @@ class MedicationStatementDataTest : DataTests() {
         assertTrue(stringMatch("d", obj.dosage[0].maxDosePerPeriod!!.denominator!!.code))
     }
 
-    fun `medicationstatementexample4 Init`(obj: Bundle) {
+    fun `medicationstatementexample4 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -112,7 +115,8 @@ class MedicationStatementDataTest : DataTests() {
         assertTrue(stringMatch("d", obj.dosage[0].maxDosePerPeriod!!.denominator!!.code))
     }
 
-    fun `medicationstatementexample3 Init`(obj: Bundle) {
+    fun `medicationstatementexample3 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -167,7 +171,8 @@ class MedicationStatementDataTest : DataTests() {
         assertTrue(stringMatch("Patient can not take acetamin", obj.note[0].text))
     }
 
-    fun `medicationstatementexample2 Init`(obj: Bundle) {
+    fun `medicationstatementexample2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -255,7 +260,8 @@ class MedicationStatementDataTest : DataTests() {
         assertTrue(stringMatch("TAB", obj.dosage[0].doseRange!!.high!!.code))
     }
 
-    fun `medicationstatementexample1 Init`(obj: Bundle) {
+    fun `medicationstatementexample1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -285,7 +291,8 @@ class MedicationStatementDataTest : DataTests() {
         assertTrue(stringMatch("patient plans to start using ", obj.note[0].text))
     }
 
-    fun `medicationstatementexample7 Init`(obj: Bundle) {
+    fun `medicationstatementexample7 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -324,6 +331,7 @@ class MedicationStatementDataTest : DataTests() {
         assertTrue(stringMatch("d", obj.dosage[0].maxDosePerPeriod!!.denominator!!.code))
     }
 
-    fun `medicationstatementexample6 Init`(obj: Bundle) {
+    fun `medicationstatementexample6 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

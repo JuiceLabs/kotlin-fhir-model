@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -86,7 +87,8 @@ class QuestionnaireDataTest : DataTests() {
         assertTrue(stringMatch("choice", obj.item[1].item[0].item[0].type))
     }
 
-    fun `questionnaire-example Init`(obj: Bundle) {
+    fun `questionnaire-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -133,7 +135,8 @@ class QuestionnaireDataTest : DataTests() {
         assertTrue(stringMatch("boolean", obj.item[2].item[1].type))
     }
 
-    fun `questionnaire-example-f201-lifelines Init`(obj: Bundle) {
+    fun `questionnaire-example-f201-lifelines Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -223,7 +226,8 @@ class QuestionnaireDataTest : DataTests() {
         assertTrue(stringMatch("#eye", obj.item[2].options!!.reference))
     }
 
-    fun `questionnaire-example-gcs Init`(obj: Bundle) {
+    fun `questionnaire-example-gcs Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -291,6 +295,7 @@ class QuestionnaireDataTest : DataTests() {
         assertTrue(stringMatch("string", obj.item[0].item[1].item[4].type))
     }
 
-    fun `questionnaire-example-bluebook Init`(obj: Bundle) {
+    fun `questionnaire-example-bluebook Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

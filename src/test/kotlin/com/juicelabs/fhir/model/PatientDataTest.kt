@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -32,7 +33,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Organization/2", obj.managingOrganization!!.reference))
     }
 
-    fun `patient-example-xds Init`(obj: Bundle) {
+    fun `patient-example-xds Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -89,7 +91,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Burgers University Medical Ce", obj.managingOrganization!!.display))
     }
 
-    fun `patient-example-f001-pieter Init`(obj: Bundle) {
+    fun `patient-example-f001-pieter Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -116,7 +119,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("ACME Healthcare, Inc", obj.managingOrganization!!.display))
     }
 
-    fun `patient-example-d Init`(obj: Bundle) {
+    fun `patient-example-d Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -146,7 +150,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Organization/hl7", obj.managingOrganization!!.reference))
     }
 
-    fun `patient-genetics-example1 Init`(obj: Bundle) {
+    fun `patient-genetics-example1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -176,7 +181,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("seealso", obj.link[0].type))
     }
 
-    fun `patient-example-b Init`(obj: Bundle) {
+    fun `patient-example-b Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -203,7 +209,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("ACME Healthcare, Inc", obj.managingOrganization!!.display))
     }
 
-    fun `patient-example-c Init`(obj: Bundle) {
+    fun `patient-example-c Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -221,7 +228,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("ALBERT", obj.name[0].given[0]))
     }
 
-    fun `patient-example-ihe-pcd Init`(obj: Bundle) {
+    fun `patient-example-ihe-pcd Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -295,7 +303,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Organization/1", obj.managingOrganization!!.reference))
     }
 
-    fun `patient-example Init`(obj: Bundle) {
+    fun `patient-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -317,7 +326,8 @@ class PatientDataTest : DataTests() {
         assertEquals(false, if (obj.deceasedBoolean != null) obj.deceasedBoolean else false, "Field: obj.deceasedBoolean")
     }
 
-    fun `patient-example-proband Init`(obj: Bundle) {
+    fun `patient-example-proband Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -385,7 +395,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("AUMC", obj.managingOrganization!!.display))
     }
 
-    fun `patient-example-f201-roel Init`(obj: Bundle) {
+    fun `patient-example-f201-roel Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -410,7 +421,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Good Health Clinic", obj.managingOrganization!!.display))
     }
 
-    fun `patient-example-xcda Init`(obj: Bundle) {
+    fun `patient-example-xcda Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -443,7 +455,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("seealso", obj.link[0].type))
     }
 
-    fun `patient-example-a Init`(obj: Bundle) {
+    fun `patient-example-a Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -471,7 +484,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Organization/1", obj.managingOrganization!!.reference))
     }
 
-    fun `patient-example-dicom Init`(obj: Bundle) {
+    fun `patient-example-dicom Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -520,7 +534,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Pete's Vetinary Services", obj.managingOrganization!!.display))
     }
 
-    fun `patient-example-animal Init`(obj: Bundle) {
+    fun `patient-example-animal Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -561,7 +576,8 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("上海东方医院", obj.managingOrganization!!.display))
     }
 
-    fun `patient-example-chinese Init`(obj: Bundle) {
+    fun `patient-example-chinese Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -592,6 +608,7 @@ class PatientDataTest : DataTests() {
         assertTrue(stringMatch("Good Health Clinic", obj.managingOrganization!!.display))
     }
 
-    fun `patient-glossy-example Init`(obj: Bundle) {
+    fun `patient-glossy-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

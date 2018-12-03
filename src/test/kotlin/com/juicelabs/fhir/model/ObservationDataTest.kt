@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -48,7 +49,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Molecular Specimen ID: MLD45-", obj.specimen!!.display))
     }
 
-    fun `observation-example-genetics-1 Init`(obj: Bundle) {
+    fun `observation-example-genetics-1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -76,7 +78,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Left Femur", obj.bodySite!!.text))
     }
 
-    fun `observation-example-bmd Init`(obj: Bundle) {
+    fun `observation-example-bmd Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -105,7 +108,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("/min", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-respiratory-rate Init`(obj: Bundle) {
+    fun `observation-example-respiratory-rate Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -141,7 +145,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("[lb_av]", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example Init`(obj: Bundle) {
+    fun `observation-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -178,7 +183,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Sequence/example-pgx-2", obj.related[1].target.reference))
     }
 
-    fun `observation-example-haplotype2 Init`(obj: Bundle) {
+    fun `observation-example-haplotype2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -206,7 +212,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("mm[Hg]", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-mbp Init`(obj: Bundle) {
+    fun `observation-example-mbp Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -235,7 +242,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("kg/m2", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-bmi Init`(obj: Bundle) {
+    fun `observation-example-bmi Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -264,7 +272,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("[in_i]", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-body-height Init`(obj: Bundle) {
+    fun `observation-example-body-height Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -282,7 +291,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("blue", obj.valueString))
     }
 
-    fun `observation-example-eye-color Init`(obj: Bundle) {
+    fun `observation-example-eye-color Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -311,7 +321,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Cel", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-body-temperature Init`(obj: Bundle) {
+    fun `observation-example-body-temperature Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -341,7 +352,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Observation/example-TPMT-hapl", obj.related[1].target.reference))
     }
 
-    fun `observation-example-TPMT-diplotype Init`(obj: Bundle) {
+    fun `observation-example-TPMT-diplotype Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -383,7 +395,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("mmol/L", obj.referenceRange[0].high!!.code))
     }
 
-    fun `observation-example-f002-excess Init`(obj: Bundle) {
+    fun `observation-example-f002-excess Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -420,7 +433,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Body Temperature", obj.related[3].target.display))
     }
 
-    fun `observation-example-vitals-panel Init`(obj: Bundle) {
+    fun `observation-example-vitals-panel Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -451,7 +465,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Observation/example-diplotype", obj.related[0].target.reference))
     }
 
-    fun `observation-example-phenotype Init`(obj: Bundle) {
+    fun `observation-example-phenotype Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -480,7 +495,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("cm", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-head-circumference Init`(obj: Bundle) {
+    fun `observation-example-head-circumference Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -510,7 +526,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Sequence/example-TPMT-two", obj.related[0].target.reference))
     }
 
-    fun `observation-example-TPMT-haplotype-two Init`(obj: Bundle) {
+    fun `observation-example-TPMT-haplotype-two Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -543,7 +560,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Blood culture for bacteria, i", obj.method!!.coding[0].display))
     }
 
-    fun `observation-example-f206-staphylococcus Init`(obj: Bundle) {
+    fun `observation-example-f206-staphylococcus Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -596,7 +614,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Not Asked", obj.component[1].dataAbsentReason!!.coding[0].display))
     }
 
-    fun `observation-example-bloodpressure-cancel Init`(obj: Bundle) {
+    fun `observation-example-bloodpressure-cancel Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -621,7 +640,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("2016-12-30", obj.valueDateTime))
     }
 
-    fun `observation-example-date-lastmp Init`(obj: Bundle) {
+    fun `observation-example-date-lastmp Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -729,7 +749,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Eyes score", obj.related[2].target.display))
     }
 
-    fun `observation-example-glasgow Init`(obj: Bundle) {
+    fun `observation-example-glasgow Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -845,7 +866,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("2. Good, strong cry; normal r", obj.component[4].valueCodeableConcept!!.text))
     }
 
-    fun `observation-example-10minute-apgar-score Init`(obj: Bundle) {
+    fun `observation-example-10minute-apgar-score Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -891,7 +913,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("%", obj.referenceRange[0].high!!.code))
     }
 
-    fun `observation-example-satO2 Init`(obj: Bundle) {
+    fun `observation-example-satO2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -933,7 +956,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("GCS form results", obj.related[0].target.display))
     }
 
-    fun `observation-example-glasgow-qa Init`(obj: Bundle) {
+    fun `observation-example-glasgow-qa Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -963,7 +987,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Sequence/example-TPMT-one", obj.related[0].target.reference))
     }
 
-    fun `observation-example-TPMT-haplotype-one Init`(obj: Bundle) {
+    fun `observation-example-TPMT-haplotype-one Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -998,7 +1023,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch(" 12-14 y Male: 4.4 - 5.2  x  ", obj.referenceRange[0].text))
     }
 
-    fun `observation-example-f004-erythrocyte Init`(obj: Bundle) {
+    fun `observation-example-f004-erythrocyte Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1024,7 +1050,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("ObservationForGenetics profil", obj.related[0].target.display))
     }
 
-    fun `observation-example-genetics-5 Init`(obj: Bundle) {
+    fun `observation-example-genetics-5 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1062,7 +1089,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Normal Range", obj.referenceRange[0].type!!.coding[0].display))
     }
 
-    fun `observation-example-f204-creatinine Init`(obj: Bundle) {
+    fun `observation-example-f204-creatinine Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1096,7 +1124,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Variant-3", obj.related[2].target.display))
     }
 
-    fun `observation-example-genetics-4 Init`(obj: Bundle) {
+    fun `observation-example-genetics-4 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1152,7 +1181,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("2041 2043 2037 2047 2060 2062", obj.component[2].valueSampledData!!.data))
     }
 
-    fun `observation-example-sample-data Init`(obj: Bundle) {
+    fun `observation-example-sample-data Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1194,7 +1224,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("g/dL", obj.referenceRange[0].high!!.code))
     }
 
-    fun `observation-example-f005-hemoglobin Init`(obj: Bundle) {
+    fun `observation-example-f005-hemoglobin Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1236,7 +1267,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("kPa", obj.referenceRange[0].high!!.code))
     }
 
-    fun `observation-example-f003-co2 Init`(obj: Bundle) {
+    fun `observation-example-f003-co2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1358,7 +1390,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("0. Not breathing", obj.component[4].valueCodeableConcept!!.text))
     }
 
-    fun `observation-example-1minute-apgar-score Init`(obj: Bundle) {
+    fun `observation-example-1minute-apgar-score Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1382,7 +1415,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("ObservationForGenetics profil", obj.related[0].target.display))
     }
 
-    fun `observation-example-genetics-3 Init`(obj: Bundle) {
+    fun `observation-example-genetics-3 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1446,7 +1480,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Below low normal", obj.component[1].interpretation!!.text))
     }
 
-    fun `observation-example-bloodpressure Init`(obj: Bundle) {
+    fun `observation-example-bloodpressure Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1483,7 +1518,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Sequence/example-pgx-2", obj.related[1].target.reference))
     }
 
-    fun `observation-example-haplotype1 Init`(obj: Bundle) {
+    fun `observation-example-haplotype1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1512,7 +1548,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("cm", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-body-length Init`(obj: Bundle) {
+    fun `observation-example-body-length Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1628,7 +1665,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("2. Good, strong cry; normal r", obj.component[4].valueCodeableConcept!!.text))
     }
 
-    fun `observation-example-5minute-apgar-score Init`(obj: Bundle) {
+    fun `observation-example-5minute-apgar-score Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1659,7 +1697,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Observation/example-haplotype", obj.related[1].target.reference))
     }
 
-    fun `observation-example-diplotype1 Init`(obj: Bundle) {
+    fun `observation-example-diplotype1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1688,7 +1727,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("/min", obj.valueQuantity!!.code))
     }
 
-    fun `observation-example-heart-rate Init`(obj: Bundle) {
+    fun `observation-example-heart-rate Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1741,7 +1781,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Not Performed", obj.component[1].dataAbsentReason!!.coding[0].display))
     }
 
-    fun `observation-example-bloodpressure-dar Init`(obj: Bundle) {
+    fun `observation-example-bloodpressure-dar Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1789,7 +1830,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("degrees C", obj.referenceRange[0].high!!.unit))
     }
 
-    fun `observation-example-f202-temperature Init`(obj: Bundle) {
+    fun `observation-example-f202-temperature Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1887,7 +1929,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("2. Good, strong cry; normal r", obj.component[4].valueCodeableConcept!!.text))
     }
 
-    fun `observation-example-20minute-apgar-score Init`(obj: Bundle) {
+    fun `observation-example-20minute-apgar-score Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1934,7 +1977,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("mmol/L", obj.referenceRange[0].high!!.code))
     }
 
-    fun `observation-example-f001-glucose Init`(obj: Bundle) {
+    fun `observation-example-f001-glucose Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1976,7 +2020,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Normal Range", obj.referenceRange[0].type!!.coding[0].display))
     }
 
-    fun `observation-example-f203-bicarbonate Init`(obj: Bundle) {
+    fun `observation-example-f203-bicarbonate Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -2015,7 +2060,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("mmol/L", obj.referenceRange[0].high!!.code))
     }
 
-    fun `observation-example-unsat Init`(obj: Bundle) {
+    fun `observation-example-unsat Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -2113,7 +2159,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("1. Weak cry; may sound like w", obj.component[4].valueCodeableConcept!!.text))
     }
 
-    fun `observation-example-2minute-apgar-score Init`(obj: Bundle) {
+    fun `observation-example-2minute-apgar-score Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -2152,7 +2199,8 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("Pathogenic", obj.component[1].valueCodeableConcept!!.coding[0].display))
     }
 
-    fun `observation-example-genetics-2 Init`(obj: Bundle) {
+    fun `observation-example-genetics-2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -2213,6 +2261,7 @@ class ObservationDataTest : DataTests() {
         assertTrue(stringMatch("a", obj.component[1].referenceRange[0].age!!.low!!.code))
     }
 
-    fun `observation-example-f205-egfr Init`(obj: Bundle) {
+    fun `observation-example-f205-egfr Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

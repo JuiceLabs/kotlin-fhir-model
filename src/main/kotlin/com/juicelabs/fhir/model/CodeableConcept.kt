@@ -1,5 +1,5 @@
 //
-//  Generated from FHIR Version 3.0.1.11917 on 2018-12-01T08:36:55.055 
+//  Generated from FHIR Version 3.0.1.11917 on 2018-12-02T21:16:28.281 
 //
 //   2018, JuiceLab, LLC
 //  

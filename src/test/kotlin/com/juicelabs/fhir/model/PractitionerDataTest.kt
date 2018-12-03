@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -37,7 +38,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("1983-04-20", obj.birthDate))
     }
 
-    fun `practitioner-example-f203-jvg Init`(obj: Bundle) {
+    fun `practitioner-example-f203-jvg Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -74,7 +76,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("Pulmonologist", obj.qualification[0].code.coding[0].display))
     }
 
-    fun `practitioner-example-f201-ab Init`(obj: Bundle) {
+    fun `practitioner-example-f201-ab Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -112,7 +115,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("1960-06-12", obj.birthDate))
     }
 
-    fun `practitioner-example-f202-lm Init`(obj: Bundle) {
+    fun `practitioner-example-f202-lm Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -128,7 +132,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("MD", obj.name[0].suffix[0]))
     }
 
-    fun `practitioner-example-xcda-author Init`(obj: Bundle) {
+    fun `practitioner-example-xcda-author Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -170,7 +175,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("Dutch", obj.communication[0].coding[0].display))
     }
 
-    fun `practitioner-example-f003-mv Init`(obj: Bundle) {
+    fun `practitioner-example-f003-mv Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -209,7 +215,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("1979-04-29", obj.birthDate))
     }
 
-    fun `practitioner-example-f002-pv Init`(obj: Bundle) {
+    fun `practitioner-example-f002-pv Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -241,7 +248,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("Example University", obj.qualification[0].issuer!!.display))
     }
 
-    fun `practitioner-example Init`(obj: Bundle) {
+    fun `practitioner-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -280,7 +288,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("1971-11-07", obj.birthDate))
     }
 
-    fun `practitioner-example-f007-sh Init`(obj: Bundle) {
+    fun `practitioner-example-f007-sh Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -315,7 +324,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("1967-11-05", obj.birthDate))
     }
 
-    fun `practitioner-example-f204-ce Init`(obj: Bundle) {
+    fun `practitioner-example-f204-ce Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -335,7 +345,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("john.doe@healthcare.example.o", obj.telecom[0].value))
     }
 
-    fun `practitioner-example-xcda1 Init`(obj: Bundle) {
+    fun `practitioner-example-xcda1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -379,7 +390,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("France", obj.communication[0].coding[0].display))
     }
 
-    fun `practitioner-example-f005-al Init`(obj: Bundle) {
+    fun `practitioner-example-f005-al Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -422,7 +434,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("Language", obj.communication[0].text))
     }
 
-    fun `practitioner-example-f004-rb Init`(obj: Bundle) {
+    fun `practitioner-example-f004-rb Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -461,7 +474,8 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("1975-12-07", obj.birthDate))
     }
 
-    fun `practitioner-example-f006-rvdb Init`(obj: Bundle) {
+    fun `practitioner-example-f006-rvdb Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -500,6 +514,7 @@ class PractitionerDataTest : DataTests() {
         assertTrue(stringMatch("1975-12-07", obj.birthDate))
     }
 
-    fun `practitioner-example-f001-evdb Init`(obj: Bundle) {
+    fun `practitioner-example-f001-evdb Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

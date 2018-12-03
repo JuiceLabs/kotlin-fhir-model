@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -29,6 +30,7 @@ class PaymentNoticeDataTest : DataTests() {
         assertTrue(stringMatch("paid", obj.paymentStatus!!.coding[0].code))
     }
 
-    fun `paymentnotice-example Init`(obj: Bundle) {
+    fun `paymentnotice-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

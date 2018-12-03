@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -35,7 +36,8 @@ class BasicDataTest : DataTests() {
         assertTrue(stringMatch("UMLCLASSMODEL", obj.code.coding[0].code))
     }
 
-    fun `basic-example2 Init`(obj: Bundle) {
+    fun `basic-example2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -49,7 +51,8 @@ class BasicDataTest : DataTests() {
         assertTrue(stringMatch("Example Narrative Tester", obj.code.text))
     }
 
-    fun `basic-example-narrative Init`(obj: Bundle) {
+    fun `basic-example-narrative Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -86,6 +89,7 @@ class BasicDataTest : DataTests() {
         assertTrue(stringMatch("Practitioner/example", obj.author!!.reference))
     }
 
-    fun `basic-example Init`(obj: Bundle) {
+    fun `basic-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

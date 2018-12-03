@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -36,7 +37,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("2015-01-17T16:30:00+10:00", obj.location[0].period!!.end))
     }
 
-    fun `encounter-example-home Init`(obj: Bundle) {
+    fun `encounter-example-home Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -66,7 +68,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("Organization/f201", obj.serviceProvider!!.reference))
     }
 
-    fun `encounter-example-f201-20130404 Init`(obj: Bundle) {
+    fun `encounter-example-f201-20130404 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -115,7 +118,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("Organization/f001", obj.serviceProvider!!.reference))
     }
 
-    fun `encounter-example-f003-abscess Init`(obj: Bundle) {
+    fun `encounter-example-f003-abscess Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -133,7 +137,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.subject!!.reference))
     }
 
-    fun `encounter-example Init`(obj: Bundle) {
+    fun `encounter-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -181,7 +186,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("BMC", obj.serviceProvider!!.display))
     }
 
-    fun `encounter-example-f002-lung Init`(obj: Bundle) {
+    fun `encounter-example-f002-lung Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -246,7 +252,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("Encounter/f203", obj.partOf!!.reference))
     }
 
-    fun `encounter-example-f203-20130311 Init`(obj: Bundle) {
+    fun `encounter-example-f203-20130311 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -277,7 +284,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("Arm", obj.reason[0].coding[0].display))
     }
 
-    fun `encounter-example-xcda Init`(obj: Bundle) {
+    fun `encounter-example-xcda Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -318,7 +326,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("Organization/f201", obj.serviceProvider!!.reference))
     }
 
-    fun `encounter-example-f202-20130128 Init`(obj: Bundle) {
+    fun `encounter-example-f202-20130128 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -382,7 +391,8 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("2017-02-01T12:45:00+10:00", obj.location[4].period!!.start))
     }
 
-    fun `encounter-example-emerg Init`(obj: Bundle) {
+    fun `encounter-example-emerg Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -430,6 +440,7 @@ class EncounterDataTest : DataTests() {
         assertTrue(stringMatch("Burgers University Medical Ce", obj.serviceProvider!!.display))
     }
 
-    fun `encounter-example-f001-heart Init`(obj: Bundle) {
+    fun `encounter-example-f001-heart Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

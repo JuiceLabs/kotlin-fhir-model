@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -31,7 +32,8 @@ class DeviceComponentDataTest : DataTests() {
         assertTrue(stringMatch("en-US", obj.languageCode!!.coding[0].code))
     }
 
-    fun `devicecomponent-example Init`(obj: Bundle) {
+    fun `devicecomponent-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -66,6 +68,7 @@ class DeviceComponentDataTest : DataTests() {
         assertTrue(stringMatch("en-US", obj.languageCode!!.coding[0].code))
     }
 
-    fun `devicecomponent-example-prodspec Init`(obj: Bundle) {
+    fun `devicecomponent-example-prodspec Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

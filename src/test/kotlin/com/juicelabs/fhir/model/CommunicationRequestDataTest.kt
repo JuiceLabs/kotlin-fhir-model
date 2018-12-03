@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -18,7 +19,8 @@ class CommunicationRequestDataTest : DataTests() {
         assertTrue(stringMatch("Encounter/example", obj.context!!.reference))
     }
 
-    fun `communicationrequest-example Init`(obj: Bundle) {
+    fun `communicationrequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -68,6 +70,7 @@ class CommunicationRequestDataTest : DataTests() {
         assertTrue(stringMatch("#requester", obj.requester!!.agent.reference))
     }
 
-    fun `communicationrequest-example-fm-solicit-attachment Init`(obj: Bundle) {
+    fun `communicationrequest-example-fm-solicit-attachment Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

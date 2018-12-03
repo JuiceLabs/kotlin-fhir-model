@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -38,6 +39,7 @@ class GuidanceResponseDataTest : DataTests() {
         assertTrue(stringMatch("#outputParameters1", obj.outputParameters!!.reference))
     }
 
-    fun `guidanceresponse-example Init`(obj: Bundle) {
+    fun `guidanceresponse-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

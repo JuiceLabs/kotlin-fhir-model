@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -34,7 +35,8 @@ class LibraryDataTest : DataTests() {
         assertTrue(stringMatch("FHIR Helpers", obj.content[0].title))
     }
 
-    fun `library-predecessor-example Init`(obj: Bundle) {
+    fun `library-predecessor-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -97,7 +99,8 @@ class LibraryDataTest : DataTests() {
         assertTrue(stringMatch("library-cms146-example-conten", obj.content[0].url))
     }
 
-    fun `library-cms146-example Init`(obj: Bundle) {
+    fun `library-cms146-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -126,7 +129,8 @@ class LibraryDataTest : DataTests() {
         assertTrue(stringMatch("library-example-content.cql", obj.content[0].url))
     }
 
-    fun `library-example Init`(obj: Bundle) {
+    fun `library-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -163,6 +167,7 @@ class LibraryDataTest : DataTests() {
         assertTrue(stringMatch("https://www.cdc.gov/mmwr/volu", obj.relatedArtifact[6].url))
     }
 
-    fun `library-composition-example Init`(obj: Bundle) {
+    fun `library-composition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

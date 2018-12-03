@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -23,7 +24,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("http://acme.com/goodhealth/eh", obj.url))
     }
 
-    fun `device-example-software Init`(obj: Bundle) {
+    fun `device-example-software Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -51,7 +53,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.patient!!.reference))
     }
 
-    fun `device-example-udi3 Init`(obj: Bundle) {
+    fun `device-example-udi3 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -76,7 +79,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.patient!!.reference))
     }
 
-    fun `device-example-udi2 Init`(obj: Bundle) {
+    fun `device-example-udi2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -99,7 +103,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("Central Supply", obj.location!!.display))
     }
 
-    fun `device-example-f001-feedingtube Init`(obj: Bundle) {
+    fun `device-example-f001-feedingtube Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -123,7 +128,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("ext 4352", obj.contact[0].value))
     }
 
-    fun `device-example-pacemaker Init`(obj: Bundle) {
+    fun `device-example-pacemaker Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -143,7 +149,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.patient!!.reference))
     }
 
-    fun `device-example-udi4 Init`(obj: Bundle) {
+    fun `device-example-udi4 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -164,7 +171,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("A.1.1", obj.model))
     }
 
-    fun `device-example-ihe-pcd Init`(obj: Bundle) {
+    fun `device-example-ihe-pcd Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -196,7 +204,8 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("QA Checked", obj.note[0].text))
     }
 
-    fun `device-example Init`(obj: Bundle) {
+    fun `device-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -235,6 +244,7 @@ class DeviceDataTest : DataTests() {
         assertTrue(stringMatch("MR Unsafe", obj.safety[0].text))
     }
 
-    fun `device-example-udi1 Init`(obj: Bundle) {
+    fun `device-example-udi1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -33,7 +34,8 @@ class ScheduleDataTest : DataTests() {
         assertTrue(stringMatch("The slots attached to this sc", obj.comment))
     }
 
-    fun `schedule-provider-location1-example Init`(obj: Bundle) {
+    fun `schedule-provider-location1-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -61,7 +63,8 @@ class ScheduleDataTest : DataTests() {
         assertTrue(stringMatch("The slots attached to this sc", obj.comment))
     }
 
-    fun `schedule-example Init`(obj: Bundle) {
+    fun `schedule-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -91,6 +94,7 @@ class ScheduleDataTest : DataTests() {
         assertTrue(stringMatch("The slots attached to this sc", obj.comment))
     }
 
-    fun `schedule-provider-location2-example Init`(obj: Bundle) {
+    fun `schedule-provider-location2-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

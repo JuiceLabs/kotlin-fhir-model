@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -76,7 +77,8 @@ class ImagingStudyDataTest : DataTests() {
         assertTrue(stringMatch("LL VIEW", obj.series[0].instance[1].title))
     }
 
-    fun `imagingstudy-example-xr Init`(obj: Bundle) {
+    fun `imagingstudy-example-xr Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -106,6 +108,7 @@ class ImagingStudyDataTest : DataTests() {
         assertTrue(stringMatch("urn:oid:1.2.840.10008.5.1.4.1", obj.series[0].instance[0].sopClass))
     }
 
-    fun `imagingstudy-example Init`(obj: Bundle) {
+    fun `imagingstudy-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

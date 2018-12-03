@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -49,7 +50,8 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("aHR0cDovL2ZoaXItZGV2LmhlYWx0a", obj.entity[0].query))
     }
 
-    fun `audit-event-example-search Init`(obj: Bundle) {
+    fun `audit-event-example-search Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -90,7 +92,8 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("Web Server", obj.source.type[0].display))
     }
 
-    fun `audit-event-example-logout Init`(obj: Bundle) {
+    fun `audit-event-example-logout Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -136,7 +139,8 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("Access / Use", obj.entity[0].lifecycle!!.display))
     }
 
-    fun `audit-event-example-vread Init`(obj: Bundle) {
+    fun `audit-event-example-vread Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -194,7 +198,8 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("System Object", obj.entity[2].type!!.display))
     }
 
-    fun `audit-event-example-media Init`(obj: Bundle) {
+    fun `audit-event-example-media Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -235,7 +240,8 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("Web Server", obj.source.type[0].display))
     }
 
-    fun `audit-event-example-login Init`(obj: Bundle) {
+    fun `audit-event-example-login Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -286,7 +292,8 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("MS4yLjg0MC4xMTQzNTAuMS4xMy4wL", obj.entity[1].detail[0].value))
     }
 
-    fun `audit-event-example-pixQuery Init`(obj: Bundle) {
+    fun `audit-event-example-pixQuery Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -340,7 +347,8 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("Grahame's Laptop", obj.entity[0].name))
     }
 
-    fun `auditevent-example Init`(obj: Bundle) {
+    fun `auditevent-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -421,6 +429,7 @@ class AuditEventDataTest : DataTests() {
         assertTrue(stringMatch("data about Everthing importan", obj.entity[1].description))
     }
 
-    fun `auditevent-example-disclosure Init`(obj: Bundle) {
+    fun `auditevent-example-disclosure Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

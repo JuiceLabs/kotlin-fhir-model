@@ -79,7 +79,7 @@ class FhirSpec(val directory: String, val packageName: String) {
                 if (resource.containsKey("content") && resource.containsKey("concept")) {
                     codeSystems.put(url, FhirCodeSystem(this, resource as Map<String, FhirCodeSystem>))
                 } else {
-                    log.warn("CodeSystem with no concepts: " + url)
+                    log.warn("CodeSystem with no concepts: $url")
                 }
             }
         }
@@ -87,12 +87,12 @@ class FhirSpec(val directory: String, val packageName: String) {
 
 
     fun valuesetWithUri(uri: String): FhirValueSet? {
-        return valueSets.get(uri)
+        return valueSets[uri]
     }
 
 
     fun codesystemWithUri(uri: String): FhirCodeSystem {
-        return codeSystems.get(uri)!!
+        return codeSystems[uri]!!
     }
 
 

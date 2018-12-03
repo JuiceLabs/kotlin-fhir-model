@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -31,7 +32,8 @@ class SearchParameterDataTest : DataTests() {
         assertTrue(stringMatch("DocumentReference", obj.target[0]))
     }
 
-    fun `searchparameter-example-extension Init`(obj: Bundle) {
+    fun `searchparameter-example-extension Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -64,7 +66,8 @@ class SearchParameterDataTest : DataTests() {
         assertTrue(stringMatch("identifier", obj.chain[1]))
     }
 
-    fun `searchparameter-example-reference Init`(obj: Bundle) {
+    fun `searchparameter-example-reference Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -110,6 +113,7 @@ class SearchParameterDataTest : DataTests() {
         assertTrue(stringMatch("eq", obj.comparator[0]))
     }
 
-    fun `searchparameter-example Init`(obj: Bundle) {
+    fun `searchparameter-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

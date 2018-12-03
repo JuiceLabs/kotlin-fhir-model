@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -29,6 +30,7 @@ class AdverseEventDataTest : DataTests() {
         assertTrue(stringMatch("Medication/example", obj.suspectEntity[0].instance.reference))
     }
 
-    fun `adverseevent-example Init`(obj: Bundle) {
+    fun `adverseevent-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

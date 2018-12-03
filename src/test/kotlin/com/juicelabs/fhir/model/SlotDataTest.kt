@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -26,7 +27,8 @@ class SlotDataTest : DataTests() {
         assertTrue(stringMatch("Assessments should be perform", obj.comment))
     }
 
-    fun `slot-example-busy Init`(obj: Bundle) {
+    fun `slot-example-busy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -53,7 +55,8 @@ class SlotDataTest : DataTests() {
         assertTrue(stringMatch("Assessments should be perform", obj.comment))
     }
 
-    fun `slot-example Init`(obj: Bundle) {
+    fun `slot-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -73,7 +76,8 @@ class SlotDataTest : DataTests() {
         assertTrue(stringMatch("Dr Careful is out of the offi", obj.comment))
     }
 
-    fun `slot-example-unavailable Init`(obj: Bundle) {
+    fun `slot-example-unavailable Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -93,6 +97,7 @@ class SlotDataTest : DataTests() {
         assertTrue(stringMatch("Dr Careful is out of the offi", obj.comment))
     }
 
-    fun `slot-example-tentative Init`(obj: Bundle) {
+    fun `slot-example-tentative Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

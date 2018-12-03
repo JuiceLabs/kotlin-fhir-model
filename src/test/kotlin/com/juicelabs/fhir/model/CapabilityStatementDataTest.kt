@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -105,7 +106,8 @@ class CapabilityStatementDataTest : DataTests() {
         assertTrue(stringMatch("http://fhir.hl7.org/base/Prof", obj.document[0].profile.reference))
     }
 
-    fun `capabilitystatement-example Init`(obj: Bundle) {
+    fun `capabilitystatement-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -160,6 +162,7 @@ class CapabilityStatementDataTest : DataTests() {
         assertTrue(stringMatch("which diagnostic discipline/d", obj.rest[0].resource[3].searchParam[1].documentation))
     }
 
-    fun `capabilitystatement-phr-example Init`(obj: Bundle) {
+    fun `capabilitystatement-phr-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

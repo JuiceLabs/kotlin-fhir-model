@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -28,7 +29,8 @@ class PersonDataTest : DataTests() {
         assertTrue(stringMatch("Ariadne Bor-Jansma", obj.link[0].target.display))
     }
 
-    fun `person-example-f002-ariadne Init`(obj: Bundle) {
+    fun `person-example-f002-ariadne Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -73,6 +75,7 @@ class PersonDataTest : DataTests() {
         assertTrue(stringMatch("Peter Chalmers", obj.link[1].target.display))
     }
 
-    fun `person-example Init`(obj: Bundle) {
+    fun `person-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

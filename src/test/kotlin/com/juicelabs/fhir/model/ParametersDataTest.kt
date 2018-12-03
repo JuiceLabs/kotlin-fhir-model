@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -19,6 +20,7 @@ class ParametersDataTest : DataTests() {
         assertTrue(stringMatch("VGhpcyBpcyBhIHRlc3QgZXhhbXBsZ", (obj.parameter[1].resource!! as Binary).content))
     }
 
-    fun `parameters-example Init`(obj: Bundle) {
+    fun `parameters-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

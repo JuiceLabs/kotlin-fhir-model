@@ -146,7 +146,7 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
             val props = mutableListOf<FhirClassProperty>()
             definition.types.forEach { typeObj ->
                 // an inline class
-                if ("BackboneElement" == typeObj.code || "Element".equals(typeObj.code)) {
+                if ("BackboneElement" == typeObj.code || "Element" == typeObj.code) {
                     // data types don't use "BackboneElement"
                     props.add(FhirClassProperty(this, typeObj, nameIfClass()))
                     // TODO: look at http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name ?

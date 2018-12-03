@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -24,6 +25,7 @@ class ServiceDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("Appropriate Use Criteria", obj.topic[1].text))
     }
 
-    fun `servicedefinition-example Init`(obj: Bundle) {
+    fun `servicedefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

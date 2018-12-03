@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -65,7 +66,8 @@ class CodeSystemDataTest : DataTests() {
         assertTrue(stringMatch("A set of care plans that appl", obj.concept[8].definition))
     }
 
-    fun `codesystem-list-example-codes Init`(obj: Bundle) {
+    fun `codesystem-list-example-codes Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -103,7 +105,8 @@ class CodeSystemDataTest : DataTests() {
         assertEquals(92, obj.count)
     }
 
-    fun `codesystem-example-summary Init`(obj: Bundle) {
+    fun `codesystem-example-summary Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -150,6 +153,7 @@ class CodeSystemDataTest : DataTests() {
         assertTrue(stringMatch("Obdurate Labs uses this with ", obj.concept[2].designation[0].value))
     }
 
-    fun `codesystem-example Init`(obj: Bundle) {
+    fun `codesystem-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -41,7 +42,8 @@ class DeviceRequestDataTest : DataTests() {
         assertTrue(stringMatch("Request for unspecified devic", obj.relevantHistory[0].display))
     }
 
-    fun `devicerequest-example-insulinpump Init`(obj: Bundle) {
+    fun `devicerequest-example-insulinpump Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -58,6 +60,7 @@ class DeviceRequestDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.subject.reference))
     }
 
-    fun `devicerequest-example Init`(obj: Bundle) {
+    fun `devicerequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

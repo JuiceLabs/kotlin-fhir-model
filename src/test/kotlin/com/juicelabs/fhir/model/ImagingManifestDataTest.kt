@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -33,6 +34,7 @@ class ImagingManifestDataTest : DataTests() {
         assertTrue(stringMatch("urn:oid:2.16.124.113543.6003.", obj.study[0].series[1].instance[1].uid))
     }
 
-    fun `imagingmanifest-example Init`(obj: Bundle) {
+    fun `imagingmanifest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

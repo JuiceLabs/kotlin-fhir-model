@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -24,7 +25,8 @@ class BodySiteDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.patient.reference))
     }
 
-    fun `bodysite-example-fetus Init`(obj: Bundle) {
+    fun `bodysite-example-fetus Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -51,7 +53,8 @@ class BodySiteDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.patient.reference))
     }
 
-    fun `bodysite-example-tumor Init`(obj: Bundle) {
+    fun `bodysite-example-tumor Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -73,6 +76,7 @@ class BodySiteDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.patient.reference))
     }
 
-    fun `bodysite-example-skin-patch Init`(obj: Bundle) {
+    fun `bodysite-example-skin-patch Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

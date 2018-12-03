@@ -13,16 +13,6 @@ class FhirElementBinding(dict: JsonObject) {
     val canonical: String? = if (dict.has("valueSetCanonical")) dict["valueSetCanonical"].asString else null
     val isRequired = "required" == strength
 
-//    private val code: String?
-//
-//    private val profile: JsonElement?
-//
-//    init {
-//        code = if (dict.has("code")) dict["code"].asString else null
-//        // todo check that it's valid
-//
-//        profile = dict["profile"]
-//        // todo more checks
-//    }
+
 
 }

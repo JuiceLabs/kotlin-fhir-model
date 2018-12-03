@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -16,7 +17,8 @@ class DetectedIssueDataTest : DataTests() {
         assertTrue(stringMatch("final", obj.status))
     }
 
-    fun `detectedissue-example-allergy Init`(obj: Bundle) {
+    fun `detectedissue-example-allergy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -45,7 +47,8 @@ class DetectedIssueDataTest : DataTests() {
         assertTrue(stringMatch("http://www.tmhp.com/Radiology", obj.reference))
     }
 
-    fun `detectedissue-example-dup Init`(obj: Bundle) {
+    fun `detectedissue-example-dup Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -77,7 +80,8 @@ class DetectedIssueDataTest : DataTests() {
         assertTrue(stringMatch("Dr. Adam Careful", obj.mitigation[0].author!!.display))
     }
 
-    fun `detectedissue-example Init`(obj: Bundle) {
+    fun `detectedissue-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -91,6 +95,7 @@ class DetectedIssueDataTest : DataTests() {
         assertTrue(stringMatch("final", obj.status))
     }
 
-    fun `detectedissue-example-lab Init`(obj: Bundle) {
+    fun `detectedissue-example-lab Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

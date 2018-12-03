@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -37,7 +38,8 @@ class EligibilityRequestDataTest : DataTests() {
         assertTrue(stringMatch("Maternity", obj.benefitSubCategory!!.coding[0].display))
     }
 
-    fun `eligibilityrequest-example-2 Init`(obj: Bundle) {
+    fun `eligibilityrequest-example-2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -59,6 +61,7 @@ class EligibilityRequestDataTest : DataTests() {
         assertTrue(stringMatch("Coverage/9876B1", obj.coverage!!.reference))
     }
 
-    fun `eligibilityrequest-example Init`(obj: Bundle) {
+    fun `eligibilityrequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

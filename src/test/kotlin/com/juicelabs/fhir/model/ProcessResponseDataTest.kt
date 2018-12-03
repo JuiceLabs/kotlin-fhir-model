@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -25,7 +26,8 @@ class ProcessResponseDataTest : DataTests() {
         assertTrue(stringMatch("Organization/1", obj.requestOrganization!!.reference))
     }
 
-    fun `processresponse-example Init`(obj: Bundle) {
+    fun `processresponse-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -57,7 +59,8 @@ class ProcessResponseDataTest : DataTests() {
         assertTrue(stringMatch("a001", obj.error[0].coding[0].code))
     }
 
-    fun `processresponse-example-error Init`(obj: Bundle) {
+    fun `processresponse-example-error Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -94,6 +97,7 @@ class ProcessResponseDataTest : DataTests() {
         assertTrue(stringMatch("#comreq-1", obj.communicationRequest[0].reference))
     }
 
-    fun `processresponse-example-pended Init`(obj: Bundle) {
+    fun `processresponse-example-pended Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

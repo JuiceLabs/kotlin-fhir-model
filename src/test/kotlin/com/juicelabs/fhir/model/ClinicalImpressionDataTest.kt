@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -33,6 +34,7 @@ class ClinicalImpressionDataTest : DataTests() {
         assertTrue(stringMatch("850.0", obj.finding[0].itemCodeableConcept.coding[0].code))
     }
 
-    fun `clinicalimpression-example Init`(obj: Bundle) {
+    fun `clinicalimpression-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

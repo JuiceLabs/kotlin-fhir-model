@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -35,6 +36,7 @@ class DeviceMetricDataTest : DataTests() {
         assertTrue(stringMatch("2016-12-28T09:03:04-05:00", obj.calibration[0].time))
     }
 
-    fun `devicemetric-example Init`(obj: Bundle) {
+    fun `devicemetric-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

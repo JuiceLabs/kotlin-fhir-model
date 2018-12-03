@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -29,7 +30,8 @@ class MediaDataTest : DataTests() {
         assertTrue(stringMatch("2009-09-03", obj.content.creation))
     }
 
-    fun `media-example Init`(obj: Bundle) {
+    fun `media-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -69,7 +71,8 @@ class MediaDataTest : DataTests() {
         assertTrue(stringMatch("http://imaging.acme.com/wado/", obj.content.url))
     }
 
-    fun `media-example-dicom Init`(obj: Bundle) {
+    fun `media-example-dicom Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -101,7 +104,8 @@ class MediaDataTest : DataTests() {
         assertTrue(stringMatch("2016-03-15", obj.content.creation))
     }
 
-    fun `media-example-xray Init`(obj: Bundle) {
+    fun `media-example-xray Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -121,6 +125,7 @@ class MediaDataTest : DataTests() {
         assertTrue(stringMatch("dG9vIGJpZyB0b28gaW5jbHVkZSB0a", obj.content.data))
     }
 
-    fun `media-example-sound Init`(obj: Bundle) {
+    fun `media-example-sound Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

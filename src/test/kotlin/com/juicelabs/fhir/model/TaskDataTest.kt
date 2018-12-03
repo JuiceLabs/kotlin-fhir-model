@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -57,7 +58,8 @@ class TaskDataTest : DataTests() {
         assertTrue(stringMatch("Specimen/101", obj.output[1].valueReference.reference))
     }
 
-    fun `task-example6 Init`(obj: Bundle) {
+    fun `task-example6 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -124,7 +126,8 @@ class TaskDataTest : DataTests() {
         assertTrue(stringMatch("2016-11-02T09:45:05+10:00", obj.restriction!!.period!!.end))
     }
 
-    fun `task-example1 Init`(obj: Bundle) {
+    fun `task-example1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -146,7 +149,8 @@ class TaskDataTest : DataTests() {
         assertTrue(stringMatch("Practitioner/example", obj.owner!!.reference))
     }
 
-    fun `task-example3 Init`(obj: Bundle) {
+    fun `task-example3 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -190,7 +194,8 @@ class TaskDataTest : DataTests() {
         assertTrue(stringMatch("2016-11-01T09:45:05+10:00", obj.restriction!!.period!!.end))
     }
 
-    fun `task-example2 Init`(obj: Bundle) {
+    fun `task-example2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -241,7 +246,8 @@ class TaskDataTest : DataTests() {
         assertTrue(stringMatch("Specimen/101", obj.output[0].valueReference.reference))
     }
 
-    fun `task-example5 Init`(obj: Bundle) {
+    fun `task-example5 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -287,6 +293,7 @@ class TaskDataTest : DataTests() {
         assertTrue(stringMatch("Specimen/101", obj.output[0].valueReference.reference))
     }
 
-    fun `task-example4 Init`(obj: Bundle) {
+    fun `task-example4 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

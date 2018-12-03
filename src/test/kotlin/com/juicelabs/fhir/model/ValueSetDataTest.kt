@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -43,7 +44,8 @@ class ValueSetDataTest : DataTests() {
         assertTrue(stringMatch("Cholesterol [Percentile]", obj.compose!!.include[0].concept[3].display))
     }
 
-    fun `valueset-example Init`(obj: Bundle) {
+    fun `valueset-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -116,7 +118,8 @@ class ValueSetDataTest : DataTests() {
         assertTrue(stringMatch("Cholesterol/Phospholipid [Mol", obj.expansion!!.contains[2].contains[3].display))
     }
 
-    fun `valueset-example-expansion Init`(obj: Bundle) {
+    fun `valueset-example-expansion Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -157,7 +160,8 @@ class ValueSetDataTest : DataTests() {
         assertTrue(stringMatch("option", obj.expansion!!.contains[2].display))
     }
 
-    fun `valueset-example-inactive Init`(obj: Bundle) {
+    fun `valueset-example-inactive Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -189,7 +193,8 @@ class ValueSetDataTest : DataTests() {
         assertTrue(stringMatch("Don't know", obj.expansion!!.contains[2].display))
     }
 
-    fun `valueset-example-yesnodontknow Init`(obj: Bundle) {
+    fun `valueset-example-yesnodontknow Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -224,7 +229,8 @@ class ValueSetDataTest : DataTests() {
         assertTrue(stringMatch("http://hl7.org/fhir/list-exam", obj.compose!!.include[0].system))
     }
 
-    fun `valueset-list-example-codes Init`(obj: Bundle) {
+    fun `valueset-list-example-codes Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -259,6 +265,7 @@ class ValueSetDataTest : DataTests() {
         assertTrue(stringMatch("Cholesterol [Presence] in Blo", obj.compose!!.exclude[0].concept[0].display))
     }
 
-    fun `valueset-example-intensional Init`(obj: Bundle) {
+    fun `valueset-example-intensional Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

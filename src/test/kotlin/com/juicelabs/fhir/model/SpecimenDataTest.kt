@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -43,7 +44,8 @@ class SpecimenDataTest : DataTests() {
         assertTrue(stringMatch("Patient dropped off specimen", obj.note[0].text))
     }
 
-    fun `specimen-example-isolate Init`(obj: Bundle) {
+    fun `specimen-example-isolate Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -76,7 +78,8 @@ class SpecimenDataTest : DataTests() {
         assertTrue(stringMatch("mls", obj.container[0].specimenQuantity!!.unit))
     }
 
-    fun `specimen-example-urine Init`(obj: Bundle) {
+    fun `specimen-example-urine Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -101,7 +104,8 @@ class SpecimenDataTest : DataTests() {
         assertTrue(stringMatch("Serum Separator Tube", obj.container[0].type!!.coding[0].display))
     }
 
-    fun `specimen-example-serum Init`(obj: Bundle) {
+    fun `specimen-example-serum Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -149,6 +153,7 @@ class SpecimenDataTest : DataTests() {
         assertTrue(stringMatch("Specimen is grossly lipemic", obj.note[0].text))
     }
 
-    fun `specimen-example Init`(obj: Bundle) {
+    fun `specimen-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

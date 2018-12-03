@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -45,6 +46,7 @@ class CompartmentDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("The device used as the messag", obj.resource[1].documentation))
     }
 
-    fun `compartmentdefinition-example Init`(obj: Bundle) {
+    fun `compartmentdefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

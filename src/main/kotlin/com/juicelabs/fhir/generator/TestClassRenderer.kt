@@ -6,11 +6,13 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory
+import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asTypeName
@@ -41,7 +43,7 @@ class TestClassRenderer(val spec: FhirSpec) {
         if (res.isNullOrBlank()) {
             return
         }
-        val className = Settings.classMap[res?.toLowerCase()] ?: res ?: ""
+        val className = Settings.classMap[res.toLowerCase()] ?: res ?: ""
 
         if (className.isNotBlank()) {
             val fhirClass = FhirClass.withName(className)
@@ -207,7 +209,10 @@ class CreateTestMethods(private var spec: FhirSpec, private val rawData: Mutable
     private val testClass = ClassName("org.junit.jupiter.api", "Test")
     private val assertEq = ClassName("kotlin.test", "assertEquals")
     private val assertTrueCN = ClassName("kotlin.test", "assertTrue")
-    private val parentClass = ClassName("com.juicelabs.fhir.model", "DataTests")
+
+    private val MODEL_PACKAGE = "com.juicelabs.fhir.model"
+
+    private val parentClass = ClassName(MODEL_PACKAGE, "DataTests")
 
 
     private var rolloverPath: String? = null
@@ -224,19 +229,27 @@ class CreateTestMethods(private var spec: FhirSpec, private val rawData: Mutable
 
     // iterate over every example
     private fun createTestClasses() {
-        // skip bundle until GSON and Kotlin bugs are resolved.
-        val bundleClassName = ClassName("com.juicelabs.fhir.model", "Bundle")
+        val suppress = ClassName("java.lang", "SuppressWarnings")
+
+        val bundleClassName = ClassName(MODEL_PACKAGE, "Bundle")
         rawData
 //                .filter { it.key.name == "Bundle" }
 //                .filter { it.key.name == "PlanDefinition" }
                 .forEach { fhirClass, dataList ->
                     currentClass = fhirClass
-                    className = ClassName("com.juicelabs.fhir.model", fhirClass.name)
+                    className = ClassName(MODEL_PACKAGE, fhirClass.name)
                     createClassFile(fhirClass)
                     dataList.forEach { (dataFilename, jsonObject) ->
                         filename = dataFilename
                         valInitFunName = "${filename.substringBefore(".")} Init"
-                        fValSpec = FunSpec.builder(valInitFunName).addParameter("obj", bundleClassName)
+                        fValSpec = FunSpec.builder(valInitFunName)
+                                .addParameter(ParameterSpec.builder("obj", bundleClassName)
+                                        .addAnnotation(
+                                                AnnotationSpec.builder(suppress).addMember("\"unused\"").build())
+                                        .build()
+                                )
+                                fValSpec.addStatement("obj.identifier  // No-Op to suprress unused warnings")
+
                         val values = testValues.getTestValues(jsonObject, fhirClass)
                         createTestFun()
                         addAsserts(values)
@@ -323,7 +336,7 @@ class CreateTestMethods(private var spec: FhirSpec, private val rawData: Mutable
             varCount++
             fValSpec.addStatement("v${varCount} = (${propPath}")
 
-            var castClassName = ClassName("com.juicelabs.fhir.model", testValue.castClass!!)
+            var castClassName = ClassName(MODEL_PACKAGE, testValue.castClass!!)
             val java = PropertySpec.builder("v$varCount", castClassName)
                     .mutable(true)
                     .addModifiers(KModifier.PRIVATE)
@@ -372,7 +385,7 @@ class CreateTestMethods(private var spec: FhirSpec, private val rawData: Mutable
                 .returns(Boolean::class)
                 .addParameter("str", String::class)
                 .addParameter("actual", String::class.asTypeName().asNullable())
-                .addStatement("return if (actual.isNullOrBlank()) true else actual!!.startsWith(str) ")
+                .addStatement("return if (actual.isNullOrBlank()) true else actual.startsWith(str) ")
                 .build()
         )
 

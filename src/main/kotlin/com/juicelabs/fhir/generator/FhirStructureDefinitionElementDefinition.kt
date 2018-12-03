@@ -66,7 +66,7 @@ class FhirStructureDefinitionElementDefinition(val element: FhirStructureDefinit
         // resolve bindings
         if (binding != null && binding.isRequired && (binding.uri != null || binding.canonical != null)) {
             val uri = binding.canonical ?: binding.uri!!
-            if (uri.startsWith("http://hl7.org/fhir")) {
+            if (!uri.startsWith("http://hl7.org/fhir")) {
                 log.debug("Ignoring foreign ValueSet \"{}\"".format(uri))
                 return
             }

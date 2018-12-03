@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -20,7 +21,8 @@ class OperationOutcomeDataTest : DataTests() {
         assertTrue(stringMatch("Patient.identifier", obj.issue[0].expression[0]))
     }
 
-    fun `operationoutcome-example-validationfail Init`(obj: Bundle) {
+    fun `operationoutcome-example-validationfail Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -39,7 +41,8 @@ class OperationOutcomeDataTest : DataTests() {
         assertTrue(stringMatch("Additional information may be", obj.issue[0].details!!.text))
     }
 
-    fun `operationoutcome-example-break-the-glass Init`(obj: Bundle) {
+    fun `operationoutcome-example-break-the-glass Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -56,7 +59,8 @@ class OperationOutcomeDataTest : DataTests() {
         assertTrue(stringMatch("http.name:exact", obj.issue[0].location[0]))
     }
 
-    fun `operationoutcome-example-searchfail Init`(obj: Bundle) {
+    fun `operationoutcome-example-searchfail Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -72,7 +76,8 @@ class OperationOutcomeDataTest : DataTests() {
         assertTrue(stringMatch("SQL Link Communication Error ", obj.issue[0].details!!.text))
     }
 
-    fun `operationoutcome-example-exception Init`(obj: Bundle) {
+    fun `operationoutcome-example-exception Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -91,7 +96,8 @@ class OperationOutcomeDataTest : DataTests() {
         assertTrue(stringMatch("Person.gender", obj.issue[0].expression[0]))
     }
 
-    fun `operationoutcome-example Init`(obj: Bundle) {
+    fun `operationoutcome-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -107,6 +113,7 @@ class OperationOutcomeDataTest : DataTests() {
         assertTrue(stringMatch("All OK", obj.issue[0].details!!.text))
     }
 
-    fun `operationoutcome-example-allok Init`(obj: Bundle) {
+    fun `operationoutcome-example-allok Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -49,7 +50,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("Bacteremia due to staphylococ", obj.codedDiagnosis[0].coding[0].display))
     }
 
-    fun `diagnosticreport-example-f202-bloodculture Init`(obj: Bundle) {
+    fun `diagnosticreport-example-f202-bloodculture Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1123,7 +1125,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("Urinalysis", obj.result[2].display))
     }
 
-    fun `diagnosticreport-example-ghp Init`(obj: Bundle) {
+    fun `diagnosticreport-example-ghp Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1226,7 +1229,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("#ldlcholesterol", obj.result[3].reference))
     }
 
-    fun `diagnosticreport-example-lipids Init`(obj: Bundle) {
+    fun `diagnosticreport-example-lipids Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1288,7 +1292,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("Core lab", obj.conclusion))
     }
 
-    fun `diagnosticreport-example-f001-bloodexam Init`(obj: Bundle) {
+    fun `diagnosticreport-example-f001-bloodexam Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1319,7 +1324,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("Unremarkable study", obj.conclusion))
     }
 
-    fun `diagnosticreport-example-ultrasound Init`(obj: Bundle) {
+    fun `diagnosticreport-example-ultrasound Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1353,7 +1359,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("Malignant tumor of craniophar", obj.codedDiagnosis[0].coding[0].display))
     }
 
-    fun `diagnosticreport-example-f201-brainct Init`(obj: Bundle) {
+    fun `diagnosticreport-example-f201-brainct Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1398,7 +1405,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("Genetic analysis for BRAC -2", obj.result[1].display))
     }
 
-    fun `diagnosticreport-genetics-example-2-familyhistory Init`(obj: Bundle) {
+    fun `diagnosticreport-genetics-example-2-familyhistory Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1788,7 +1796,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("HTML Report", obj.presentedForm[0].title))
     }
 
-    fun `diagnosticreport-example Init`(obj: Bundle) {
+    fun `diagnosticreport-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1808,7 +1817,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("Practitioner/example", obj.performer[0].actor.reference))
     }
 
-    fun `diagnosticreport-example-papsmear Init`(obj: Bundle) {
+    fun `diagnosticreport-example-papsmear Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1846,7 +1856,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("LAB ID: P73456090 MAX JONES B", obj.presentedForm[0].title))
     }
 
-    fun `diagnosticreport-example-gingival-mass Init`(obj: Bundle) {
+    fun `diagnosticreport-example-gingival-mass Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1877,7 +1888,8 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("2016-10-20T20:00:00+11:00", obj.presentedForm[0].creation))
     }
 
-    fun `diagnosticreport-example-pgx Init`(obj: Bundle) {
+    fun `diagnosticreport-example-pgx Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1907,6 +1919,7 @@ class DiagnosticReportDataTest : DataTests() {
         assertTrue(stringMatch("At risk of osteoporotic fract", obj.codedDiagnosis[0].coding[0].display))
     }
 
-    fun `diagnosticreport-example-dxa Init`(obj: Bundle) {
+    fun `diagnosticreport-example-dxa Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

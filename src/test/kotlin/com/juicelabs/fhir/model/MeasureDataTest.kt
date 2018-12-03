@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -26,7 +27,8 @@ class MeasureDataTest : DataTests() {
         assertTrue(stringMatch("Numerator", obj.group[0].population[2].criteria))
     }
 
-    fun `measure-component-b-example Init`(obj: Bundle) {
+    fun `measure-component-b-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -108,7 +110,8 @@ class MeasureDataTest : DataTests() {
         assertTrue(stringMatch("Numerator2", obj.group[1].population[3].criteria))
     }
 
-    fun `measure-predecessor-example Init`(obj: Bundle) {
+    fun `measure-predecessor-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -189,7 +192,8 @@ class MeasureDataTest : DataTests() {
         assertTrue(stringMatch("deceasedBoolean", obj.supplementalData[1].path))
     }
 
-    fun `measure-cms146-example Init`(obj: Bundle) {
+    fun `measure-cms146-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -212,7 +216,8 @@ class MeasureDataTest : DataTests() {
         assertTrue(stringMatch("Numerator", obj.group[0].population[2].criteria))
     }
 
-    fun `measure-component-a-example Init`(obj: Bundle) {
+    fun `measure-component-a-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -233,6 +238,7 @@ class MeasureDataTest : DataTests() {
         assertTrue(stringMatch("opportunity", obj.compositeScoring!!.coding[0].code))
     }
 
-    fun `measure-composite-example Init`(obj: Bundle) {
+    fun `measure-composite-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -60,7 +61,8 @@ class ConceptMapDataTest : DataTests() {
         assertTrue(stringMatch("temp", obj.group[0].unmapped!!.display))
     }
 
-    fun `conceptmap-example Init`(obj: Bundle) {
+    fun `conceptmap-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -100,7 +102,8 @@ class ConceptMapDataTest : DataTests() {
         assertTrue(stringMatch("http://example.org/fhir/Conce", obj.group[0].unmapped!!.url))
     }
 
-    fun `conceptmap-example-2 Init`(obj: Bundle) {
+    fun `conceptmap-example-2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1156,6 +1159,7 @@ class ConceptMapDataTest : DataTests() {
         assertTrue(stringMatch("257351008", obj.group[0].element[272].target[0].product[1].code))
     }
 
-    fun `conceptmap-example-specimen-type Init`(obj: Bundle) {
+    fun `conceptmap-example-specimen-type Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

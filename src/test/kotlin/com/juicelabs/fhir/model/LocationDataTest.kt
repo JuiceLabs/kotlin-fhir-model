@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -48,7 +49,8 @@ class LocationDataTest : DataTests() {
         assertTrue(stringMatch("Endpoint/example", obj.endpoint[0].reference))
     }
 
-    fun `location-example Init`(obj: Bundle) {
+    fun `location-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -81,7 +83,8 @@ class LocationDataTest : DataTests() {
         assertTrue(stringMatch("Location/1", obj.partOf!!.reference))
     }
 
-    fun `location-example-room Init`(obj: Bundle) {
+    fun `location-example-room Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -108,7 +111,8 @@ class LocationDataTest : DataTests() {
         assertTrue(stringMatch("Organization/f001", obj.managingOrganization!!.reference))
     }
 
-    fun `location-example-ambulance Init`(obj: Bundle) {
+    fun `location-example-ambulance Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -131,7 +135,8 @@ class LocationDataTest : DataTests() {
         assertTrue(stringMatch("Jurisdiction", obj.physicalType!!.coding[0].display))
     }
 
-    fun `location-example-ukpharmacy Init`(obj: Bundle) {
+    fun `location-example-ukpharmacy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -155,7 +160,8 @@ class LocationDataTest : DataTests() {
         assertTrue(stringMatch("Organization/f001", obj.managingOrganization!!.reference))
     }
 
-    fun `location-example-patients-home Init`(obj: Bundle) {
+    fun `location-example-patients-home Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -191,6 +197,7 @@ class LocationDataTest : DataTests() {
         assertTrue(stringMatch("%.2f".format(-83.694710f), "%.2f".format(obj.position!!.latitude)))
     }
 
-    fun `location-example-hl7hq Init`(obj: Bundle) {
+    fun `location-example-hl7hq Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

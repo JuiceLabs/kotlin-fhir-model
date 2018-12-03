@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -36,7 +37,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Eerste neo-adjuvante TPF-kuur", obj.note[0].text))
     }
 
-    fun `procedure-example-f201-tpf Init`(obj: Bundle) {
+    fun `procedure-example-f201-tpf Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -72,7 +74,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Blood Pressure", obj.reasonReference[0].display))
     }
 
-    fun `procedure-example-ambulation Init`(obj: Bundle) {
+    fun `procedure-example-ambulation Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -100,7 +103,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Device/example-pacemaker", obj.focalDevice[0].manipulated.reference))
     }
 
-    fun `procedure-example-implant Init`(obj: Bundle) {
+    fun `procedure-example-implant Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -127,7 +131,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Burgers University Medical Ce", obj.location!!.display))
     }
 
-    fun `procedure-example-colon-biopsy Init`(obj: Bundle) {
+    fun `procedure-example-colon-biopsy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -163,7 +168,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("described in care plan", obj.followUp[0].text))
     }
 
-    fun `procedure-example-f004-tracheotomy Init`(obj: Bundle) {
+    fun `procedure-example-f004-tracheotomy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -192,7 +198,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("early detection of breast mas", obj.reasonCode[0].text))
     }
 
-    fun `procedure-example-education Init`(obj: Bundle) {
+    fun `procedure-example-education Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -219,7 +226,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Colonoscope device", obj.usedReference[0].display))
     }
 
-    fun `procedure-example-colonoscopy Init`(obj: Bundle) {
+    fun `procedure-example-colonoscopy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -252,7 +260,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Both knees", obj.bodySite[0].text))
     }
 
-    fun `procedure-example-physical-therapy Init`(obj: Bundle) {
+    fun `procedure-example-physical-therapy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -288,7 +297,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("described in care plan", obj.followUp[0].text))
     }
 
-    fun `procedure-example-f003-abscess Init`(obj: Bundle) {
+    fun `procedure-example-f003-abscess Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -313,7 +323,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Routine Appendectomy. Appendi", obj.note[0].text))
     }
 
-    fun `procedure-example Init`(obj: Bundle) {
+    fun `procedure-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -328,7 +339,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.subject.reference))
     }
 
-    fun `procedure-example-appendectomy-narrative Init`(obj: Bundle) {
+    fun `procedure-example-appendectomy-narrative Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -364,7 +376,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("described in care plan", obj.followUp[0].text))
     }
 
-    fun `procedure-example-f001-heart Init`(obj: Bundle) {
+    fun `procedure-example-f001-heart Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -400,7 +413,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("described in care plan", obj.followUp[0].text))
     }
 
-    fun `procedure-example-f002-lung Init`(obj: Bundle) {
+    fun `procedure-example-f002-lung Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -441,7 +455,8 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("30-guage needle", obj.usedCode[0].text))
     }
 
-    fun `procedure-example-biopsy Init`(obj: Bundle) {
+    fun `procedure-example-biopsy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -469,6 +484,7 @@ class ProcedureDataTest : DataTests() {
         assertTrue(stringMatch("delivery of healthy male infa", obj.outcome!!.text))
     }
 
-    fun `procedure-example-ob Init`(obj: Bundle) {
+    fun `procedure-example-ob Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

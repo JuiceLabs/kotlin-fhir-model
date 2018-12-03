@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -40,7 +41,8 @@ class CommunicationDataTest : DataTests() {
         assertTrue(stringMatch("2010-02-01T10:57:34+01:00", obj.payload[1].contentAttachment.creation))
     }
 
-    fun `communication-example-fm-attachment Init`(obj: Bundle) {
+    fun `communication-example-fm-attachment Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -86,7 +88,8 @@ class CommunicationDataTest : DataTests() {
         assertTrue(stringMatch("2010-02-01T10:57:34+01:00", obj.payload[1].contentAttachment.creation))
     }
 
-    fun `communication-example-fm-solicited-attachment Init`(obj: Bundle) {
+    fun `communication-example-fm-solicited-attachment Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -120,6 +123,7 @@ class CommunicationDataTest : DataTests() {
         assertTrue(stringMatch("Serum Potassium Observation", obj.payload[1].contentReference.display))
     }
 
-    fun `communication-example Init`(obj: Bundle) {
+    fun `communication-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

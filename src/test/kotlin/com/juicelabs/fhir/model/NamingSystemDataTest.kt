@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -40,7 +41,8 @@ class NamingSystemDataTest : DataTests() {
         assertTrue(stringMatch("2015-08-21", obj.uniqueId[1].period!!.start))
     }
 
-    fun `namingsystem-example-id Init`(obj: Bundle) {
+    fun `namingsystem-example-id Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -62,7 +64,8 @@ class NamingSystemDataTest : DataTests() {
         assertTrue(stringMatch("NamingSystem/example", obj.replacedBy!!.reference))
     }
 
-    fun `namingsystem-example-replaced Init`(obj: Bundle) {
+    fun `namingsystem-example-replaced Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -90,6 +93,7 @@ class NamingSystemDataTest : DataTests() {
         assertEquals(true, if (obj.uniqueId[1].preferred != null) obj.uniqueId[1].preferred else false, "Field: obj.uniqueId[1].preferred")
     }
 
-    fun `namingsystem-example Init`(obj: Bundle) {
+    fun `namingsystem-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

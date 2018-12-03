@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -78,6 +79,7 @@ class TestReportDataTest : DataTests() {
         assertTrue(stringMatch("http://projectcrucible.org/pe", obj.teardown!!.action[0].operation.detail))
     }
 
-    fun `testreport-example Init`(obj: Bundle) {
+    fun `testreport-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

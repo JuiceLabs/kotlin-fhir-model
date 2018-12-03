@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -126,7 +127,8 @@ class EligibilityResponseDataTest : DataTests() {
         assertTrue(stringMatch("ELRSP/2017/01", obj.form!!.coding[0].code))
     }
 
-    fun `eligibilityresponse-example-benefits-2 Init`(obj: Bundle) {
+    fun `eligibilityresponse-example-benefits-2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -156,7 +158,8 @@ class EligibilityResponseDataTest : DataTests() {
         assertTrue(stringMatch("a001", obj.error[0].code.coding[0].code))
     }
 
-    fun `eligibilityresponse-example-error Init`(obj: Bundle) {
+    fun `eligibilityresponse-example-error Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -185,7 +188,8 @@ class EligibilityResponseDataTest : DataTests() {
         assertEquals(true, if (obj.inforce != null) obj.inforce else false, "Field: obj.inforce")
     }
 
-    fun `eligibilityresponse-example Init`(obj: Bundle) {
+    fun `eligibilityresponse-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -291,6 +295,7 @@ class EligibilityResponseDataTest : DataTests() {
         assertTrue(stringMatch("SAR", obj.insurance[0].benefitBalance[4].financial[1].allowedMoney!!.code))
     }
 
-    fun `eligibilityresponse-example-benefits Init`(obj: Bundle) {
+    fun `eligibilityresponse-example-benefits Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

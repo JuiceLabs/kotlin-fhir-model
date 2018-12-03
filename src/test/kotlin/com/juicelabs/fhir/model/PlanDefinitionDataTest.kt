@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -116,7 +117,8 @@ class PlanDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("#2222", obj.action[0].action[0].action[0].action[0].action[1].definition!!.reference))
     }
 
-    fun `plandefinition-example-kdn5-simplified Init`(obj: Bundle) {
+    fun `plandefinition-example-kdn5-simplified Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -153,7 +155,8 @@ class PlanDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("#activitydefinition-medicatio", obj.action[0].action[1].definition!!.reference))
     }
 
-    fun `plandefinition-options-example Init`(obj: Bundle) {
+    fun `plandefinition-options-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -224,7 +227,8 @@ class PlanDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("#procedure", obj.action[0].definition!!.reference))
     }
 
-    fun `plandefinition-protocol-example Init`(obj: Bundle) {
+    fun `plandefinition-protocol-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -423,7 +427,8 @@ class PlanDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("Norepinephrine-Serotonin Modu", obj.action[0].action[1].action[0].action[3].textEquivalent))
     }
 
-    fun `plandefinition-example Init`(obj: Bundle) {
+    fun `plandefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -471,6 +476,7 @@ class PlanDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("ActivityDefinition/provide-co", obj.action[0].action[4].action[1].definition!!.reference))
     }
 
-    fun `plandefinition-predecessor-example Init`(obj: Bundle) {
+    fun `plandefinition-predecessor-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

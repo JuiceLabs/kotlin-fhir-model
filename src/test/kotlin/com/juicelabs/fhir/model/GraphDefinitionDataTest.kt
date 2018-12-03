@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -34,6 +35,7 @@ class GraphDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("identical", obj.link[0].target[0].link[0].target[0].compartment[0].rule))
     }
 
-    fun `graphdefinition-example Init`(obj: Bundle) {
+    fun `graphdefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

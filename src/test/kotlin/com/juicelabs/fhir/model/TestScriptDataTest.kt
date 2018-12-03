@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -119,7 +120,8 @@ class TestScriptDataTest : DataTests() {
         assertTrue(stringMatch("Patient", obj.test[1].action[4].assert_fhir!!.resource))
     }
 
-    fun `testscript-example-multisystem Init`(obj: Bundle) {
+    fun `testscript-example-multisystem Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -230,7 +232,8 @@ class TestScriptDataTest : DataTests() {
         assertTrue(stringMatch("history", obj.test[0].action[4].assert_fhir!!.value))
     }
 
-    fun `testscript-example-history Init`(obj: Bundle) {
+    fun `testscript-example-history Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -327,7 +330,8 @@ class TestScriptDataTest : DataTests() {
         assertEquals(true, if (obj.test[0].action[3].assert_fhir!!.warningOnly != null) obj.test[0].action[3].assert_fhir!!.warningOnly else false, "Field: obj.test[0].action[3].assert_fhir!!.warningOnly")
     }
 
-    fun `testscript-example-update Init`(obj: Bundle) {
+    fun `testscript-example-update Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -476,7 +480,8 @@ class TestScriptDataTest : DataTests() {
         assertEquals(true, if (obj.test[0].action[10].assert_fhir!!.warningOnly != null) obj.test[0].action[10].assert_fhir!!.warningOnly else false, "Field: obj.test[0].action[10].assert_fhir!!.warningOnly")
     }
 
-    fun `testscript-example-rule Init`(obj: Bundle) {
+    fun `testscript-example-rule Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -597,7 +602,8 @@ class TestScriptDataTest : DataTests() {
         assertTrue(stringMatch("Bundle.total.toInteger() >= e", obj.test[1].action[6].assert_fhir!!.expression))
     }
 
-    fun `testscript-example-search Init`(obj: Bundle) {
+    fun `testscript-example-search Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -742,7 +748,8 @@ class TestScriptDataTest : DataTests() {
         assertTrue(stringMatch("fixture-patient-create", obj.teardown!!.action[0].operation.targetId))
     }
 
-    fun `testscript-example Init`(obj: Bundle) {
+    fun `testscript-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -840,6 +847,7 @@ class TestScriptDataTest : DataTests() {
         assertTrue(stringMatch("bad", obj.test[3].action[1].assert_fhir!!.response))
     }
 
-    fun `testscript-example-readtest Init`(obj: Bundle) {
+    fun `testscript-example-readtest Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

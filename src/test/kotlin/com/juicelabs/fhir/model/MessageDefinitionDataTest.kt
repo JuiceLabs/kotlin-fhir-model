@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -30,6 +31,7 @@ class MessageDefinitionDataTest : DataTests() {
         assertEquals(false, if (obj.responseRequired != null) obj.responseRequired else false, "Field: obj.responseRequired")
     }
 
-    fun `messagedefinition-example Init`(obj: Bundle) {
+    fun `messagedefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -29,7 +30,8 @@ class GroupDataTest : DataTests() {
         assertEquals(false, if (obj.characteristic[1].exclude != null) obj.characteristic[1].exclude else false, "Field: obj.characteristic[1].exclude")
     }
 
-    fun `group-example Init`(obj: Bundle) {
+    fun `group-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -53,6 +55,7 @@ class GroupDataTest : DataTests() {
         assertTrue(stringMatch("2015-08-06", obj.member[3].period!!.start))
     }
 
-    fun `group-example-member Init`(obj: Bundle) {
+    fun `group-example-member Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

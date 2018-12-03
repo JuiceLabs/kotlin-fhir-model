@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -38,6 +39,7 @@ class SupplyRequestDataTest : DataTests() {
         assertTrue(stringMatch("GoodHealth Clinic Receiving", obj.deliverTo!!.display))
     }
 
-    fun `supplyrequest-example-simpleorder Init`(obj: Bundle) {
+    fun `supplyrequest-example-simpleorder Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

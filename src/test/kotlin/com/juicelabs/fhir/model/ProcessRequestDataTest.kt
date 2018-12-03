@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -30,7 +31,8 @@ class ProcessRequestDataTest : DataTests() {
         assertTrue(stringMatch("PaymentReconciliation", obj.exclude[1]))
     }
 
-    fun `processrequest-example-poll-exclusive Init`(obj: Bundle) {
+    fun `processrequest-example-poll-exclusive Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -49,7 +51,8 @@ class ProcessRequestDataTest : DataTests() {
         assertTrue(stringMatch("ExplanationOfBenefit", obj.include[0]))
     }
 
-    fun `processrequest-example-poll-eob Init`(obj: Bundle) {
+    fun `processrequest-example-poll-eob Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -73,7 +76,8 @@ class ProcessRequestDataTest : DataTests() {
         assertTrue(stringMatch("http://benefitco.com/oralheal", obj.request!!.reference))
     }
 
-    fun `processrequest-example-poll-specific Init`(obj: Bundle) {
+    fun `processrequest-example-poll-specific Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -93,7 +97,8 @@ class ProcessRequestDataTest : DataTests() {
         assertTrue(stringMatch("PaymentReconciliation", obj.include[0]))
     }
 
-    fun `processrequest-example-poll-inclusive Init`(obj: Bundle) {
+    fun `processrequest-example-poll-inclusive Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -115,7 +120,8 @@ class ProcessRequestDataTest : DataTests() {
         assertTrue(stringMatch("2014-08-20", obj.period!!.end))
     }
 
-    fun `processrequest-example-poll-payrec Init`(obj: Bundle) {
+    fun `processrequest-example-poll-payrec Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -134,7 +140,8 @@ class ProcessRequestDataTest : DataTests() {
         assertTrue(stringMatch("Organization/1", obj.organization!!.reference))
     }
 
-    fun `processrequest-example Init`(obj: Bundle) {
+    fun `processrequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -155,7 +162,8 @@ class ProcessRequestDataTest : DataTests() {
         assertEquals(false, if (obj.nullify != null) obj.nullify else false, "Field: obj.nullify")
     }
 
-    fun `processrequest-example-reverse Init`(obj: Bundle) {
+    fun `processrequest-example-reverse Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -177,7 +185,8 @@ class ProcessRequestDataTest : DataTests() {
         assertEquals(1, obj.item[0].sequenceLinkId)
     }
 
-    fun `processrequest-example-reprocess Init`(obj: Bundle) {
+    fun `processrequest-example-reprocess Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -198,6 +207,7 @@ class ProcessRequestDataTest : DataTests() {
         assertTrue(stringMatch("http://BenefitsInc.com/fhir/c", obj.response!!.reference))
     }
 
-    fun `processrequest-example-status Init`(obj: Bundle) {
+    fun `processrequest-example-status Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -63,7 +64,8 @@ class VisionPrescriptionDataTest : DataTests() {
         assertTrue(stringMatch("Shade treatment for extreme l", obj.dispense[1].note[0].text))
     }
 
-    fun `visionprescription-example-1 Init`(obj: Bundle) {
+    fun `visionprescription-example-1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -98,6 +100,7 @@ class VisionPrescriptionDataTest : DataTests() {
         assertTrue(stringMatch("%.2f".format(2.00f), "%.2f".format(obj.dispense[1].add)))
     }
 
-    fun `visionprescription-example Init`(obj: Bundle) {
+    fun `visionprescription-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

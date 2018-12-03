@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -37,7 +38,8 @@ class SubstanceDataTest : DataTests() {
         assertTrue(stringMatch("mL", obj.instance[0].quantity!!.code))
     }
 
-    fun `substance-example-silver-nitrate-product Init`(obj: Bundle) {
+    fun `substance-example-silver-nitrate-product Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -85,7 +87,8 @@ class SubstanceDataTest : DataTests() {
         assertTrue(stringMatch("#ingr2", obj.ingredient[1].substanceReference.reference))
     }
 
-    fun `substance-example-amoxicillin-clavulanate Init`(obj: Bundle) {
+    fun `substance-example-amoxicillin-clavulanate Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -106,7 +109,8 @@ class SubstanceDataTest : DataTests() {
         assertTrue(stringMatch("Potassium", obj.code.coding[0].display))
     }
 
-    fun `substance-example-f203-potassium Init`(obj: Bundle) {
+    fun `substance-example-f203-potassium Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -122,7 +126,8 @@ class SubstanceDataTest : DataTests() {
         assertTrue(stringMatch("House dust allergen", obj.code.coding[0].display))
     }
 
-    fun `substance-example-f201-dust Init`(obj: Bundle) {
+    fun `substance-example-f201-dust Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -142,7 +147,8 @@ class SubstanceDataTest : DataTests() {
         assertTrue(stringMatch("apitoxin (Honey Bee Venom)", obj.code.text))
     }
 
-    fun `substance-example Init`(obj: Bundle) {
+    fun `substance-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -158,6 +164,7 @@ class SubstanceDataTest : DataTests() {
         assertTrue(stringMatch("Staphylococcus Aureus", obj.code.coding[0].display))
     }
 
-    fun `substance-example-f202-staphylococcus Init`(obj: Bundle) {
+    fun `substance-example-f202-staphylococcus Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

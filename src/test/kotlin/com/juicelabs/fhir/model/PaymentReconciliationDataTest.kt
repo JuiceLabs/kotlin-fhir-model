@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -61,6 +62,7 @@ class PaymentReconciliationDataTest : DataTests() {
         assertTrue(stringMatch("Due to the year end holiday t", obj.processNote[0].text))
     }
 
-    fun `paymentreconciliation-example Init`(obj: Bundle) {
+    fun `paymentreconciliation-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

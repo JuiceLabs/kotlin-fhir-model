@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -31,7 +32,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("Endpoint/example", obj.endpoint[0].reference))
     }
 
-    fun `organization-example Init`(obj: Bundle) {
+    fun `organization-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -47,7 +49,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("Swizterland", obj.address[0].country))
     }
 
-    fun `organization-example-mmanu Init`(obj: Bundle) {
+    fun `organization-example-mmanu Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -71,7 +74,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("ACME Healthcare, Inc", obj.partOf!!.display))
     }
 
-    fun `organization-example-gastro Init`(obj: Bundle) {
+    fun `organization-example-gastro Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -93,7 +97,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("work", obj.telecom[1].use))
     }
 
-    fun `organization-example-lab Init`(obj: Bundle) {
+    fun `organization-example-lab Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -125,7 +130,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("South Wing, floor 2", obj.contact[0].address!!.line[0]))
     }
 
-    fun `organization-example-f002-burgers-card Init`(obj: Bundle) {
+    fun `organization-example-f002-burgers-card Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -173,7 +179,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("NLD", obj.contact[0].address!!.country))
     }
 
-    fun `organization-example-f201-aumc Init`(obj: Bundle) {
+    fun `organization-example-f201-aumc Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -189,7 +196,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("Good Health Clinic", obj.name))
     }
 
-    fun `organization-example-good-health-care Init`(obj: Bundle) {
+    fun `organization-example-good-health-care Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -236,7 +244,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("022-655 2335", obj.contact[1].telecom[0].value))
     }
 
-    fun `organization-example-f001-burgers Init`(obj: Bundle) {
+    fun `organization-example-f001-burgers Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -253,7 +262,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("ABC Insurance", obj.alias[0]))
     }
 
-    fun `organization-example-insurer Init`(obj: Bundle) {
+    fun `organization-example-insurer Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -285,7 +295,8 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("NLD", obj.address[0].country))
     }
 
-    fun `organization-example-f203-bumc Init`(obj: Bundle) {
+    fun `organization-example-f203-bumc Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -317,6 +328,7 @@ class OrganizationDataTest : DataTests() {
         assertTrue(stringMatch("West Wing, floor 5", obj.contact[0].address!!.line[0]))
     }
 
-    fun `organization-example-f003-burgers-ENT Init`(obj: Bundle) {
+    fun `organization-example-f003-burgers-ENT Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

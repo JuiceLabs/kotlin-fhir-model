@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -47,7 +48,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2019-10-31", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0307 Init`(obj: Bundle) {
+    fun `medicationexample0307 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -79,7 +81,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("TAB", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0311 Init`(obj: Bundle) {
+    fun `medicationexample0311 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -117,7 +120,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("TAB", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0310 Init`(obj: Bundle) {
+    fun `medicationexample0310 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -143,7 +147,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2019-10-31", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0306 Init`(obj: Bundle) {
+    fun `medicationexample0306 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -193,7 +198,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("Vancomycin Image", obj.image[0].title))
     }
 
-    fun `medicationexample0301 Init`(obj: Bundle) {
+    fun `medicationexample0301 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -229,7 +235,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("mL", obj.ingredient[1].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0317 Init`(obj: Bundle) {
+    fun `medicationexample0317 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -243,7 +250,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("Amoxicillin 250mg/5ml Suspens", obj.code!!.text))
     }
 
-    fun `medicationexample1 Init`(obj: Bundle) {
+    fun `medicationexample1 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -287,7 +295,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2017-05-22", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample15 Init`(obj: Bundle) {
+    fun `medicationexample15 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -319,7 +328,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("Tablet dose form (qualifier v", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0321 Init`(obj: Bundle) {
+    fun `medicationexample0321 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -351,7 +361,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("TAB", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0320 Init`(obj: Bundle) {
+    fun `medicationexample0320 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -383,7 +394,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("TAB", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0316 Init`(obj: Bundle) {
+    fun `medicationexample0316 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -403,7 +415,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("Nasal Spray", obj.form!!.coding[0].display))
     }
 
-    fun `medicationexample0315 Init`(obj: Bundle) {
+    fun `medicationexample0315 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -447,7 +460,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2017-05-22", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0303 Init`(obj: Bundle) {
+    fun `medicationexample0303 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -492,7 +506,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("g", obj.ingredient[2].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0319 Init`(obj: Bundle) {
+    fun `medicationexample0319 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -523,7 +538,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2016-07-09", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0318 Init`(obj: Bundle) {
+    fun `medicationexample0318 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -565,7 +581,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("mL", obj.ingredient[1].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0302 Init`(obj: Bundle) {
+    fun `medicationexample0302 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -594,7 +611,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("Tablet dose form (qualifier v", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0314 Init`(obj: Bundle) {
+    fun `medicationexample0314 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -638,7 +656,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2017-05-22", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0309 Init`(obj: Bundle) {
+    fun `medicationexample0309 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -667,7 +686,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("mL", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0313 Init`(obj: Bundle) {
+    fun `medicationexample0313 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -711,7 +731,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2017-05-22", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0305 Init`(obj: Bundle) {
+    fun `medicationexample0305 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -755,7 +776,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2017-05-22", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0304 Init`(obj: Bundle) {
+    fun `medicationexample0304 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -793,7 +815,8 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("mL", obj.ingredient[0].amount!!.denominator!!.code))
     }
 
-    fun `medicationexample0312 Init`(obj: Bundle) {
+    fun `medicationexample0312 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -850,6 +873,7 @@ class MedicationDataTest : DataTests() {
         assertTrue(stringMatch("2020-07-31", obj.package_fhir!!.batch[0].expirationDate))
     }
 
-    fun `medicationexample0308 Init`(obj: Bundle) {
+    fun `medicationexample0308 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

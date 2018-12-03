@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -35,7 +36,8 @@ class RelatedPersonDataTest : DataTests() {
         assertTrue(stringMatch("2012-03-11", obj.period!!.start))
     }
 
-    fun `relatedperson-example-peter Init`(obj: Bundle) {
+    fun `relatedperson-example-peter Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -64,7 +66,8 @@ class RelatedPersonDataTest : DataTests() {
         assertTrue(stringMatch("female", obj.gender))
     }
 
-    fun `relatedperson-example-f001-sarah Init`(obj: Bundle) {
+    fun `relatedperson-example-f001-sarah Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -98,7 +101,8 @@ class RelatedPersonDataTest : DataTests() {
         assertTrue(stringMatch("Binary/f016", obj.photo[0].url))
     }
 
-    fun `relatedperson-example Init`(obj: Bundle) {
+    fun `relatedperson-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -124,6 +128,7 @@ class RelatedPersonDataTest : DataTests() {
         assertTrue(stringMatch("1975", obj.period!!.start))
     }
 
-    fun `relatedperson-example-f002-ariadne Init`(obj: Bundle) {
+    fun `relatedperson-example-f002-ariadne Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -22,6 +23,7 @@ class LinkageDataTest : DataTests() {
         assertTrue(stringMatch("Severe burn of left ear (Date", obj.item[1].resource.display))
     }
 
-    fun `linkage-example Init`(obj: Bundle) {
+    fun `linkage-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -65,6 +66,7 @@ class OperationDefinitionDataTest : DataTests() {
         assertTrue(stringMatch("local defaults to false when ", obj.overload[1].comment))
     }
 
-    fun `operationdefinition-example Init`(obj: Bundle) {
+    fun `operationdefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

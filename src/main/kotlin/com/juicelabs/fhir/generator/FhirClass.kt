@@ -46,7 +46,7 @@ class FhirClass(element: FhirStructureDefinitionElement) {
         fun findProperty(parent: FhirClass, paths: List<String>, key: String): FhirClassProperty? {
             var cls: FhirClass? = parent
             for (path in paths) {
-                if (path.isNullOrBlank()) {
+                if (path.isBlank()) {
                     break
                 }
                 // todo rethink this
@@ -94,7 +94,7 @@ class FhirClass(element: FhirStructureDefinitionElement) {
         if (superClass != null) {
             return true
         }
-        return properties.size > 0
+        return properties.isNotEmpty()
     }
 
     override fun equals(other: Any?): Boolean {

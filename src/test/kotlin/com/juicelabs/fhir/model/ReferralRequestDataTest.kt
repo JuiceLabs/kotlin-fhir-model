@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -45,6 +46,7 @@ class ReferralRequestDataTest : DataTests() {
         assertTrue(stringMatch("In the past 2 years Beverly h", obj.description))
     }
 
-    fun `referralrequest-example Init`(obj: Bundle) {
+    fun `referralrequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -44,6 +45,7 @@ class StructureMapDataTest : DataTests() {
         assertTrue(stringMatch("copy", obj.group[0].rule[0].target[0].transform))
     }
 
-    fun `structuremap-example Init`(obj: Bundle) {
+    fun `structuremap-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

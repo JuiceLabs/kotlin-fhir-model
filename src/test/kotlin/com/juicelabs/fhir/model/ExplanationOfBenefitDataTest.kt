@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -68,6 +69,7 @@ class ExplanationOfBenefitDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.totalBenefit!!.code))
     }
 
-    fun `explanationofbenefit-example Init`(obj: Bundle) {
+    fun `explanationofbenefit-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

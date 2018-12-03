@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -28,7 +29,8 @@ class SubscriptionDataTest : DataTests() {
         assertTrue(stringMatch("bili-done", obj.tag[0].code))
     }
 
-    fun `subscription-example-error Init`(obj: Bundle) {
+    fun `subscription-example-error Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -53,6 +55,7 @@ class SubscriptionDataTest : DataTests() {
         assertTrue(stringMatch("bili-done", obj.tag[0].code))
     }
 
-    fun `subscription-example Init`(obj: Bundle) {
+    fun `subscription-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

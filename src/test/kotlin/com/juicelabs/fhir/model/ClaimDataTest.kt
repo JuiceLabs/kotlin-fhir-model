@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -78,7 +79,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.total!!.code))
     }
 
-    fun `claim-example-institutional-rich Init`(obj: Bundle) {
+    fun `claim-example-institutional-rich Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -121,7 +123,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].net!!.code))
     }
 
-    fun `claim-example-professional Init`(obj: Bundle) {
+    fun `claim-example-professional Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -163,7 +166,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].net!!.code))
     }
 
-    fun `claim-example Init`(obj: Bundle) {
+    fun `claim-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -206,7 +210,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].net!!.code))
     }
 
-    fun `claim-example-vision Init`(obj: Bundle) {
+    fun `claim-example-vision Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -387,7 +392,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].detail[2].net!!.code))
     }
 
-    fun `claim-example-vision-glasses-3tier Init`(obj: Bundle) {
+    fun `claim-example-vision-glasses-3tier Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -446,7 +452,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.total!!.code))
     }
 
-    fun `claim-example-institutional Init`(obj: Bundle) {
+    fun `claim-example-institutional Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -530,7 +537,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].net!!.code))
     }
 
-    fun `claim-example-oral-contained Init`(obj: Bundle) {
+    fun `claim-example-oral-contained Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -615,7 +623,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.total!!.code))
     }
 
-    fun `claim-example-pharmacy-medication Init`(obj: Bundle) {
+    fun `claim-example-pharmacy-medication Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -748,7 +757,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[2].detail[1].net!!.code))
     }
 
-    fun `claim-example-oral-orthoplan Init`(obj: Bundle) {
+    fun `claim-example-oral-orthoplan Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -852,7 +862,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[2].detail[1].net!!.code))
     }
 
-    fun `claim-example-oral-average Init`(obj: Bundle) {
+    fun `claim-example-oral-average Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -925,7 +936,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].detail[2].net!!.code))
     }
 
-    fun `claim-example-vision-glasses Init`(obj: Bundle) {
+    fun `claim-example-vision-glasses Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -972,7 +984,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].net!!.code))
     }
 
-    fun `claim-example-oral-identifier Init`(obj: Bundle) {
+    fun `claim-example-oral-identifier Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1021,7 +1034,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].net!!.code))
     }
 
-    fun `claim-example-pharmacy Init`(obj: Bundle) {
+    fun `claim-example-pharmacy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1078,7 +1092,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.item[0].net!!.code))
     }
 
-    fun `claim-example-oral-contained-identifier Init`(obj: Bundle) {
+    fun `claim-example-oral-contained-identifier Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1208,7 +1223,8 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.total!!.code))
     }
 
-    fun `claim-example-oral-bridge Init`(obj: Bundle) {
+    fun `claim-example-oral-bridge Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -1335,6 +1351,7 @@ class ClaimDataTest : DataTests() {
         assertTrue(stringMatch("USD", obj.total!!.code))
     }
 
-    fun `claim-example-pharmacy-compound Init`(obj: Bundle) {
+    fun `claim-example-pharmacy-compound Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

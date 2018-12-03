@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -20,6 +21,7 @@ class DeviceUseStatementDataTest : DataTests() {
         assertTrue(stringMatch("Device/example", obj.device.reference))
     }
 
-    fun `deviceusestatement-example Init`(obj: Bundle) {
+    fun `deviceusestatement-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

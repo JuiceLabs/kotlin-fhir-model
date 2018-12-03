@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -54,6 +55,7 @@ class ChargeItemDataTest : DataTests() {
         assertTrue(stringMatch("The code is only applicable f", obj.note[0].text))
     }
 
-    fun `chargeitem-example Init`(obj: Bundle) {
+    fun `chargeitem-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

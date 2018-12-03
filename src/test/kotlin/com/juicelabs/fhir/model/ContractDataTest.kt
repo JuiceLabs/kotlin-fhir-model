@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -35,7 +36,8 @@ class ContractDataTest : DataTests() {
         assertTrue(stringMatch("The terms of the consent in l", obj.legal[0].contentAttachment.title))
     }
 
-    fun `pcd-example-notOrg Init`(obj: Bundle) {
+    fun `pcd-example-notOrg Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -108,7 +110,8 @@ class ContractDataTest : DataTests() {
         assertTrue(stringMatch("MDHHS-5515 Consent To Share Y", obj.legal[0].contentAttachment.title))
     }
 
-    fun `contract-example-42cfr-part2 Init`(obj: Bundle) {
+    fun `contract-example-42cfr-part2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -145,7 +148,8 @@ class ContractDataTest : DataTests() {
         assertTrue(stringMatch("The terms of the consent in l", obj.legal[0].contentAttachment.title))
     }
 
-    fun `pcd-example-notLabs Init`(obj: Bundle) {
+    fun `pcd-example-notLabs Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -186,7 +190,8 @@ class ContractDataTest : DataTests() {
         assertTrue(stringMatch("The terms of the consent in l", obj.legal[0].contentAttachment.title))
     }
 
-    fun `pcd-example-notThem Init`(obj: Bundle) {
+    fun `pcd-example-notThem Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -219,7 +224,8 @@ class ContractDataTest : DataTests() {
         assertTrue(stringMatch("The terms of the consent in l", obj.legal[0].contentAttachment.title))
     }
 
-    fun `pcd-example-notAuthor Init`(obj: Bundle) {
+    fun `pcd-example-notAuthor Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -234,7 +240,8 @@ class ContractDataTest : DataTests() {
         assertTrue(stringMatch("12347", obj.identifier!!.value))
     }
 
-    fun `contract-example Init`(obj: Bundle) {
+    fun `contract-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -266,6 +273,7 @@ class ContractDataTest : DataTests() {
         assertTrue(stringMatch("The terms of the consent in l", obj.legal[0].contentAttachment.title))
     }
 
-    fun `pcd-example-notThis Init`(obj: Bundle) {
+    fun `pcd-example-notThis Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

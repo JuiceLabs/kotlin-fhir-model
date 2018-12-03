@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -22,6 +23,7 @@ class EnrollmentRequestDataTest : DataTests() {
         assertTrue(stringMatch("Coverage/9876B1", obj.coverage!!.reference))
     }
 
-    fun `enrollmentrequest-example Init`(obj: Bundle) {
+    fun `enrollmentrequest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

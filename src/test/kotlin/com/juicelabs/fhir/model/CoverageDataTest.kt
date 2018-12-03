@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -39,7 +40,8 @@ class CoverageDataTest : DataTests() {
         assertTrue(stringMatch("Contract/563818", obj.contract[0].reference))
     }
 
-    fun `coverage-example-2 Init`(obj: Bundle) {
+    fun `coverage-example-2 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -63,7 +65,8 @@ class CoverageDataTest : DataTests() {
         assertTrue(stringMatch("Patient/5", obj.payor[0].reference))
     }
 
-    fun `coverage-example-selfpay Init`(obj: Bundle) {
+    fun `coverage-example-selfpay Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -88,7 +91,8 @@ class CoverageDataTest : DataTests() {
         assertTrue(stringMatch("123456789", obj.payor[0].identifier!!.value))
     }
 
-    fun `coverage-example-ehic Init`(obj: Bundle) {
+    fun `coverage-example-ehic Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -128,6 +132,7 @@ class CoverageDataTest : DataTests() {
         assertTrue(stringMatch("9", obj.sequence))
     }
 
-    fun `coverage-example Init`(obj: Bundle) {
+    fun `coverage-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

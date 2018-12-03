@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -52,6 +53,7 @@ class PractitionerRoleDataTest : DataTests() {
         assertTrue(stringMatch("Endpoint/example", obj.endpoint[0].reference))
     }
 
-    fun `practitionerrole-example Init`(obj: Bundle) {
+    fun `practitionerrole-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

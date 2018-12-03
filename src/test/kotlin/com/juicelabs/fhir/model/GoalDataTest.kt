@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -46,7 +47,8 @@ class GoalDataTest : DataTests() {
         assertTrue(stringMatch("Body Weight Measured", obj.outcomeReference[0].display))
     }
 
-    fun `goal-example Init`(obj: Bundle) {
+    fun `goal-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -69,6 +71,7 @@ class GoalDataTest : DataTests() {
         assertTrue(stringMatch("Former smoker", obj.outcomeCode[0].text))
     }
 
-    fun `goal-example-stop-smoking Init`(obj: Bundle) {
+    fun `goal-example-stop-smoking Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

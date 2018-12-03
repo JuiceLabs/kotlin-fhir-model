@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -16,7 +17,8 @@ class RiskAssessmentDataTest : DataTests() {
         assertTrue(stringMatch("final", obj.status))
     }
 
-    fun `riskassessment-example-population Init`(obj: Bundle) {
+    fun `riskassessment-example-population Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -50,7 +52,8 @@ class RiskAssessmentDataTest : DataTests() {
         assertTrue(stringMatch("a", obj.prediction[0].whenRange!!.high!!.code))
     }
 
-    fun `riskassessment-example-cardiac Init`(obj: Bundle) {
+    fun `riskassessment-example-cardiac Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -144,7 +147,8 @@ class RiskAssessmentDataTest : DataTests() {
         assertTrue(stringMatch("High degree of certainty", obj.comment))
     }
 
-    fun `riskassessment-example Init`(obj: Bundle) {
+    fun `riskassessment-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -167,6 +171,7 @@ class RiskAssessmentDataTest : DataTests() {
         assertTrue(stringMatch("moderate likelihood", obj.prediction[0].qualitativeRisk!!.coding[0].display))
     }
 
-    fun `riskassessment-example-prognosis Init`(obj: Bundle) {
+    fun `riskassessment-example-prognosis Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

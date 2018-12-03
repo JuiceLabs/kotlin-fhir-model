@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -31,7 +32,8 @@ class FlagDataTest : DataTests() {
         assertTrue(stringMatch("Nancy Nurse", obj.author!!.display))
     }
 
-    fun `flag-example Init`(obj: Bundle) {
+    fun `flag-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -54,6 +56,7 @@ class FlagDataTest : DataTests() {
         assertTrue(stringMatch("Encounter/example", obj.encounter!!.reference))
     }
 
-    fun `flag-example-encounter Init`(obj: Bundle) {
+    fun `flag-example-encounter Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

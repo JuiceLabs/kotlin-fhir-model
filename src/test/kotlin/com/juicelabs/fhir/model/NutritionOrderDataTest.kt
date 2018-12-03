@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -51,7 +52,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("8 oz bottle", obj.supplement[0].quantity!!.unit))
     }
 
-    fun `nutritionorder-example-diabeticsupplement Init`(obj: Bundle) {
+    fun `nutritionorder-example-diabeticsupplement Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -110,7 +112,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("240 mls every 4hrs ", obj.enteralFormula!!.administrationInstruction))
     }
 
-    fun `nutritionorder-example-enteralbolus Init`(obj: Bundle) {
+    fun `nutritionorder-example-enteralbolus Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -166,7 +169,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("g", obj.oralDiet!!.nutrient[0].amount!!.code))
     }
 
-    fun `nutritionorder-example-fiberrestricteddiet Init`(obj: Bundle) {
+    fun `nutritionorder-example-fiberrestricteddiet Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -206,7 +210,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("Regular, Chopped Meat", obj.oralDiet!!.texture[0].foodType!!.text))
     }
 
-    fun `nutritionorder-example-texture-modified Init`(obj: Bundle) {
+    fun `nutritionorder-example-texture-modified Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -255,7 +260,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("Ensure Pudding at breakfast, ", obj.supplement[0].instruction))
     }
 
-    fun `nutritionorder-example-pureeddiet-simple Init`(obj: Bundle) {
+    fun `nutritionorder-example-pureeddiet-simple Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -307,7 +313,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("Add high calorie high carbohy", obj.enteralFormula!!.administrationInstruction))
     }
 
-    fun `nutritionorder-example-infantenteral Init`(obj: Bundle) {
+    fun `nutritionorder-example-infantenteral Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -361,7 +368,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("Hold feedings from 7 pm to 7 ", obj.enteralFormula!!.administrationInstruction))
     }
 
-    fun `nutritionorder-example-enteralcontinuous Init`(obj: Bundle) {
+    fun `nutritionorder-example-enteralcontinuous Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -421,7 +429,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("Starting on 2/10 breakfast, m", obj.oralDiet!!.instruction))
     }
 
-    fun `nutritionorder-example-cardiacdiet Init`(obj: Bundle) {
+    fun `nutritionorder-example-cardiacdiet Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -471,7 +480,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("Nectar thick liquids", obj.oralDiet!!.fluidConsistencyType[0].text))
     }
 
-    fun `nutritionorder-example-pureeddiet Init`(obj: Bundle) {
+    fun `nutritionorder-example-pureeddiet Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -520,7 +530,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("g", obj.oralDiet!!.nutrient[0].amount!!.code))
     }
 
-    fun `nutritionorder-example-diabeticdiet Init`(obj: Bundle) {
+    fun `nutritionorder-example-diabeticdiet Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -564,7 +575,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("Beneprotein 1 scoop TID with ", obj.supplement[0].instruction))
     }
 
-    fun `nutritionorder-example-proteinsupplement Init`(obj: Bundle) {
+    fun `nutritionorder-example-proteinsupplement Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -627,7 +639,8 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("g", obj.oralDiet!!.nutrient[2].amount!!.code))
     }
 
-    fun `nutritionorder-example-renaldiet Init`(obj: Bundle) {
+    fun `nutritionorder-example-renaldiet Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -672,6 +685,7 @@ class NutritionOrderDataTest : DataTests() {
         assertTrue(stringMatch("8 oz can", obj.supplement[0].quantity!!.unit))
     }
 
-    fun `nutritionorder-example-energysupplement Init`(obj: Bundle) {
+    fun `nutritionorder-example-energysupplement Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

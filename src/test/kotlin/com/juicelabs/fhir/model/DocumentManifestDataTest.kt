@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -37,6 +38,7 @@ class DocumentManifestDataTest : DataTests() {
         assertTrue(stringMatch("DocumentReference/example", obj.related[0].ref!!.reference))
     }
 
-    fun `documentmanifest-example Init`(obj: Bundle) {
+    fun `documentmanifest-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

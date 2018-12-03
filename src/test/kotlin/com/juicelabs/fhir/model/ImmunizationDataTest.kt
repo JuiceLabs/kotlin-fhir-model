@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -65,7 +66,8 @@ class ImmunizationDataTest : DataTests() {
         assertTrue(stringMatch("Cold chain break", obj.vaccinationProtocol[0].doseStatusReason!!.coding[0].display))
     }
 
-    fun `immunization-example Init`(obj: Bundle) {
+    fun `immunization-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -93,7 +95,8 @@ class ImmunizationDataTest : DataTests() {
         assertTrue(stringMatch("Notes on adminstration of a h", obj.note[0].text))
     }
 
-    fun `immunization-example-historical Init`(obj: Bundle) {
+    fun `immunization-example-historical Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -117,6 +120,7 @@ class ImmunizationDataTest : DataTests() {
         assertTrue(stringMatch("medical precaution", obj.explanation!!.reasonNotGiven[0].coding[0].display))
     }
 
-    fun `immunization-example-refused Init`(obj: Bundle) {
+    fun `immunization-example-refused Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

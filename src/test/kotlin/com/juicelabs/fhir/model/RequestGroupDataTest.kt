@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -78,7 +79,8 @@ class RequestGroupDataTest : DataTests() {
         assertTrue(stringMatch("#2222", obj.action[0].action[0].action[0].action[0].action[1].resource!!.reference))
     }
 
-    fun `requestgroup-kdn5-example Init`(obj: Bundle) {
+    fun `requestgroup-kdn5-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -136,6 +138,7 @@ class RequestGroupDataTest : DataTests() {
         assertTrue(stringMatch("#medicationrequest-2", obj.action[0].action[1].resource!!.reference))
     }
 
-    fun `requestgroup-example Init`(obj: Bundle) {
+    fun `requestgroup-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

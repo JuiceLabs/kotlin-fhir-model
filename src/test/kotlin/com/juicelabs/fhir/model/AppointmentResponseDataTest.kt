@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -27,7 +28,8 @@ class AppointmentResponseDataTest : DataTests() {
         assertTrue(stringMatch("can't we try for this time, c", obj.comment))
     }
 
-    fun `appointmentresponse-example-req Init`(obj: Bundle) {
+    fun `appointmentresponse-example-req Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -45,6 +47,7 @@ class AppointmentResponseDataTest : DataTests() {
         assertTrue(stringMatch("accepted", obj.participantStatus))
     }
 
-    fun `appointmentresponse-example Init`(obj: Bundle) {
+    fun `appointmentresponse-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

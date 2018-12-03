@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -35,6 +36,7 @@ class MessageHeaderDataTest : DataTests() {
         assertTrue(stringMatch("Patient/example", obj.focus[0].reference))
     }
 
-    fun `messageheader-example Init`(obj: Bundle) {
+    fun `messageheader-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

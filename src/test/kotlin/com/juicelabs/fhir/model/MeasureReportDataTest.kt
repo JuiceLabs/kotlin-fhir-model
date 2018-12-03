@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -118,7 +119,8 @@ class MeasureReportDataTest : DataTests() {
         assertTrue(stringMatch("Bundle/456", obj.evaluatedResources!!.reference))
     }
 
-    fun `measurereport-cms146-cat1-example Init`(obj: Bundle) {
+    fun `measurereport-cms146-cat1-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -261,7 +263,8 @@ class MeasureReportDataTest : DataTests() {
         assertTrue(stringMatch("List/CMS146-stratifier-gender", obj.group[0].stratifier[2].stratum[3].population[3].patients!!.reference))
     }
 
-    fun `measurereport-cms146-cat2-example Init`(obj: Bundle) {
+    fun `measurereport-cms146-cat2-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -368,6 +371,7 @@ class MeasureReportDataTest : DataTests() {
         assertEquals(0, obj.group[0].stratifier[2].stratum[3].population[3].count)
     }
 
-    fun `measurereport-cms146-cat3-example Init`(obj: Bundle) {
+    fun `measurereport-cms146-cat3-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

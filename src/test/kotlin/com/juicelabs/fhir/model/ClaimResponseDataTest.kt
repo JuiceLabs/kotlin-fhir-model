@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -60,6 +61,7 @@ class ClaimResponseDataTest : DataTests() {
         assertTrue(stringMatch("201408-2-1569478", obj.payment!!.identifier!!.value))
     }
 
-    fun `claimresponse-example Init`(obj: Bundle) {
+    fun `claimresponse-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

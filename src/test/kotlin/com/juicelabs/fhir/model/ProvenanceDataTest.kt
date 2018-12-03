@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -33,7 +34,8 @@ class ProvenanceDataTest : DataTests() {
         assertTrue(stringMatch("Li4u", obj.signature[0].blob))
     }
 
-    fun `provenance-example-sig Init`(obj: Bundle) {
+    fun `provenance-example-sig Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -58,7 +60,8 @@ class ProvenanceDataTest : DataTests() {
         assertTrue(stringMatch("https://github.com/common-wor", obj.entity[0].whatIdentifier.value))
     }
 
-    fun `provenance-example-cwl Init`(obj: Bundle) {
+    fun `provenance-example-cwl Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -83,7 +86,8 @@ class ProvenanceDataTest : DataTests() {
         assertTrue(stringMatch("https://hive.biochemistry.gwu", obj.entity[0].whatIdentifier.value))
     }
 
-    fun `provenance-example-biocompute-object Init`(obj: Bundle) {
+    fun `provenance-example-biocompute-object Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -117,6 +121,7 @@ class ProvenanceDataTest : DataTests() {
         assertTrue(stringMatch("CDA Document in XDS repositor", obj.entity[0].whatReference.display))
     }
 
-    fun `provenance-example Init`(obj: Bundle) {
+    fun `provenance-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -50,7 +51,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("M.I.M. Versteegh", obj.activity[0].detail!!.performer[0].display))
     }
 
-    fun `careplan-example-f002-lung Init`(obj: Bundle) {
+    fun `careplan-example-f002-lung Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -115,7 +117,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("#tpf", obj.activity[0].detail!!.productReference!!.reference))
     }
 
-    fun `careplan-example-f202-malignancy Init`(obj: Bundle) {
+    fun `careplan-example-f202-malignancy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -132,7 +135,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("Peter James Chalmers", obj.subject.display))
     }
 
-    fun `careplan-example-obesity-narrative Init`(obj: Bundle) {
+    fun `careplan-example-obesity-narrative Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -199,7 +203,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("Peter James Chalmers", obj.activity[0].detail!!.performer[0].display))
     }
 
-    fun `careplan-example Init`(obj: Bundle) {
+    fun `careplan-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -261,7 +266,8 @@ class CarePlanDataTest : DataTests() {
         assertEquals(false, if (obj.activity[1].detail!!.prohibited != null) obj.activity[1].detail!!.prohibited else false, "Field: obj.activity[1].detail!!.prohibited")
     }
 
-    fun `careplan-example-f201-renal Init`(obj: Bundle) {
+    fun `careplan-example-f201-renal Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -331,7 +337,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("Doctor Dave", obj.activity[1].detail!!.performer[0].display))
     }
 
-    fun `careplan-example-GPVisit Init`(obj: Bundle) {
+    fun `careplan-example-GPVisit Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -547,7 +554,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("Patient family is not ready t", obj.note[0].text))
     }
 
-    fun `careplan-example-integrated Init`(obj: Bundle) {
+    fun `careplan-example-integrated Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -594,7 +602,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("E.M. van den broek", obj.activity[0].detail!!.performer[0].display))
     }
 
-    fun `careplan-example-f003-pharynx Init`(obj: Bundle) {
+    fun `careplan-example-f003-pharynx Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -641,7 +650,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("P. Voigt", obj.activity[0].detail!!.performer[0].display))
     }
 
-    fun `careplan-example-f001-heart Init`(obj: Bundle) {
+    fun `careplan-example-f001-heart Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -744,7 +754,8 @@ class CarePlanDataTest : DataTests() {
         assertTrue(stringMatch("The delivery.", obj.activity[3].detail!!.description))
     }
 
-    fun `careplan-example-pregnancy Init`(obj: Bundle) {
+    fun `careplan-example-pregnancy Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -792,6 +803,7 @@ class CarePlanDataTest : DataTests() {
         assertEquals(false, if (obj.activity[0].detail!!.prohibited != null) obj.activity[0].detail!!.prohibited else false, "Field: obj.activity[0].detail!!.prohibited")
     }
 
-    fun `careplan-example-f203-sepsis Init`(obj: Bundle) {
+    fun `careplan-example-f203-sepsis Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -21,7 +22,8 @@ class EndpointDataTest : DataTests() {
         assertTrue(stringMatch("https://pacs.hospital.org/IHE", obj.address))
     }
 
-    fun `endpoint-example-iid Init`(obj: Bundle) {
+    fun `endpoint-example-iid Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -41,7 +43,8 @@ class EndpointDataTest : DataTests() {
         assertTrue(stringMatch("https://pacs.hospital.org/wad", obj.address))
     }
 
-    fun `endpoint-example-wadors Init`(obj: Bundle) {
+    fun `endpoint-example-wadors Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -70,6 +73,7 @@ class EndpointDataTest : DataTests() {
         assertTrue(stringMatch("bearer-code BASGS534s4", obj.header[0]))
     }
 
-    fun `endpoint-example Init`(obj: Bundle) {
+    fun `endpoint-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

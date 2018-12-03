@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -46,6 +47,7 @@ class MedicationDispenseDataTest : DataTests() {
         assertTrue(stringMatch("mg", obj.dosageInstruction[0].doseQuantity!!.code))
     }
 
-    fun `medicationdispenseexample8 Init`(obj: Bundle) {
+    fun `medicationdispenseexample8 Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

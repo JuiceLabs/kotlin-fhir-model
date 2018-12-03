@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -36,7 +37,8 @@ class FamilyMemberHistoryDataTest : DataTests() {
         assertTrue(stringMatch("Was fishing at the time. At l", obj.condition[0].note[0].text))
     }
 
-    fun `familymemberhistory-example Init`(obj: Bundle) {
+    fun `familymemberhistory-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 
     @Test
@@ -63,6 +65,7 @@ class FamilyMemberHistoryDataTest : DataTests() {
         assertTrue(stringMatch("a", obj.condition[0].onsetAge!!.code))
     }
 
-    fun `familymemberhistory-example-mother Init`(obj: Bundle) {
+    fun `familymemberhistory-example-mother Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }

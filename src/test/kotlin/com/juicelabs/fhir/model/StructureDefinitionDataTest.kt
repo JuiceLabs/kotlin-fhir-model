@@ -1,6 +1,7 @@
 package com.juicelabs.fhir.model
 
 import java.io.File
+import java.lang.SuppressWarnings
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -323,6 +324,7 @@ class StructureDefinitionDataTest : DataTests() {
         assertEquals(false, if (obj.snapshot!!.element[18].isModifier != null) obj.snapshot!!.element[18].isModifier else false, "Field: obj.snapshot!!.element[18].isModifier")
     }
 
-    fun `structuredefinition-example Init`(obj: Bundle) {
+    fun `structuredefinition-example Init`(@SuppressWarnings("unused") obj: Bundle) {
+        obj.identifier  // No-Op to suprress unused warnings
     }
 }
