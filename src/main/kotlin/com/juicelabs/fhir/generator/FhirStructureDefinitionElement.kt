@@ -16,13 +16,8 @@ class FhirStructureDefinitionElement(val profile: FhirStructureDefinition, eleme
     var summaryMinConflict = false  // to mark conflicts, see #13215 (http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&tracker_item_id=13125)
     var representsClass: Boolean = false
     val children = mutableListOf<FhirStructureDefinitionElement>()
-    var valueSet: FhirValueSet? = null
-    var enum: ValueSetEnum? = null
     var dependenciesResolved: Boolean = false
     private var superclassName: String? = null // todo stomping on var?
-
-
-//   todo  private val enum # assigned if the element has a binding to a ValueSet that is a CodeSystem generating an enum
 
     init {
         val p = element.get("path").asString

@@ -15,15 +15,7 @@ class FhirClass(element: FhirStructureDefinitionElement) {
     val short: String = element.definition.short
     val formal: String = element.definition.formal
 
-//    private val comp = Comparator<FhirClassProperty> { s1, s2 -> s1.name.compareTo(s2.name) }
-//
-//    val properties = sortedSetOf(comp)
-
     val properties: MutableMap<String, FhirClassProperty> = mutableMapOf()
-
-    init {
-        print(1)
-    }
 
     companion object {
         val known = mutableMapOf<String, FhirClass>()

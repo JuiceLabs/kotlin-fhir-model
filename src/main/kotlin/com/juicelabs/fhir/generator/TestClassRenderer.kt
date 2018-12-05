@@ -291,17 +291,6 @@ class CreateTestMethods(private var spec: FhirSpec, private val rawData: Mutable
     private fun createKotlinBugNewFun() {
         classBuilder.addFunction(fspec.build())
 
-        if (false && currentClass.name == "Bundle") {
-            out!!.addType(classBuilder.build())
-            out!!.build().writeTo(File(Settings.destinationTestDir))
-
-            bundleFileCount++
-            out = FileSpec.builder(spec.packageName, "${currentClass.name}${bundleFileCount}DataTest")
-
-            classBuilder = TypeSpec.classBuilder("${currentClass.name}${bundleFileCount}DataTest")
-            classBuilder.superclass(parentClass)
-        }
-
         createTestFun()
     }
 
@@ -336,7 +325,7 @@ class CreateTestMethods(private var spec: FhirSpec, private val rawData: Mutable
             varCount++
             fValSpec.addStatement("v${varCount} = (${propPath}")
 
-            var castClassName = ClassName(MODEL_PACKAGE, testValue.castClass!!)
+            val castClassName = ClassName(MODEL_PACKAGE, testValue.castClass!!)
             val java = PropertySpec.builder("v$varCount", castClassName)
                     .mutable(true)
                     .addModifiers(KModifier.PRIVATE)

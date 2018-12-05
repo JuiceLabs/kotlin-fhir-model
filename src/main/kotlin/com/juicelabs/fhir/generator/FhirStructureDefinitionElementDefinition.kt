@@ -17,8 +17,6 @@ class FhirStructureDefinitionElementDefinition(val element: FhirStructureDefinit
     val formal: String
     val comment: String?
     val binding: FhirElementBinding?
-    val constraint: FhirElementConstraint?
-    val mapping: FhirElementMapping?
     val slicing: JsonElement?
     val representation: JsonElement?
 
@@ -40,8 +38,6 @@ class FhirStructureDefinitionElementDefinition(val element: FhirStructureDefinit
 
         // todo check for existence on theses?
         binding = if (dict.has("binding")) FhirElementBinding(dict["binding"] as JsonObject) else null
-        constraint = if (dict.has("constraint")) FhirElementConstraint(dict["constraint"]) else null
-        mapping = if (dict.has("mapping")) FhirElementMapping(dict["mapping"]) else null
         slicing = dict["slicing"]
         representation = dict["representation"]
     }
@@ -62,24 +58,6 @@ class FhirStructureDefinitionElementDefinition(val element: FhirStructureDefinit
                 contentReferenced = elem.definition
             }
         }
-
-        // resolve bindings
-        if (binding != null && binding.isRequired && (binding.uri != null || binding.canonical != null)) {
-            val uri = binding.canonical ?: binding.uri!!
-            if (!uri.startsWith("http://hl7.org/fhir")) {
-                log.debug("Ignoring foreign ValueSet \"{}\"".format(uri))
-                return
-            }
-
-            val valueSet = element.profile.fhirSpec.valuesetWithUri(uri)
-            if (valueSet == null) {
-                log.info("There is no ValueSet for required binding \"$uri\" on $propName in ${element.profile.name()}")
-            } else {
-                element.valueSet = valueSet
-                element.enum = valueSet.enum()
-            }
-        }
-
     }
 
 

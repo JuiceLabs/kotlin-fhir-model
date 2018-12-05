@@ -13,8 +13,6 @@ class FhirSpec(val directory: String, val packageName: String) {
 
     val gson = Gson()
 
-    val valueSets: MutableMap<String, FhirValueSet> = HashMap()
-    val codeSystems: MutableMap<String, FhirCodeSystem> = HashMap()
     val profiles: MutableMap<String, FhirStructureDefinition> = HashMap()
     val info: FhirVersionInfo = FhirVersionInfo(this, directory)
     val skipBecauseUnsupported = arrayOf(
@@ -30,7 +28,6 @@ class FhirSpec(val directory: String, val packageName: String) {
 
 
     fun prepare() {
-        readValueSets()
         handleManualProfiles()
         readProfiles()
         wrapUp()
@@ -63,38 +60,6 @@ class FhirSpec(val directory: String, val packageName: String) {
 
         return resources
     }
-
-
-    @Suppress("UNCHECKED_CAST")
-    private fun readValueSets() {
-        val resources = readBundleResources("valuesets.json")
-        resources.forEach { res ->
-            val resource = gson.fromJson(res, Map::class.java)
-            val resourceType = resource["resourceType"] as String
-            val url = resource["url"] as String
-
-            if (resourceType.contains("ValueSet")) {
-                valueSets.put(url, FhirValueSet(this, resource as Map<String, FhirValueSet>))
-            } else if (resourceType.contains("CodeSystem")) {
-                if (resource.containsKey("content") && resource.containsKey("concept")) {
-                    codeSystems.put(url, FhirCodeSystem(this, resource as Map<String, FhirCodeSystem>))
-                } else {
-                    log.warn("CodeSystem with no concepts: $url")
-                }
-            }
-        }
-    }
-
-
-    fun valuesetWithUri(uri: String): FhirValueSet? {
-        return valueSets[uri]
-    }
-
-
-    fun codesystemWithUri(uri: String): FhirCodeSystem {
-        return codeSystems[uri]!!
-    }
-
 
     private fun readProfiles() {
         val resources: MutableList<JsonElement> = mutableListOf()

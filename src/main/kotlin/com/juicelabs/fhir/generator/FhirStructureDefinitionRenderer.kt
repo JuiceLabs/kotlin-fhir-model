@@ -39,8 +39,7 @@ class FhirStructureDefinitionRenderer(val spec: FhirSpec) {
             classes.filter { c -> !Settings.natives.contains(c.name) }.forEach { c ->
                 val classBody = buildClass(c)
                 out.addType(classBody)
-                if (c.name == "Immunization")
-                    log.debug("Building class {}", c.name)
+                log.debug("Building class {}", c.name)
             }
 
             val dir = spec.info.directory

@@ -8,7 +8,7 @@ class Settings {
          */
         const val baseUrl = "http://hl7.org/fhir/"
 
-        val downloadFiles = (System.getenv("downloadFiles") ?: "false").equals("true", true)
+        val downloadFiles = (System.getenv("downloadFiles") ?: "true").equals("true", true)
 
         const val downloadDir = "./download"
         private const val destinationBaseDir = "."
@@ -30,7 +30,6 @@ class Settings {
         val  classMap = mapOf(
                 "Any" to "Resource",
                 "Practitioner.role" to "PractRole",  // to avoid Practitioner.role and PractitionerRole generating the same class
-
                 "bool" to "Boolean",
                 "integer" to "Int",
                 "positiveint" to "Int",
@@ -39,17 +38,10 @@ class Settings {
                 "datetime" to "String",
                 "instant" to "String",
                 "time" to "String",
-
-//                "date" to "FhirDate",
-//                "datetime" to "FhirDate",
-//                "instant" to "FhirDate",
-//                "time" to "FhirDate",
-
                 "decimal" to "Float",
-
                 "markdown" to "String",
                 "id" to "String",
-                "code" to "String", // for now we"re not generating enums for these
+                "code" to "String",
                 "uri" to "String",
                 "url" to "String",
                 "canonical" to "String",
@@ -83,7 +75,6 @@ class Settings {
                 "int" to "Int",
                 "bool" to "Boolean",
                 "float" to "Float"
-//                "FhirDate" to "FhirDateTime"
         )
 
         const val jsonMapDefault = "dict"
@@ -108,40 +99,6 @@ class Settings {
                 )
         )
 
-
     }
 }
 
-class CaseInsensitiveMutableMap<V>(private val map: MutableMap<String, V>) : MutableMap<String, V> by map {
-
-    override fun containsKey(key: String): Boolean {
-        return this.map.keys.any { it.equals(key, ignoreCase = true) }
-    }
-
-    override fun get(key: String): V? {
-        return this.map.filter { it.key.equals(key, ignoreCase = true) }.map { it.value }.firstOrNull()
-    }
-
-    override fun remove(key: String): V? {
-        return this.map.filter { it.key.equals(key, ignoreCase = true) }.map { it.key }.firstOrNull()?.let {
-            this.map.remove(it)
-        }
-    }
-
-    override fun put(key: String, value: V): V? {
-        val old = this.remove(key)
-        this.map.put(key, value)
-        return old
-    }
-
-    override fun putAll(from: Map<out String, V>) {
-        for ((key, value) in from) {
-            this.put(key, value)
-        }
-    }
-
-    override fun toString(): String {
-        return this.map.toString()
-    }
-
-}
